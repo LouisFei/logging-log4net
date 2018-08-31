@@ -19,30 +19,32 @@
 
 namespace log4net.Repository.Hierarchy
 {
-	/// <summary>
-	/// Interface abstracts creation of <see cref="Logger"/> instances
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// This interface is used by the <see cref="Hierarchy"/> to 
-	/// create new <see cref="Logger"/> objects.
-	/// </para>
-	/// <para>
-	/// The <see cref="CreateLogger"/> method is called
-	/// to create a named <see cref="Logger" />.
-	/// </para>
-	/// <para>
-	/// Implement this interface to create new subclasses of <see cref="Logger" />.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public interface ILoggerFactory
+    /// <summary>
+    /// Interface abstracts creation of <see cref="Logger"/> instances
+    /// 记录器工厂接口
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This interface is used by the <see cref="Hierarchy"/> to 
+    /// create new <see cref="Logger"/> objects.
+    /// </para>
+    /// <para>
+    /// The <see cref="CreateLogger"/> method is called
+    /// to create a named <see cref="Logger" />.
+    /// </para>
+    /// <para>
+    /// Implement this interface to create new subclasses of <see cref="Logger" />.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public interface ILoggerFactory
 	{
 		/// <summary>
 		/// Create a new <see cref="Logger" /> instance
+        /// 创建一个新的记录器实例。
 		/// </summary>
-		/// <param name="repository">The <see cref="ILoggerRepository" /> that will own the <see cref="Logger" />.</param>
+		/// <param name="repository">The <see cref="ILoggerRepository" /> that will own the <see cref="Logger" />. 记录器拥有者，容器。</param>
 		/// <param name="name">The name of the <see cref="Logger" />.</param>
 		/// <returns>The <see cref="Logger" /> instance for the specified name.</returns>
 		/// <remarks>

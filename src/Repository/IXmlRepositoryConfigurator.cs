@@ -25,6 +25,7 @@ namespace log4net.Repository
 {
 	/// <summary>
 	/// Configure repository using XML
+    /// 使用xml配置容器
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -39,16 +40,17 @@ namespace log4net.Repository
 	/// <author>Gert Driesen</author>
 	public interface IXmlRepositoryConfigurator
 	{
-		/// <summary>
-		/// Initialize the repository using the specified config
-		/// </summary>
-		/// <param name="element">the element containing the root of the config</param>
-		/// <remarks>
-		/// <para>
-		/// The schema for the XML configuration data is defined by
-		/// the implementation.
-		/// </para>
-		/// </remarks>
-		void Configure(System.Xml.XmlElement element);
+        /// <summary>
+        /// Initialize the repository using the specified config
+        /// 使用指定的配置初始化存储库（容器）
+        /// </summary>
+        /// <param name="element">the element containing the root of the config</param>
+        /// <remarks>
+        /// <para>
+        /// The schema for the XML configuration data is defined by
+        /// the implementation.
+        /// </para>
+        /// </remarks>
+        void Configure(System.Xml.XmlElement element);
 	}
 }

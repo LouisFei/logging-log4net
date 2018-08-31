@@ -22,7 +22,8 @@
 namespace log4net.Util
 {
     /// <summary>
-    /// A class to hold the key and data for a property set in the config file
+    /// A class to hold the key and data for a property set in the config file.
+    /// 一个类，用于保存配置文件中属性集的键和数据。
     /// </summary>
     /// <remarks>
     /// <para>
@@ -36,6 +37,7 @@ namespace log4net.Util
 
         /// <summary>
         /// Property Key
+        /// 属性键
         /// </summary>
         /// <value>
         /// Property Key
@@ -53,6 +55,7 @@ namespace log4net.Util
 
         /// <summary>
         /// Property Value
+        /// 属性值
         /// </summary>
         /// <value>
         /// Property Value

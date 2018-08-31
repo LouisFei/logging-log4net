@@ -30,28 +30,30 @@ using log4net.Repository;
 
 namespace log4net.Core
 {
-	/// <summary>
-	/// Static manager that controls the creation of repositories
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Static manager that controls the creation of repositories
-	/// </para>
-	/// <para>
-	/// This class is used by the wrapper managers (e.g. <see cref="log4net.LogManager"/>)
-	/// to provide access to the <see cref="ILogger"/> objects.
-	/// </para>
-	/// <para>
-	/// This manager also holds the <see cref="IRepositorySelector"/> that is used to
-	/// lookup and create repositories. The selector can be set either programmatically using
-	/// the <see cref="RepositorySelector"/> property, or by setting the <c>log4net.RepositorySelector</c>
-	/// AppSetting in the applications config file to the fully qualified type name of the
-	/// selector to use. 
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public sealed class LoggerManager
+    /// <summary>
+    /// Static manager that controls the creation of repositories
+    /// 控制存储库创建的静态管理器
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Static manager that controls the creation of repositories
+    /// </para>
+    /// <para>
+    /// This class is used by the wrapper managers (e.g. <see cref="log4net.LogManager"/>)
+    /// to provide access to the <see cref="ILogger"/> objects.
+    /// 包装器管理器使用这个类来提供对ILogger对象的访问。
+    /// </para>
+    /// <para>
+    /// This manager also holds the <see cref="IRepositorySelector"/> that is used to
+    /// lookup and create repositories. The selector can be set either programmatically using
+    /// the <see cref="RepositorySelector"/> property, or by setting the <c>log4net.RepositorySelector</c>
+    /// AppSetting in the applications config file to the fully qualified type name of the
+    /// selector to use. 
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public sealed class LoggerManager
 	{
 		#region Private Instance Constructors
 
@@ -67,28 +69,38 @@ namespace log4net.Core
 		{
 		}
 
-		#endregion Private Instance Constructors
+        #endregion Private Instance Constructors
 
-		#region Static Constructor
+        #region Static Constructor
 
-		/// <summary>
-		/// Hook the shutdown event
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// On the full .NET runtime, the static constructor hooks up the 
-		/// <c>AppDomain.ProcessExit</c> and <c>AppDomain.DomainUnload</c>> events. 
-		/// These are used to shutdown the log4net system as the application exits.
-		/// </para>
-		/// </remarks>
-		static LoggerManager()
+        /// <summary>
+        /// Hook the shutdown event
+        /// 挂接关闭事件？？？
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// On the full .NET runtime, the static constructor hooks up the 
+        /// <c>AppDomain.ProcessExit</c> and <c>AppDomain.DomainUnload</c>> events. 
+        /// These are used to shutdown the log4net system as the application exits.
+        /// 
+        /// 在完整的.NET运行时中，静态构造函数挂接应用程序域的ProcessExit事件和应用程序域中DomainUnload事件。
+        /// 它们用于在应用程序退出时关闭log4net系统。
+        /// 
+        /// 静态构造器
+        /// </para>
+        /// </remarks>
+        static LoggerManager()
 		{
 			try
 			{
-				// Register the AppDomain events, note we have to do this with a
-				// method call rather than directly here because the AppDomain
-				// makes a LinkDemand which throws the exception during the JIT phase.
-				RegisterAppDomainEvents();
+                // Register the AppDomain events, note we have to do this with a
+                // method call rather than directly here because the AppDomain
+                // makes a LinkDemand which throws the exception during the JIT phase.
+                // 注册AppDomain事件，注意我们必须通过方法调用来完成，而不是直接在这里，
+                // 因为AppDomain产生了一个LinkDemand，它会在JIT阶段抛出异常。
+
+                //监听应用程序域退出事件，及时关闭log4net系统。
+                RegisterAppDomainEvents();
 			}
 			catch(System.Security.SecurityException)
 			{
@@ -456,6 +468,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Shuts down the log4net system.
+        /// 关闭log4net系统。
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -616,6 +629,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Creates a repository with the specified name.
+        /// 使用指定的名称创建一个存储库。
 		/// </summary>
 		/// <param name="repository">The name of the repository, this must be unique amongst repositories.</param>
 		/// <returns>The <see cref="ILoggerRepository"/> created for the repository.</returns>
@@ -757,47 +771,49 @@ namespace log4net.Core
 			return RepositorySelector.GetAllRepositories();
 		}
 
-		/// <summary>
-		/// Gets or sets the repository selector used by the <see cref="LogManager" />.
-		/// </summary>
-		/// <value>
-		/// The repository selector used by the <see cref="LogManager" />.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The repository selector (<see cref="IRepositorySelector"/>) is used by 
-		/// the <see cref="LogManager"/> to create and select repositories 
-		/// (<see cref="ILoggerRepository"/>).
-		/// </para>
-		/// <para>
-		/// The caller to <see cref="LogManager"/> supplies either a string name 
-		/// or an assembly (if not supplied the assembly is inferred using 
-		/// <see cref="M:Assembly.GetCallingAssembly()"/>).
-		/// </para>
-		/// <para>
-		/// This context is used by the selector to lookup a specific repository.
-		/// </para>
-		/// <para>
-		/// For the full .NET Framework, the default repository is <c>DefaultRepositorySelector</c>;
-		/// for the .NET Compact Framework <c>CompactRepositorySelector</c> is the default
-		/// repository.
-		/// </para>
-		/// </remarks>
-		public static IRepositorySelector RepositorySelector
+        /// <summary>
+        /// Gets or sets the repository selector used by the <see cref="LogManager" />.
+        /// 获取或设置存储库（容器）选择器。在LoggerManager静态构造函数内赋予默认值。
+        /// </summary>
+        /// <value>
+        /// The repository selector used by the <see cref="LogManager" />.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The repository selector (<see cref="IRepositorySelector"/>) is used by 
+        /// the <see cref="LogManager"/> to create and select repositories 
+        /// (<see cref="ILoggerRepository"/>).
+        /// </para>
+        /// <para>
+        /// The caller to <see cref="LogManager"/> supplies either a string name 
+        /// or an assembly (if not supplied the assembly is inferred using 
+        /// <see cref="M:Assembly.GetCallingAssembly()"/>).
+        /// </para>
+        /// <para>
+        /// This context is used by the selector to lookup a specific repository.
+        /// </para>
+        /// <para>
+        /// For the full .NET Framework, the default repository is <c>DefaultRepositorySelector</c>;
+        /// for the .NET Compact Framework <c>CompactRepositorySelector</c> is the default
+        /// repository.
+        /// </para>
+        /// </remarks>
+        public static IRepositorySelector RepositorySelector
 		{
 			get { return s_repositorySelector; }
 			set { s_repositorySelector = value; }
 		}
 
-		#endregion Public Static Methods
+        #endregion Public Static Methods
 
-		#region Private Static Methods
+        #region Private Static Methods
 
-		/// <summary>
-		/// Internal method to get pertinent version info.
-		/// </summary>
-		/// <returns>A string of version info.</returns>
-		private static string GetVersionInfo()
+        /// <summary>
+        /// Internal method to get pertinent version info.
+        /// 内部方法以获得相关的版本信息。
+        /// </summary>
+        /// <returns>A string of version info.</returns>
+        private static string GetVersionInfo()
 		{
 			System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
@@ -857,23 +873,25 @@ namespace log4net.Core
 		}
 #endif
 
-		#endregion Private Static Methods
+        #endregion Private Static Methods
 
-		#region Private Static Fields
+        #region Private Static Fields
 
-	    /// <summary>
-	    /// The fully qualified type of the LoggerManager class.
-	    /// </summary>
-	    /// <remarks>
-	    /// Used by the internal logger to record the Type of the
-	    /// log message.
-	    /// </remarks>
-	    private readonly static Type declaringType = typeof(LoggerManager);
+        /// <summary>
+        /// The fully qualified type of the LoggerManager class.
+        /// LoggerManager类的完整限制类型
+        /// </summary>
+        /// <remarks>
+        /// Used by the internal logger to record the Type of the log message.
+        /// 内部日志记录器用于记录日志消息的类型。
+        /// </remarks>
+        private readonly static Type declaringType = typeof(LoggerManager);
 
-		/// <summary>
-		/// Initialize the default repository selector
-		/// </summary>
-		private static IRepositorySelector s_repositorySelector;
+        /// <summary>
+        /// Initialize the default repository selector
+        /// 初始化默认的存储库（容器）选择器
+        /// </summary>
+        private static IRepositorySelector s_repositorySelector;
 
 		#endregion Private Static Fields
 	}

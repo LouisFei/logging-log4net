@@ -27,6 +27,7 @@ namespace log4net
 {
 	/// <summary>
 	/// This class is used by client applications to request logger instances.
+    /// 这处类用于客户端程序请求一个日志记录类实例。
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -630,6 +631,7 @@ namespace log4net
 
 		/// <summary>
 		/// Creates a repository with the specified name.
+        /// 使用指定的名称，创建一个存储库（记录器组件容器）
 		/// </summary>
 		/// <remarks>
 		/// <para>

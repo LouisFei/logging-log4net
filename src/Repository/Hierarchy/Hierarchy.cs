@@ -88,38 +88,40 @@ namespace log4net.Repository.Hierarchy
 		}
 	}
 
-	#endregion LoggerCreationEvent
+    #endregion LoggerCreationEvent
 
-	/// <summary>
-	/// Hierarchical organization of loggers
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// <i>The casual user should not have to deal with this class
-	/// directly.</i>
-	/// </para>
-	/// <para>
-	/// This class is specialized in retrieving loggers by name and
-	/// also maintaining the logger hierarchy. Implements the 
-	/// <see cref="ILoggerRepository"/> interface.
-	/// </para>
-	/// <para>
-	/// The structure of the logger hierarchy is maintained by the
-	/// <see cref="M:GetLogger(string)"/> method. The hierarchy is such that children
-	/// link to their parent but parents do not have any references to their
-	/// children. Moreover, loggers can be instantiated in any order, in
-	/// particular descendant before ancestor.
-	/// </para>
-	/// <para>
-	/// In case a descendant is created before a particular ancestor,
-	/// then it creates a provision node for the ancestor and adds itself
-	/// to the provision node. Other descendants of the same ancestor add
-	/// themselves to the previously created provision node.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class Hierarchy : LoggerRepositorySkeleton, IBasicRepositoryConfigurator, IXmlRepositoryConfigurator
+    /// <summary>
+    /// Hierarchical organization of loggers
+    /// 分层结构的loggers(日志记录器)
+    /// 默认的ILoggerRepository的实现类，它用于表达其内部的Logger是以层次结构存储的。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// <i>The casual user should not have to deal with this class
+    /// directly.</i>
+    /// </para>
+    /// <para>
+    /// This class is specialized in retrieving loggers by name and
+    /// also maintaining the logger hierarchy. Implements the 
+    /// <see cref="ILoggerRepository"/> interface.
+    /// </para>
+    /// <para>
+    /// The structure of the logger hierarchy is maintained by the
+    /// <see cref="M:GetLogger(string)"/> method. The hierarchy is such that children
+    /// link to their parent but parents do not have any references to their
+    /// children. Moreover, loggers can be instantiated in any order, in
+    /// particular descendant before ancestor.
+    /// </para>
+    /// <para>
+    /// In case a descendant is created before a particular ancestor,
+    /// then it creates a provision node for the ancestor and adds itself
+    /// to the provision node. Other descendants of the same ancestor add
+    /// themselves to the previously created provision node.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class Hierarchy : LoggerRepositorySkeleton, IBasicRepositoryConfigurator, IXmlRepositoryConfigurator
 	{
 		#region Public Events
 
@@ -155,6 +157,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Construct with properties
+        /// 使用指定的属性集和默认的记录器工厂构造记录器容器
 		/// </summary>
 		/// <param name="properties">The properties to pass to this repository.</param>
 		/// <remarks>
@@ -168,6 +171,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Construct with a logger factory
+        /// 使用空的属性集和指定的记录器工厂构造记录器容器。
 		/// </summary>
 		/// <param name="loggerFactory">The factory to use to create new logger instances.</param>
 		/// <remarks>
@@ -182,6 +186,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Construct with properties and a logger factory
+        /// 使用指定的属性集和指定的记录器工厂构造记录器容器。
 		/// </summary>
 		/// <param name="properties">The properties to pass to this repository.</param>
 		/// <param name="loggerFactory">The factory to use to create new logger instances.</param>
@@ -335,24 +340,27 @@ namespace log4net.Repository.Hierarchy
 			}
 		}
 
-		/// <summary>
-		/// Return a new logger instance named as the first parameter using
-		/// the default factory.
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// Return a new logger instance named as the first parameter using
-		/// the default factory.
-		/// </para>
-		/// <para>
-		/// If a logger of that name already exists, then it will be
-		/// returned.  Otherwise, a new logger will be instantiated and
-		/// then linked with its existing ancestors as well as children.
-		/// </para>
-		/// </remarks>
-		/// <param name="name">The name of the logger to retrieve</param>
-		/// <returns>The logger object with the name specified</returns>
-		override public ILogger GetLogger(string name) 
+        /// <summary>
+        /// Return a new logger instance named as the first parameter using the default factory.
+        /// 返回指定记录器名称的已存在的记录器，如果没有则实例化再返回。
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Return a new logger instance named as the first parameter using
+        /// the default factory.
+        /// </para>
+        /// <para>
+        /// If a logger of that name already exists, then it will be
+        /// returned.  Otherwise, a new logger will be instantiated and
+        /// then linked with its existing ancestors as well as children.
+        /// 
+        /// 如果该名称的记录器已经存在，那么它将被返回。
+        /// 否则，将实例化一个新的日志记录器，然后将其与现有的祖先和子日志记录器连接起来。
+        /// </para>
+        /// </remarks>
+        /// <param name="name">The name of the logger to retrieve</param>
+        /// <returns>The logger object with the name specified</returns>
+        override public ILogger GetLogger(string name) 
 		{
 			if (name == null)
 			{
@@ -598,31 +606,34 @@ namespace log4net.Repository.Hierarchy
             OnConfigurationChanged(new ConfigurationChangedEventArgs(configurationMessages));
 		}
 
-	    #endregion Implementation of IBasicRepositoryConfigurator
+        #endregion Implementation of IBasicRepositoryConfigurator
 
-		#region Implementation of IXmlRepositoryConfigurator
+        #region Implementation of IXmlRepositoryConfigurator
 
-		/// <summary>
-		/// Initialize the log4net system using the specified config
-		/// </summary>
-		/// <param name="element">the element containing the root of the config</param>
-		void IXmlRepositoryConfigurator.Configure(System.Xml.XmlElement element)
+        /// <summary>
+        /// Initialize the log4net system using the specified config
+        /// 使用指定的配置初始化存储库（容器）
+        /// 使用指定的配置初始化log4net系统
+        /// </summary>
+        /// <param name="element">the element containing the root of the config</param>
+        void IXmlRepositoryConfigurator.Configure(System.Xml.XmlElement element)
 		{
 			XmlRepositoryConfigure(element);
 		}
 
-		/// <summary>
-		/// Initialize the log4net system using the specified config
-		/// </summary>
-		/// <param name="element">the element containing the root of the config</param>
-		/// <remarks>
-		/// <para>
-		/// This method provides the same functionality as the 
-		/// <see cref="M:IBasicRepositoryConfigurator.Configure(IAppender)"/> method implemented
-		/// on this object, but it is protected and therefore can be called by subclasses.
-		/// </para>
-		/// </remarks>
-		protected void XmlRepositoryConfigure(System.Xml.XmlElement element)
+        /// <summary>
+        /// Initialize the log4net system using the specified config
+        /// 使用指定的配置初始化log4net系统
+        /// </summary>
+        /// <param name="element">the element containing the root of the config</param>
+        /// <remarks>
+        /// <para>
+        /// This method provides the same functionality as the 
+        /// <see cref="M:IBasicRepositoryConfigurator.Configure(IAppender)"/> method implemented
+        /// on this object, but it is protected and therefore can be called by subclasses.
+        /// </para>
+        /// </remarks>
+        protected void XmlRepositoryConfigure(System.Xml.XmlElement element)
 		{
             ArrayList configurationMessages = new ArrayList();
 
@@ -637,6 +648,7 @@ namespace log4net.Repository.Hierarchy
             ConfigurationMessages = configurationMessages;
 
 			// Notify listeners
+            // 通知监听器，配置有改变
             OnConfigurationChanged(new ConfigurationChangedEventArgs(configurationMessages));
 		}
 
@@ -1037,6 +1049,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Set a Property using the values in the <see cref="LevelEntry"/> argument
+        /// 添加一个属性
 		/// </summary>
 		/// <param name="propertyEntry">the property value</param>
 		/// <remarks>
@@ -1059,8 +1072,18 @@ namespace log4net.Repository.Hierarchy
 
 		#region Private Instance Fields
 
+        /// <summary>
+        /// 
+        /// </summary>
 		private ILoggerFactory m_defaultFactory;
 
+        /// <summary>
+        /// 使用Hashtable来存储所有的Logger实例，
+        /// 它以LoggerKey作为key，Logger作为value。
+        /// 其中LoggerKey是对Logger中Name字符串的封装，
+        /// 之所以要引入这个类是出于性能考虑，因为它会缓存Name字符串的hash code，
+        /// 这样 在查找过程中计算hash code时就可以直接取得而不用每次都计算。
+        /// </summary>
 		private System.Collections.Hashtable m_ht;
 		private Logger m_root;
   

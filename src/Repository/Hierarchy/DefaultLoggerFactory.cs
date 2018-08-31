@@ -23,6 +23,7 @@ namespace log4net.Repository.Hierarchy
 {
 	/// <summary>
 	/// Default implementation of <see cref="ILoggerFactory"/>
+    /// 默认的记录器工厂实现类。
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -55,6 +56,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Create a new <see cref="Logger" /> instance
+        /// 创建一个新的记录器实例
 		/// </summary>
 		/// <param name="repository">The <see cref="ILoggerRepository" /> that will own the <see cref="Logger" />.</param>
 		/// <param name="name">The name of the <see cref="Logger" />.</param>
@@ -86,6 +88,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Default internal subclass of <see cref="Logger"/>
+        /// 默认的内部的记录器子类
 		/// </summary>
 		/// <remarks>
 		/// <para>

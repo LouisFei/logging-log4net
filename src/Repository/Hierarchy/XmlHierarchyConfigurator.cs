@@ -30,17 +30,18 @@ using log4net.ObjectRenderer;
 
 namespace log4net.Repository.Hierarchy
 {
-	/// <summary>
-	/// Initializes the log4net environment using an XML DOM.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Configures a <see cref="Hierarchy"/> using an XML DOM.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class XmlHierarchyConfigurator
+    /// <summary>
+    /// Initializes the log4net environment using an XML DOM.
+    /// 使用XML DOM初始化log4net环境。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Configures a <see cref="Hierarchy"/> using an XML DOM.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class XmlHierarchyConfigurator
 	{
 		private enum ConfigUpdateMode
 		{
@@ -66,20 +67,21 @@ namespace log4net.Repository.Hierarchy
 			m_appenderBag = new Hashtable();
 		}
 
-		#endregion Public Instance Constructors
+        #endregion Public Instance Constructors
 
-		#region Public Instance Methods
+        #region Public Instance Methods
 
-		/// <summary>
-		/// Configure the hierarchy by parsing a DOM tree of XML elements.
-		/// </summary>
-		/// <param name="element">The root element to parse.</param>
-		/// <remarks>
-		/// <para>
-		/// Configure the hierarchy by parsing a DOM tree of XML elements.
-		/// </para>
-		/// </remarks>
-		public void Configure(XmlElement element) 
+        /// <summary>
+        /// Configure the hierarchy by parsing a DOM tree of XML elements.
+        /// 通过解析XML元素的DOM树来配置层次结构。
+        /// </summary>
+        /// <param name="element">The root element to parse.</param>
+        /// <remarks>
+        /// <para>
+        /// Configure the hierarchy by parsing a DOM tree of XML elements.
+        /// </para>
+        /// </remarks>
+        public void Configure(XmlElement element) 
 		{
 			if (element == null || m_hierarchy == null)
 			{
@@ -877,6 +879,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Look for a method on the <paramref name="targetType"/> that matches the <paramref name="name"/> supplied
+        /// 在指定的类型上查找指定名称的方法。
 		/// </summary>
 		/// <param name="targetType">the type that has the method</param>
 		/// <param name="name">the name of the method</param>
@@ -1140,10 +1143,12 @@ namespace log4net.Repository.Hierarchy
 		/// </summary>
 		private Hashtable m_appenderBag;
 
-		/// <summary>
-		/// The Hierarchy being configured.
-		/// </summary>
-		private readonly Hierarchy m_hierarchy;
+        /// <summary>
+        /// The Hierarchy being configured.
+        /// 被配置的层次结构。
+        /// 默认的记录器容器。
+        /// </summary>
+        private readonly Hierarchy m_hierarchy;
 
 		#endregion Private Instance Fields
 

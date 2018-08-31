@@ -317,26 +317,27 @@ namespace log4net.Repository
 		/// </remarks>
 		abstract public void Log(LoggingEvent logEvent);
 
-		/// <summary>
-		/// Flag indicates if this repository has been configured.
-		/// </summary>
-		/// <value>
-		/// Flag indicates if this repository has been configured.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// Flag indicates if this repository has been configured.
-		/// </para>
-		/// </remarks>
-		virtual public bool Configured 
+        /// <summary>
+        /// Flag indicates if this repository has been configured.
+        /// 标志表示是否配置了此存储库。
+        /// </summary>
+        /// <value>
+        /// Flag indicates if this repository has been configured.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// Flag indicates if this repository has been configured.
+        /// </para>
+        /// </remarks>
+        virtual public bool Configured 
 		{ 
 			get { return m_configured; }
 			set { m_configured = value; }
 		}
 
         /// <summary>
-        /// Contains a list of internal messages captures during the 
-        /// last configuration.
+        /// Contains a list of internal messages captures during the last configuration.
+        /// 包含最后一次配置期间捕获的内部消息列表。
         /// </summary>
 	    virtual public ICollection ConfigurationMessages
 	    {
@@ -398,6 +399,7 @@ namespace log4net.Repository
 
 		/// <summary>
 		/// Repository specific properties
+        /// 容器属性集合
 		/// </summary>
 		/// <value>
 		/// Repository specific properties
@@ -539,6 +541,7 @@ namespace log4net.Repository
 
 		/// <summary>
 		/// Notify the registered listeners that the repository has had its configuration changed
+        /// 通知容器配置被改变。
 		/// </summary>
 		/// <param name="e">Empty EventArgs</param>
 		/// <remarks>

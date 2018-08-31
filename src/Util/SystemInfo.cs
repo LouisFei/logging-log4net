@@ -31,18 +31,19 @@ using System.Collections;
 
 namespace log4net.Util
 {
-	/// <summary>
-	/// Utility class for system specific information.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Utility class of static methods for system specific information.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	/// <author>Alexey Solofnenko</author>
-	public sealed class SystemInfo
+    /// <summary>
+    /// Utility class for system specific information.
+    /// 用于系统特定信息的实用程序类。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Utility class of static methods for system specific information.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    /// <author>Alexey Solofnenko</author>
+    public sealed class SystemInfo
 	{
 		#region Private Constants
 
@@ -987,6 +988,7 @@ namespace log4net.Util
 
         /// <summary>
 		/// Lookup an application setting
+        /// 查找应用程序设置
 		/// </summary>
 		/// <param name="key">the application settings key to lookup</param>
 		/// <returns>the value for the key, or <c>null</c></returns>

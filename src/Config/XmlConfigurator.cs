@@ -31,17 +31,18 @@ using log4net.Repository;
 
 namespace log4net.Config
 {
-	/// <summary>
-	/// Use this class to initialize the log4net environment using an Xml tree.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Configures a <see cref="ILoggerRepository"/> using an Xml tree.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public sealed class XmlConfigurator
+    /// <summary>
+    /// Use this class to initialize the log4net environment using an Xml tree.
+    /// 使用这个类通过Xml树初始化log4net环境。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Configures a <see cref="ILoggerRepository"/> using an Xml tree.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public sealed class XmlConfigurator
 	{
 		#region Private Instance Constructors
 
@@ -388,8 +389,8 @@ namespace log4net.Config
 #endif // !NETSTANDARD1_3
 
         /// <summary>
-        /// Configures the <see cref="ILoggerRepository"/> using the specified XML 
-        /// element.
+        /// Configures the <see cref="ILoggerRepository"/> using the specified XML element.
+        /// 使用xml配置记录器容器。
         /// </summary>
         /// <remarks>
         /// Loads the log4net configuration from the XML element
@@ -405,6 +406,7 @@ namespace log4net.Config
             {
                 LogLog.Debug(declaringType, "configuring repository [" + repository.Name + "] using XML element");
 
+                //内部配置（使用xml）
                 InternalConfigureFromXml(repository, element);
             }
 
@@ -1067,6 +1069,7 @@ namespace log4net.Config
 
 		/// <summary>
 		/// Configures the specified repository using a <c>log4net</c> element.
+        /// 配置记录器容器
 		/// </summary>
 		/// <param name="repository">The hierarchy to configure.</param>
 		/// <param name="element">The element to parse.</param>
@@ -1101,14 +1104,14 @@ namespace log4net.Config
 				}
 				else
 				{
-					// Copy the xml data into the root of a new document
-					// this isolates the xml config data from the rest of
-					// the document
-					XmlDocument newDoc = new XmlDocument();
+                    // Copy the xml data into the root of a new document this isolates the xml config data from the rest of the document.
+                    // 将xml数据复制到新文档的根目录中，这将xml配置数据与文档的其他部分隔离开来。
+                    XmlDocument newDoc = new XmlDocument();
 					XmlElement newElement = (XmlElement)newDoc.AppendChild(newDoc.ImportNode(element, true));
 
-					// Pass the configurator the config element
-					configurableRepository.Configure(newElement);
+                    // Pass the configurator the config element
+                    // 将配置元素传递给配置器
+                    configurableRepository.Configure(newElement);
 				}			
 			}
 		}

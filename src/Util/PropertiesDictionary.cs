@@ -28,6 +28,7 @@ namespace log4net.Util
 {
 	/// <summary>
 	/// String keyed object map.
+    /// 
 	/// </summary>
 	/// <remarks>
 	/// <para>

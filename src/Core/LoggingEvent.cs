@@ -34,6 +34,7 @@ namespace log4net.Core
 {
 	/// <summary>
 	/// Portable data structure used by <see cref="LoggingEvent"/>
+    /// 日志记录事件数据
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -47,6 +48,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// The logger name.
+        /// 记录器名称
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -57,6 +59,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Level of logging event.
+        /// 记录事件级别
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -69,6 +72,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// The application supplied message.
+        /// 消息
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -79,6 +83,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// The name of thread
+        /// 线程名称
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -89,6 +94,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Gets or sets the local time the event was logged
+        /// [弃用]发生时间
 		/// </summary>
 		/// <remarks>
         /// <para>
@@ -100,6 +106,7 @@ namespace log4net.Core
 
         /// <summary>
         /// Gets or sets the UTC time the event was logged
+        /// 发生时间
         /// </summary>
         /// <remarks>
         /// <para>
@@ -295,35 +302,36 @@ namespace log4net.Core
 		Partial = Message | ThreadName | Exception | Domain | Properties,
 	}
 
-	/// <summary>
-	/// The internal representation of logging events. 
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// When an affirmative decision is made to log then a 
-	/// <see cref="LoggingEvent"/> instance is created. This instance 
-	/// is passed around to the different log4net components.
-	/// </para>
-	/// <para>
-	/// This class is of concern to those wishing to extend log4net.
-	/// </para>
-	/// <para>
-	/// Some of the values in instances of <see cref="LoggingEvent"/>
-	/// are considered volatile, that is the values are correct at the
-	/// time the event is delivered to appenders, but will not be consistent
-	/// at any time afterwards. If an event is to be stored and then processed
-	/// at a later time these volatile values must be fixed by calling
-	/// <see cref="M:FixVolatileData()"/>. There is a performance penalty
-	/// for incurred by calling <see cref="M:FixVolatileData()"/> but it
-	/// is essential to maintaining data consistency.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	/// <author>Douglas de la Torre</author>
-	/// <author>Daniel Cazzulino</author>
+    /// <summary>
+    /// The internal representation of logging events. 
+    /// 日志事件的内部表示。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// When an affirmative decision is made to log then a 
+    /// <see cref="LoggingEvent"/> instance is created. This instance 
+    /// is passed around to the different log4net components.
+    /// </para>
+    /// <para>
+    /// This class is of concern to those wishing to extend log4net.
+    /// </para>
+    /// <para>
+    /// Some of the values in instances of <see cref="LoggingEvent"/>
+    /// are considered volatile, that is the values are correct at the
+    /// time the event is delivered to appenders, but will not be consistent
+    /// at any time afterwards. If an event is to be stored and then processed
+    /// at a later time these volatile values must be fixed by calling
+    /// <see cref="M:FixVolatileData()"/>. There is a performance penalty
+    /// for incurred by calling <see cref="M:FixVolatileData()"/> but it
+    /// is essential to maintaining data consistency.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    /// <author>Douglas de la Torre</author>
+    /// <author>Daniel Cazzulino</author>
 #if !NETCF
-	[Serializable]
+    [Serializable]
 #endif
 	public class LoggingEvent 
 #if !NETCF

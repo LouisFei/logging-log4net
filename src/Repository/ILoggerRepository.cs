@@ -75,23 +75,24 @@ namespace log4net.Repository
 	public delegate void LoggerRepositoryConfigurationChangedEventHandler(object sender, EventArgs e);
 
     #endregion
-	
-	/// <summary>
-	/// Interface implemented by logger repositories.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// This interface is implemented by logger repositories. e.g. 
-	/// <see cref="Hierarchy"/>.
-	/// </para>
-	/// <para>
-	/// This interface is used by the <see cref="LogManager"/>
-	/// to obtain <see cref="ILog"/> interfaces.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public interface ILoggerRepository
+
+    /// <summary>
+    /// Interface implemented by logger repositories.
+    /// 由logger存储库实现的接口。存放logger实例的容器。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This interface is implemented by logger repositories. e.g. 
+    /// <see cref="Hierarchy"/>.
+    /// </para>
+    /// <para>
+    /// This interface is used by the <see cref="LogManager"/>
+    /// to obtain <see cref="ILog"/> interfaces.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public interface ILoggerRepository
 	{
 		/// <summary>
 		/// The name of the repository

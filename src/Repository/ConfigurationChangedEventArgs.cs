@@ -25,7 +25,7 @@ using System.Collections;
 namespace log4net.Repository
 {
     /// <summary>
-    /// 
+    /// 配置修改事件数据
     /// </summary>
     public class ConfigurationChangedEventArgs : EventArgs
     {

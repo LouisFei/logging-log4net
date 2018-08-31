@@ -24,24 +24,25 @@ using log4net.Core;
 
 namespace log4net.Repository.Hierarchy
 {
-	/// <summary>
-	/// The <see cref="RootLogger" /> sits at the root of the logger hierarchy tree. 
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// The <see cref="RootLogger" /> is a regular <see cref="Logger" /> except 
-	/// that it provides several guarantees.
-	/// </para>
-	/// <para>
-	/// First, it cannot be assigned a <c>null</c>
-	/// level. Second, since the root logger cannot have a parent, the
-	/// <see cref="EffectiveLevel"/> property always returns the value of the
-	/// level field without walking the hierarchy.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class RootLogger : Logger
+    /// <summary>
+    /// The <see cref="RootLogger" /> sits at the root of the logger hierarchy tree. 
+    /// RootLogger位于logger层次结构树的根。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The <see cref="RootLogger" /> is a regular <see cref="Logger" /> except 
+    /// that it provides several guarantees.
+    /// </para>
+    /// <para>
+    /// First, it cannot be assigned a <c>null</c>
+    /// level. Second, since the root logger cannot have a parent, the
+    /// <see cref="EffectiveLevel"/> property always returns the value of the
+    /// level field without walking the hierarchy.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class RootLogger : Logger
 	{
 		#region Public Instance Constructors
 

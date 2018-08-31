@@ -33,27 +33,30 @@ namespace log4net.Util
     /// <param name="e"></param>
     public delegate void LogReceivedEventHandler(object source, LogReceivedEventArgs e);
 
-	/// <summary>
-	/// Outputs log statements from within the log4net assembly.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Log4net components cannot make log4net logging calls. However, it is
-	/// sometimes useful for the user to learn about what log4net is
-	/// doing.
-	/// </para>
-	/// <para>
-	/// All log4net internal debug calls go to the standard output stream
-	/// whereas internal error messages are sent to the standard error output 
-	/// stream.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public sealed class LogLog
+    /// <summary>
+    /// Outputs log statements from within the log4net assembly.
+    /// 从log4net程序集中输出日志语句。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Log4net components cannot make log4net logging calls. 
+    /// However, it is sometimes useful for the user to learn about what log4net is doing.
+    /// Log4net组件不能执行Log4net日志调用。
+    /// 然而，对于用户来说，了解log4net在做什么有时是有用的。
+    /// </para>
+    /// <para>
+    /// All log4net internal debug calls go to the standard output stream
+    /// whereas internal error messages are sent to the standard error output stream.
+    /// 所有log4net内部调试调用都被发送到标准输出流，而内部错误消息被发送到标准错误输出流。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public sealed class LogLog
 	{
         /// <summary>
         /// The event raised when an internal message has been received.
+        /// 内部消息接收事件
         /// </summary>
         public static event LogReceivedEventHandler LogReceived;
 
@@ -319,19 +322,18 @@ namespace log4net.Util
 			get { return s_debugEnabled && !s_quietMode; }
 		}
 
-		/// <summary>
-		/// Writes log4net internal debug messages to the 
-		/// standard output stream.
-		/// </summary>
+        /// <summary>
+        /// Writes log4net internal debug messages to the standard output stream.
+        /// 将log4net内部调试消息写入标准输出流。
+        /// </summary>
         /// <param name="source"></param>
-		/// <param name="message">The message to log.</param>
-		/// <remarks>
-		/// <para>
-		///	All internal debug messages are prepended with 
-		///	the string "log4net: ".
-		/// </para>
-		/// </remarks>
-		public static void Debug(Type source, string message) 
+        /// <param name="message">The message to log.</param>
+        /// <remarks>
+        /// <para>
+        ///	All internal debug messages are prepended with the string "log4net: ".
+        /// </para>
+        /// </remarks>
+        public static void Debug(Type source, string message) 
 		{
 			if (IsDebugEnabled) 
 			{
@@ -514,27 +516,28 @@ namespace log4net.Util
 
                 OnLogReceived(source, ERR_PREFIX, message, exception);
 			}
-		}  
+		}
 
-		#endregion Public Static Methods
+        #endregion Public Static Methods
 
-		/// <summary>
-		/// Writes output to the standard output stream.  
-		/// </summary>
-		/// <param name="message">The message to log.</param>
-		/// <remarks>
-		/// <para>
-		/// Writes to both Console.Out and System.Diagnostics.Trace.
-		/// Note that the System.Diagnostics.Trace is not supported
-		/// on the Compact Framework.
-		/// </para>
-		/// <para>
-		/// If the AppDomain is not configured with a config file then
-		/// the call to System.Diagnostics.Trace may fail. This is only
-		/// an issue if you are programmatically creating your own AppDomains.
-		/// </para>
-		/// </remarks>
-		private static void EmitOutLine(string message)
+        /// <summary>
+        /// Writes output to the standard output stream.  
+        /// 将输出写入标准输出流。
+        /// </summary>
+        /// <param name="message">The message to log.</param>
+        /// <remarks>
+        /// <para>
+        /// Writes to both Console.Out and System.Diagnostics.Trace.
+        /// Note that the System.Diagnostics.Trace is not supported
+        /// on the Compact Framework.
+        /// </para>
+        /// <para>
+        /// If the AppDomain is not configured with a config file then
+        /// the call to System.Diagnostics.Trace may fail. This is only
+        /// an issue if you are programmatically creating your own AppDomains.
+        /// </para>
+        /// </remarks>
+        private static void EmitOutLine(string message)
 		{
 			try
 			{
@@ -600,8 +603,17 @@ namespace log4net.Util
 
         private static bool s_emitInternalMessages = true;
 
+        /// <summary>
+        /// 前缀
+        /// </summary>
 		private const string PREFIX			= "log4net: ";
+        /// <summary>
+        /// 报错前缀
+        /// </summary>
 		private const string ERR_PREFIX		= "log4net:ERROR ";
+        /// <summary>
+        /// 警告前缀
+        /// </summary>
 		private const string WARN_PREFIX	= "log4net:WARN ";
 
 		#endregion Private Static Fields

@@ -22,66 +22,69 @@ using System.Collections;
 
 namespace log4net.Core
 {
-	/// <summary>
-	/// Defines the default set of levels recognized by the system.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Each <see cref="LoggingEvent"/> has an associated <see cref="Level"/>.
-	/// </para>
-	/// <para>
-	/// Levels have a numeric <see cref="Level.Value"/> that defines the relative 
-	/// ordering between levels. Two Levels with the same <see cref="Level.Value"/> 
-	/// are deemed to be equivalent.
-	/// </para>
-	/// <para>
-	/// The levels that are recognized by log4net are set for each <see cref="log4net.Repository.ILoggerRepository"/>
-	/// and each repository can have different levels defined. The levels are stored
-	/// in the <see cref="log4net.Repository.ILoggerRepository.LevelMap"/> on the repository. Levels are
-	/// looked up by name from the <see cref="log4net.Repository.ILoggerRepository.LevelMap"/>.
-	/// </para>
-	/// <para>
-	/// When logging at level INFO the actual level used is not <see cref="Level.Info"/> but
-	/// the value of <c>LoggerRepository.LevelMap["INFO"]</c>. The default value for this is
-	/// <see cref="Level.Info"/>, but this can be changed by reconfiguring the level map.
-	/// </para>
-	/// <para>
-	/// Each level has a <see cref="DisplayName"/> in addition to its <see cref="Name"/>. The 
-	/// <see cref="DisplayName"/> is the string that is written into the output log. By default
-	/// the display name is the same as the level name, but this can be used to alias levels
-	/// or to localize the log output.
-	/// </para>
-	/// <para>
-	/// Some of the predefined levels recognized by the system are:
-	/// </para>
-	/// <list type="bullet">
-	///		<item>
-	///			<description><see cref="Off"/>.</description>
-	///		</item>
-	///		<item>
-	///			<description><see cref="Fatal"/>.</description>
-	///		</item>
-	///		<item>
-	///			<description><see cref="Error"/>.</description>
-	///		</item>
-	///		<item>
-	///			<description><see cref="Warn"/>.</description>
-	///		</item>
-	///		<item>
-	///			<description><see cref="Info"/>.</description>
-	///		</item>
-	///		<item>
-	///			<description><see cref="Debug"/>.</description>
-	///		</item>
-	///		<item>
-	///			<description><see cref="All"/>.</description>
-	///		</item>
-	/// </list>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
+    /// <summary>
+    /// Defines the default set of levels recognized by the system.
+    /// 定义系统识别的默认级别集。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Each <see cref="LoggingEvent"/> has an associated <see cref="Level"/>.
+    /// 每个日志事件都有一个相关联的级别
+    /// </para>
+    /// <para>
+    /// Levels have a numeric <see cref="Level.Value"/> that defines the relative 
+    /// ordering between levels. Two Levels with the same <see cref="Level.Value"/> 
+    /// are deemed to be equivalent.
+    /// 级别有一个数字级别值，它定义级别之间的相对顺序。具有相同级别值的两个级别被认为是相等的。
+    /// </para>
+    /// <para>
+    /// The levels that are recognized by log4net are set for each <see cref="log4net.Repository.ILoggerRepository"/>
+    /// and each repository can have different levels defined. The levels are stored
+    /// in the <see cref="log4net.Repository.ILoggerRepository.LevelMap"/> on the repository. Levels are
+    /// looked up by name from the <see cref="log4net.Repository.ILoggerRepository.LevelMap"/>.
+    /// </para>
+    /// <para>
+    /// When logging at level INFO the actual level used is not <see cref="Level.Info"/> but
+    /// the value of <c>LoggerRepository.LevelMap["INFO"]</c>. The default value for this is
+    /// <see cref="Level.Info"/>, but this can be changed by reconfiguring the level map.
+    /// </para>
+    /// <para>
+    /// Each level has a <see cref="DisplayName"/> in addition to its <see cref="Name"/>. The 
+    /// <see cref="DisplayName"/> is the string that is written into the output log. By default
+    /// the display name is the same as the level name, but this can be used to alias levels
+    /// or to localize the log output.
+    /// </para>
+    /// <para>
+    /// Some of the predefined levels recognized by the system are:
+    /// </para>
+    /// <list type="bullet">
+    ///		<item>
+    ///			<description><see cref="Off"/>.</description>
+    ///		</item>
+    ///		<item>
+    ///			<description><see cref="Fatal"/>.</description>
+    ///		</item>
+    ///		<item>
+    ///			<description><see cref="Error"/>.</description>
+    ///		</item>
+    ///		<item>
+    ///			<description><see cref="Warn"/>.</description>
+    ///		</item>
+    ///		<item>
+    ///			<description><see cref="Info"/>.</description>
+    ///		</item>
+    ///		<item>
+    ///			<description><see cref="Debug"/>.</description>
+    ///		</item>
+    ///		<item>
+    ///			<description><see cref="All"/>.</description>
+    ///		</item>
+    /// </list>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
 #if !NETCF
-	[Serializable]
+    [Serializable]
 #endif
 	sealed public class Level : IComparable
 	{
@@ -493,79 +496,91 @@ namespace log4net.Core
 			return l.m_levelValue.CompareTo(r.m_levelValue);
 		}
 
-		#endregion Public Static Methods
+        #endregion Public Static Methods
 
-		#region Public Static Fields
-
-		/// <summary>
-		/// The <see cref="Off" /> level designates a higher level than all the rest.
-		/// </summary>
-		public readonly static Level Off = new Level(int.MaxValue, "OFF");
+        #region Public Static Fields
 
         /// <summary>
+        /// 离开
+        /// The <see cref="Off" /> level designates a higher level than all the rest.
+        /// </summary>
+        public readonly static Level Off = new Level(int.MaxValue, "OFF");
+
+        /// <summary>
+        /// log4net:DEBUG
         /// The <see cref="Emergency" /> level designates very severe error events. 
         /// System unusable, emergencies.
         /// </summary>
         public readonly static Level Log4Net_Debug = new Level(120000, "log4net:DEBUG");
 
-		/// <summary>
-		/// The <see cref="Emergency" /> level designates very severe error events. 
-		/// System unusable, emergencies.
-		/// </summary>
-		public readonly static Level Emergency = new Level(120000, "EMERGENCY");
+        /// <summary>
+        /// 紧急
+        /// The <see cref="Emergency" /> level designates very severe error events. 
+        /// System unusable, emergencies.
+        /// </summary>
+        public readonly static Level Emergency = new Level(120000, "EMERGENCY");
 
-		/// <summary>
-		/// The <see cref="Fatal" /> level designates very severe error events 
-		/// that will presumably lead the application to abort.
-		/// </summary>
-		public readonly static Level Fatal = new Level(110000, "FATAL");
+        /// <summary>
+        /// 致命
+        /// The <see cref="Fatal" /> level designates very severe error events 
+        /// that will presumably lead the application to abort.
+        /// </summary>
+        public readonly static Level Fatal = new Level(110000, "FATAL");
 
-		/// <summary>
-		/// The <see cref="Alert" /> level designates very severe error events. 
-		/// Take immediate action, alerts.
-		/// </summary>
-		public readonly static Level Alert = new Level(100000, "ALERT");
+        /// <summary>
+        /// 提醒
+        /// The <see cref="Alert" /> level designates very severe error events. 
+        /// Take immediate action, alerts.
+        /// </summary>
+        public readonly static Level Alert = new Level(100000, "ALERT");
 
-		/// <summary>
-		/// The <see cref="Critical" /> level designates very severe error events. 
-		/// Critical condition, critical.
-		/// </summary>
-		public readonly static Level Critical = new Level(90000, "CRITICAL");
+        /// <summary>
+        /// 危险
+        /// The <see cref="Critical" /> level designates very severe error events. 
+        /// Critical condition, critical.
+        /// </summary>
+        public readonly static Level Critical = new Level(90000, "CRITICAL");
 
-		/// <summary>
-		/// The <see cref="Severe" /> level designates very severe error events.
-		/// </summary>
-		public readonly static Level Severe = new Level(80000, "SEVERE");
+        /// <summary>
+        /// 苛刻
+        /// The <see cref="Severe" /> level designates very severe error events.
+        /// </summary>
+        public readonly static Level Severe = new Level(80000, "SEVERE");
 
-		/// <summary>
-		/// The <see cref="Error" /> level designates error events that might 
-		/// still allow the application to continue running.
-		/// </summary>
-		public readonly static Level Error = new Level(70000, "ERROR");
+        /// <summary>
+        /// 错误
+        /// The <see cref="Error" /> level designates error events that might 
+        /// still allow the application to continue running.
+        /// </summary>
+        public readonly static Level Error = new Level(70000, "ERROR");
 
-		/// <summary>
-		/// The <see cref="Warn" /> level designates potentially harmful 
-		/// situations.
-		/// </summary>
-		public readonly static Level Warn  = new Level(60000, "WARN");
+        /// <summary>
+        /// 警告
+        /// The <see cref="Warn" /> level designates potentially harmful 
+        /// situations.
+        /// </summary>
+        public readonly static Level Warn  = new Level(60000, "WARN");
 
-		/// <summary>
-		/// The <see cref="Notice" /> level designates informational messages 
-		/// that highlight the progress of the application at the highest level.
-		/// </summary>
-		public readonly static Level Notice  = new Level(50000, "NOTICE");
+        /// <summary>
+        /// 通知
+        /// The <see cref="Notice" /> level designates informational messages 
+        /// that highlight the progress of the application at the highest level.
+        /// </summary>
+        public readonly static Level Notice  = new Level(50000, "NOTICE");
 
-		/// <summary>
-		/// The <see cref="Info" /> level designates informational messages that 
-		/// highlight the progress of the application at coarse-grained level.
-		/// </summary>
-		public readonly static Level Info  = new Level(40000, "INFO");
+        /// <summary>
+        /// 信息
+        /// The <see cref="Info" /> level designates informational messages that 
+        /// highlight the progress of the application at coarse-grained level.
+        /// </summary>
+        public readonly static Level Info  = new Level(40000, "INFO");
 
-		/// <summary>
-		/// The <see cref="Debug" /> level designates fine-grained informational 
-		/// events that are most useful to debug an application.
-		/// </summary>
-		public readonly static Level Debug = new Level(30000, "DEBUG");
+        /// <summary>
+        /// 调试
+        /// The <see cref="Debug" /> level designates fine-grained informational 
+        /// events that are most useful to debug an application.
+        /// </summary>
+        public readonly static Level Debug = new Level(30000, "DEBUG");
 
 		/// <summary>
 		/// The <see cref="Fine" /> level designates fine-grained informational 
@@ -573,11 +588,12 @@ namespace log4net.Core
 		/// </summary>
 		public readonly static Level Fine = new Level(30000, "FINE");
 
-		/// <summary>
-		/// The <see cref="Trace" /> level designates fine-grained informational 
-		/// events that are most useful to debug an application.
-		/// </summary>
-		public readonly static Level Trace = new Level(20000, "TRACE");
+        /// <summary>
+        /// 追踪
+        /// The <see cref="Trace" /> level designates fine-grained informational 
+        /// events that are most useful to debug an application.
+        /// </summary>
+        public readonly static Level Trace = new Level(20000, "TRACE");
 
 		/// <summary>
 		/// The <see cref="Finer" /> level designates fine-grained informational 

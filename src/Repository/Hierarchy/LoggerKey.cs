@@ -21,24 +21,27 @@ using System;
 
 namespace log4net.Repository.Hierarchy
 {
-	/// <summary>
-	/// Used internally to accelerate hash table searches.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Internal class used to improve performance of 
-	/// string keyed hashtables.
-	/// </para>
-	/// <para>
-	/// The hashcode of the string is cached for reuse.
-	/// The string is stored as an interned value.
-	/// When comparing two <see cref="LoggerKey"/> objects for equality 
-	/// the reference equality of the interned strings is compared.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	internal sealed class LoggerKey
+    /// <summary>
+    /// Used internally to accelerate hash table searches.
+    /// 用于内部加速哈希表搜索。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Internal class used to improve performance of string keyed hashtables.
+    /// 内部类，用于提高字符串hashtable的查找性能。
+    /// </para>
+    /// <para>
+    /// The hashcode of the string is cached for reuse.
+    /// 缓存字符串的hashcode以便重用。
+    /// The string is stored as an interned value.
+    /// 字符串存储为一个内部值。
+    /// When comparing two <see cref="LoggerKey"/> objects for equality 
+    /// the reference equality of the interned strings is compared.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    internal sealed class LoggerKey
 	{
 		#region Internal Instance Constructors
 

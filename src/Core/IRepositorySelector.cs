@@ -86,21 +86,23 @@ namespace log4net.Core
 		}
 	}
 
-	#endregion
+    #endregion
 
-	/// <summary>
-	/// Interface used by the <see cref="LogManager"/> to select the <see cref="ILoggerRepository"/>.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// The <see cref="LogManager"/> uses a <see cref="IRepositorySelector"/> 
-	/// to specify the policy for selecting the correct <see cref="ILoggerRepository"/> 
-	/// to return to the caller.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public interface IRepositorySelector
+    /// <summary>
+    /// Interface used by the <see cref="LogManager"/> to select the <see cref="ILoggerRepository"/>.
+    /// 用于LogManager选择ILoggerRepository的接口
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The <see cref="LogManager"/> uses a <see cref="IRepositorySelector"/> 
+    /// to specify the policy for selecting the correct <see cref="ILoggerRepository"/> 
+    /// to return to the caller.
+    /// LogManager使用IRepositorySelector指定选择正确的ILoggerRepository以返回调用方的策略。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public interface IRepositorySelector
 	{
 		/// <summary>
 		/// Gets the <see cref="ILoggerRepository"/> for the specified assembly.
@@ -152,20 +154,21 @@ namespace log4net.Core
 		/// </remarks>
 		ILoggerRepository CreateRepository(Assembly assembly, Type repositoryType);
 
-		/// <summary>
-		/// Creates a new repository with the name specified.
-		/// </summary>
-		/// <param name="repositoryName">The name to associate with the <see cref="ILoggerRepository"/>.</param>
-		/// <param name="repositoryType">The type of repository to create, must implement <see cref="ILoggerRepository"/>.</param>
-		/// <returns>The repository created.</returns>
-		/// <remarks>
-		/// <para>
-		/// The <see cref="ILoggerRepository"/> created will be associated with the name
-		/// specified such that a call to <see cref="M:GetRepository(string)"/> with the
-		/// same name will return the same repository instance.
-		/// </para>
-		/// </remarks>
-		ILoggerRepository CreateRepository(string repositoryName, Type repositoryType);
+        /// <summary>
+        /// Creates a new repository with the name specified.
+        /// 创建指定名称的新存储库。
+        /// </summary>
+        /// <param name="repositoryName">The name to associate with the <see cref="ILoggerRepository"/>.</param>
+        /// <param name="repositoryType">The type of repository to create, must implement <see cref="ILoggerRepository"/>.</param>
+        /// <returns>The repository created.</returns>
+        /// <remarks>
+        /// <para>
+        /// The <see cref="ILoggerRepository"/> created will be associated with the name
+        /// specified such that a call to <see cref="M:GetRepository(string)"/> with the
+        /// same name will return the same repository instance.
+        /// </para>
+        /// </remarks>
+        ILoggerRepository CreateRepository(string repositoryName, Type repositoryType);
 
 		/// <summary>
 		/// Test if a named repository exists

@@ -26,6 +26,7 @@ namespace log4net.Core
 {
 	/// <summary>
 	/// Interface that all loggers implement
+    /// 所有记录器需要实现的接口。
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -44,6 +45,7 @@ namespace log4net.Core
 	{
 		/// <summary>
 		/// Gets the name of the logger.
+        /// 记录器名称
 		/// </summary>
 		/// <value>
 		/// The name of the logger.
@@ -55,21 +57,22 @@ namespace log4net.Core
 		/// </remarks>
 		string Name { get; }
 
-		/// <summary>
-		/// This generic form is intended to be used by wrappers.
-		/// </summary>
-		/// <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is
-		/// the stack boundary into the logging system for this call.</param>
-		/// <param name="level">The level of the message to be logged.</param>
-		/// <param name="message">The message object to log.</param>
-		/// <param name="exception">the exception to log, including its stack trace. Pass <c>null</c> to not log an exception.</param>
-		/// <remarks>
-		/// <para>
-		/// Generates a logging event for the specified <paramref name="level"/> using
-		/// the <paramref name="message"/> and <paramref name="exception"/>.
-		/// </para>
-		/// </remarks>
-		void Log(Type callerStackBoundaryDeclaringType, Level level, object message, Exception exception);
+        /// <summary>
+        /// This generic form is intended to be used by wrappers.
+        /// 这个通用的表单将被包装器使用。
+        /// </summary>
+        /// <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is
+        /// the stack boundary into the logging system for this call.</param>
+        /// <param name="level">The level of the message to be logged.</param>
+        /// <param name="message">The message object to log.</param>
+        /// <param name="exception">the exception to log, including its stack trace. Pass <c>null</c> to not log an exception.</param>
+        /// <remarks>
+        /// <para>
+        /// Generates a logging event for the specified <paramref name="level"/> using
+        /// the <paramref name="message"/> and <paramref name="exception"/>.
+        /// </para>
+        /// </remarks>
+        void Log(Type callerStackBoundaryDeclaringType, Level level, object message, Exception exception);
   
 		/// <summary>
 		/// This is the most generic printing method that is intended to be used 
@@ -100,6 +103,7 @@ namespace log4net.Core
 		/// <summary>
 		/// Gets the <see cref="ILoggerRepository"/> where this 
 		/// <c>Logger</c> instance is attached to.
+        /// 获得当前记录器实例所依附的容器。
 		/// </summary>
 		/// <value>
 		/// The <see cref="ILoggerRepository" /> that this logger belongs to.

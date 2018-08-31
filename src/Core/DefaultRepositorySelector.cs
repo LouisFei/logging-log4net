@@ -37,23 +37,25 @@ using log4net.Repository;
 
 namespace log4net.Core
 {
-	/// <summary>
-	/// The default implementation of the <see cref="IRepositorySelector"/> interface.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Uses attributes defined on the calling assembly to determine how to
-	/// configure the hierarchy for the repository.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class DefaultRepositorySelector : IRepositorySelector
+    /// <summary>
+    /// The default implementation of the <see cref="IRepositorySelector"/> interface.
+    /// 用于LogManager选择ILoggerRepository的接口的默认实现类。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Uses attributes defined on the calling assembly to determine how to
+    /// configure the hierarchy for the repository.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class DefaultRepositorySelector : IRepositorySelector
 	{
 		#region Public Events
 
 		/// <summary>
 		/// Event to notify that a logger repository has been created.
+        /// 记录器容器创建完成事件
 		/// </summary>
 		/// <value>
 		/// Event to notify that a logger repository has been created.
@@ -78,6 +80,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Creates a new repository selector.
+        /// 创建一个新的容器选择器。
 		/// </summary>
 		/// <param name="defaultRepositoryType">The type of the repositories to create, must implement <see cref="ILoggerRepository"/></param>
 		/// <remarks>
@@ -341,23 +344,24 @@ namespace log4net.Core
 			}
 		}
 
-		/// <summary>
-		/// Creates a new repository for the specified repository.
-		/// </summary>
-		/// <param name="repositoryName">The repository to associate with the <see cref="ILoggerRepository"/>.</param>
-		/// <param name="repositoryType">The type of repository to create, must implement <see cref="ILoggerRepository"/>.
-		/// If this param is <see langword="null" /> then the default repository type is used.</param>
-		/// <returns>The new repository.</returns>
-		/// <remarks>
-		/// <para>
-		/// The <see cref="ILoggerRepository"/> created will be associated with the repository
-		/// specified such that a call to <see cref="M:GetRepository(string)"/> with the
-		/// same repository specified will return the same repository instance.
-		/// </para>
-		/// </remarks>
-		/// <exception cref="ArgumentNullException"><paramref name="repositoryName"/> is <see langword="null" />.</exception>
-		/// <exception cref="LogException"><paramref name="repositoryName"/> already exists.</exception>
-		public ILoggerRepository CreateRepository(string repositoryName, Type repositoryType)
+        /// <summary>
+        /// Creates a new repository for the specified repository.
+        /// 创建指定名称的新存储库。
+        /// </summary>
+        /// <param name="repositoryName">The repository to associate with the <see cref="ILoggerRepository"/>.</param>
+        /// <param name="repositoryType">The type of repository to create, must implement <see cref="ILoggerRepository"/>.
+        /// If this param is <see langword="null" /> then the default repository type is used.</param>
+        /// <returns>The new repository.</returns>
+        /// <remarks>
+        /// <para>
+        /// The <see cref="ILoggerRepository"/> created will be associated with the repository
+        /// specified such that a call to <see cref="M:GetRepository(string)"/> with the
+        /// same repository specified will return the same repository instance.
+        /// </para>
+        /// </remarks>
+        /// <exception cref="ArgumentNullException"><paramref name="repositoryName"/> is <see langword="null" />.</exception>
+        /// <exception cref="LogException"><paramref name="repositoryName"/> already exists.</exception>
+        public ILoggerRepository CreateRepository(string repositoryName, Type repositoryType)
 		{
 			if (repositoryName == null)
 			{
@@ -899,9 +903,15 @@ namespace log4net.Core
 
 		#region Private Instance Fields
 
+        /// <summary>
+        /// 容器名称2容器对象
+        /// </summary>
 		private readonly Hashtable m_name2repositoryMap = new Hashtable();
 		private readonly Hashtable m_assembly2repositoryMap = new Hashtable();
 		private readonly Hashtable m_alias2repositoryMap = new Hashtable();
+        /// <summary>
+        /// 默认的容器类型
+        /// </summary>
 		private readonly Type m_defaultRepositoryType;
 
 		private event LoggerRepositoryCreationEventHandler m_loggerRepositoryCreatedEvent;

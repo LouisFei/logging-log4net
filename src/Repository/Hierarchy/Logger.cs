@@ -28,6 +28,7 @@ namespace log4net.Repository.Hierarchy
 {
 	/// <summary>
 	/// Implementation of <see cref="ILogger"/> used by <see cref="Hierarchy"/>
+    /// ¼ÇÂ¼Æ÷³éÏóÀà
 	/// </summary>
 	/// <remarks>
 	/// <para>
