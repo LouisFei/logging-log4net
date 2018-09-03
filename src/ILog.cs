@@ -24,46 +24,46 @@ using log4net.Core;
 
 namespace log4net
 {
-	/// <summary>
-	/// The ILog interface is use by application to log messages into
-	/// the log4net framework.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Use the <see cref="LogManager"/> to obtain logger instances
-	/// that implement this interface. The <see cref="M:LogManager.GetLogger(Assembly,Type)"/>
-	/// static method is used to get logger instances.
-	/// </para>
-	/// <para>
-	/// This class contains methods for logging at different levels and also
-	/// has properties for determining if those logging levels are
-	/// enabled in the current configuration.
-	/// </para>
-	/// <para>
-	/// This interface can be implemented in different ways. This documentation
-	/// specifies reasonable behavior that a caller can expect from the actual
-	/// implementation, however different implementations reserve the right to
-	/// do things differently.
-	/// </para>
-	/// </remarks>
-	/// <example>Simple example of logging messages
-	/// <code lang="C#">
-	/// ILog log = LogManager.GetLogger("application-log");
-	/// 
-	/// log.Info("Application Start");
-	/// log.Debug("This is a debug message");
-	/// 
-	/// if (log.IsDebugEnabled)
-	/// {
-	///		log.Debug("This is another debug message");
-	/// }
-	/// </code>
-	/// </example>
-	/// <seealso cref="LogManager"/>
-	/// <seealso cref="M:LogManager.GetLogger(Assembly, Type)"/>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public interface ILog : ILoggerWrapper
+    /// <summary>
+    /// The ILog interface is use by application to log messages into the log4net framework.
+    /// 应用程序使用ILog接口将消息记录到log4net框架中。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Use the <see cref="LogManager"/> to obtain logger instances
+    /// that implement this interface. The <see cref="M:LogManager.GetLogger(Assembly,Type)"/>
+    /// static method is used to get logger instances.
+    /// </para>
+    /// <para>
+    /// This class contains methods for logging at different levels and also
+    /// has properties for determining if those logging levels are
+    /// enabled in the current configuration.
+    /// </para>
+    /// <para>
+    /// This interface can be implemented in different ways. This documentation
+    /// specifies reasonable behavior that a caller can expect from the actual
+    /// implementation, however different implementations reserve the right to
+    /// do things differently.
+    /// </para>
+    /// </remarks>
+    /// <example>Simple example of logging messages
+    /// <code lang="C#">
+    /// ILog log = LogManager.GetLogger("application-log");
+    /// 
+    /// log.Info("Application Start");
+    /// log.Debug("This is a debug message");
+    /// 
+    /// if (log.IsDebugEnabled)
+    /// {
+    ///		log.Debug("This is another debug message");
+    /// }
+    /// </code>
+    /// </example>
+    /// <seealso cref="LogManager"/>
+    /// <seealso cref="M:LogManager.GetLogger(Assembly, Type)"/>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public interface ILog : ILoggerWrapper
 	{
 		/// <overloads>Log a message object with the <see cref="Level.Debug"/> level.</overloads>
 		/// <summary>

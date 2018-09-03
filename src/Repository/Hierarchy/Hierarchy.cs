@@ -96,9 +96,11 @@ namespace log4net.Repository.Hierarchy
     /// 默认的ILoggerRepository的实现类，它用于表达其内部的Logger是以层次结构存储的。
     /// </summary>
     /// <remarks>
+    /// ILogger对象在Log4net中是以一定的层次结构组织的。这就是Repository的作用。
+    /// ILogger拥有继承机制，可以继承父节点的Appender。
+    /// ILogger拥有自己的Appender集合，负责输出日志。Appender拥有自己的过滤器Filter和布局Layout。
     /// <para>
-    /// <i>The casual user should not have to deal with this class
-    /// directly.</i>
+    /// <i>The casual user should not have to deal with this class directly.</i>
     /// </para>
     /// <para>
     /// This class is specialized in retrieving loggers by name and
@@ -228,7 +230,8 @@ namespace log4net.Repository.Hierarchy
 		}
 
 		/// <summary>
-		/// Get the root of this hierarchy
+		/// Get the root of this hierarchy.
+        /// 根记录器
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -652,32 +655,33 @@ namespace log4net.Repository.Hierarchy
             OnConfigurationChanged(new ConfigurationChangedEventArgs(configurationMessages));
 		}
 
-		#endregion Implementation of IXmlRepositoryConfigurator
+        #endregion Implementation of IXmlRepositoryConfigurator
 
-		#region Public Instance Methods
+        #region Public Instance Methods
 
-		/// <summary>
-		/// Test if this hierarchy is disabled for the specified <see cref="Level"/>.
-		/// </summary>
-		/// <param name="level">The level to check against.</param>
-		/// <returns>
-		/// <c>true</c> if the repository is disabled for the level argument, <c>false</c> otherwise.
-		/// </returns>
-		/// <remarks>
-		/// <para>
-		/// If this hierarchy has not been configured then this method will
-		/// always return <c>true</c>.
-		/// </para>
-		/// <para>
-		/// This method will return <c>true</c> if this repository is
-		/// disabled for <c>level</c> object passed as parameter and
-		/// <c>false</c> otherwise.
-		/// </para>
-		/// <para>
-		/// See also the <see cref="ILoggerRepository.Threshold"/> property.
-		/// </para>
-		/// </remarks>
-		public bool IsDisabled(Level level) 
+        /// <summary>
+        /// Test if this hierarchy is disabled for the specified <see cref="Level"/>.
+        /// 测试指定级别是否禁用此级别。
+        /// </summary>
+        /// <param name="level">The level to check against.</param>
+        /// <returns>
+        /// <c>true</c> if the repository is disabled for the level argument, <c>false</c> otherwise.
+        /// </returns>
+        /// <remarks>
+        /// <para>
+        /// If this hierarchy has not been configured then this method will
+        /// always return <c>true</c>.
+        /// </para>
+        /// <para>
+        /// This method will return <c>true</c> if this repository is
+        /// disabled for <c>level</c> object passed as parameter and
+        /// <c>false</c> otherwise.
+        /// </para>
+        /// <para>
+        /// See also the <see cref="ILoggerRepository.Threshold"/> property.
+        /// </para>
+        /// </remarks>
+        public bool IsDisabled(Level level) 
 		{
 			// Cast level to object for performance
 			if ((object)level == null)
@@ -691,8 +695,9 @@ namespace log4net.Repository.Hierarchy
 			}
 			else
 			{
-				// If not configured the hierarchy is effectively disabled
-				return true;
+                // If not configured the hierarchy is effectively disabled.
+                // 如果没有配置，层次结构将被有效地禁用。
+                return true;
 			}
 		}
 
@@ -808,46 +813,47 @@ namespace log4net.Repository.Hierarchy
 			}
 		}
 
-		#endregion Protected Instance Methods
+        #endregion Protected Instance Methods
 
-		#region Private Instance Methods
+        #region Private Instance Methods
 
-		/// <summary>
-		/// Updates all the parents of the specified logger
-		/// </summary>
-		/// <param name="log">The logger to update the parents for</param>
-		/// <remarks>
-		/// <para>
-		/// This method loops through all the <i>potential</i> parents of
-		/// <paramref name="log"/>. There 3 possible cases:
-		/// </para>
-		/// <list type="number">
-		///		<item>
-		///			<term>No entry for the potential parent of <paramref name="log"/> exists</term>
-		///			<description>
-		///			We create a ProvisionNode for this potential 
-		///			parent and insert <paramref name="log"/> in that provision node.
-		///			</description>
-		///		</item>
-		///		<item>
-		///			<term>The entry is of type Logger for the potential parent.</term>
-		///			<description>
-		///			The entry is <paramref name="log"/>'s nearest existing parent. We 
-		///			update <paramref name="log"/>'s parent field with this entry. We also break from 
-		///			he loop because updating our parent's parent is our parent's 
-		///			responsibility.
-		///			</description>
-		///		</item>
-		///		<item>
-		///			<term>The entry is of type ProvisionNode for this potential parent.</term>
-		///			<description>
-		///			We add <paramref name="log"/> to the list of children for this 
-		///			potential parent.
-		///			</description>
-		///		</item>
-		/// </list>
-		/// </remarks>
-		private void UpdateParents(Logger log) 
+        /// <summary>
+        /// Updates all the parents of the specified logger.
+        /// 更新指定记录器的所有父记录程序。
+        /// </summary>
+        /// <param name="log">The logger to update the parents for</param>
+        /// <remarks>
+        /// <para>
+        /// This method loops through all the <i>potential</i> parents of
+        /// <paramref name="log"/>. There 3 possible cases:
+        /// </para>
+        /// <list type="number">
+        ///		<item>
+        ///			<term>No entry for the potential parent of <paramref name="log"/> exists</term>
+        ///			<description>
+        ///			We create a ProvisionNode for this potential 
+        ///			parent and insert <paramref name="log"/> in that provision node.
+        ///			</description>
+        ///		</item>
+        ///		<item>
+        ///			<term>The entry is of type Logger for the potential parent.</term>
+        ///			<description>
+        ///			The entry is <paramref name="log"/>'s nearest existing parent. We 
+        ///			update <paramref name="log"/>'s parent field with this entry. We also break from 
+        ///			he loop because updating our parent's parent is our parent's 
+        ///			responsibility.
+        ///			</description>
+        ///		</item>
+        ///		<item>
+        ///			<term>The entry is of type ProvisionNode for this potential parent.</term>
+        ///			<description>
+        ///			We add <paramref name="log"/> to the list of children for this 
+        ///			potential parent.
+        ///			</description>
+        ///		</item>
+        /// </list>
+        /// </remarks>
+        private void UpdateParents(Logger log) 
 		{
 			string name = log.Name;
 			int length = name.Length;

@@ -24,19 +24,20 @@ using log4net.Appender;
 
 namespace log4net.Util
 {
-	/// <summary>
-	/// A straightforward implementation of the <see cref="IAppenderAttachable"/> interface.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// This is the default implementation of the <see cref="IAppenderAttachable"/>
-	/// interface. Implementors of the <see cref="IAppenderAttachable"/> interface
-	/// should aggregate an instance of this type.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class AppenderAttachedImpl : IAppenderAttachable
+    /// <summary>
+    /// A straightforward implementation of the <see cref="IAppenderAttachable"/> interface.
+    /// IAppenderAttachable接口的简单实现。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This is the default implementation of the <see cref="IAppenderAttachable"/>
+    /// interface. Implementors of the <see cref="IAppenderAttachable"/> interface
+    /// should aggregate an instance of this type.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class AppenderAttachedImpl : IAppenderAttachable
 	{
 		#region Public Instance Constructors
 
@@ -219,6 +220,7 @@ namespace log4net.Util
 
 		/// <summary>
 		/// Gets all attached appenders.
+        /// 获得所有的附加器。
 		/// </summary>
 		/// <returns>
 		/// A collection of attached appenders, or <c>null</c> if there

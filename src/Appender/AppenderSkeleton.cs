@@ -28,23 +28,25 @@ using log4net.Core;
 
 namespace log4net.Appender
 {
-	/// <summary>
-	/// Abstract base class implementation of <see cref="IAppender"/>. 
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// This class provides the code for common functionality, such 
-	/// as support for threshold filtering and support for general filters.
-	/// </para>
-	/// <para>
-	/// Appenders can also implement the <see cref="IOptionHandler"/> interface. Therefore
-	/// they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
-	/// be called after the appenders properties have been configured.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public abstract class AppenderSkeleton : IAppender, IBulkAppender, IOptionHandler, IFlushable
+    /// <summary>
+    /// Abstract base class implementation of <see cref="IAppender"/>. 
+    /// IAppender的抽象基类实现。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This class provides the code for common functionality, such as support for threshold filtering and support for general filters.
+    /// 这个类提供了通用功能的代码，例如支持阈值过滤和支持一般过滤器。
+    /// </para>
+    /// <para>
+    /// Appenders can also implement the <see cref="IOptionHandler"/> interface. Therefore
+    /// they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
+    /// be called after the appenders properties have been configured.
+    /// Appenders也可以实现IOptionHandler接口。因此，它们需要在配置appenders属性之后调用IOptionHandler.ActivateOptions()方法。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public abstract class AppenderSkeleton : IAppender, IBulkAppender, IOptionHandler, IFlushable
 	{
 		#region Protected Instance Constructors
 
@@ -594,41 +596,42 @@ namespace log4net.Appender
 			// Do nothing by default
 		}
 
-		/// <summary>
-		/// Subclasses of <see cref="AppenderSkeleton"/> should implement this method 
-		/// to perform actual logging.
-		/// </summary>
-		/// <param name="loggingEvent">The event to append.</param>
-		/// <remarks>
-		/// <para>
-		/// A subclass must implement this method to perform
-		/// logging of the <paramref name="loggingEvent"/>.
-		/// </para>
-		/// <para>This method will be called by <see cref="M:DoAppend(LoggingEvent)"/>
-		/// if all the conditions listed for that method are met.
-		/// </para>
-		/// <para>
-		/// To restrict the logging of events in the appender
-		/// override the <see cref="M:PreAppendCheck()"/> method.
-		/// </para>
-		/// </remarks>
-		abstract protected void Append(LoggingEvent loggingEvent);
+        /// <summary>
+        /// Subclasses of <see cref="AppenderSkeleton"/> should implement this method to perform actual logging.
+        /// AppenderSkeleton的子类应该实现这个方法来执行实际的日志记录。
+        /// </summary>
+        /// <param name="loggingEvent">The event to append.</param>
+        /// <remarks>
+        /// <para>
+        /// A subclass must implement this method to perform
+        /// logging of the <paramref name="loggingEvent"/>.
+        /// </para>
+        /// <para>This method will be called by <see cref="M:DoAppend(LoggingEvent)"/>
+        /// if all the conditions listed for that method are met.
+        /// </para>
+        /// <para>
+        /// To restrict the logging of events in the appender
+        /// override the <see cref="M:PreAppendCheck()"/> method.
+        /// </para>
+        /// </remarks>
+        abstract protected void Append(LoggingEvent loggingEvent);
 
-		/// <summary>
-		/// Append a bulk array of logging events.
-		/// </summary>
-		/// <param name="loggingEvents">the array of logging events</param>
-		/// <remarks>
-		/// <para>
-		/// This base class implementation calls the <see cref="M:Append(LoggingEvent)"/>
-		/// method for each element in the bulk array.
-		/// </para>
-		/// <para>
-		/// A sub class that can better process a bulk array of events should
-		/// override this method in addition to <see cref="M:Append(LoggingEvent)"/>.
-		/// </para>
-		/// </remarks>
-		virtual protected void Append(LoggingEvent[] loggingEvents)
+        /// <summary>
+        /// Append a bulk array of logging events.
+        /// 附加大量的日志事件数组。
+        /// </summary>
+        /// <param name="loggingEvents">the array of logging events</param>
+        /// <remarks>
+        /// <para>
+        /// This base class implementation calls the <see cref="M:Append(LoggingEvent)"/>
+        /// method for each element in the bulk array.
+        /// </para>
+        /// <para>
+        /// A sub class that can better process a bulk array of events should
+        /// override this method in addition to <see cref="M:Append(LoggingEvent)"/>.
+        /// </para>
+        /// </remarks>
+        virtual protected void Append(LoggingEvent[] loggingEvents)
 		{
 			foreach(LoggingEvent loggingEvent in loggingEvents)
 			{

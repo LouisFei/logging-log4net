@@ -196,18 +196,17 @@ namespace log4net.Repository.Hierarchy
 		#region Implementation of IAppenderAttachable
 
 		/// <summary>
-		/// Add <paramref name="newAppender"/> to the list of appenders of this
-		/// Logger instance.
+		/// Add <paramref name="newAppender"/> to the list of appenders of this Logger instance.
+        /// 添加一个新附加器到当前这个记录器实例的附加器列表中。
 		/// </summary>
 		/// <param name="newAppender">An appender to add to this logger</param>
 		/// <remarks>
 		/// <para>
-		/// Add <paramref name="newAppender"/> to the list of appenders of this
-		/// Logger instance.
+		/// Add <paramref name="newAppender"/> to the list of appenders of this Logger instance.
 		/// </para>
 		/// <para>
-		/// If <paramref name="newAppender"/> is already in the list of
-		/// appenders, then it won't be added again.
+		/// If <paramref name="newAppender"/> is already in the list of appenders, then it won't be added again.
+        /// 如果新的附加器已经在列表中存在，则不会重复添加。
 		/// </para>
 		/// </remarks>
 		virtual public void AddAppender(IAppender newAppender) 
@@ -232,19 +231,19 @@ namespace log4net.Repository.Hierarchy
 			}
 		}
 
-		/// <summary>
-		/// Get the appenders contained in this logger as an 
-		/// <see cref="System.Collections.ICollection"/>.
-		/// </summary>
-		/// <returns>A collection of the appenders in this logger</returns>
-		/// <remarks>
-		/// <para>
-		/// Get the appenders contained in this logger as an 
-		/// <see cref="System.Collections.ICollection"/>. If no appenders 
-		/// can be found, then a <see cref="EmptyCollection"/> is returned.
-		/// </para>
-		/// </remarks>
-		virtual public AppenderCollection Appenders 
+        /// <summary>
+        /// Get the appenders contained in this logger as an <see cref="System.Collections.ICollection"/>.
+        /// 将日志记录器中包含的附加器作为集合获取。
+        /// </summary>
+        /// <returns>A collection of the appenders in this logger</returns>
+        /// <remarks>
+        /// <para>
+        /// Get the appenders contained in this logger as an 
+        /// <see cref="System.Collections.ICollection"/>. If no appenders 
+        /// can be found, then a <see cref="EmptyCollection"/> is returned.
+        /// </para>
+        /// </remarks>
+        virtual public AppenderCollection Appenders 
 		{
 			get
 			{
@@ -478,22 +477,23 @@ namespace log4net.Repository.Hierarchy
 #endif
 		}
 
-		/// <summary>
-		/// Checks if this logger is enabled for a given <see cref="Level"/> passed as parameter.
-		/// </summary>
-		/// <param name="level">The level to check.</param>
-		/// <returns>
-		/// <c>true</c> if this logger is enabled for <c>level</c>, otherwise <c>false</c>.
-		/// </returns>
-		/// <remarks>
-		/// <para>
-		/// Test if this logger is going to log events of the specified <paramref name="level"/>.
-		/// </para>
-		/// <para>
-		/// This method must not throw any exception to the caller.
-		/// </para>
-		/// </remarks>
-		virtual public bool IsEnabledFor(Level level)
+        /// <summary>
+        /// Checks if this logger is enabled for a given <see cref="Level"/> passed as parameter.
+        /// 检查是否为作为参数传递的给定级别启用了此记录器。
+        /// </summary>
+        /// <param name="level">The level to check.</param>
+        /// <returns>
+        /// <c>true</c> if this logger is enabled for <c>level</c>, otherwise <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        /// <para>
+        /// Test if this logger is going to log events of the specified <paramref name="level"/>.
+        /// </para>
+        /// <para>
+        /// This method must not throw any exception to the caller.
+        /// </para>
+        /// </remarks>
+        virtual public bool IsEnabledFor(Level level)
 		{
 			try
 			{
@@ -650,19 +650,20 @@ namespace log4net.Repository.Hierarchy
 			}
 		}
 
-		/// <summary>
-		/// This is the most generic printing method. This generic form is intended to be used by wrappers
-		/// </summary>
-		/// <param name="level">The level of the message to be logged.</param>
-		/// <param name="message">The message object to log.</param>
-		/// <param name="exception">The exception to log, including its stack trace.</param>
-		/// <remarks>
-		/// <para>
-		/// Generate a logging event for the specified <paramref name="level"/> using
-		/// the <paramref name="message"/>.
-		/// </para>
-		/// </remarks>
-		virtual public void Log(Level level, object message, Exception exception) 
+        /// <summary>
+        /// This is the most generic printing method. This generic form is intended to be used by wrappers.
+        /// 这是最通用的打印方法。这个通用的表单将被包装器使用。
+        /// </summary>
+        /// <param name="level">The level of the message to be logged.</param>
+        /// <param name="message">The message object to log.</param>
+        /// <param name="exception">The exception to log, including its stack trace.</param>
+        /// <remarks>
+        /// <para>
+        /// Generate a logging event for the specified <paramref name="level"/> using
+        /// the <paramref name="message"/>.
+        /// </para>
+        /// </remarks>
+        virtual public void Log(Level level, object message, Exception exception) 
 		{
 			if (IsEnabledFor(level))
 			{
@@ -780,10 +781,11 @@ namespace log4net.Repository.Hierarchy
 		/// </remarks>
 		private bool m_additive = true;
 
-		/// <summary>
-		/// Lock to protect AppenderAttachedImpl variable m_appenderAttachedImpl
-		/// </summary>
-		private readonly ReaderWriterLock m_appenderLock = new ReaderWriterLock();
+        /// <summary>
+        /// Lock to protect AppenderAttachedImpl variable m_appenderAttachedImpl.
+        /// 保护AppenderAttachedImpl变量m_appenderAttachedImpl的锁。
+        /// </summary>
+        private readonly ReaderWriterLock m_appenderLock = new ReaderWriterLock();
   
 		#endregion
 	}

@@ -23,48 +23,56 @@ using log4net.Core;
 
 namespace log4net.Appender
 {
-	/// <summary>
-	/// Implement this interface for your own strategies for printing log statements.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Implementors should consider extending the <see cref="AppenderSkeleton"/>
-	/// class which provides a default implementation of this interface.
-	/// </para>
-	/// <para>
-	/// Appenders can also implement the <see cref="IOptionHandler"/> interface. Therefore
-	/// they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
-	/// be called after the appenders properties have been configured.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public interface IAppender
+    /// <summary>
+    /// Implement this interface for your own strategies for printing log statements.
+    /// 为打印日志语句的策略实现此接口。
+    /// 附着器。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Implementors should consider extending the <see cref="AppenderSkeleton"/>
+    /// class which provides a default implementation of this interface.
+    /// 实现者应该考虑扩展AppenderSkeleton类，它提供这个接口的默认实现。
+    /// </para>
+    /// <para>
+    /// Appenders can also implement the <see cref="IOptionHandler"/> interface. Therefore
+    /// they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
+    /// be called after the appenders properties have been configured.
+    /// Appenders也可以实现IOptionHandler接口。因此他们需要在配置appenders属性后调用IOptionHandler.ActivateOptions()方法。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public interface IAppender
 	{
-		/// <summary>
-		/// Closes the appender and releases resources.
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// Releases any resources allocated within the appender such as file handles, 
-		/// network connections, etc.
-		/// </para>
-		/// <para>
-		/// It is a programming error to append to a closed appender.
-		/// </para>
-		/// </remarks>
-		void Close();
+        /// <summary>
+        /// Closes the appender and releases resources.
+        /// 关闭appender并释放资源。
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Releases any resources allocated within the appender such as file handles, network connections, etc.
+        /// 释放appender中分配的任何资源，如文件句柄、网络连接等。
+        /// </para>
+        /// <para>
+        /// It is a programming error to append to a closed appender.
+        /// 附加到一个关闭的附加器是一个编程错误。
+        /// </para>
+        /// </remarks>
+        void Close();
 
-		/// <summary>
-		/// Log the logging event in Appender specific way.
-		/// </summary>
-		/// <param name="loggingEvent">The event to log</param>
-		/// <remarks>
-		/// <para>
-		/// This method is called to log a message into this appender.
-		/// </para>
-		/// </remarks>
-		void DoAppend(LoggingEvent loggingEvent);
+        /// <summary>
+        /// Log the logging event in Appender specific way.
+        /// 以Appender特定的方式记录日志事件。
+        /// </summary>
+        /// <param name="loggingEvent">The event to log</param>
+        /// <remarks>
+        /// <para>
+        /// This method is called to log a message into this appender.
+        /// 调用此方法将消息记录到此appender。
+        /// </para>
+        /// </remarks>
+        void DoAppend(LoggingEvent loggingEvent);
 
 		/// <summary>
 		/// Gets or sets the name of this appender.

@@ -23,20 +23,23 @@ using log4net.Appender;
 
 namespace log4net.Core
 {
-	/// <summary>
-	/// Interface for attaching appenders to objects.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Interface for attaching, removing and retrieving appenders.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public interface IAppenderAttachable
+    /// <summary>
+    /// Interface for attaching appenders to objects.
+    /// 用于将附加器附加到对象的接口。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Interface for attaching, removing and retrieving appenders.
+    /// 用于连接、删除和检索附加器的接口。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public interface IAppenderAttachable
 	{
 		/// <summary>
 		/// Attaches an appender.
+        /// 添加一个附加器。
 		/// </summary>
 		/// <param name="appender">The appender to add.</param>
 		/// <remarks>
@@ -49,6 +52,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Gets all attached appenders.
+        /// 获得所有的附加的附加器。
 		/// </summary>
 		/// <value>
 		/// A collection of attached appenders.
@@ -65,6 +69,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Gets an attached appender with the specified name.
+        /// 根据指定的名称获得附加器。
 		/// </summary>
 		/// <param name="name">The name of the appender to get.</param>
 		/// <returns>
@@ -82,6 +87,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Removes all attached appenders.
+        /// 移除所有的附加器。
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -92,6 +98,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Removes the specified appender from the list of attached appenders.
+        /// 移除指定的附加器。
 		/// </summary>
 		/// <param name="appender">The appender to remove.</param>
 		/// <returns>The appender removed from the list</returns>
@@ -104,18 +111,19 @@ namespace log4net.Core
 		/// </remarks>
 		IAppender RemoveAppender(IAppender appender);
 
-		/// <summary>
-		/// Removes the appender with the specified name from the list of appenders.
-		/// </summary>
-		/// <param name="name">The name of the appender to remove.</param>
-		/// <returns>The appender removed from the list</returns>
-		/// <remarks>
-		/// <para>
-		/// The appender removed is not closed.
-		/// If you are discarding the appender you must call
-		/// <see cref="IAppender.Close"/> on the appender removed.
-		/// </para>
-		/// </remarks>
-		IAppender RemoveAppender(string name);   	
+        /// <summary>
+        /// Removes the appender with the specified name from the list of appenders.
+        /// 从附加器列表中删除具有指定名称的附加器。
+        /// </summary>
+        /// <param name="name">The name of the appender to remove.</param>
+        /// <returns>The appender removed from the list</returns>
+        /// <remarks>
+        /// <para>
+        /// The appender removed is not closed.
+        /// If you are discarding the appender you must call
+        /// <see cref="IAppender.Close"/> on the appender removed.
+        /// </para>
+        /// </remarks>
+        IAppender RemoveAppender(string name);   	
 	}
 }

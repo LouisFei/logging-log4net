@@ -27,6 +27,7 @@ namespace log4net.Core
 {
 	/// <summary>
 	/// Base interface for all wrappers
+    /// 所有记录器包装器的基接口。
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -39,21 +40,22 @@ namespace log4net.Core
 	/// <author>Nicko Cadell</author>
 	public interface ILoggerWrapper
 	{
-		/// <summary>
-		/// Get the implementation behind this wrapper object.
-		/// </summary>
-		/// <value>
-		/// The <see cref="ILogger"/> object that in implementing this object.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The <see cref="ILogger"/> object that in implementing this
-		/// object. The <c>Logger</c> object may not 
-		/// be the same object as this object because of logger decorators.
-		/// This gets the actual underlying objects that is used to process
-		/// the log events.
-		/// </para>
-		/// </remarks>
-		ILogger Logger { get; }
+        /// <summary>
+        /// Get the implementation behind this wrapper object.
+        /// 获取包装器对象背后的实现。
+        /// </summary>
+        /// <value>
+        /// The <see cref="ILogger"/> object that in implementing this object.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The <see cref="ILogger"/> object that in implementing this
+        /// object. The <c>Logger</c> object may not 
+        /// be the same object as this object because of logger decorators.
+        /// This gets the actual underlying objects that is used to process
+        /// the log events.
+        /// </para>
+        /// </remarks>
+        ILogger Logger { get; }
 	}
 }

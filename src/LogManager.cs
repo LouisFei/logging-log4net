@@ -78,6 +78,7 @@ namespace log4net
 		/// <overloads>Returns the named logger if it exists.</overloads>
 		/// <summary>
 		/// Returns the named logger if it exists.
+        /// 返回一个命名记录器（如果它存在的话）。
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -152,6 +153,7 @@ namespace log4net
 
 		/// <summary>
 		/// Returns the named logger if it exists.
+        /// 返回命名记录器（如果它存在的话）
 		/// </summary>
 		/// <remarks>
 		/// <para>

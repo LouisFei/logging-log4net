@@ -8,6 +8,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "log4net.Tests", "..\tests\s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "..\UnitTestProject1\UnitTestProject1.csproj", "{4156F8B0-E9F4-4939-90CB-06A6541CB3E4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{DBBC5134-578E-49BC-ABAF-0B26C07BA68C}"
+	ProjectSection(SolutionItems) = preProject
+		..\docs\Log4net框架的结构图.gif = ..\docs\Log4net框架的结构图.gif
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

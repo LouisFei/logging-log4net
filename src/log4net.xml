@@ -1053,6 +1053,7 @@
         <member name="T:log4net.Appender.AppenderCollection">
             <summary>
             A strongly-typed collection of <see cref="T:log4net.Appender.IAppender"/> objects.
+            一个关于IAppender的强类型集合。
             </summary>
             <author>Nicko Cadell</author>
         </member>
@@ -1087,6 +1088,7 @@
         <member name="M:log4net.Appender.AppenderCollection.ReadOnly(log4net.Appender.AppenderCollection)">
             <summary>
             Creates a read-only wrapper for a <c>AppenderCollection</c> instance.
+            创建一个只读的AppenderCollection实例包装器。
             </summary>
             <param name="list">list to create a readonly wrapper arround</param>
             <returns>
@@ -1372,16 +1374,18 @@
         <member name="T:log4net.Appender.AppenderSkeleton">
             <summary>
             Abstract base class implementation of <see cref="T:log4net.Appender.IAppender"/>. 
+            IAppender的抽象基类实现。
             </summary>
             <remarks>
             <para>
-            This class provides the code for common functionality, such 
-            as support for threshold filtering and support for general filters.
+            This class provides the code for common functionality, such as support for threshold filtering and support for general filters.
+            这个类提供了通用功能的代码，例如支持阈值过滤和支持一般过滤器。
             </para>
             <para>
             Appenders can also implement the <see cref="T:log4net.Core.IOptionHandler"/> interface. Therefore
             they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
             be called after the appenders properties have been configured.
+            Appenders也可以实现IOptionHandler接口。因此，它们需要在配置appenders属性之后调用IOptionHandler.ActivateOptions()方法。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -1686,8 +1690,8 @@
         </member>
         <member name="M:log4net.Appender.AppenderSkeleton.Append(log4net.Core.LoggingEvent)">
             <summary>
-            Subclasses of <see cref="T:log4net.Appender.AppenderSkeleton"/> should implement this method 
-            to perform actual logging.
+            Subclasses of <see cref="T:log4net.Appender.AppenderSkeleton"/> should implement this method to perform actual logging.
+            AppenderSkeleton的子类应该实现这个方法来执行实际的日志记录。
             </summary>
             <param name="loggingEvent">The event to append.</param>
             <remarks>
@@ -1707,6 +1711,7 @@
         <member name="M:log4net.Appender.AppenderSkeleton.Append(log4net.Core.LoggingEvent[])">
             <summary>
             Append a bulk array of logging events.
+            附加大量的日志事件数组。
             </summary>
             <param name="loggingEvents">the array of logging events</param>
             <remarks>
@@ -4312,16 +4317,20 @@
         <member name="T:log4net.Appender.IAppender">
             <summary>
             Implement this interface for your own strategies for printing log statements.
+            为打印日志语句的策略实现此接口。
+            附着器。
             </summary>
             <remarks>
             <para>
             Implementors should consider extending the <see cref="T:log4net.Appender.AppenderSkeleton"/>
             class which provides a default implementation of this interface.
+            实现者应该考虑扩展AppenderSkeleton类，它提供这个接口的默认实现。
             </para>
             <para>
             Appenders can also implement the <see cref="T:log4net.Core.IOptionHandler"/> interface. Therefore
             they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
             be called after the appenders properties have been configured.
+            Appenders也可以实现IOptionHandler接口。因此他们需要在配置appenders属性后调用IOptionHandler.ActivateOptions()方法。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -4330,25 +4339,29 @@
         <member name="M:log4net.Appender.IAppender.Close">
             <summary>
             Closes the appender and releases resources.
+            关闭appender并释放资源。
             </summary>
             <remarks>
             <para>
-            Releases any resources allocated within the appender such as file handles, 
-            network connections, etc.
+            Releases any resources allocated within the appender such as file handles, network connections, etc.
+            释放appender中分配的任何资源，如文件句柄、网络连接等。
             </para>
             <para>
             It is a programming error to append to a closed appender.
+            附加到一个关闭的附加器是一个编程错误。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Appender.IAppender.DoAppend(log4net.Core.LoggingEvent)">
             <summary>
             Log the logging event in Appender specific way.
+            以Appender特定的方式记录日志事件。
             </summary>
             <param name="loggingEvent">The event to log</param>
             <remarks>
             <para>
             This method is called to log a message into this appender.
+            调用此方法将消息记录到此appender。
             </para>
             </remarks>
         </member>
@@ -9283,6 +9296,7 @@
         <member name="T:log4net.Config.XmlConfigurator">
             <summary>
             Use this class to initialize the log4net environment using an Xml tree.
+            使用这个类通过Xml树初始化log4net环境。
             </summary>
             <remarks>
             <para>
@@ -9439,8 +9453,8 @@
         </member>
         <member name="M:log4net.Config.XmlConfigurator.Configure(log4net.Repository.ILoggerRepository,System.Xml.XmlElement)">
             <summary>
-            Configures the <see cref="T:log4net.Repository.ILoggerRepository"/> using the specified XML 
-            element.
+            Configures the <see cref="T:log4net.Repository.ILoggerRepository"/> using the specified XML element.
+            使用xml配置记录器容器。
             </summary>
             <remarks>
             Loads the log4net configuration from the XML element
@@ -9683,6 +9697,7 @@
         <member name="M:log4net.Config.XmlConfigurator.InternalConfigureFromXml(log4net.Repository.ILoggerRepository,System.Xml.XmlElement)">
             <summary>
             Configures the specified repository using a <c>log4net</c> element.
+            配置记录器容器
             </summary>
             <param name="repository">The hierarchy to configure.</param>
             <param name="element">The element to parse.</param>
@@ -10482,10 +10497,12 @@
         <member name="T:log4net.Core.IAppenderAttachable">
             <summary>
             Interface for attaching appenders to objects.
+            用于将附加器附加到对象的接口。
             </summary>
             <remarks>
             <para>
             Interface for attaching, removing and retrieving appenders.
+            用于连接、删除和检索附加器的接口。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -10494,6 +10511,7 @@
         <member name="M:log4net.Core.IAppenderAttachable.AddAppender(log4net.Appender.IAppender)">
             <summary>
             Attaches an appender.
+            添加一个附加器。
             </summary>
             <param name="appender">The appender to add.</param>
             <remarks>
@@ -10506,6 +10524,7 @@
         <member name="P:log4net.Core.IAppenderAttachable.Appenders">
             <summary>
             Gets all attached appenders.
+            获得所有的附加的附加器。
             </summary>
             <value>
             A collection of attached appenders.
@@ -10522,6 +10541,7 @@
         <member name="M:log4net.Core.IAppenderAttachable.GetAppender(System.String)">
             <summary>
             Gets an attached appender with the specified name.
+            根据指定的名称获得附加器。
             </summary>
             <param name="name">The name of the appender to get.</param>
             <returns>
@@ -10539,6 +10559,7 @@
         <member name="M:log4net.Core.IAppenderAttachable.RemoveAllAppenders">
             <summary>
             Removes all attached appenders.
+            移除所有的附加器。
             </summary>
             <remarks>
             <para>
@@ -10549,6 +10570,7 @@
         <member name="M:log4net.Core.IAppenderAttachable.RemoveAppender(log4net.Appender.IAppender)">
             <summary>
             Removes the specified appender from the list of attached appenders.
+            移除指定的附加器。
             </summary>
             <param name="appender">The appender to remove.</param>
             <returns>The appender removed from the list</returns>
@@ -10563,6 +10585,7 @@
         <member name="M:log4net.Core.IAppenderAttachable.RemoveAppender(System.String)">
             <summary>
             Removes the appender with the specified name from the list of appenders.
+            从附加器列表中删除具有指定名称的附加器。
             </summary>
             <param name="name">The name of the appender to remove.</param>
             <returns>The appender removed from the list</returns>
@@ -10754,6 +10777,7 @@
         <member name="T:log4net.Core.ILoggerWrapper">
             <summary>
             Base interface for all wrappers
+            所有记录器包装器的基接口。
             </summary>
             <remarks>
             <para>
@@ -10768,6 +10792,7 @@
         <member name="P:log4net.Core.ILoggerWrapper.Logger">
             <summary>
             Get the implementation behind this wrapper object.
+            获取包装器对象背后的实现。
             </summary>
             <value>
             The <see cref="T:log4net.Core.ILogger"/> object that in implementing this object.
@@ -12341,6 +12366,7 @@
         <member name="M:log4net.Core.LoggerManager.Exists(System.Reflection.Assembly,System.String)">
             <summary>
             Returns the named logger if it exists.
+            返回命名记录器（如果它存在的话）
             </summary>
             <param name="repositoryAssembly">The assembly to use to lookup the repository.</param>
             <param name="name">The fully qualified logger name to look for.</param>
@@ -15755,7 +15781,9 @@
         </member>
         <member name="T:log4net.Filter.IFilter">
             <summary>
-            Implement this interface to provide customized logging event filtering
+            Implement this interface to provide customized logging event filtering.
+            实现此接口以提供定制的日志事件过滤。
+            使用了职责链模式。
             </summary>
             <remarks>
             <para>
@@ -16361,8 +16389,8 @@
         </member>
         <member name="T:log4net.ILog">
             <summary>
-            The ILog interface is use by application to log messages into
-            the log4net framework.
+            The ILog interface is use by application to log messages into the log4net framework.
+            应用程序使用ILog接口将消息记录到log4net框架中。
             </summary>
             <remarks>
             <para>
@@ -17425,7 +17453,8 @@
         </member>
         <member name="T:log4net.Layout.ILayout">
             <summary>
-            Interface implemented by layout objects
+            Interface implemented by layout objects.
+            由布局对象实现的接口。
             </summary>
             <remarks>
             <para>
@@ -20348,6 +20377,7 @@
             <overloads>Returns the named logger if it exists.</overloads>
             <summary>
             Returns the named logger if it exists.
+            返回一个命名记录器（如果它存在的话）。
             </summary>
             <remarks>
             <para>
@@ -20409,6 +20439,7 @@
         <member name="M:log4net.LogManager.Exists(System.Reflection.Assembly,System.String)">
             <summary>
             Returns the named logger if it exists.
+            返回命名记录器（如果它存在的话）
             </summary>
             <remarks>
             <para>
@@ -22351,7 +22382,7 @@
         </member>
         <member name="T:log4net.Repository.ConfigurationChangedEventArgs">
             <summary>
-            
+            配置修改事件数据
             </summary>
         </member>
         <member name="M:log4net.Repository.ConfigurationChangedEventArgs.#ctor(System.Collections.ICollection)">
@@ -22498,9 +22529,11 @@
             默认的ILoggerRepository的实现类，它用于表达其内部的Logger是以层次结构存储的。
             </summary>
             <remarks>
+            ILogger对象在Log4net中是以一定的层次结构组织的。这就是Repository的作用。
+            ILogger拥有继承机制，可以继承父节点的Appender。
+            ILogger拥有自己的Appender集合，负责输出日志。Appender拥有自己的过滤器Filter和布局Layout。
             <para>
-            <i>The casual user should not have to deal with this class
-            directly.</i>
+            <i>The casual user should not have to deal with this class directly.</i>
             </para>
             <para>
             This class is specialized in retrieving loggers by name and
@@ -22596,7 +22629,8 @@
         </member>
         <member name="P:log4net.Repository.Hierarchy.Hierarchy.Root">
             <summary>
-            Get the root of this hierarchy
+            Get the root of this hierarchy.
+            根记录器
             </summary>
             <remarks>
             <para>
@@ -22785,12 +22819,15 @@
         <member name="M:log4net.Repository.Hierarchy.Hierarchy.log4net#Repository#IXmlRepositoryConfigurator#Configure(System.Xml.XmlElement)">
             <summary>
             Initialize the log4net system using the specified config
+            使用指定的配置初始化存储库（容器）
+            使用指定的配置初始化log4net系统
             </summary>
             <param name="element">the element containing the root of the config</param>
         </member>
         <member name="M:log4net.Repository.Hierarchy.Hierarchy.XmlRepositoryConfigure(System.Xml.XmlElement)">
             <summary>
             Initialize the log4net system using the specified config
+            使用指定的配置初始化log4net系统
             </summary>
             <param name="element">the element containing the root of the config</param>
             <remarks>
@@ -22804,6 +22841,7 @@
         <member name="M:log4net.Repository.Hierarchy.Hierarchy.IsDisabled(log4net.Core.Level)">
             <summary>
             Test if this hierarchy is disabled for the specified <see cref="T:log4net.Core.Level"/>.
+            测试指定级别是否禁用此级别。
             </summary>
             <param name="level">The level to check against.</param>
             <returns>
@@ -22868,7 +22906,8 @@
         </member>
         <member name="M:log4net.Repository.Hierarchy.Hierarchy.UpdateParents(log4net.Repository.Hierarchy.Logger)">
             <summary>
-            Updates all the parents of the specified logger
+            Updates all the parents of the specified logger.
+            更新指定记录器的所有父记录程序。
             </summary>
             <param name="log">The logger to update the parents for</param>
             <remarks>
@@ -22999,6 +23038,7 @@
         <member name="M:log4net.Repository.Hierarchy.Hierarchy.AddProperty(log4net.Util.PropertyEntry)">
             <summary>
             Set a Property using the values in the <see cref="T:log4net.Repository.Hierarchy.Hierarchy.LevelEntry"/> argument
+            添加一个属性
             </summary>
             <param name="propertyEntry">the property value</param>
             <remarks>
@@ -23198,25 +23238,24 @@
         </member>
         <member name="M:log4net.Repository.Hierarchy.Logger.AddAppender(log4net.Appender.IAppender)">
             <summary>
-            Add <paramref name="newAppender"/> to the list of appenders of this
-            Logger instance.
+            Add <paramref name="newAppender"/> to the list of appenders of this Logger instance.
+            添加一个新附加器到当前这个记录器实例的附加器列表中。
             </summary>
             <param name="newAppender">An appender to add to this logger</param>
             <remarks>
             <para>
-            Add <paramref name="newAppender"/> to the list of appenders of this
-            Logger instance.
+            Add <paramref name="newAppender"/> to the list of appenders of this Logger instance.
             </para>
             <para>
-            If <paramref name="newAppender"/> is already in the list of
-            appenders, then it won't be added again.
+            If <paramref name="newAppender"/> is already in the list of appenders, then it won't be added again.
+            如果新的附加器已经在列表中存在，则不会重复添加。
             </para>
             </remarks>
         </member>
         <member name="P:log4net.Repository.Hierarchy.Logger.Appenders">
             <summary>
-            Get the appenders contained in this logger as an 
-            <see cref="T:System.Collections.ICollection"/>.
+            Get the appenders contained in this logger as an <see cref="T:System.Collections.ICollection"/>.
+            将日志记录器中包含的附加器作为集合获取。
             </summary>
             <returns>A collection of the appenders in this logger</returns>
             <remarks>
@@ -23332,6 +23371,7 @@
         <member name="M:log4net.Repository.Hierarchy.Logger.IsEnabledFor(log4net.Core.Level)">
             <summary>
             Checks if this logger is enabled for a given <see cref="P:log4net.Repository.Hierarchy.Logger.Level"/> passed as parameter.
+            检查是否为作为参数传递的给定级别启用了此记录器。
             </summary>
             <param name="level">The level to check.</param>
             <returns>
@@ -23391,7 +23431,8 @@
         </member>
         <member name="M:log4net.Repository.Hierarchy.Logger.Log(log4net.Core.Level,System.Object,System.Exception)">
             <summary>
-            This is the most generic printing method. This generic form is intended to be used by wrappers
+            This is the most generic printing method. This generic form is intended to be used by wrappers.
+            这是最通用的打印方法。这个通用的表单将被包装器使用。
             </summary>
             <param name="level">The level of the message to be logged.</param>
             <param name="message">The message object to log.</param>
@@ -23498,7 +23539,8 @@
         </member>
         <member name="F:log4net.Repository.Hierarchy.Logger.m_appenderLock">
             <summary>
-            Lock to protect AppenderAttachedImpl variable m_appenderAttachedImpl
+            Lock to protect AppenderAttachedImpl variable m_appenderAttachedImpl.
+            保护AppenderAttachedImpl变量m_appenderAttachedImpl的锁。
             </summary>
         </member>
         <member name="T:log4net.Repository.Hierarchy.LoggerKey">
@@ -23676,6 +23718,7 @@
         <member name="T:log4net.Repository.Hierarchy.XmlHierarchyConfigurator">
             <summary>
             Initializes the log4net environment using an XML DOM.
+            使用XML DOM初始化log4net环境。
             </summary>
             <remarks>
             <para>
@@ -23700,6 +23743,7 @@
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.Configure(System.Xml.XmlElement)">
             <summary>
             Configure the hierarchy by parsing a DOM tree of XML elements.
+            通过解析XML元素的DOM树来配置层次结构。
             </summary>
             <param name="element">The root element to parse.</param>
             <remarks>
@@ -23828,6 +23872,7 @@
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.FindMethodInfo(System.Type,System.String)">
             <summary>
             Look for a method on the <paramref name="targetType"/> that matches the <paramref name="name"/> supplied
+            在指定的类型上查找指定名称的方法。
             </summary>
             <param name="targetType">the type that has the method</param>
             <param name="name">the name of the method</param>
@@ -23882,6 +23927,8 @@
         <member name="F:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.m_hierarchy">
             <summary>
             The Hierarchy being configured.
+            被配置的层次结构。
+            默认的记录器容器。
             </summary>
         </member>
         <member name="F:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.declaringType">
@@ -24244,6 +24291,7 @@
         <member name="T:log4net.Repository.IXmlRepositoryConfigurator">
             <summary>
             Configure repository using XML
+            使用xml配置容器
             </summary>
             <remarks>
             <para>
@@ -24260,6 +24308,7 @@
         <member name="M:log4net.Repository.IXmlRepositoryConfigurator.Configure(System.Xml.XmlElement)">
             <summary>
             Initialize the repository using the specified config
+            使用指定的配置初始化存储库（容器）
             </summary>
             <param name="element">the element containing the root of the config</param>
             <remarks>
@@ -24472,6 +24521,7 @@
         <member name="P:log4net.Repository.LoggerRepositorySkeleton.Configured">
             <summary>
             Flag indicates if this repository has been configured.
+            标志表示是否配置了此存储库。
             </summary>
             <value>
             Flag indicates if this repository has been configured.
@@ -24484,8 +24534,8 @@
         </member>
         <member name="P:log4net.Repository.LoggerRepositorySkeleton.ConfigurationMessages">
             <summary>
-            Contains a list of internal messages captures during the 
-            last configuration.
+            Contains a list of internal messages captures during the last configuration.
+            包含最后一次配置期间捕获的内部消息列表。
             </summary>
         </member>
         <member name="E:log4net.Repository.LoggerRepositorySkeleton.ShutdownEvent">
@@ -24531,6 +24581,7 @@
         <member name="P:log4net.Repository.LoggerRepositorySkeleton.Properties">
             <summary>
             Repository specific properties
+            容器属性集合
             </summary>
             <value>
             Repository specific properties
@@ -24596,6 +24647,7 @@
         <member name="M:log4net.Repository.LoggerRepositorySkeleton.OnConfigurationChanged(System.EventArgs)">
             <summary>
             Notify the registered listeners that the repository has had its configuration changed
+            通知容器配置被改变。
             </summary>
             <param name="e">Empty EventArgs</param>
             <remarks>
@@ -24719,6 +24771,7 @@
         <member name="T:log4net.Util.AppenderAttachedImpl">
             <summary>
             A straightforward implementation of the <see cref="T:log4net.Core.IAppenderAttachable"/> interface.
+            IAppenderAttachable接口的简单实现。
             </summary>
             <remarks>
             <para>
@@ -24796,6 +24849,7 @@
         <member name="P:log4net.Util.AppenderAttachedImpl.Appenders">
             <summary>
             Gets all attached appenders.
+            获得所有的附加器。
             </summary>
             <returns>
             A collection of attached appenders, or <c>null</c> if there
@@ -29476,6 +29530,7 @@
         <member name="T:log4net.Util.PropertiesDictionary">
             <summary>
             String keyed object map.
+            
             </summary>
             <remarks>
             <para>
@@ -29672,7 +29727,8 @@
         </member>
         <member name="T:log4net.Util.PropertyEntry">
             <summary>
-            A class to hold the key and data for a property set in the config file
+            A class to hold the key and data for a property set in the config file.
+            一个类，用于保存配置文件中属性集的键和数据。
             </summary>
             <remarks>
             <para>
@@ -29683,6 +29739,7 @@
         <member name="P:log4net.Util.PropertyEntry.Key">
             <summary>
             Property Key
+            属性键
             </summary>
             <value>
             Property Key
@@ -29696,6 +29753,7 @@
         <member name="P:log4net.Util.PropertyEntry.Value">
             <summary>
             Property Value
+            属性值
             </summary>
             <value>
             Property Value
@@ -29865,7 +29923,8 @@
         </member>
         <member name="T:log4net.Util.ReaderWriterLock">
             <summary>
-            Defines a lock that supports single writers and multiple readers
+            Defines a lock that supports single writers and multiple readers.
+            定义一个支持单个写入器和多个读取器的锁。
             </summary>
             <remarks>
             <para>
@@ -29875,11 +29934,18 @@
             situation where a resource is changed infrequently, a 
             <c>ReaderWriterLock</c> provides better throughput than a simple 
             one-at-a-time lock, such as <see cref="T:System.Threading.Monitor"/>.
+            
+            ReaderWriterLock用于同步对资源的访问。
+            在任何给定的时间，它都允许对多个线程进行并发读访问，或者对单个线程进行写访问。
+            在资源很少更改的情况下，ReaderWriterLock比简单的一次一个锁提供更好的吞吐量，比如System.Threading.Monitor。
             </para>
             <para>
             If a platform does not support a <c>System.Threading.ReaderWriterLock</c> 
             implementation then all readers and writers are serialized. Therefore 
             the caller must not rely on multiple simultaneous readers.
+            
+            如果一个平台不支持System.Threading.ReaderWriterLock实现 然后所有的阅读器和写入器都被序列化。
+            因此，调用者不能依赖于多个并发阅读器。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -29896,46 +29962,63 @@
         </member>
         <member name="M:log4net.Util.ReaderWriterLock.AcquireReaderLock">
             <summary>
-            Acquires a reader lock
+            Acquires a reader lock。
+            获得读取锁。
             </summary>
             <remarks>
             <para>
-            <see cref="M:log4net.Util.ReaderWriterLock.AcquireReaderLock"/> blocks if a different thread has the writer 
-            lock, or if at least one thread is waiting for the writer lock.
+            <see cref="M:log4net.Util.ReaderWriterLock.AcquireReaderLock"/> blocks if a different thread has the writer lock, or if at least one thread is waiting for the writer lock.
+            如果另一个线程有写入器锁，或者至少有一个线程在等待写入器锁，则阻塞。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Util.ReaderWriterLock.ReleaseReaderLock">
             <summary>
-            Decrements the lock count
+            Decrements the lock count.
+            减少读取锁计数。
             </summary>
             <remarks>
             <para>
-            <see cref="M:log4net.Util.ReaderWriterLock.ReleaseReaderLock"/> decrements the lock count. When the count 
-            reaches zero, the lock is released.
+            <see cref="M:log4net.Util.ReaderWriterLock.ReleaseReaderLock"/> decrements the lock count. When the count reaches zero, the lock is released.
+            减少读取锁计数。当计数为0时，锁被释放。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Util.ReaderWriterLock.AcquireWriterLock">
             <summary>
-            Acquires the writer lock
+            Acquires the writer lock.
+            获得写入锁。
             </summary>
             <remarks>
             <para>
             This method blocks if another thread has a reader lock or writer lock.
+            如果另一个线程有读锁或写锁，此方法将阻塞。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Util.ReaderWriterLock.ReleaseWriterLock">
             <summary>
-            Decrements the lock count on the writer lock
+            Decrements the lock count on the writer lock.
+            减少写入器锁计数。
             </summary>
             <remarks>
             <para>
             ReleaseWriterLock decrements the writer lock count. 
             When the count reaches zero, the writer lock is released.
+            释放写入器锁递减写入器锁计数。
+            当计数为0时，写入器锁被释放。
             </para>
             </remarks>
+        </member>
+        <member name="F:log4net.Util.ReaderWriterLock.m_lock">
+            <summary>
+            表示用于管理资源访问的锁定状态，可实现多线程读取或进行独占式写入访问。
+            
+            ReaderWriterLockSlim 类似于 ReaderWriterLock, ，只是简化了递归、 升级和降级锁定状态的规则。 
+            ReaderWriterLockSlim可避免潜在的死锁的很多情况。 
+            此外，性能的 ReaderWriterLockSlim 明显优于 ReaderWriterLock。 
+            ReaderWriterLockSlim 建议对于所有新的开发。
+            </summary>
         </member>
         <member name="T:log4net.Util.ReadOnlyPropertiesDictionary">
             <summary>

@@ -289,6 +289,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Returns the named logger if it exists.
+        /// 返回命名记录器（如果它存在的话）
 		/// </summary>
 		/// <param name="repositoryAssembly">The assembly to use to lookup the repository.</param>
 		/// <param name="name">The fully qualified logger name to look for.</param>

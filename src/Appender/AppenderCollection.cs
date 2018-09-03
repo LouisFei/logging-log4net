@@ -24,6 +24,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// A strongly-typed collection of <see cref="IAppender"/> objects.
+    /// 一个关于IAppender的强类型集合。
 	/// </summary>
 	/// <author>Nicko Cadell</author>
 	public class AppenderCollection : ICollection, IList, IEnumerable
@@ -70,18 +71,19 @@ namespace log4net.Appender
 		private int m_count = 0;
 		private int m_version = 0;
 
-		#endregion
-	
-		#region Static Wrappers
+        #endregion
 
-		/// <summary>
-		/// Creates a read-only wrapper for a <c>AppenderCollection</c> instance.
-		/// </summary>
-		/// <param name="list">list to create a readonly wrapper arround</param>
-		/// <returns>
-		/// An <c>AppenderCollection</c> wrapper that is read-only.
-		/// </returns>
-		public static AppenderCollection ReadOnly(AppenderCollection list)
+        #region Static Wrappers
+
+        /// <summary>
+        /// Creates a read-only wrapper for a <c>AppenderCollection</c> instance.
+        /// 创建一个只读的AppenderCollection实例包装器。
+        /// </summary>
+        /// <param name="list">list to create a readonly wrapper arround</param>
+        /// <returns>
+        /// An <c>AppenderCollection</c> wrapper that is read-only.
+        /// </returns>
+        public static AppenderCollection ReadOnly(AppenderCollection list)
 		{
 			if(list==null) throw new ArgumentNullException("list");
 

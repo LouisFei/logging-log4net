@@ -15,6 +15,9 @@ namespace UnitTestProject1.Hierarchy
         {
         }
 
+        /// <summary>
+        /// 使用配置文件设置记录器容器属性
+        /// </summary>
         [TestMethod]
         public void SetRepositoryPropertiesInConfigFile()
         {

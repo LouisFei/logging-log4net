@@ -25,23 +25,24 @@ using log4net.Core;
 
 namespace log4net.Layout
 {
-	/// <summary>
-	/// Interface implemented by layout objects
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// An <see cref="ILayout"/> object is used to format a <see cref="LoggingEvent"/>
-	/// as text. The <see cref="M:Format(TextWriter,LoggingEvent)"/> method is called by an
-	/// appender to transform the <see cref="LoggingEvent"/> into a string.
-	/// </para>
-	/// <para>
-	/// The layout can also supply <see cref="Header"/> and <see cref="Footer"/>
-	/// text that is appender before any events and after all the events respectively.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public interface ILayout
+    /// <summary>
+    /// Interface implemented by layout objects.
+    /// 由布局对象实现的接口。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// An <see cref="ILayout"/> object is used to format a <see cref="LoggingEvent"/>
+    /// as text. The <see cref="M:Format(TextWriter,LoggingEvent)"/> method is called by an
+    /// appender to transform the <see cref="LoggingEvent"/> into a string.
+    /// </para>
+    /// <para>
+    /// The layout can also supply <see cref="Header"/> and <see cref="Footer"/>
+    /// text that is appender before any events and after all the events respectively.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public interface ILayout
 	{
 		/// <summary>
 		/// Implement this method to create your own layout format.
