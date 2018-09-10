@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -26,21 +26,22 @@ using log4net.Core;
 
 namespace log4net.Layout
 {
-	/// <summary>
-	/// A Layout that renders only the Exception text from the logging event
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// A Layout that renders only the Exception text from the logging event.
-	/// </para>
-	/// <para>
-	/// This Layout should only be used with appenders that utilize multiple
-	/// layouts (e.g. <see cref="log4net.Appender.AdoNetAppender"/>).
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class ExceptionLayout : LayoutSkeleton
+    /// <summary>
+    /// A Layout that renders only the Exception text from the logging event.
+    /// 只呈现日志事件异常文本的布局。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// A Layout that renders only the Exception text from the logging event.
+    /// </para>
+    /// <para>
+    /// This Layout should only be used with appenders that utilize multiple
+    /// layouts (e.g. <see cref="log4net.Appender.AdoNetAppender"/>).
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class ExceptionLayout : LayoutSkeleton
 	{
 		#region Constructors
 

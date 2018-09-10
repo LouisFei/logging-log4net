@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -25,25 +25,26 @@ using log4net.Util.TypeConverters;
 
 namespace log4net.Layout
 {
-	/// <summary>
-	/// Interface for raw layout objects
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Interface used to format a <see cref="LoggingEvent"/>
-	/// to an object.
-	/// </para>
-	/// <para>
-	/// This interface should not be confused with the
-	/// <see cref="ILayout"/> interface. This interface is used in
-	/// only certain specialized situations where a raw object is
-	/// required rather than a formatted string. The <see cref="ILayout"/>
-	/// is not generally useful than this interface.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	[TypeConverter(typeof(RawLayoutConverter))]
+    /// <summary>
+    /// Interface for raw layout objects.
+    /// 原始布局对象的接口。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Interface used to format a <see cref="LoggingEvent"/> to an object.
+    /// 用于将日志事件格式化为对象的接口。
+    /// </para>
+    /// <para>
+    /// This interface should not be confused with the
+    /// <see cref="ILayout"/> interface. This interface is used in
+    /// only certain specialized situations where a raw object is
+    /// required rather than a formatted string. The <see cref="ILayout"/>
+    /// is not generally useful than this interface.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    [TypeConverter(typeof(RawLayoutConverter))]
 	public interface IRawLayout
 	{
 		/// <summary>

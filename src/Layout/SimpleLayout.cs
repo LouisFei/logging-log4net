@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,12 +27,12 @@ using log4net.Core;
 namespace log4net.Layout
 {
 	/// <summary>
-	/// A very simple layout
+	/// A very simple layout.
+    /// 一个非常简单的布局。
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// SimpleLayout consists of the level of the log statement,
-	/// followed by " - " and then the log message itself. For example,
+	/// SimpleLayout consists of the level of the log statement, followed by " - " and then the log message itself. For example,
 	/// <code>
 	/// DEBUG - Hello world
 	/// </code>
@@ -77,23 +77,24 @@ namespace log4net.Layout
 			// nothing to do.
 		}
 
-		#endregion
+        #endregion
 
-		#region Override implementation of LayoutSkeleton
+        #region Override implementation of LayoutSkeleton
 
-		/// <summary>
-		/// Produces a simple formatted output.
-		/// </summary>
-		/// <param name="loggingEvent">the event being logged</param>
-		/// <param name="writer">The TextWriter to write the formatted event to</param>
-		/// <remarks>
-		/// <para>
-		/// Formats the event as the level of the even,
-		/// followed by " - " and then the log message itself. The
-		/// output is terminated by a newline.
-		/// </para>
-		/// </remarks>
-		override public void Format(TextWriter writer, LoggingEvent loggingEvent) 
+        /// <summary>
+        /// Produces a simple formatted output.
+        /// 生成一个简单的格式化输出。
+        /// </summary>
+        /// <param name="loggingEvent">the event being logged</param>
+        /// <param name="writer">The TextWriter to write the formatted event to</param>
+        /// <remarks>
+        /// <para>
+        /// Formats the event as the level of the even,
+        /// followed by " - " and then the log message itself. The
+        /// output is terminated by a newline.
+        /// </para>
+        /// </remarks>
+        override public void Format(TextWriter writer, LoggingEvent loggingEvent) 
 		{
 			if (loggingEvent == null)
 			{

@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,7 +27,7 @@ namespace log4net.Layout
 {
     /// <summary>
     /// Interface implemented by layout objects.
-    /// �ɲ��ֶ���ʵ�ֵĽӿڡ�
+    /// 由布局对象实现的接口。
     /// </summary>
     /// <remarks>
     /// <para>
@@ -44,28 +44,29 @@ namespace log4net.Layout
     /// <author>Gert Driesen</author>
     public interface ILayout
 	{
-		/// <summary>
-		/// Implement this method to create your own layout format.
-		/// </summary>
-		/// <param name="writer">The TextWriter to write the formatted event to</param>
-		/// <param name="loggingEvent">The event to format</param>
-		/// <remarks>
-		/// <para>
-		/// This method is called by an appender to format
-		/// the <paramref name="loggingEvent"/> as text and output to a writer.
-		/// </para>
-		/// <para>
-		/// If the caller does not have a <see cref="TextWriter"/> and prefers the
-		/// event to be formatted as a <see cref="String"/> then the following
-		/// code can be used to format the event into a <see cref="StringWriter"/>.
-		/// </para>
-		/// <code lang="C#">
-		/// StringWriter writer = new StringWriter();
-		/// Layout.Format(writer, loggingEvent);
-		/// string formattedEvent = writer.ToString();
-		/// </code>
-		/// </remarks>
-		void Format(TextWriter writer, LoggingEvent loggingEvent);
+        /// <summary>
+        /// Implement this method to create your own layout format.
+        /// 实现此方法以创建自己的布局格式。
+        /// </summary>
+        /// <param name="writer">The TextWriter to write the formatted event to</param>
+        /// <param name="loggingEvent">The event to format</param>
+        /// <remarks>
+        /// <para>
+        /// This method is called by an appender to format the <paramref name="loggingEvent"/> as text and output to a writer.
+        /// appender调用此方法以将loggingEvent格式化为文本并输出到写入器。
+        /// </para>
+        /// <para>
+        /// If the caller does not have a <see cref="TextWriter"/> and prefers the
+        /// event to be formatted as a <see cref="String"/> then the following
+        /// code can be used to format the event into a <see cref="StringWriter"/>.
+        /// </para>
+        /// <code lang="C#">
+        /// StringWriter writer = new StringWriter();
+        /// Layout.Format(writer, loggingEvent);
+        /// string formattedEvent = writer.ToString();
+        /// </code>
+        /// </remarks>
+        void Format(TextWriter writer, LoggingEvent loggingEvent);
 
 		/// <summary>
 		/// The content type output by this layout. 

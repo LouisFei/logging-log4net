@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -25,30 +25,31 @@ using log4net.Core;
 
 namespace log4net.Layout
 {
-	/// <summary>
-	/// Extend this abstract class to create your own log layout format.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// This is the base implementation of the <see cref="ILayout"/>
-	/// interface. Most layout objects should extend this class.
-	/// </para>
-	/// </remarks>
-	/// <remarks>
-	/// <note type="inheritinfo">
-	/// <para>
-	/// Subclasses must implement the <see cref="M:Format(TextWriter,LoggingEvent)"/>
-	/// method.
-	/// </para>
-	/// <para>
-	/// Subclasses should set the <see cref="IgnoresException"/> in their default
-	/// constructor.
-	/// </para>
-	/// </note>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public abstract class LayoutSkeleton : ILayout, IOptionHandler
+    /// <summary>
+    /// Extend this abstract class to create your own log layout format.
+    /// 扩展这个抽象类以创建自己的日志布局格式。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This is the base implementation of the <see cref="ILayout"/> interface. Most layout objects should extend this class.
+    /// 这是ILayout接口的基本实现。大多数布局对象都应该扩展这个类。
+    /// </para>
+    /// </remarks>
+    /// <remarks>
+    /// <note type="inheritinfo">
+    /// <para>
+    /// Subclasses must implement the <see cref="M:Format(TextWriter,LoggingEvent)"/>
+    /// method.
+    /// </para>
+    /// <para>
+    /// Subclasses should set the <see cref="IgnoresException"/> in their default
+    /// constructor.
+    /// </para>
+    /// </note>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public abstract class LayoutSkeleton : ILayout, IOptionHandler
 	{
 		#region Member Variables
 
@@ -123,25 +124,27 @@ namespace log4net.Layout
 		/// </remarks>
 		abstract public void ActivateOptions();
 
-		#endregion
+        #endregion
 
-		#region Implementation of ILayout
+        #region Implementation of ILayout
 
-		/// <summary>
-		/// Implement this method to create your own layout format.
-		/// </summary>
-		/// <param name="writer">The TextWriter to write the formatted event to</param>
-		/// <param name="loggingEvent">The event to format</param>
-		/// <remarks>
-		/// <para>
-		/// This method is called by an appender to format
-		/// the <paramref name="loggingEvent"/> as text.
-		/// </para>
-		/// </remarks>
-		abstract public void Format(TextWriter writer, LoggingEvent loggingEvent);
+        /// <summary>
+        /// Implement this method to create your own layout format.
+        /// 实现此方法以创建自己的布局格式。
+        /// </summary>
+        /// <param name="writer">The TextWriter to write the formatted event to</param>
+        /// <param name="loggingEvent">The event to format</param>
+        /// <remarks>
+        /// <para>
+        /// This method is called by an appender to format
+        /// the <paramref name="loggingEvent"/> as text.
+        /// </para>
+        /// </remarks>
+        abstract public void Format(TextWriter writer, LoggingEvent loggingEvent);
 
         /// <summary>
         /// Convenience method for easily formatting the logging event into a string variable.
+        /// 方便的方法，可以轻松地将日志事件格式化为字符串变量。
         /// </summary>
         /// <param name="loggingEvent"></param>
         /// <remarks>
@@ -154,74 +157,78 @@ namespace log4net.Layout
             return writer.ToString();
         }
 
-	    /// <summary>
-	    /// The content type output by this layout. 
-	    /// </summary>
-	    /// <value>The content type is <c>"text/plain"</c></value>
-	    /// <remarks>
-	    /// <para>
-	    /// The content type output by this layout.
-	    /// </para>
-	    /// <para>
-	    /// This base class uses the value <c>"text/plain"</c>.
-	    /// To change this value a subclass must override this
-	    /// property.
-	    /// </para>
-	    /// </remarks>
-	    virtual public string ContentType
+        /// <summary>
+        /// The content type output by this layout. 
+        /// 这个布局输出的内容类型。
+        /// </summary>
+        /// <value>The content type is <c>"text/plain"</c></value>
+        /// <remarks>
+        /// <para>
+        /// The content type output by this layout.
+        /// </para>
+        /// <para>
+        /// This base class uses the value <c>"text/plain"</c>.
+        /// To change this value a subclass must override this
+        /// property.
+        /// </para>
+        /// </remarks>
+        virtual public string ContentType
 	    {
 	        get { return "text/plain"; }
 	    }
 
-	    /// <summary>
-	    /// The header for the layout format.
-	    /// </summary>
-	    /// <value>the layout header</value>
-	    /// <remarks>
-	    /// <para>
-	    /// The Header text will be appended before any logging events
-	    /// are formatted and appended.
-	    /// </para>
-	    /// </remarks>
-	    virtual public string Header
+        /// <summary>
+        /// The header for the layout format.
+        /// 布局格式的标题。
+        /// </summary>
+        /// <value>the layout header</value>
+        /// <remarks>
+        /// <para>
+        /// The Header text will be appended before any logging events
+        /// are formatted and appended.
+        /// </para>
+        /// </remarks>
+        virtual public string Header
 	    {
 	        get { return m_header; }
 	        set { m_header = value; }
 	    }
 
-	    /// <summary>
-	    /// The footer for the layout format.
-	    /// </summary>
-	    /// <value>the layout footer</value>
-	    /// <remarks>
-	    /// <para>
-	    /// The Footer text will be appended after all the logging events
-	    /// have been formatted and appended.
-	    /// </para>
-	    /// </remarks>
-	    virtual public string Footer
+        /// <summary>
+        /// The footer for the layout format.
+        /// 布局格式的页脚。
+        /// </summary>
+        /// <value>the layout footer</value>
+        /// <remarks>
+        /// <para>
+        /// The Footer text will be appended after all the logging events
+        /// have been formatted and appended.
+        /// </para>
+        /// </remarks>
+        virtual public string Footer
 	    {
 	        get { return m_footer; }
 	        set { m_footer = value; }
 	    }
 
-	    /// <summary>
-	    /// Flag indicating if this layout handles exceptions
-	    /// </summary>
-	    /// <value><c>false</c> if this layout handles exceptions</value>
-	    /// <remarks>
-	    /// <para>
-	    /// If this layout handles the exception object contained within
-	    /// <see cref="LoggingEvent"/>, then the layout should return
-	    /// <c>false</c>. Otherwise, if the layout ignores the exception
-	    /// object, then the layout should return <c>true</c>.
-	    /// </para>
-	    /// <para>
-	    /// Set this value to override a this default setting. The default
-	    /// value is <c>true</c>, this layout does not handle the exception.
-	    /// </para>
-	    /// </remarks>
-	    virtual public bool IgnoresException 
+        /// <summary>
+        /// Flag indicating if this layout handles exceptions.
+        /// 指示此布局是否处理异常的标志。
+        /// </summary>
+        /// <value><c>false</c> if this layout handles exceptions</value>
+        /// <remarks>
+        /// <para>
+        /// If this layout handles the exception object contained within
+        /// <see cref="LoggingEvent"/>, then the layout should return
+        /// <c>false</c>. Otherwise, if the layout ignores the exception
+        /// object, then the layout should return <c>true</c>.
+        /// </para>
+        /// <para>
+        /// Set this value to override a this default setting. The default
+        /// value is <c>true</c>, this layout does not handle the exception.
+        /// </para>
+        /// </remarks>
+        virtual public bool IgnoresException 
 	    { 
 	        get { return m_ignoresException; }
 	        set { m_ignoresException = value; }

@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -29,27 +29,32 @@ using log4net.Repository.Hierarchy;
 
 namespace log4net.Config
 {
-	/// <summary>
-	/// Use this class to quickly configure a <see cref="Hierarchy"/>.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Allows very simple programmatic configuration of log4net.
-	/// </para>
-	/// <para>
-	/// Only one appender can be configured using this configurator.
-	/// The appender is set at the root of the hierarchy and all logging
-	/// events will be delivered to that appender.
-	/// </para>
-	/// <para>
-	/// Appenders can also implement the <see cref="log4net.Core.IOptionHandler"/> interface. Therefore
-	/// they would require that the <see cref="M:log4net.Core.IOptionHandler.ActivateOptions()"/> method
-	/// be called after the appenders properties have been configured.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public sealed class BasicConfigurator
+    /// <summary>
+    /// Use this class to quickly configure a <see cref="Hierarchy"/>.
+    /// 使用这个类可以快速配置层次结构。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Allows very simple programmatic configuration of log4net.
+    /// 允许非常简单的log4net编程配置。
+    /// </para>
+    /// <para>
+    /// Only one appender can be configured using this configurator.
+    /// The appender is set at the root of the hierarchy and all logging events will be delivered to that appender.
+    /// 只有一个附加器可以使用这个配置器进行配置。
+    /// appender设置在层次结构的根目录中，所有日志事件都将传递给该appender。
+    /// </para>
+    /// <para>
+    /// Appenders can also implement the <see cref="log4net.Core.IOptionHandler"/> interface. 
+    /// Therefore they would require that the <see cref="M:log4net.Core.IOptionHandler.ActivateOptions()"/> method be called 
+    /// after the appenders properties have been configured.
+    /// Appenders也可以实现IOptionHandler接口。
+    /// 因此他们在配置appenders属性后需要调用IOptionHandler.ActivateOptions方法。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public sealed class BasicConfigurator
     {
 	    #region Private Static Fields
 
@@ -179,6 +184,7 @@ namespace log4net.Config
 
         /// <summary>
         /// Initializes the <see cref="ILoggerRepository"/> using the specified appender.
+        /// 使用指定的appender初始化ILoggerRepository。
         /// </summary>
         /// <param name="repository">The repository to configure.</param>
         /// <param name="appender">The appender to use to log all logging events.</param>

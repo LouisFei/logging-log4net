@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,21 +27,22 @@ using log4net.Core;
 
 namespace log4net.Layout
 {
-	/// <summary>
-	/// Layout that formats the log events as XML elements.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// This is an abstract class that must be subclassed by an implementation 
-	/// to conform to a specific schema.
-	/// </para>
-	/// <para>
-	/// Deriving classes must implement the <see cref="FormatXml"/> method.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	abstract public class XmlLayoutBase : LayoutSkeleton
+    /// <summary>
+    /// Layout that formats the log events as XML elements.
+    /// 将日志事件格式化为XML元素的布局。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This is an abstract class that must be subclassed by an implementation to conform to a specific schema.
+    /// 这是一个抽象类，必须由实现进行子类化，以符合特定的模式。
+    /// </para>
+    /// <para>
+    /// Deriving classes must implement the <see cref="FormatXml"/> method.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    abstract public class XmlLayoutBase : LayoutSkeleton
 	{
 		#region Protected Instance Constructors
 

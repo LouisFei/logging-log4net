@@ -1,4 +1,4 @@
-#region Apache License
+ï»¿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -92,13 +92,13 @@ namespace log4net.Repository.Hierarchy
 
     /// <summary>
     /// Hierarchical organization of loggers
-    /// ·Ö²ã½á¹¹µÄloggers(ÈÕÖ¾¼ÇÂ¼Æ÷)
-    /// Ä¬ÈÏµÄILoggerRepositoryµÄÊµÏÖÀà£¬ËüÓÃÓÚ±í´ïÆäÄÚ²¿µÄLoggerÊÇÒÔ²ã´Î½á¹¹´æ´¢µÄ¡£
+    /// åˆ†å±‚ç»“æ„çš„loggers(æ—¥å¿—è®°å½•å™¨)
+    /// é»˜è®¤çš„ILoggerRepositoryçš„å®ç°ç±»ï¼Œå®ƒç”¨äºè¡¨è¾¾å…¶å†…éƒ¨çš„Loggeræ˜¯ä»¥å±‚æ¬¡ç»“æ„å­˜å‚¨çš„ã€‚
     /// </summary>
     /// <remarks>
-    /// ILogger¶ÔÏóÔÚLog4netÖĞÊÇÒÔÒ»¶¨µÄ²ã´Î½á¹¹×éÖ¯µÄ¡£Õâ¾ÍÊÇRepositoryµÄ×÷ÓÃ¡£
-    /// ILoggerÓµÓĞ¼Ì³Ğ»úÖÆ£¬¿ÉÒÔ¼Ì³Ğ¸¸½ÚµãµÄAppender¡£
-    /// ILoggerÓµÓĞ×Ô¼ºµÄAppender¼¯ºÏ£¬¸ºÔğÊä³öÈÕÖ¾¡£AppenderÓµÓĞ×Ô¼ºµÄ¹ıÂËÆ÷FilterºÍ²¼¾ÖLayout¡£
+    /// ILoggerå¯¹è±¡åœ¨Log4netä¸­æ˜¯ä»¥ä¸€å®šçš„å±‚æ¬¡ç»“æ„ç»„ç»‡çš„ã€‚è¿™å°±æ˜¯Repositoryçš„ä½œç”¨ã€‚
+    /// ILoggeræ‹¥æœ‰ç»§æ‰¿æœºåˆ¶ï¼Œå¯ä»¥ç»§æ‰¿çˆ¶èŠ‚ç‚¹çš„Appenderã€‚
+    /// ILoggeræ‹¥æœ‰è‡ªå·±çš„Appenderé›†åˆï¼Œè´Ÿè´£è¾“å‡ºæ—¥å¿—ã€‚Appenderæ‹¥æœ‰è‡ªå·±çš„è¿‡æ»¤å™¨Filterå’Œå¸ƒå±€Layoutã€‚
     /// <para>
     /// <i>The casual user should not have to deal with this class directly.</i>
     /// </para>
@@ -159,7 +159,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Construct with properties
-        /// Ê¹ÓÃÖ¸¶¨µÄÊôĞÔ¼¯ºÍÄ¬ÈÏµÄ¼ÇÂ¼Æ÷¹¤³§¹¹Ôì¼ÇÂ¼Æ÷ÈİÆ÷
+        /// ä½¿ç”¨æŒ‡å®šçš„å±æ€§é›†å’Œé»˜è®¤çš„è®°å½•å™¨å·¥å‚æ„é€ è®°å½•å™¨å®¹å™¨
 		/// </summary>
 		/// <param name="properties">The properties to pass to this repository.</param>
 		/// <remarks>
@@ -173,7 +173,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Construct with a logger factory
-        /// Ê¹ÓÃ¿ÕµÄÊôĞÔ¼¯ºÍÖ¸¶¨µÄ¼ÇÂ¼Æ÷¹¤³§¹¹Ôì¼ÇÂ¼Æ÷ÈİÆ÷¡£
+        /// ä½¿ç”¨ç©ºçš„å±æ€§é›†å’ŒæŒ‡å®šçš„è®°å½•å™¨å·¥å‚æ„é€ è®°å½•å™¨å®¹å™¨ã€‚
 		/// </summary>
 		/// <param name="loggerFactory">The factory to use to create new logger instances.</param>
 		/// <remarks>
@@ -188,7 +188,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Construct with properties and a logger factory
-        /// Ê¹ÓÃÖ¸¶¨µÄÊôĞÔ¼¯ºÍÖ¸¶¨µÄ¼ÇÂ¼Æ÷¹¤³§¹¹Ôì¼ÇÂ¼Æ÷ÈİÆ÷¡£
+        /// ä½¿ç”¨æŒ‡å®šçš„å±æ€§é›†å’ŒæŒ‡å®šçš„è®°å½•å™¨å·¥å‚æ„é€ è®°å½•å™¨å®¹å™¨ã€‚
 		/// </summary>
 		/// <param name="properties">The properties to pass to this repository.</param>
 		/// <param name="loggerFactory">The factory to use to create new logger instances.</param>
@@ -231,7 +231,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Get the root of this hierarchy.
-        /// ¸ù¼ÇÂ¼Æ÷
+        /// æ ¹è®°å½•å™¨
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -345,7 +345,7 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// Return a new logger instance named as the first parameter using the default factory.
-        /// ·µ»ØÖ¸¶¨¼ÇÂ¼Æ÷Ãû³ÆµÄÒÑ´æÔÚµÄ¼ÇÂ¼Æ÷£¬Èç¹ûÃ»ÓĞÔòÊµÀı»¯ÔÙ·µ»Ø¡£
+        /// è¿”å›æŒ‡å®šè®°å½•å™¨åç§°çš„å·²å­˜åœ¨çš„è®°å½•å™¨ï¼Œå¦‚æœæ²¡æœ‰åˆ™å®ä¾‹åŒ–å†è¿”å›ã€‚
         /// </summary>
         /// <remarks>
         /// <para>
@@ -357,8 +357,8 @@ namespace log4net.Repository.Hierarchy
         /// returned.  Otherwise, a new logger will be instantiated and
         /// then linked with its existing ancestors as well as children.
         /// 
-        /// Èç¹û¸ÃÃû³ÆµÄ¼ÇÂ¼Æ÷ÒÑ¾­´æÔÚ£¬ÄÇÃ´Ëü½«±»·µ»Ø¡£
-        /// ·ñÔò£¬½«ÊµÀı»¯Ò»¸öĞÂµÄÈÕÖ¾¼ÇÂ¼Æ÷£¬È»ºó½«ÆäÓëÏÖÓĞµÄ×æÏÈºÍ×ÓÈÕÖ¾¼ÇÂ¼Æ÷Á¬½ÓÆğÀ´¡£
+        /// å¦‚æœè¯¥åç§°çš„è®°å½•å™¨å·²ç»å­˜åœ¨ï¼Œé‚£ä¹ˆå®ƒå°†è¢«è¿”å›ã€‚
+        /// å¦åˆ™ï¼Œå°†å®ä¾‹åŒ–ä¸€ä¸ªæ–°çš„æ—¥å¿—è®°å½•å™¨ï¼Œç„¶åå°†å…¶ä¸ç°æœ‰çš„ç¥–å…ˆå’Œå­æ—¥å¿—è®°å½•å™¨è¿æ¥èµ·æ¥ã€‚
         /// </para>
         /// </remarks>
         /// <param name="name">The name of the logger to retrieve</param>
@@ -570,7 +570,8 @@ namespace log4net.Repository.Hierarchy
 		}
 
         /// <summary>
-        /// Initialize the log4net system using the specified appenders
+        /// Initialize the log4net system using the specified appenders.
+        /// ä½¿ç”¨æŒ‡å®šçš„é™„åŠ å™¨åˆå§‹åŒ–log4netç³»ç»Ÿã€‚
         /// </summary>
         /// <param name="appenders">the appenders to use to log all logging events</param>
         void IBasicRepositoryConfigurator.Configure(params IAppender[] appenders)
@@ -578,18 +579,19 @@ namespace log4net.Repository.Hierarchy
             BasicRepositoryConfigure(appenders);
         }
 
-		/// <summary>
-		/// Initialize the log4net system using the specified appenders
-		/// </summary>
-		/// <param name="appenders">the appenders to use to log all logging events</param>
-		/// <remarks>
-		/// <para>
-		/// This method provides the same functionality as the 
-		/// <see cref="M:IBasicRepositoryConfigurator.Configure(IAppender)"/> method implemented
-		/// on this object, but it is protected and therefore can be called by subclasses.
-		/// </para>
-		/// </remarks>
-		protected void BasicRepositoryConfigure(params IAppender[] appenders)
+        /// <summary>
+        /// Initialize the log4net system using the specified appenders
+        /// ä½¿ç”¨æŒ‡å®šçš„é™„åŠ å™¨åˆå§‹åŒ–log4netç³»ç»Ÿã€‚
+        /// </summary>
+        /// <param name="appenders">the appenders to use to log all logging events</param>
+        /// <remarks>
+        /// <para>
+        /// This method provides the same functionality as the 
+        /// <see cref="M:IBasicRepositoryConfigurator.Configure(IAppender)"/> method implemented
+        /// on this object, but it is protected and therefore can be called by subclasses.
+        /// </para>
+        /// </remarks>
+        protected void BasicRepositoryConfigure(params IAppender[] appenders)
 		{
             ArrayList configurationMessages = new ArrayList();
 
@@ -615,8 +617,8 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// Initialize the log4net system using the specified config
-        /// Ê¹ÓÃÖ¸¶¨µÄÅäÖÃ³õÊ¼»¯´æ´¢¿â£¨ÈİÆ÷£©
-        /// Ê¹ÓÃÖ¸¶¨µÄÅäÖÃ³õÊ¼»¯log4netÏµÍ³
+        /// ä½¿ç”¨æŒ‡å®šçš„é…ç½®åˆå§‹åŒ–å­˜å‚¨åº“ï¼ˆå®¹å™¨ï¼‰
+        /// ä½¿ç”¨æŒ‡å®šçš„é…ç½®åˆå§‹åŒ–log4netç³»ç»Ÿ
         /// </summary>
         /// <param name="element">the element containing the root of the config</param>
         void IXmlRepositoryConfigurator.Configure(System.Xml.XmlElement element)
@@ -626,7 +628,7 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// Initialize the log4net system using the specified config
-        /// Ê¹ÓÃÖ¸¶¨µÄÅäÖÃ³õÊ¼»¯log4netÏµÍ³
+        /// ä½¿ç”¨æŒ‡å®šçš„é…ç½®åˆå§‹åŒ–log4netç³»ç»Ÿ
         /// </summary>
         /// <param name="element">the element containing the root of the config</param>
         /// <remarks>
@@ -651,7 +653,7 @@ namespace log4net.Repository.Hierarchy
             ConfigurationMessages = configurationMessages;
 
 			// Notify listeners
-            // Í¨Öª¼àÌıÆ÷£¬ÅäÖÃÓĞ¸Ä±ä
+            // é€šçŸ¥ç›‘å¬å™¨ï¼Œé…ç½®æœ‰æ”¹å˜
             OnConfigurationChanged(new ConfigurationChangedEventArgs(configurationMessages));
 		}
 
@@ -661,7 +663,7 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// Test if this hierarchy is disabled for the specified <see cref="Level"/>.
-        /// ²âÊÔÖ¸¶¨¼¶±ğÊÇ·ñ½ûÓÃ´Ë¼¶±ğ¡£
+        /// æµ‹è¯•æŒ‡å®šçº§åˆ«æ˜¯å¦ç¦ç”¨æ­¤çº§åˆ«ã€‚
         /// </summary>
         /// <param name="level">The level to check against.</param>
         /// <returns>
@@ -696,7 +698,7 @@ namespace log4net.Repository.Hierarchy
 			else
 			{
                 // If not configured the hierarchy is effectively disabled.
-                // Èç¹ûÃ»ÓĞÅäÖÃ£¬²ã´Î½á¹¹½«±»ÓĞĞ§µØ½ûÓÃ¡£
+                // å¦‚æœæ²¡æœ‰é…ç½®ï¼Œå±‚æ¬¡ç»“æ„å°†è¢«æœ‰æ•ˆåœ°ç¦ç”¨ã€‚
                 return true;
 			}
 		}
@@ -819,7 +821,7 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// Updates all the parents of the specified logger.
-        /// ¸üĞÂÖ¸¶¨¼ÇÂ¼Æ÷µÄËùÓĞ¸¸¼ÇÂ¼³ÌĞò¡£
+        /// æ›´æ–°æŒ‡å®šè®°å½•å™¨çš„æ‰€æœ‰çˆ¶è®°å½•ç¨‹åºã€‚
         /// </summary>
         /// <param name="log">The logger to update the parents for</param>
         /// <remarks>
@@ -1055,7 +1057,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Set a Property using the values in the <see cref="LevelEntry"/> argument
-        /// Ìí¼ÓÒ»¸öÊôĞÔ
+        /// æ·»åŠ ä¸€ä¸ªå±æ€§
 		/// </summary>
 		/// <param name="propertyEntry">the property value</param>
 		/// <remarks>
@@ -1084,11 +1086,11 @@ namespace log4net.Repository.Hierarchy
 		private ILoggerFactory m_defaultFactory;
 
         /// <summary>
-        /// Ê¹ÓÃHashtableÀ´´æ´¢ËùÓĞµÄLoggerÊµÀı£¬
-        /// ËüÒÔLoggerKey×÷Îªkey£¬Logger×÷Îªvalue¡£
-        /// ÆäÖĞLoggerKeyÊÇ¶ÔLoggerÖĞName×Ö·û´®µÄ·â×°£¬
-        /// Ö®ËùÒÔÒªÒıÈëÕâ¸öÀàÊÇ³öÓÚĞÔÄÜ¿¼ÂÇ£¬ÒòÎªËü»á»º´æName×Ö·û´®µÄhash code£¬
-        /// ÕâÑù ÔÚ²éÕÒ¹ı³ÌÖĞ¼ÆËãhash codeÊ±¾Í¿ÉÒÔÖ±½ÓÈ¡µÃ¶ø²»ÓÃÃ¿´Î¶¼¼ÆËã¡£
+        /// ä½¿ç”¨Hashtableæ¥å­˜å‚¨æ‰€æœ‰çš„Loggerå®ä¾‹ï¼Œ
+        /// å®ƒä»¥LoggerKeyä½œä¸ºkeyï¼ŒLoggerä½œä¸ºvalueã€‚
+        /// å…¶ä¸­LoggerKeyæ˜¯å¯¹Loggerä¸­Nameå­—ç¬¦ä¸²çš„å°è£…ï¼Œ
+        /// ä¹‹æ‰€ä»¥è¦å¼•å…¥è¿™ä¸ªç±»æ˜¯å‡ºäºæ€§èƒ½è€ƒè™‘ï¼Œå› ä¸ºå®ƒä¼šç¼“å­˜Nameå­—ç¬¦ä¸²çš„hash codeï¼Œ
+        /// è¿™æ · åœ¨æŸ¥æ‰¾è¿‡ç¨‹ä¸­è®¡ç®—hash codeæ—¶å°±å¯ä»¥ç›´æ¥å–å¾—è€Œä¸ç”¨æ¯æ¬¡éƒ½è®¡ç®—ã€‚
         /// </summary>
 		private System.Collections.Hashtable m_ht;
 		private Logger m_root;

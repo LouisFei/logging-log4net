@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -49,13 +49,13 @@ namespace log4net.Repository
         void Configure(Appender.IAppender appender);
 
         /// <summary>
-        /// Initialize the repository using the specified appenders
+        /// Initialize the repository using the specified appenders.
+        /// 使用指定的附加器初始化存储库。
         /// </summary>
         /// <param name="appenders">the appenders to use to log all logging events</param>
         /// <remarks>
         /// <para>
-        /// Configure the repository to route all logging events to the
-        /// specified appenders.
+        /// Configure the repository to route all logging events to the specified appenders.
         /// </para>
         /// </remarks>
         void Configure(params Appender.IAppender[] appenders);

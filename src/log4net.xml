@@ -8504,20 +8504,25 @@
         <member name="T:log4net.Config.BasicConfigurator">
             <summary>
             Use this class to quickly configure a <see cref="T:log4net.Repository.Hierarchy.Hierarchy"/>.
+            使用这个类可以快速配置层次结构。
             </summary>
             <remarks>
             <para>
             Allows very simple programmatic configuration of log4net.
+            允许非常简单的log4net编程配置。
             </para>
             <para>
             Only one appender can be configured using this configurator.
-            The appender is set at the root of the hierarchy and all logging
-            events will be delivered to that appender.
+            The appender is set at the root of the hierarchy and all logging events will be delivered to that appender.
+            只有一个附加器可以使用这个配置器进行配置。
+            appender设置在层次结构的根目录中，所有日志事件都将传递给该appender。
             </para>
             <para>
-            Appenders can also implement the <see cref="T:log4net.Core.IOptionHandler"/> interface. Therefore
-            they would require that the <see cref="M:log4net.Core.IOptionHandler.ActivateOptions()"/> method
-            be called after the appenders properties have been configured.
+            Appenders can also implement the <see cref="T:log4net.Core.IOptionHandler"/> interface. 
+            Therefore they would require that the <see cref="M:log4net.Core.IOptionHandler.ActivateOptions()"/> method be called 
+            after the appenders properties have been configured.
+            Appenders也可以实现IOptionHandler接口。
+            因此他们在配置appenders属性后需要调用IOptionHandler.ActivateOptions方法。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -8596,6 +8601,7 @@
         <member name="M:log4net.Config.BasicConfigurator.Configure(log4net.Repository.ILoggerRepository,log4net.Appender.IAppender)">
             <summary>
             Initializes the <see cref="T:log4net.Repository.ILoggerRepository"/> using the specified appender.
+            使用指定的appender初始化ILoggerRepository。
             </summary>
             <param name="repository">The repository to configure.</param>
             <param name="appender">The appender to use to log all logging events.</param>
@@ -17400,7 +17406,8 @@
         </member>
         <member name="T:log4net.Layout.ExceptionLayout">
             <summary>
-            A Layout that renders only the Exception text from the logging event
+            A Layout that renders only the Exception text from the logging event.
+            只呈现日志事件异常文本的布局。
             </summary>
             <remarks>
             <para>
@@ -17473,13 +17480,14 @@
         <member name="M:log4net.Layout.ILayout.Format(System.IO.TextWriter,log4net.Core.LoggingEvent)">
             <summary>
             Implement this method to create your own layout format.
+            实现此方法以创建自己的布局格式。
             </summary>
             <param name="writer">The TextWriter to write the formatted event to</param>
             <param name="loggingEvent">The event to format</param>
             <remarks>
             <para>
-            This method is called by an appender to format
-            the <paramref name="loggingEvent"/> as text and output to a writer.
+            This method is called by an appender to format the <paramref name="loggingEvent"/> as text and output to a writer.
+            appender调用此方法以将loggingEvent格式化为文本并输出到写入器。
             </para>
             <para>
             If the caller does not have a <see cref="T:System.IO.TextWriter"/> and prefers the
@@ -17547,12 +17555,13 @@
         </member>
         <member name="T:log4net.Layout.IRawLayout">
             <summary>
-            Interface for raw layout objects
+            Interface for raw layout objects.
+            原始布局对象的接口。
             </summary>
             <remarks>
             <para>
-            Interface used to format a <see cref="T:log4net.Core.LoggingEvent"/>
-            to an object.
+            Interface used to format a <see cref="T:log4net.Core.LoggingEvent"/> to an object.
+            用于将日志事件格式化为对象的接口。
             </para>
             <para>
             This interface should not be confused with the
@@ -17625,11 +17634,12 @@
         <member name="T:log4net.Layout.LayoutSkeleton">
             <summary>
             Extend this abstract class to create your own log layout format.
+            扩展这个抽象类以创建自己的日志布局格式。
             </summary>
             <remarks>
             <para>
-            This is the base implementation of the <see cref="T:log4net.Layout.ILayout"/>
-            interface. Most layout objects should extend this class.
+            This is the base implementation of the <see cref="T:log4net.Layout.ILayout"/> interface. Most layout objects should extend this class.
+            这是ILayout接口的基本实现。大多数布局对象都应该扩展这个类。
             </para>
             </remarks>
             <remarks>
@@ -17711,6 +17721,7 @@
         <member name="M:log4net.Layout.LayoutSkeleton.Format(System.IO.TextWriter,log4net.Core.LoggingEvent)">
             <summary>
             Implement this method to create your own layout format.
+            实现此方法以创建自己的布局格式。
             </summary>
             <param name="writer">The TextWriter to write the formatted event to</param>
             <param name="loggingEvent">The event to format</param>
@@ -17724,6 +17735,7 @@
         <member name="M:log4net.Layout.LayoutSkeleton.Format(log4net.Core.LoggingEvent)">
             <summary>
             Convenience method for easily formatting the logging event into a string variable.
+            方便的方法，可以轻松地将日志事件格式化为字符串变量。
             </summary>
             <param name="loggingEvent"></param>
             <remarks>
@@ -17733,6 +17745,7 @@
         <member name="P:log4net.Layout.LayoutSkeleton.ContentType">
             <summary>
             The content type output by this layout. 
+            这个布局输出的内容类型。
             </summary>
             <value>The content type is <c>"text/plain"</c></value>
             <remarks>
@@ -17749,6 +17762,7 @@
         <member name="P:log4net.Layout.LayoutSkeleton.Header">
             <summary>
             The header for the layout format.
+            布局格式的标题。
             </summary>
             <value>the layout header</value>
             <remarks>
@@ -17761,6 +17775,7 @@
         <member name="P:log4net.Layout.LayoutSkeleton.Footer">
             <summary>
             The footer for the layout format.
+            布局格式的页脚。
             </summary>
             <value>the layout footer</value>
             <remarks>
@@ -17772,7 +17787,8 @@
         </member>
         <member name="P:log4net.Layout.LayoutSkeleton.IgnoresException">
             <summary>
-            Flag indicating if this layout handles exceptions
+            Flag indicating if this layout handles exceptions.
+            指示此布局是否处理异常的标志。
             </summary>
             <value><c>false</c> if this layout handles exceptions</value>
             <remarks>
@@ -19809,12 +19825,12 @@
         </member>
         <member name="T:log4net.Layout.SimpleLayout">
             <summary>
-            A very simple layout
+            A very simple layout.
+            一个非常简单的布局。
             </summary>
             <remarks>
             <para>
-            SimpleLayout consists of the level of the log statement,
-            followed by " - " and then the log message itself. For example,
+            SimpleLayout consists of the level of the log statement, followed by " - " and then the log message itself. For example,
             <code>
             DEBUG - Hello world
             </code>
@@ -19849,6 +19865,7 @@
         <member name="M:log4net.Layout.SimpleLayout.Format(System.IO.TextWriter,log4net.Core.LoggingEvent)">
             <summary>
             Produces a simple formatted output.
+            生成一个简单的格式化输出。
             </summary>
             <param name="loggingEvent">the event being logged</param>
             <param name="writer">The TextWriter to write the formatted event to</param>
@@ -19863,6 +19880,7 @@
         <member name="T:log4net.Layout.XmlLayout">
              <summary>
              Layout that formats the log events as XML elements.
+             将日志事件格式化为XML元素的布局。
              </summary>
              <remarks>
              <para>
@@ -20013,11 +20031,12 @@
         <member name="T:log4net.Layout.XmlLayoutBase">
             <summary>
             Layout that formats the log events as XML elements.
+            将日志事件格式化为XML元素的布局。
             </summary>
             <remarks>
             <para>
-            This is an abstract class that must be subclassed by an implementation 
-            to conform to a specific schema.
+            This is an abstract class that must be subclassed by an implementation to conform to a specific schema.
+            这是一个抽象类，必须由实现进行子类化，以符合特定的模式。
             </para>
             <para>
             Deriving classes must implement the <see cref="M:log4net.Layout.XmlLayoutBase.FormatXml(System.Xml.XmlWriter,log4net.Core.LoggingEvent)"/> method.
@@ -21492,7 +21511,8 @@
         </member>
         <member name="T:log4net.ObjectRenderer.IObjectRenderer">
             <summary>
-            Implement this interface in order to render objects as strings
+            Implement this interface in order to render objects as strings.
+            实现此接口以将对象呈现为字符串。
             </summary>
             <remarks>
             <para>
@@ -21532,9 +21552,7 @@
             </summary>
             <remarks>
             <para>
-            Maintains a mapping between types that require special
-            rendering and the <see cref="T:log4net.ObjectRenderer.IObjectRenderer"/> that
-            is used to render them.
+            Maintains a mapping between types that require special rendering and the <see cref="T:log4net.ObjectRenderer.IObjectRenderer"/> that is used to render them.
             </para>
             <para>
             The <see cref="M:FindAndRender(object)"/> method is used to render an
@@ -22799,13 +22817,15 @@
         </member>
         <member name="M:log4net.Repository.Hierarchy.Hierarchy.log4net#Repository#IBasicRepositoryConfigurator#Configure(log4net.Appender.IAppender[])">
             <summary>
-            Initialize the log4net system using the specified appenders
+            Initialize the log4net system using the specified appenders.
+            使用指定的附加器初始化log4net系统。
             </summary>
             <param name="appenders">the appenders to use to log all logging events</param>
         </member>
         <member name="M:log4net.Repository.Hierarchy.Hierarchy.BasicRepositoryConfigure(log4net.Appender.IAppender[])">
             <summary>
             Initialize the log4net system using the specified appenders
+            使用指定的附加器初始化log4net系统。
             </summary>
             <param name="appenders">the appenders to use to log all logging events</param>
             <remarks>
@@ -23971,13 +23991,13 @@
         </member>
         <member name="M:log4net.Repository.IBasicRepositoryConfigurator.Configure(log4net.Appender.IAppender[])">
             <summary>
-            Initialize the repository using the specified appenders
+            Initialize the repository using the specified appenders.
+            使用指定的附加器初始化存储库。
             </summary>
             <param name="appenders">the appenders to use to log all logging events</param>
             <remarks>
             <para>
-            Configure the repository to route all logging events to the
-            specified appenders.
+            Configure the repository to route all logging events to the specified appenders.
             </para>
             </remarks>
         </member>

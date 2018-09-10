@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -22,20 +22,21 @@ using System.IO;
 
 namespace log4net.ObjectRenderer
 {
-	/// <summary>
-	/// Implement this interface in order to render objects as strings
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Certain types require special case conversion to
-	/// string form. This conversion is done by an object renderer.
-	/// Object renderers implement the <see cref="IObjectRenderer"/>
-	/// interface.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public interface IObjectRenderer
+    /// <summary>
+    /// Implement this interface in order to render objects as strings.
+    /// 实现此接口以将对象呈现为字符串。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Certain types require special case conversion to
+    /// string form. This conversion is done by an object renderer.
+    /// Object renderers implement the <see cref="IObjectRenderer"/>
+    /// interface.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public interface IObjectRenderer
 	{
 		/// <summary>
 		/// Render the object <paramref name="obj"/> to a string

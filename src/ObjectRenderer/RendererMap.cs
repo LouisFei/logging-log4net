@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -32,9 +32,7 @@ namespace log4net.ObjectRenderer
 	/// </summary>
 	/// <remarks>
 	/// <para>
-	/// Maintains a mapping between types that require special
-	/// rendering and the <see cref="IObjectRenderer"/> that
-	/// is used to render them.
+	/// Maintains a mapping between types that require special rendering and the <see cref="IObjectRenderer"/> that is used to render them.
 	/// </para>
 	/// <para>
 	/// The <see cref="M:FindAndRender(object)"/> method is used to render an
