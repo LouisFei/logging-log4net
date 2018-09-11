@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -28,19 +28,20 @@ using log4net.Util;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Converter for items in the ASP.Net Cache.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Outputs an item from the <see cref="HttpRuntime.Cache" />.
-	/// </para>
-	/// </remarks>
-	/// <author>Ron Grabowski</author>
-	internal sealed class AspNetRequestPatternConverter : AspNetPatternLayoutConverter
+    /// <summary>
+    /// Converter for items in the ASP.Net Request.
+    /// ASP.NET请求中的项目转换器。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Outputs an item from the <see cref="HttpRuntime.Request" />.
+    /// </para>
+    /// </remarks>
+    /// <author>Ron Grabowski</author>
+    internal sealed class AspNetRequestPatternConverter : AspNetPatternLayoutConverter
 	{
 		/// <summary>
-		/// Write the ASP.Net Cache item to the output
+		/// Write the ASP.Net Request item to the output
 		/// </summary>
 		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
 		/// <param name="loggingEvent">The <see cref="LoggingEvent" /> on which the pattern converter should be executed.</param>

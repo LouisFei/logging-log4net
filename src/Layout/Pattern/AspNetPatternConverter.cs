@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -28,16 +28,16 @@ using log4net.Util;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Abstract class that provides access to the current HttpContext (<see cref="HttpContext.Current" />) that 
-	/// derived classes need.
-	/// </summary>
-	/// <remarks>
-	/// This class handles the case when HttpContext.Current is null by writing
-	/// <see cref="SystemInfo.NotAvailableText" /> to the writer.
-	/// </remarks>
-	/// <author>Ron Grabowski</author>
-	internal abstract class AspNetPatternLayoutConverter : PatternLayoutConverter
+    /// <summary>
+    /// Abstract class that provides access to the current HttpContext (<see cref="HttpContext.Current" />) that derived classes need.
+    /// 提供对当前HttpContext派生类的访问的抽象类。
+    /// </summary>
+    /// <remarks>
+    /// This class handles the case when HttpContext.Current is null by writing
+    /// <see cref="SystemInfo.NotAvailableText" /> to the writer.
+    /// </remarks>
+    /// <author>Ron Grabowski</author>
+    internal abstract class AspNetPatternLayoutConverter : PatternLayoutConverter
 	{
 		protected override void Convert(TextWriter writer, LoggingEvent loggingEvent)
 		{
@@ -51,14 +51,14 @@ namespace log4net.Layout.Pattern
 			}
 		}
 
-		/// <summary>
-		/// Derived pattern converters must override this method in order to
-		/// convert conversion specifiers in the correct way.
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
-		/// <param name="loggingEvent">The <see cref="LoggingEvent" /> on which the pattern converter should be executed.</param>
-		/// <param name="httpContext">The <see cref="HttpContext" /> under which the ASP.Net request is running.</param>
-		protected abstract void Convert(TextWriter writer, LoggingEvent loggingEvent, HttpContext httpContext);
+        /// <summary>
+        /// Derived pattern converters must override this method in order to convert conversion specifiers in the correct way.
+        /// 派生模式转换器必须重写此方法，以便以正确的方式转换转换说明符。
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
+        /// <param name="loggingEvent">The <see cref="LoggingEvent" /> on which the pattern converter should be executed.</param>
+        /// <param name="httpContext">The <see cref="HttpContext" /> under which the ASP.Net request is running.</param>
+        protected abstract void Convert(TextWriter writer, LoggingEvent loggingEvent, HttpContext httpContext);
 	}
 }
 

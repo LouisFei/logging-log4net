@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -24,50 +24,56 @@ using log4net.Util;
 
 namespace log4net
 {
-	/// <summary>
-	/// The log4net Thread Context.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// The <c>ThreadContext</c> provides a location for thread specific debugging 
-	/// information to be stored.
-	/// The <c>ThreadContext</c> properties override any <see cref="GlobalContext"/>
-	/// properties with the same name.
-	/// </para>
-	/// <para>
-	/// The thread context has a properties map and a stack.
-	/// The properties and stack can 
-	/// be included in the output of log messages. The <see cref="log4net.Layout.PatternLayout"/>
-	/// supports selecting and outputting these properties.
-	/// </para>
-	/// <para>
-	/// The Thread Context provides a diagnostic context for the current thread. 
-	/// This is an instrument for distinguishing interleaved log
-	/// output from different sources. Log output is typically interleaved
-	/// when a server handles multiple clients near-simultaneously.
-	/// </para>
-	/// <para>
-	/// The Thread Context is managed on a per thread basis.
-	/// </para>
-	/// </remarks>
-	/// <example>Example of using the thread context properties to store a username.
-	/// <code lang="C#">
-	/// ThreadContext.Properties["user"] = userName;
-	///	log.Info("This log message has a ThreadContext Property called 'user'");
-	/// </code>
-	/// </example>
-	/// <example>Example of how to push a message into the context stack
-	/// <code lang="C#">
-	///	using(ThreadContext.Stacks["NDC"].Push("my context message"))
-	///	{
-	///		log.Info("This log message has a ThreadContext Stack message that includes 'my context message'");
-	///	
-	///	} // at the end of the using block the message is automatically popped 
-	/// </code>
-	/// </example>
-	/// <threadsafety static="true" instance="true" />
-	/// <author>Nicko Cadell</author>
-	public sealed class ThreadContext
+    /// <summary>
+    /// The log4net Thread Context.
+    /// log4net线程上下文。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The <c>ThreadContext</c> provides a location for thread specific debugging information to be stored.
+    /// ThreadContext为存储特定于线程的调试信息提供了一个位置。
+    /// The <c>ThreadContext</c> properties override any <see cref="GlobalContext"/> properties with the same name.
+    /// ThreadContext属性覆盖所有同名的GlobalContext属性。
+    /// </para>
+    /// <para>
+    /// The thread context has a properties map and a stack.
+    /// 线程上下文有一个属性映射和一个堆栈。
+    /// The properties and stack can be included in the output of log messages. 
+    /// 属性和堆栈可以包含在日志消息的输出中。
+    /// The <see cref="log4net.Layout.PatternLayout"/> supports selecting and outputting these properties.
+    /// PatternLayout支持选择和输出这些属性。
+    /// </para>
+    /// <para>
+    /// The Thread Context provides a diagnostic context for the current thread. 
+    /// 线程上下文为当前线程提供诊断上下文。
+    /// This is an instrument for distinguishing interleaved log output from different sources. 
+    /// 这是一种区分不同来源的交错日志输出的工具。
+    /// Log output is typically interleaved when a server handles multiple clients near-simultaneously.
+    /// 当服务器几乎同时处理多个客户机时，日志输出通常是交叉的。
+    /// </para>
+    /// <para>
+    /// The Thread Context is managed on a per thread basis.
+    /// 线程上下文是在每个线程的基础上管理的。
+    /// </para>
+    /// </remarks>
+    /// <example>Example of using the thread context properties to store a username.
+    /// <code lang="C#">
+    /// ThreadContext.Properties["user"] = userName;
+    ///	log.Info("This log message has a ThreadContext Property called 'user'");
+    /// </code>
+    /// </example>
+    /// <example>Example of how to push a message into the context stack
+    /// <code lang="C#">
+    ///	using(ThreadContext.Stacks["NDC"].Push("my context message"))
+    ///	{
+    ///		log.Info("This log message has a ThreadContext Stack message that includes 'my context message'");
+    ///	
+    ///	} // at the end of the using block the message is automatically popped 
+    /// </code>
+    /// </example>
+    /// <threadsafety static="true" instance="true" />
+    /// <author>Nicko Cadell</author>
+    public sealed class ThreadContext
 	{
 		#region Private Instance Constructors
 

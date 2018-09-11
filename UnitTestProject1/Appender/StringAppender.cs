@@ -29,7 +29,8 @@ namespace UnitTestProject1.Appender
         }
 
         /// <summary>
-        /// Reset the string
+        /// Reset the string.
+        /// 重置字符串。
         /// </summary>
         public void Reset()
         {

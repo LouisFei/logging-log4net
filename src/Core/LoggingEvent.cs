@@ -1,4 +1,4 @@
-#region Apache License
+ï»¿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -34,7 +34,7 @@ namespace log4net.Core
 {
 	/// <summary>
 	/// Portable data structure used by <see cref="LoggingEvent"/>
-    /// ÈÕÖ¾¼ÇÂ¼ÊÂ¼şÊı¾İ
+    /// æ—¥å¿—è®°å½•äº‹ä»¶æ•°æ®
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -48,7 +48,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// The logger name.
-        /// ¼ÇÂ¼Æ÷Ãû³Æ
+        /// è®°å½•å™¨åç§°
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -59,7 +59,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Level of logging event.
-        /// ¼ÇÂ¼ÊÂ¼ş¼¶±ğ
+        /// è®°å½•äº‹ä»¶çº§åˆ«
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -72,7 +72,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// The application supplied message.
-        /// ÏûÏ¢
+        /// æ¶ˆæ¯
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -83,7 +83,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// The name of thread
-        /// Ïß³ÌÃû³Æ
+        /// çº¿ç¨‹åç§°
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -94,7 +94,7 @@ namespace log4net.Core
 
 		/// <summary>
 		/// Gets or sets the local time the event was logged
-        /// [ÆúÓÃ]·¢ÉúÊ±¼ä
+        /// [å¼ƒç”¨]å‘ç”Ÿæ—¶é—´
 		/// </summary>
 		/// <remarks>
         /// <para>
@@ -106,7 +106,7 @@ namespace log4net.Core
 
         /// <summary>
         /// Gets or sets the UTC time the event was logged
-        /// ·¢ÉúÊ±¼ä
+        /// å‘ç”Ÿæ—¶é—´
         /// </summary>
         /// <remarks>
         /// <para>
@@ -304,7 +304,7 @@ namespace log4net.Core
 
     /// <summary>
     /// The internal representation of logging events. 
-    /// ÈÕÖ¾ÊÂ¼şµÄÄÚ²¿±íÊ¾¡£
+    /// æ—¥å¿—äº‹ä»¶çš„å†…éƒ¨è¡¨ç¤ºã€‚
     /// </summary>
     /// <remarks>
     /// <para>
@@ -606,39 +606,41 @@ namespace log4net.Core
             get { return m_data.TimeStampUtc; }
 		}
 
-		/// <summary>
-		/// Gets the name of the logger that logged the event.
-		/// </summary>
-		/// <value>
-		/// The name of the logger that logged the event.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// Gets the name of the logger that logged the event.
-		/// </para>
-		/// </remarks>
-		public string LoggerName
+        /// <summary>
+        /// Gets the name of the logger that logged the event.
+        /// è·å–è®°å½•äº‹ä»¶çš„æ—¥å¿—ç¨‹åºçš„åç§°ã€‚
+        /// </summary>
+        /// <value>
+        /// The name of the logger that logged the event.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// Gets the name of the logger that logged the event.
+        /// </para>
+        /// </remarks>
+        public string LoggerName
 		{
 			get { return m_data.LoggerName; }
 		}
 
-		/// <summary>
-		/// Gets the location information for this logging event.
-		/// </summary>
-		/// <value>
-		/// The location information for this logging event.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The collected information is cached for future use.
-		/// </para>
-		/// <para>
-		/// See the <see cref="LocationInfo"/> class for more information on
-		/// supported frameworks and the different behavior in Debug and
-		/// Release builds.
-		/// </para>
-		/// </remarks>
-		public LocationInfo LocationInformation
+        /// <summary>
+        /// Gets the location information for this logging event.
+        /// è·å–æ­¤æ—¥å¿—äº‹ä»¶çš„ä½ç½®ä¿¡æ¯ã€‚
+        /// </summary>
+        /// <value>
+        /// The location information for this logging event.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The collected information is cached for future use.
+        /// </para>
+        /// <para>
+        /// See the <see cref="LocationInfo"/> class for more information on
+        /// supported frameworks and the different behavior in Debug and
+        /// Release builds.
+        /// </para>
+        /// </remarks>
+        public LocationInfo LocationInformation
 		{
 			get
 			{

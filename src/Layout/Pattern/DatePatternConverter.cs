@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -26,62 +26,62 @@ using log4net.DateFormatter;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Date pattern converter, uses a <see cref="IDateFormatter"/> to format 
-	/// the date of a <see cref="LoggingEvent"/>.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Render the <see cref="LoggingEvent.TimeStamp"/> to the writer as a string.
-	/// </para>
-	/// <para>
-	/// The value of the <see cref="log4net.Util.PatternConverter.Option"/> determines 
-	/// the formatting of the date. The following values are allowed:
-	/// <list type="definition">
-	///		<listheader>
-	/// 		<term>Option value</term>
-	/// 		<description>Output</description>
-	/// 	</listheader>
-	///		<item>
-	/// 		<term>ISO8601</term>
-	/// 		<description>
-	/// 		Uses the <see cref="Iso8601DateFormatter"/> formatter. 
-	/// 		Formats using the <c>"yyyy-MM-dd HH:mm:ss,fff"</c> pattern.
-	/// 		</description>
-	/// 	</item>
-	/// 	<item>
-	/// 		<term>DATE</term>
-	/// 		<description>
-	/// 		Uses the <see cref="DateTimeDateFormatter"/> formatter. 
-	/// 		Formats using the <c>"dd MMM yyyy HH:mm:ss,fff"</c> for example, <c>"06 Nov 1994 15:49:37,459"</c>.
-	/// 		</description>
-	/// 	</item>
-	/// 	<item>
-	/// 		<term>ABSOLUTE</term>
-	/// 		<description>
-	/// 		Uses the <see cref="AbsoluteTimeDateFormatter"/> formatter. 
-	/// 		Formats using the <c>"HH:mm:ss,yyyy"</c> for example, <c>"15:49:37,459"</c>.
-	/// 		</description>
-	/// 	</item>
-	/// 	<item>
-	/// 		<term>other</term>
-	/// 		<description>
-	/// 		Any other pattern string uses the <see cref="SimpleDateFormatter"/> formatter. 
-	/// 		This formatter passes the pattern string to the <see cref="DateTime"/> 
-	/// 		<see cref="M:DateTime.ToString(string)"/> method.
-	/// 		For details on valid patterns see 
-	/// 		<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemglobalizationdatetimeformatinfoclasstopic.asp">DateTimeFormatInfo Class</a>.
-	/// 		</description>
-	/// 	</item>
-	/// </list>
-	/// </para>
-	/// <para>
-	/// The <see cref="LoggingEvent.TimeStamp"/> is in the local time zone and is rendered in that zone.
-	/// To output the time in Universal time see <see cref="UtcDatePatternConverter"/>.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	internal class DatePatternConverter : PatternLayoutConverter, IOptionHandler
+    /// <summary>
+    /// Date pattern converter, uses a <see cref="IDateFormatter"/> to format the date of a <see cref="LoggingEvent"/>.
+    /// 日期模式转换器，使用IDateFormatter格式化日志事件的日期。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Render the <see cref="LoggingEvent.TimeStamp"/> to the writer as a string.
+    /// </para>
+    /// <para>
+    /// The value of the <see cref="log4net.Util.PatternConverter.Option"/> determines 
+    /// the formatting of the date. The following values are allowed:
+    /// <list type="definition">
+    ///		<listheader>
+    /// 		<term>Option value</term>
+    /// 		<description>Output</description>
+    /// 	</listheader>
+    ///		<item>
+    /// 		<term>ISO8601</term>
+    /// 		<description>
+    /// 		Uses the <see cref="Iso8601DateFormatter"/> formatter. 
+    /// 		Formats using the <c>"yyyy-MM-dd HH:mm:ss,fff"</c> pattern.
+    /// 		</description>
+    /// 	</item>
+    /// 	<item>
+    /// 		<term>DATE</term>
+    /// 		<description>
+    /// 		Uses the <see cref="DateTimeDateFormatter"/> formatter. 
+    /// 		Formats using the <c>"dd MMM yyyy HH:mm:ss,fff"</c> for example, <c>"06 Nov 1994 15:49:37,459"</c>.
+    /// 		</description>
+    /// 	</item>
+    /// 	<item>
+    /// 		<term>ABSOLUTE</term>
+    /// 		<description>
+    /// 		Uses the <see cref="AbsoluteTimeDateFormatter"/> formatter. 
+    /// 		Formats using the <c>"HH:mm:ss,yyyy"</c> for example, <c>"15:49:37,459"</c>.
+    /// 		</description>
+    /// 	</item>
+    /// 	<item>
+    /// 		<term>other</term>
+    /// 		<description>
+    /// 		Any other pattern string uses the <see cref="SimpleDateFormatter"/> formatter. 
+    /// 		This formatter passes the pattern string to the <see cref="DateTime"/> 
+    /// 		<see cref="M:DateTime.ToString(string)"/> method.
+    /// 		For details on valid patterns see 
+    /// 		<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/cpref/html/frlrfsystemglobalizationdatetimeformatinfoclasstopic.asp">DateTimeFormatInfo Class</a>.
+    /// 		</description>
+    /// 	</item>
+    /// </list>
+    /// </para>
+    /// <para>
+    /// The <see cref="LoggingEvent.TimeStamp"/> is in the local time zone and is rendered in that zone.
+    /// To output the time in Universal time see <see cref="UtcDatePatternConverter"/>.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    internal class DatePatternConverter : PatternLayoutConverter, IOptionHandler
 	{
 		/// <summary>
 		/// The <see cref="IDateFormatter"/> used to render the date to a string
@@ -145,23 +145,24 @@ namespace log4net.Layout.Pattern
 			}
 		}
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Convert the pattern into the rendered message
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
-		/// <param name="loggingEvent">the event being logged</param>
-		/// <remarks>
-		/// <para>
-		/// Pass the <see cref="LoggingEvent.TimeStamp"/> to the <see cref="IDateFormatter"/>
-		/// for it to render it to the writer.
-		/// </para>
-		/// <para>
-		/// The <see cref="LoggingEvent.TimeStamp"/> passed is in the local time zone.
-		/// </para>
-		/// </remarks>
-		override protected void Convert(TextWriter writer, LoggingEvent loggingEvent)
+        /// <summary>
+        /// Convert the pattern into the rendered message.
+        /// 将模式转换为呈现的消息。
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
+        /// <param name="loggingEvent">the event being logged</param>
+        /// <remarks>
+        /// <para>
+        /// Pass the <see cref="LoggingEvent.TimeStamp"/> to the <see cref="IDateFormatter"/>
+        /// for it to render it to the writer.
+        /// </para>
+        /// <para>
+        /// The <see cref="LoggingEvent.TimeStamp"/> passed is in the local time zone.
+        /// </para>
+        /// </remarks>
+        override protected void Convert(TextWriter writer, LoggingEvent loggingEvent)
 		{
 			try 
 			{

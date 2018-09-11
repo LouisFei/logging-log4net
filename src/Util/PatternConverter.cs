@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -26,20 +26,21 @@ using log4net.Repository;
 
 namespace log4net.Util
 {
-	/// <summary>
-	/// Abstract class that provides the formatting functionality that 
-	/// derived classes need.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Conversion specifiers in a conversion patterns are parsed to
-	/// individual PatternConverters. Each of which is responsible for
-	/// converting a logging event in a converter specific manner.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public abstract class PatternConverter
+    /// <summary>
+    /// Abstract class that provides the formatting functionality that derived classes need.
+    /// 提供派生类所需的格式化功能的抽象类。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Conversion specifiers in a conversion patterns are parsed to individual PatternConverters. 
+    /// 转换模式中的转换说明符被解析为单个模式转换器。
+    /// Each of which is responsible for converting a logging event in a converter specific manner.
+    /// 每个日志事件负责以特定于转换器的方式转换日志事件。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public abstract class PatternConverter
 	{
 		#region Protected Instance Constructors
 
@@ -55,22 +56,23 @@ namespace log4net.Util
 		{  
 		}
 
-		#endregion Protected Instance Constructors
+        #endregion Protected Instance Constructors
 
-		#region Public Instance Properties
+        #region Public Instance Properties
 
-		/// <summary>
-		/// Get the next pattern converter in the chain
-		/// </summary>
-		/// <value>
-		/// the next pattern converter in the chain
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// Get the next pattern converter in the chain
-		/// </para>
-		/// </remarks>
-		public virtual PatternConverter Next
+        /// <summary>
+        /// Get the next pattern converter in the chain.
+        /// 获取链中的下一个模式转换器。
+        /// </summary>
+        /// <value>
+        /// the next pattern converter in the chain
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// Get the next pattern converter in the chain
+        /// </para>
+        /// </remarks>
+        public virtual PatternConverter Next
 		{
 			get { return m_next; }
 		}
@@ -97,75 +99,79 @@ namespace log4net.Util
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets the option value for this converter
-		/// </summary>
-		/// <summary>
-		/// The option for this converter
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// Gets or sets the option value for this converter
-		/// </para>
-		/// </remarks>
-		public virtual string Option
+        /// <summary>
+        /// Gets or sets the option value for this converter.
+        /// 获取或设置此转换器的选项值。
+        /// </summary>
+        /// <summary>
+        /// The option for this converter
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Gets or sets the option value for this converter
+        /// </para>
+        /// </remarks>
+        public virtual string Option
 		{
 			get { return m_option; }
 			set { m_option = value; }
 		}
 
-		#endregion Public Instance Properties
+        #endregion Public Instance Properties
 
-		#region Protected Abstract Methods
+        #region Protected Abstract Methods
 
-		/// <summary>
-		/// Evaluate this pattern converter and write the output to a writer.
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
-		/// <param name="state">The state object on which the pattern converter should be executed.</param>
-		/// <remarks>
-		/// <para>
-		/// Derived pattern converters must override this method in order to
-		/// convert conversion specifiers in the appropriate way.
-		/// </para>
-		/// </remarks>
-		abstract protected void Convert(TextWriter writer, object state);
+        /// <summary>
+        /// Evaluate this pattern converter and write the output to a writer.
+        /// 评估此模式转换器并将输出写入写入器。
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
+        /// <param name="state">The state object on which the pattern converter should be executed.</param>
+        /// <remarks>
+        /// <para>
+        /// Derived pattern converters must override this method in order to
+        /// convert conversion specifiers in the appropriate way.
+        /// </para>
+        /// </remarks>
+        abstract protected void Convert(TextWriter writer, object state);
 
-		#endregion Protected Abstract Methods
+        #endregion Protected Abstract Methods
 
-		#region Public Instance Methods
+        #region Public Instance Methods
 
-		/// <summary>
-		/// Set the next pattern converter in the chains
-		/// </summary>
-		/// <param name="patternConverter">the pattern converter that should follow this converter in the chain</param>
-		/// <returns>the next converter</returns>
-		/// <remarks>
-		/// <para>
-		/// The PatternConverter can merge with its neighbor during this method (or a sub class).
-		/// Therefore the return value may or may not be the value of the argument passed in.
-		/// </para>
-		/// </remarks>
-		public virtual PatternConverter SetNext(PatternConverter patternConverter)
+        /// <summary>
+        /// Set the next pattern converter in the chains.
+        /// 在链中设置下一个模式转换器。
+        /// </summary>
+        /// <param name="patternConverter">the pattern converter that should follow this converter in the chain</param>
+        /// <returns>the next converter</returns>
+        /// <remarks>
+        /// <para>
+        /// The PatternConverter can merge with its neighbor during this method (or a sub class).
+        /// Therefore the return value may or may not be the value of the argument passed in.
+        /// </para>
+        /// </remarks>
+        public virtual PatternConverter SetNext(PatternConverter patternConverter)
 		{
 			m_next = patternConverter;
 			return m_next;
 		}
 
-		/// <summary>
-		/// Write the pattern converter to the writer with appropriate formatting
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
-		/// <param name="state">The state object on which the pattern converter should be executed.</param>
-		/// <remarks>
-		/// <para>
-		/// This method calls <see cref="Convert"/> to allow the subclass to perform
-		/// appropriate conversion of the pattern converter. If formatting options have
-		/// been specified via the <see cref="FormattingInfo"/> then this method will
-		/// apply those formattings before writing the output.
-		/// </para>
-		/// </remarks>
-		virtual public void Format(TextWriter writer, object state) 
+        /// <summary>
+        /// Write the pattern converter to the writer with appropriate formatting.
+        /// 以适当的格式将模式转换器写入写入器。
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
+        /// <param name="state">The state object on which the pattern converter should be executed.</param>
+        /// <remarks>
+        /// <para>
+        /// This method calls <see cref="Convert"/> to allow the subclass to perform
+        /// appropriate conversion of the pattern converter. If formatting options have
+        /// been specified via the <see cref="FormattingInfo"/> then this method will
+        /// apply those formattings before writing the output.
+        /// </para>
+        /// </remarks>
+        virtual public void Format(TextWriter writer, object state) 
 		{
 			if (m_min < 0 && m_max == int.MaxValue)
 			{
@@ -217,19 +223,20 @@ namespace log4net.Util
 
 		private static readonly string[] SPACES = {	" ", "  ", "    ", "        ",			// 1,2,4,8 spaces
 													"                ",						// 16 spaces
-													"                                " };	// 32 spaces
+													"                                " };   // 32 spaces
 
-		/// <summary>
-		/// Fast space padding method.
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> to which the spaces will be appended.</param>
-		/// <param name="length">The number of spaces to be padded.</param>
-		/// <remarks>
-		/// <para>
-		/// Fast space padding method.
-		/// </para>
-		/// </remarks>
-		protected static void SpacePad(TextWriter writer, int length) 
+        /// <summary>
+        /// Fast space padding method.
+        /// 快速空间填充方法。
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> to which the spaces will be appended.</param>
+        /// <param name="length">The number of spaces to be padded.</param>
+        /// <remarks>
+        /// <para>
+        /// Fast space padding method.
+        /// </para>
+        /// </remarks>
+        protected static void SpacePad(TextWriter writer, int length) 
 		{
 			while(length >= 32) 
 			{
@@ -255,10 +262,11 @@ namespace log4net.Util
 		private int m_max = int.MaxValue;
 		private bool m_leftAlign = false;
 
-		/// <summary>
-		/// The option string to the converter
-		/// </summary>
-		private string m_option = null;
+        /// <summary>
+        /// The option string to the converter.
+        /// 转换程序的选项字符串。
+        /// </summary>
+        private string m_option = null;
 
 		private ReusableStringWriter m_formatWriter = new ReusableStringWriter(System.Globalization.CultureInfo.InvariantCulture);
 

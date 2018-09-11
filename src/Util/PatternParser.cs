@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -26,19 +26,19 @@ using log4net.Layout;
 
 namespace log4net.Util
 {
-	/// <summary>
-	/// Most of the work of the <see cref="PatternLayout"/> class
-	/// is delegated to the PatternParser class.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// The <c>PatternParser</c> processes a pattern string and
-	/// returns a chain of <see cref="PatternConverter"/> objects.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public sealed class PatternParser
+    /// <summary>
+    /// Most of the work of the <see cref="PatternLayout"/> class is delegated to the PatternParser class.
+    /// PatternLayout类的大部分工作都委托给PatternParser类。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The <c>PatternParser</c> processes a pattern string and returns a chain of <see cref="PatternConverter"/> objects.
+    /// PatternParser处理一个模式字符串并返回一个模式转换对象链。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public sealed class PatternParser
 	{
 		#region Public Instance Constructors
 
@@ -57,20 +57,21 @@ namespace log4net.Util
 			m_pattern = pattern;
 		}
 
-		#endregion Public Instance Constructors
+        #endregion Public Instance Constructors
 
-		#region Public Instance Methods
+        #region Public Instance Methods
 
-		/// <summary>
-		/// Parses the pattern into a chain of pattern converters.
-		/// </summary>
-		/// <returns>The head of a chain of pattern converters.</returns>
-		/// <remarks>
-		/// <para>
-		/// Parses the pattern into a chain of pattern converters.
-		/// </para>
-		/// </remarks>
-		public PatternConverter Parse()
+        /// <summary>
+        /// Parses the pattern into a chain of pattern converters.
+        /// 将模式解析为模式转换器链。
+        /// </summary>
+        /// <returns>The head of a chain of pattern converters.</returns>
+        /// <remarks>
+        /// <para>
+        /// Parses the pattern into a chain of pattern converters.
+        /// </para>
+        /// </remarks>
+        public PatternConverter Parse()
 		{
 			string[] converterNamesCache = BuildCache();
 

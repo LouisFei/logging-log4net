@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -28,17 +28,17 @@ using log4net.Repository;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Abstract class that provides the formatting functionality that 
-	/// derived classes need.
-	/// </summary>
-	/// <remarks>
-	/// Conversion specifiers in a conversion patterns are parsed to
-	/// individual PatternConverters. Each of which is responsible for
-	/// converting a logging event in a converter specific manner.
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	public abstract class PatternLayoutConverter : PatternConverter
+    /// <summary>
+    /// Abstract class that provides the formatting functionality that derived classes need.
+    /// 提供派生类所需的格式化功能的抽象类。
+    /// </summary>
+    /// <remarks>
+    /// Conversion specifiers in a conversion patterns are parsed to
+    /// individual PatternConverters. Each of which is responsible for
+    /// converting a logging event in a converter specific manner.
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    public abstract class PatternLayoutConverter : PatternConverter
 	{
 		#region Protected Instance Constructors
 

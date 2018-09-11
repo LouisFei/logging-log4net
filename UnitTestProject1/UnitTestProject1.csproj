@@ -57,6 +57,7 @@
     <Compile Include="Appender\StringAppender.cs" />
     <Compile Include="Hierarchy\Hierarchy.cs" />
     <Compile Include="Hierarchy\Logger.cs" />
+    <Compile Include="Layout\PatternLayoutTest.cs" />
     <Compile Include="Layout\XmlLayoutTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,4 @@
-#region Apache License
+ï»¿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -33,7 +33,7 @@ namespace log4net.Util
 {
     /// <summary>
     /// Utility class for system specific information.
-    /// ÓÃÓÚÏµÍ³ÌØ¶¨ĞÅÏ¢µÄÊµÓÃ³ÌĞòÀà¡£
+    /// ç”¨äºç³»ç»Ÿç‰¹å®šä¿¡æ¯çš„å®ç”¨ç¨‹åºç±»ã€‚
     /// </summary>
     /// <remarks>
     /// <para>
@@ -446,20 +446,21 @@ namespace log4net.Util
 			set { s_nullText = value; }
 		}
 
-		/// <summary>
-		/// Text to output when an unsupported feature is requested.
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// Use this value when an unsupported feature is requested.
-		/// </para>
-		/// <para>
-		/// The default value is <c>NOT AVAILABLE</c>. This value can be overridden by specifying
-		/// a value for the <c>log4net.NotAvailableText</c> appSetting in the application's
-		/// .config file.
-		/// </para>
-		/// </remarks>
-		public static string NotAvailableText
+        /// <summary>
+        /// Text to output when an unsupported feature is requested.
+        /// è¯·æ±‚ä¸æ”¯æŒçš„ç‰¹æ€§æ—¶è¾“å‡ºçš„æ–‡æœ¬ã€‚
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Use this value when an unsupported feature is requested.
+        /// </para>
+        /// <para>
+        /// The default value is <c>NOT AVAILABLE</c>. This value can be overridden by specifying
+        /// a value for the <c>log4net.NotAvailableText</c> appSetting in the application's
+        /// .config file.
+        /// </para>
+        /// </remarks>
+        public static string NotAvailableText
 		{
 			get { return s_notAvailableText; }
 			set { s_notAvailableText = value; }
@@ -988,7 +989,7 @@ namespace log4net.Util
 
         /// <summary>
 		/// Lookup an application setting
-        /// ²éÕÒÓ¦ÓÃ³ÌĞòÉèÖÃ
+        /// æŸ¥æ‰¾åº”ç”¨ç¨‹åºè®¾ç½®
 		/// </summary>
 		/// <param name="key">the application settings key to lookup</param>
 		/// <returns>the value for the key, or <c>null</c></returns>

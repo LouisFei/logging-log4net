@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -25,28 +25,30 @@ using log4net.Core;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Converter for logger name
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Outputs the <see cref="LoggingEvent.LoggerName"/> of the event.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	internal sealed class LoggerPatternConverter : NamedPatternConverter 
+    /// <summary>
+    /// Converter for logger name.
+    /// 用于记录器名称的转换器。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Outputs the <see cref="LoggingEvent.LoggerName"/> of the event.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    internal sealed class LoggerPatternConverter : NamedPatternConverter 
 	{
-		/// <summary>
-		/// Gets the fully qualified name of the logger
-		/// </summary>
-		/// <param name="loggingEvent">the event being logged</param>
-		/// <returns>The fully qualified logger name</returns>
-		/// <remarks>
-		/// <para>
-		/// Returns the <see cref="LoggingEvent.LoggerName"/> of the <paramref name="loggingEvent"/>.
-		/// </para>
-		/// </remarks>
-		override protected string GetFullyQualifiedName(LoggingEvent loggingEvent) 
+        /// <summary>
+        /// Gets the fully qualified name of the logger.
+        /// 获取记录器的完全限定名称。
+        /// </summary>
+        /// <param name="loggingEvent">the event being logged</param>
+        /// <returns>The fully qualified logger name</returns>
+        /// <remarks>
+        /// <para>
+        /// Returns the <see cref="LoggingEvent.LoggerName"/> of the <paramref name="loggingEvent"/>.
+        /// </para>
+        /// </remarks>
+        override protected string GetFullyQualifiedName(LoggingEvent loggingEvent) 
 		{
 			return loggingEvent.LoggerName;
 		}

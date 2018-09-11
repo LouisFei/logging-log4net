@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -22,20 +22,20 @@ using log4net.Util;
 
 namespace log4net.Util
 {
-	/// <summary>
-	/// Contain the information obtained when parsing formatting modifiers 
-	/// in conversion modifiers.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Holds the formatting information extracted from the format string by
-	/// the <see cref="PatternParser"/>. This is used by the <see cref="PatternConverter"/>
-	/// objects when rendering the output.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class FormattingInfo
+    /// <summary>
+    /// Contain the information obtained when parsing formatting modifiers in conversion modifiers.
+    /// 包含转换修饰符中解析格式化修饰符时获得的信息。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Holds the formatting information extracted from the format string by the <see cref="PatternParser"/>. 
+    /// 保存模式解析器从格式字符串中提取的格式信息。
+    /// This is used by the <see cref="PatternConverter"/> objects when rendering the output.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class FormattingInfo
 	{
 		#region Public Instance Constructors
 
@@ -56,8 +56,7 @@ namespace log4net.Util
 		/// </summary>
 		/// <remarks>
 		/// <para>
-		/// Initializes a new instance of the <see cref="FormattingInfo" /> class
-		/// with the specified parameters.
+		/// Initializes a new instance of the <see cref="FormattingInfo" /> class with the specified parameters.
 		/// </para>
 		/// </remarks>
 		public FormattingInfo(int min, int max, bool leftAlign) 
@@ -106,8 +105,7 @@ namespace log4net.Util
 		}
 
 		/// <summary>
-		/// Gets or sets a flag indicating whether left align is enabled
-		/// or not.
+		/// Gets or sets a flag indicating whether left align is enabled or not.
 		/// </summary>
 		/// <value>
 		/// A flag indicating whether left align is enabled or not.

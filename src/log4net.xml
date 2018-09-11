@@ -10816,6 +10816,7 @@
         <member name="T:log4net.Core.IOptionHandler">
             <summary>
             Interface used to delay activate a configured object.
+            用于延迟激活已配置对象的接口。
             </summary>
             <remarks>
             <para>
@@ -10834,6 +10835,7 @@
         <member name="M:log4net.Core.IOptionHandler.ActivateOptions">
             <summary>
             Activate the options that were previously set with calls to properties.
+            激活之前用属性调用设置的选项。
             </summary>
             <remarks>
             <para>
@@ -12028,6 +12030,7 @@
         <member name="T:log4net.Core.LocationInfo">
             <summary>
             The internal representation of caller location information.
+            调用方位置信息的内部表示。
             </summary>
             <remarks>
             <para>
@@ -12088,8 +12091,8 @@
         </member>
         <member name="P:log4net.Core.LocationInfo.ClassName">
             <summary>
-            Gets the fully qualified class name of the caller making the logging 
-            request.
+            Gets the fully qualified class name of the caller making the logging request.
+            获取发出日志请求的调用方的完全限定类名。
             </summary>
             <value>
             The fully qualified class name of the caller making the logging 
@@ -13298,6 +13301,7 @@
         <member name="P:log4net.Core.LoggingEvent.LoggerName">
             <summary>
             Gets the name of the logger that logged the event.
+            获取记录事件的日志程序的名称。
             </summary>
             <value>
             The name of the logger that logged the event.
@@ -13311,6 +13315,7 @@
         <member name="P:log4net.Core.LoggingEvent.LocationInformation">
             <summary>
             Gets the location information for this logging event.
+            获取此日志事件的位置信息。
             </summary>
             <value>
             The location information for this logging event.
@@ -15492,15 +15497,14 @@
         <member name="T:log4net.DateFormatter.IDateFormatter">
             <summary>
             Render a <see cref="T:System.DateTime"/> as a string.
+            将日期时间呈现为字符串。
             </summary>
             <remarks>
             <para>
-            Interface to abstract the rendering of a <see cref="T:System.DateTime"/>
-            instance into a string.
+            Interface to abstract the rendering of a <see cref="T:System.DateTime"/> instance into a string.
             </para>
             <para>
-            The <see cref="M:log4net.DateFormatter.IDateFormatter.FormatDate(System.DateTime,System.IO.TextWriter)"/> method is used to render the
-            date to a text writer.
+            The <see cref="M:log4net.DateFormatter.IDateFormatter.FormatDate(System.DateTime,System.IO.TextWriter)"/> method is used to render the date to a text writer.
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -15509,6 +15513,7 @@
         <member name="M:log4net.DateFormatter.IDateFormatter.FormatDate(System.DateTime,System.IO.TextWriter)">
             <summary>
             Formats the specified date as a string.
+            将指定的日期格式化为字符串。
             </summary>
             <param name="dateToFormat">The date to format.</param>
             <param name="writer">The writer to write to.</param>
@@ -17329,6 +17334,7 @@
         <member name="T:log4net.Layout.DynamicPatternLayout">
             <summary>
             A flexible layout configurable with pattern string that re-evaluates on each call.
+            一种灵活的布局，可配置模式字符串，每次调用时重新计算。
             </summary>
             <remarks>
             <para>This class is built on <see cref="T:log4net.Layout.PatternLayout"></see> and provides all the
@@ -17807,12 +17813,14 @@
         <member name="T:log4net.Layout.PatternLayout">
             <summary>
             A flexible layout configurable with pattern string.
+            一个灵活的布局配置模式字符串。
             </summary>
             <remarks>
             <para>
-            The goal of this class is to <see cref="M:PatternLayout.Format(TextWriter,LoggingEvent)"/> a 
-            <see cref="T:log4net.Core.LoggingEvent"/> as a string. The results
-            depend on the <i>conversion pattern</i>.
+            The goal of this class is to <see cref="M:PatternLayout.Format(TextWriter,LoggingEvent)"/> a <see cref="T:log4net.Core.LoggingEvent"/> as a string. 
+            该类的目标是将LoggingEvent格式化（PatternLayout.Format(TextWriter,LoggingEvent)）为字符串。
+            The results depend on the <i>conversion pattern</i>.
+            结果取决于转换模式。
             </para>
             <para>
             The conversion pattern is closely related to the conversion
@@ -17821,8 +17829,7 @@
             <i>conversion specifiers</i>.
             </para>
             <para>
-            <i>You are free to insert any literal text within the conversion
-            pattern.</i>
+            <i>You are free to insert any literal text within the conversion pattern.</i>
             </para>
             <para>
             Each conversion specifier starts with a percent sign (%) and is
@@ -18385,17 +18392,15 @@
             	</item>
             </list>
             <para>
-            The single letter patterns are deprecated in favor of the 
-            longer more descriptive pattern names.
+            The single letter patterns are deprecated in favor of the longer more descriptive pattern names.
+            单字母模式不赞成使用更长的描述性模式名称。
             </para>
             <para>
-            By default the relevant information is output as is. However,
-            with the aid of format modifiers it is possible to change the
-            minimum field width, the maximum field width and justification.
+            By default the relevant information is output as is. 
+            However, with the aid of format modifiers it is possible to change the minimum field width, the maximum field width and justification.
             </para>
             <para>
-            The optional format modifier is placed between the percent sign
-            and the conversion pattern name.
+            The optional format modifier is placed between the percent sign and the conversion pattern name.
             </para>
             <para>
             The first optional format modifier is the <i>left justification
@@ -18422,8 +18427,7 @@
             where truncation is done from the end.
             </para>
             <para>
-            Below are various format modifier examples for the logger
-            conversion specifier.
+            Below are various format modifier examples for the logger conversion specifier.
             </para>
             <div class="tablediv">
             	<table class="dtTABLE" cellspacing="0">
@@ -18554,22 +18558,25 @@
         <member name="F:log4net.Layout.PatternLayout.DefaultConversionPattern">
             <summary>
             Default pattern string for log output. 
+            日志输出的默认模式字符串。
             </summary>
             <remarks>
             <para>
             Default pattern string for log output. 
-            Currently set to the string <b>"%message%newline"</b> 
-            which just prints the application supplied message. 
+            Currently set to the string <b>"%message%newline"</b> which just prints the application supplied message. 
+            
             </para>
             </remarks>
         </member>
         <member name="F:log4net.Layout.PatternLayout.DetailConversionPattern">
             <summary>
-            A detailed conversion pattern
+            A detailed conversion pattern.
+            详细的转换模式。
             </summary>
             <remarks>
             <para>
             A conversion pattern which includes Time, Thread, Logger, and Nested Context.
+            转换模式，包括时间、线程、日志记录器和嵌套上下文。
             Current value is <b>%timestamp [%thread] %level %logger %ndc - %message%newline</b>.
             </para>
             </remarks>
@@ -18577,6 +18584,7 @@
         <member name="F:log4net.Layout.PatternLayout.s_globalRulesRegistry">
             <summary>
             Internal map of converter identifiers to converter types.
+            转换器标识符到转换器类型的内部映射。
             </summary>
             <remarks>
             <para>
@@ -18591,7 +18599,8 @@
         </member>
         <member name="F:log4net.Layout.PatternLayout.m_head">
             <summary>
-            the head of the pattern converter chain
+            the head of the pattern converter chain.
+            模式转换器链的头部。
             </summary>
         </member>
         <member name="F:log4net.Layout.PatternLayout.m_instanceRulesRegistry">
@@ -18601,11 +18610,13 @@
         </member>
         <member name="M:log4net.Layout.PatternLayout.#cctor">
             <summary>
-            Initialize the global registry
+            Initialize the global registry.
+            初始化全局注册表。
             </summary>
             <remarks>
             <para>
             Defines the builtin global rules.
+            定义内置全局规则。
             </para>
             </remarks>
         </member>
@@ -18660,7 +18671,8 @@
         </member>
         <member name="M:log4net.Layout.PatternLayout.CreatePatternParser(System.String)">
             <summary>
-            Create the pattern parser instance
+            Create the pattern parser instance.
+            创建模式解析器实例。
             </summary>
             <param name="pattern">the pattern to parse</param>
             <returns>The <see cref="T:log4net.Util.PatternParser"/> that will format the event</returns>
@@ -18673,7 +18685,8 @@
         </member>
         <member name="M:log4net.Layout.PatternLayout.ActivateOptions">
             <summary>
-            Initialize layout options
+            Initialize layout options.
+            初始化布局选项。
             </summary>
             <remarks>
             <para>
@@ -18759,6 +18772,7 @@
         <member name="T:log4net.Layout.Pattern.AspNetCachePatternConverter">
             <summary>
             Converter for items in the ASP.Net Cache.
+            ASP.NET缓存中的项目转换器。
             </summary>
             <remarks>
             <para>
@@ -18769,7 +18783,8 @@
         </member>
         <member name="M:log4net.Layout.Pattern.AspNetCachePatternConverter.Convert(System.IO.TextWriter,log4net.Core.LoggingEvent,System.Web.HttpContext)">
             <summary>
-            Write the ASP.Net Cache item to the output
+            Write the ASP.Net Cache item to the output.
+            写的ASP.Net缓存项到输出。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="loggingEvent">The <see cref="T:log4net.Core.LoggingEvent" /> on which the pattern converter should be executed.</param>
@@ -18786,6 +18801,7 @@
         <member name="T:log4net.Layout.Pattern.AspNetContextPatternConverter">
             <summary>
             Converter for items in the <see cref="T:System.Web.HttpContext" />.
+            用于HttpContext中的项的转换器。
             </summary>
             <remarks>
             <para>
@@ -18796,7 +18812,8 @@
         </member>
         <member name="M:log4net.Layout.Pattern.AspNetContextPatternConverter.Convert(System.IO.TextWriter,log4net.Core.LoggingEvent,System.Web.HttpContext)">
             <summary>
-            Write the ASP.Net HttpContext item to the output
+            Write the ASP.Net HttpContext item to the output.
+            写的ASP.Net HttpContext项到输出。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="loggingEvent">The <see cref="T:log4net.Core.LoggingEvent" /> on which the pattern converter should be executed.</param>
@@ -18811,8 +18828,8 @@
         </member>
         <member name="T:log4net.Layout.Pattern.AspNetPatternLayoutConverter">
             <summary>
-            Abstract class that provides access to the current HttpContext (<see cref="P:System.Web.HttpContext.Current" />) that 
-            derived classes need.
+            Abstract class that provides access to the current HttpContext (<see cref="P:System.Web.HttpContext.Current" />) that derived classes need.
+            提供对当前HttpContext派生类的访问的抽象类。
             </summary>
             <remarks>
             This class handles the case when HttpContext.Current is null by writing
@@ -18822,8 +18839,8 @@
         </member>
         <member name="M:log4net.Layout.Pattern.AspNetPatternLayoutConverter.Convert(System.IO.TextWriter,log4net.Core.LoggingEvent,System.Web.HttpContext)">
             <summary>
-            Derived pattern converters must override this method in order to
-            convert conversion specifiers in the correct way.
+            Derived pattern converters must override this method in order to convert conversion specifiers in the correct way.
+            派生模式转换器必须重写此方法，以便以正确的方式转换转换说明符。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="loggingEvent">The <see cref="T:log4net.Core.LoggingEvent" /> on which the pattern converter should be executed.</param>
@@ -18831,18 +18848,19 @@
         </member>
         <member name="T:log4net.Layout.Pattern.AspNetRequestPatternConverter">
             <summary>
-            Converter for items in the ASP.Net Cache.
+            Converter for items in the ASP.Net Request.
+            ASP.NET请求中的项目转换器。
             </summary>
             <remarks>
             <para>
-            Outputs an item from the <see cref="P:System.Web.HttpRuntime.Cache" />.
+            Outputs an item from the <see cref="!:HttpRuntime.Request" />.
             </para>
             </remarks>
             <author>Ron Grabowski</author>
         </member>
         <member name="M:log4net.Layout.Pattern.AspNetRequestPatternConverter.Convert(System.IO.TextWriter,log4net.Core.LoggingEvent,System.Web.HttpContext)">
             <summary>
-            Write the ASP.Net Cache item to the output
+            Write the ASP.Net Request item to the output
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="loggingEvent">The <see cref="T:log4net.Core.LoggingEvent" /> on which the pattern converter should be executed.</param>
@@ -18857,18 +18875,18 @@
         </member>
         <member name="T:log4net.Layout.Pattern.AspNetSessionPatternConverter">
             <summary>
-            Converter for items in the ASP.Net Cache.
+            Converter for items in the ASP.Net Session.
             </summary>
             <remarks>
             <para>
-            Outputs an item from the <see cref="P:System.Web.HttpRuntime.Cache" />.
+            Outputs an item from the <see cref="!:HttpRuntime.Session" />.
             </para>
             </remarks>
             <author>Ron Grabowski</author>
         </member>
         <member name="M:log4net.Layout.Pattern.AspNetSessionPatternConverter.Convert(System.IO.TextWriter,log4net.Core.LoggingEvent,System.Web.HttpContext)">
             <summary>
-            Write the ASP.Net Cache item to the output
+            Write the ASP.Net Session item to the output
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="loggingEvent">The <see cref="T:log4net.Core.LoggingEvent" /> on which the pattern converter should be executed.</param>
@@ -18884,8 +18902,8 @@
         </member>
         <member name="T:log4net.Layout.Pattern.DatePatternConverter">
             <summary>
-            Date pattern converter, uses a <see cref="T:log4net.DateFormatter.IDateFormatter"/> to format 
-            the date of a <see cref="T:log4net.Core.LoggingEvent"/>.
+            Date pattern converter, uses a <see cref="T:log4net.DateFormatter.IDateFormatter"/> to format the date of a <see cref="T:log4net.Core.LoggingEvent"/>.
+            日期模式转换器，使用IDateFormatter格式化日志事件的日期。
             </summary>
             <remarks>
             <para>
@@ -18969,7 +18987,8 @@
         </member>
         <member name="M:log4net.Layout.Pattern.DatePatternConverter.Convert(System.IO.TextWriter,log4net.Core.LoggingEvent)">
             <summary>
-            Convert the pattern into the rendered message
+            Convert the pattern into the rendered message.
+            将模式转换为呈现的消息。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="loggingEvent">the event being logged</param>
@@ -19184,7 +19203,8 @@
         </member>
         <member name="T:log4net.Layout.Pattern.LoggerPatternConverter">
             <summary>
-            Converter for logger name
+            Converter for logger name.
+            用于记录器名称的转换器。
             </summary>
             <remarks>
             <para>
@@ -19195,7 +19215,8 @@
         </member>
         <member name="M:log4net.Layout.Pattern.LoggerPatternConverter.GetFullyQualifiedName(log4net.Core.LoggingEvent)">
             <summary>
-            Gets the fully qualified name of the logger
+            Gets the fully qualified name of the logger.
+            获取记录器的完全限定名称。
             </summary>
             <param name="loggingEvent">the event being logged</param>
             <returns>The fully qualified logger name</returns>
@@ -19257,7 +19278,8 @@
         </member>
         <member name="T:log4net.Layout.Pattern.NamedPatternConverter">
             <summary>
-            Converter to output and truncate <c>'.'</c> separated strings
+            Converter to output and truncate <c>'.'</c> separated strings.
+            转换器，用于输出和截断'.'分隔的字符串。
             </summary>
             <remarks>
             <para>
@@ -19271,6 +19293,11 @@
             </para>
             </remarks>
             <author>Nicko Cadell</author>
+        </member>
+        <member name="F:log4net.Layout.Pattern.NamedPatternConverter.m_precision">
+            <summary>
+            精度
+            </summary>
         </member>
         <member name="M:log4net.Layout.Pattern.NamedPatternConverter.ActivateOptions">
             <summary>
@@ -19308,7 +19335,8 @@
         </member>
         <member name="M:log4net.Layout.Pattern.NamedPatternConverter.Convert(System.IO.TextWriter,log4net.Core.LoggingEvent)">
             <summary>
-            Convert the pattern to the rendered message
+            Convert the pattern to the rendered message.
+            将模式转换为呈现的消息。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="loggingEvent">the event being logged</param>
@@ -19322,9 +19350,13 @@
             The fully qualified type of the NamedPatternConverter class.
             </summary>
             <remarks>
-            Used by the internal logger to record the Type of the
-            log message.
+            Used by the internal logger to record the Type of the log message.
             </remarks>
+        </member>
+        <member name="F:log4net.Layout.Pattern.NamedPatternConverter.DOT">
+            <summary>
+            点
+            </summary>
         </member>
         <member name="T:log4net.Layout.Pattern.NdcPatternConverter">
             <summary>
@@ -19358,8 +19390,8 @@
         </member>
         <member name="T:log4net.Layout.Pattern.PatternLayoutConverter">
             <summary>
-            Abstract class that provides the formatting functionality that 
-            derived classes need.
+            Abstract class that provides the formatting functionality that derived classes need.
+            提供派生类所需的格式化功能的抽象类。
             </summary>
             <remarks>
             Conversion specifiers in a conversion patterns are parsed to
@@ -24699,28 +24731,34 @@
         <member name="T:log4net.ThreadContext">
             <summary>
             The log4net Thread Context.
+            log4net线程上下文。
             </summary>
             <remarks>
             <para>
-            The <c>ThreadContext</c> provides a location for thread specific debugging 
-            information to be stored.
-            The <c>ThreadContext</c> properties override any <see cref="T:log4net.GlobalContext"/>
-            properties with the same name.
+            The <c>ThreadContext</c> provides a location for thread specific debugging information to be stored.
+            ThreadContext为存储特定于线程的调试信息提供了一个位置。
+            The <c>ThreadContext</c> properties override any <see cref="T:log4net.GlobalContext"/> properties with the same name.
+            ThreadContext属性覆盖所有同名的GlobalContext属性。
             </para>
             <para>
             The thread context has a properties map and a stack.
-            The properties and stack can 
-            be included in the output of log messages. The <see cref="T:log4net.Layout.PatternLayout"/>
-            supports selecting and outputting these properties.
+            线程上下文有一个属性映射和一个堆栈。
+            The properties and stack can be included in the output of log messages. 
+            属性和堆栈可以包含在日志消息的输出中。
+            The <see cref="T:log4net.Layout.PatternLayout"/> supports selecting and outputting these properties.
+            PatternLayout支持选择和输出这些属性。
             </para>
             <para>
             The Thread Context provides a diagnostic context for the current thread. 
-            This is an instrument for distinguishing interleaved log
-            output from different sources. Log output is typically interleaved
-            when a server handles multiple clients near-simultaneously.
+            线程上下文为当前线程提供诊断上下文。
+            This is an instrument for distinguishing interleaved log output from different sources. 
+            这是一种区分不同来源的交错日志输出的工具。
+            Log output is typically interleaved when a server handles multiple clients near-simultaneously.
+            当服务器几乎同时处理多个客户机时，日志输出通常是交叉的。
             </para>
             <para>
             The Thread Context is managed on a per thread basis.
+            线程上下文是在每个线程的基础上管理的。
             </para>
             </remarks>
             <example>Example of using the thread context properties to store a username.
@@ -25629,14 +25667,14 @@
         </member>
         <member name="T:log4net.Util.FormattingInfo">
             <summary>
-            Contain the information obtained when parsing formatting modifiers 
-            in conversion modifiers.
+            Contain the information obtained when parsing formatting modifiers in conversion modifiers.
+            包含转换修饰符中解析格式化修饰符时获得的信息。
             </summary>
             <remarks>
             <para>
-            Holds the formatting information extracted from the format string by
-            the <see cref="T:log4net.Util.PatternParser"/>. This is used by the <see cref="T:log4net.Util.PatternConverter"/>
-            objects when rendering the output.
+            Holds the formatting information extracted from the format string by the <see cref="T:log4net.Util.PatternParser"/>. 
+            保存模式解析器从格式字符串中提取的格式信息。
+            This is used by the <see cref="T:log4net.Util.PatternConverter"/> objects when rendering the output.
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -25658,8 +25696,7 @@
             </summary>
             <remarks>
             <para>
-            Initializes a new instance of the <see cref="T:log4net.Util.FormattingInfo" /> class
-            with the specified parameters.
+            Initializes a new instance of the <see cref="T:log4net.Util.FormattingInfo" /> class with the specified parameters.
             </para>
             </remarks>
         </member>
@@ -25691,8 +25728,7 @@
         </member>
         <member name="P:log4net.Util.FormattingInfo.LeftAlign">
             <summary>
-            Gets or sets a flag indicating whether left align is enabled
-            or not.
+            Gets or sets a flag indicating whether left align is enabled or not.
             </summary>
             <value>
             A flag indicating whether left align is enabled or not.
@@ -28245,14 +28281,15 @@
         </member>
         <member name="T:log4net.Util.PatternConverter">
             <summary>
-            Abstract class that provides the formatting functionality that 
-            derived classes need.
+            Abstract class that provides the formatting functionality that derived classes need.
+            提供派生类所需的格式化功能的抽象类。
             </summary>
             <remarks>
             <para>
-            Conversion specifiers in a conversion patterns are parsed to
-            individual PatternConverters. Each of which is responsible for
-            converting a logging event in a converter specific manner.
+            Conversion specifiers in a conversion patterns are parsed to individual PatternConverters. 
+            转换模式中的转换说明符被解析为单个模式转换器。
+            Each of which is responsible for converting a logging event in a converter specific manner.
+            每个日志事件负责以特定于转换器的方式转换日志事件。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -28270,7 +28307,8 @@
         </member>
         <member name="P:log4net.Util.PatternConverter.Next">
             <summary>
-            Get the next pattern converter in the chain
+            Get the next pattern converter in the chain.
+            获取链中的下一个模式转换器。
             </summary>
             <value>
             the next pattern converter in the chain
@@ -28296,7 +28334,8 @@
         </member>
         <member name="P:log4net.Util.PatternConverter.Option">
             <summary>
-            Gets or sets the option value for this converter
+            Gets or sets the option value for this converter.
+            获取或设置此转换器的选项值。
             </summary>
             <summary>
             The option for this converter
@@ -28310,6 +28349,7 @@
         <member name="M:log4net.Util.PatternConverter.Convert(System.IO.TextWriter,System.Object)">
             <summary>
             Evaluate this pattern converter and write the output to a writer.
+            评估此模式转换器并将输出写入写入器。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="state">The state object on which the pattern converter should be executed.</param>
@@ -28322,7 +28362,8 @@
         </member>
         <member name="M:log4net.Util.PatternConverter.SetNext(log4net.Util.PatternConverter)">
             <summary>
-            Set the next pattern converter in the chains
+            Set the next pattern converter in the chains.
+            在链中设置下一个模式转换器。
             </summary>
             <param name="patternConverter">the pattern converter that should follow this converter in the chain</param>
             <returns>the next converter</returns>
@@ -28335,7 +28376,8 @@
         </member>
         <member name="M:log4net.Util.PatternConverter.Format(System.IO.TextWriter,System.Object)">
             <summary>
-            Write the pattern converter to the writer with appropriate formatting
+            Write the pattern converter to the writer with appropriate formatting.
+            以适当的格式将模式转换器写入写入器。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="state">The state object on which the pattern converter should be executed.</param>
@@ -28351,6 +28393,7 @@
         <member name="M:log4net.Util.PatternConverter.SpacePad(System.IO.TextWriter,System.Int32)">
             <summary>
             Fast space padding method.
+            快速空间填充方法。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> to which the spaces will be appended.</param>
             <param name="length">The number of spaces to be padded.</param>
@@ -28362,7 +28405,8 @@
         </member>
         <member name="F:log4net.Util.PatternConverter.m_option">
             <summary>
-            The option string to the converter
+            The option string to the converter.
+            转换程序的选项字符串。
             </summary>
         </member>
         <member name="F:log4net.Util.PatternConverter.c_renderBufferSize">
@@ -28439,13 +28483,13 @@
         </member>
         <member name="T:log4net.Util.PatternParser">
             <summary>
-            Most of the work of the <see cref="T:log4net.Layout.PatternLayout"/> class
-            is delegated to the PatternParser class.
+            Most of the work of the <see cref="T:log4net.Layout.PatternLayout"/> class is delegated to the PatternParser class.
+            PatternLayout类的大部分工作都委托给PatternParser类。
             </summary>
             <remarks>
             <para>
-            The <c>PatternParser</c> processes a pattern string and
-            returns a chain of <see cref="T:log4net.Util.PatternConverter"/> objects.
+            The <c>PatternParser</c> processes a pattern string and returns a chain of <see cref="T:log4net.Util.PatternConverter"/> objects.
+            PatternParser处理一个模式字符串并返回一个模式转换对象链。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -28466,6 +28510,7 @@
         <member name="M:log4net.Util.PatternParser.Parse">
             <summary>
             Parses the pattern into a chain of pattern converters.
+            将模式解析为模式转换器链。
             </summary>
             <returns>The head of a chain of pattern converters.</returns>
             <remarks>
@@ -28579,6 +28624,7 @@
         <member name="T:log4net.Util.PatternString">
             <summary>
             This class implements a patterned string.
+            这个类实现了一个有模式的字符串。
             </summary>
             <remarks>
             <para>
@@ -29232,7 +29278,8 @@
         </member>
         <member name="T:log4net.Util.PatternStringConverters.LiteralPatternConverter">
             <summary>
-            Pattern converter for literal string instances in the pattern
+            Pattern converter for literal string instances in the pattern.
+            [纯文字]模式中文字字符串实例的模式转换器。
             </summary>
             <remarks>
             <para>
@@ -29245,7 +29292,8 @@
         </member>
         <member name="M:log4net.Util.PatternStringConverters.LiteralPatternConverter.SetNext(log4net.Util.PatternConverter)">
             <summary>
-            Set the next converter in the chain
+            Set the next converter in the chain.
+            设置链中的下一个转换器。
             </summary>
             <param name="pc">The next pattern converter in the chain</param>
             <returns>The next pattern converter</returns>
@@ -29263,14 +29311,15 @@
         </member>
         <member name="M:log4net.Util.PatternStringConverters.LiteralPatternConverter.Format(System.IO.TextWriter,System.Object)">
             <summary>
-            Write the literal to the output
+            Write the literal to the output.
+            将文字写入输出。
             </summary>
             <param name="writer">the writer to write to</param>
             <param name="state">null, not set</param>
             <remarks>
             <para>
-            Override the formatting behavior to ignore the FormattingInfo
-            because we have a literal instead.
+            Override the formatting behavior to ignore the FormattingInfo because we have a literal instead.
+            重写格式化行为以忽略FormattingInfo，因为我们使用的是文字。
             </para>
             <para>
             Writes the value of <see cref="P:log4net.Util.PatternConverter.Option"/>
@@ -29292,11 +29341,13 @@
         </member>
         <member name="T:log4net.Util.PatternStringConverters.NewLinePatternConverter">
             <summary>
-            Writes a newline to the output
+            Writes a newline to the output.
+            向输出写入换行符。
             </summary>
             <remarks>
             <para>
             Writes the system dependent line terminator to the output.
+            将与系统相关的行结束符写入输出。
             This behavior can be overridden by setting the <see cref="P:log4net.Util.PatternConverter.Option"/>:
             </para>
             <list type="definition">
@@ -29329,8 +29380,7 @@
             object is in an undefined state and must not be used. 
             </para>
             <para>
-            If any of the configuration properties are modified then 
-            <see cref="M:log4net.Util.PatternStringConverters.NewLinePatternConverter.ActivateOptions"/> must be called again.
+            If any of the configuration properties are modified then <see cref="M:log4net.Util.PatternStringConverters.NewLinePatternConverter.ActivateOptions"/> must be called again.
             </para>
             </remarks>
         </member>
@@ -30500,6 +30550,7 @@
         <member name="P:log4net.Util.SystemInfo.NotAvailableText">
             <summary>
             Text to output when an unsupported feature is requested.
+            请求不支持的特性时输出的文本。
             </summary>
             <remarks>
             <para>

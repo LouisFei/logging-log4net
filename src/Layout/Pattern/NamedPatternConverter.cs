@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,23 +27,27 @@ using log4net.Util;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Converter to output and truncate <c>'.'</c> separated strings
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// This abstract class supports truncating a <c>'.'</c> separated string
-	/// to show a specified number of elements from the right hand side.
-	/// This is used to truncate class names that are fully qualified.
-	/// </para>
-	/// <para>
-	/// Subclasses should override the <see cref="GetFullyQualifiedName"/> method to
-	/// return the fully qualified string.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	public abstract class NamedPatternConverter : PatternLayoutConverter, IOptionHandler
+    /// <summary>
+    /// Converter to output and truncate <c>'.'</c> separated strings.
+    /// 转换器，用于输出和截断'.'分隔的字符串。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This abstract class supports truncating a <c>'.'</c> separated string
+    /// to show a specified number of elements from the right hand side.
+    /// This is used to truncate class names that are fully qualified.
+    /// </para>
+    /// <para>
+    /// Subclasses should override the <see cref="GetFullyQualifiedName"/> method to
+    /// return the fully qualified string.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    public abstract class NamedPatternConverter : PatternLayoutConverter, IOptionHandler
 	{
+        /// <summary>
+        /// 精度
+        /// </summary>
 		private int m_precision = 0;
 
 		#region Implementation of IOptionHandler
@@ -110,17 +114,18 @@ namespace log4net.Layout.Pattern
 		/// </para>
 		/// </remarks>
 		abstract protected string GetFullyQualifiedName(LoggingEvent loggingEvent);
-	
-		/// <summary>
-		/// Convert the pattern to the rendered message
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
-		/// <param name="loggingEvent">the event being logged</param>
-		/// <remarks>
-		/// Render the <see cref="GetFullyQualifiedName"/> to the precision
-		/// specified by the <see cref="PatternConverter.Option"/> property.
-		/// </remarks>
-		sealed override protected void Convert(TextWriter writer, LoggingEvent loggingEvent)
+
+        /// <summary>
+        /// Convert the pattern to the rendered message.
+        /// 将模式转换为呈现的消息。
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
+        /// <param name="loggingEvent">the event being logged</param>
+        /// <remarks>
+        /// Render the <see cref="GetFullyQualifiedName"/> to the precision
+        /// specified by the <see cref="PatternConverter.Option"/> property.
+        /// </remarks>
+        sealed override protected void Convert(TextWriter writer, LoggingEvent loggingEvent)
 		{
 			string name = GetFullyQualifiedName(loggingEvent);
 			if (m_precision <= 0 || name == null || name.Length < 2)
@@ -160,11 +165,13 @@ namespace log4net.Layout.Pattern
 	    /// The fully qualified type of the NamedPatternConverter class.
 	    /// </summary>
 	    /// <remarks>
-	    /// Used by the internal logger to record the Type of the
-	    /// log message.
+	    /// Used by the internal logger to record the Type of the log message.
 	    /// </remarks>
 	    private readonly static Type declaringType = typeof(NamedPatternConverter);
 
+        /// <summary>
+        /// 点
+        /// </summary>
         private const string DOT = ".";
 	    #endregion Private Static Fields
 	}

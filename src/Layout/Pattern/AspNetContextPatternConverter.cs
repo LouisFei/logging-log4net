@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,31 +27,33 @@ using log4net.Core;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Converter for items in the <see cref="HttpContext" />.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Outputs an item from the <see cref="HttpContext" />.
-	/// </para>
-	/// </remarks>
-	/// <author>Ron Grabowski</author>
-	internal sealed class AspNetContextPatternConverter : AspNetPatternLayoutConverter
+    /// <summary>
+    /// Converter for items in the <see cref="HttpContext" />.
+    /// 用于HttpContext中的项的转换器。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Outputs an item from the <see cref="HttpContext" />.
+    /// </para>
+    /// </remarks>
+    /// <author>Ron Grabowski</author>
+    internal sealed class AspNetContextPatternConverter : AspNetPatternLayoutConverter
 	{
-		/// <summary>
-		/// Write the ASP.Net HttpContext item to the output
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
-		/// <param name="loggingEvent">The <see cref="LoggingEvent" /> on which the pattern converter should be executed.</param>
-		/// <param name="httpContext">The <see cref="HttpContext" /> under which the ASP.Net request is running.</param>
-		/// <remarks>
-		/// <para>
-		/// Writes out the value of a named property. The property name
-		/// should be set in the <see cref="log4net.Util.PatternConverter.Option"/>
-		/// property.
-		/// </para>
-		/// </remarks>
-		protected override void Convert(TextWriter writer, LoggingEvent loggingEvent, HttpContext httpContext)
+        /// <summary>
+        /// Write the ASP.Net HttpContext item to the output.
+        /// 写的ASP.Net HttpContext项到输出。
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
+        /// <param name="loggingEvent">The <see cref="LoggingEvent" /> on which the pattern converter should be executed.</param>
+        /// <param name="httpContext">The <see cref="HttpContext" /> under which the ASP.Net request is running.</param>
+        /// <remarks>
+        /// <para>
+        /// Writes out the value of a named property. The property name
+        /// should be set in the <see cref="log4net.Util.PatternConverter.Option"/>
+        /// property.
+        /// </para>
+        /// </remarks>
+        protected override void Convert(TextWriter writer, LoggingEvent loggingEvent, HttpContext httpContext)
 		{
 			if (Option != null)
 			{

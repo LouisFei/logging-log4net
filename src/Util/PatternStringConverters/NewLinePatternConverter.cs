@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -21,31 +21,33 @@ using log4net.Core;
 
 namespace log4net.Util.PatternStringConverters
 {
-	/// <summary>
-	/// Writes a newline to the output
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Writes the system dependent line terminator to the output.
-	/// This behavior can be overridden by setting the <see cref="PatternConverter.Option"/>:
-	/// </para>
-	/// <list type="definition">
-	///   <listheader>
-	///     <term>Option Value</term>
-	///     <description>Output</description>
-	///   </listheader>
-	///   <item>
-	///     <term>DOS</term>
-	///     <description>DOS or Windows line terminator <c>"\r\n"</c></description>
-	///   </item>
-	///   <item>
-	///     <term>UNIX</term>
-	///     <description>UNIX line terminator <c>"\n"</c></description>
-	///   </item>
-	/// </list>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	internal sealed class NewLinePatternConverter : LiteralPatternConverter, IOptionHandler
+    /// <summary>
+    /// Writes a newline to the output.
+    /// 向输出写入换行符。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Writes the system dependent line terminator to the output.
+    /// 将与系统相关的行结束符写入输出。
+    /// This behavior can be overridden by setting the <see cref="PatternConverter.Option"/>:
+    /// </para>
+    /// <list type="definition">
+    ///   <listheader>
+    ///     <term>Option Value</term>
+    ///     <description>Output</description>
+    ///   </listheader>
+    ///   <item>
+    ///     <term>DOS</term>
+    ///     <description>DOS or Windows line terminator <c>"\r\n"</c></description>
+    ///   </item>
+    ///   <item>
+    ///     <term>UNIX</term>
+    ///     <description>UNIX line terminator <c>"\n"</c></description>
+    ///   </item>
+    /// </list>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    internal sealed class NewLinePatternConverter : LiteralPatternConverter, IOptionHandler
 	{
 		#region Implementation of IOptionHandler
 
@@ -61,8 +63,7 @@ namespace log4net.Util.PatternStringConverters
 		/// object is in an undefined state and must not be used. 
 		/// </para>
 		/// <para>
-		/// If any of the configuration properties are modified then 
-		/// <see cref="ActivateOptions"/> must be called again.
+		/// If any of the configuration properties are modified then <see cref="ActivateOptions"/> must be called again.
 		/// </para>
 		/// </remarks>
 		public void ActivateOptions()

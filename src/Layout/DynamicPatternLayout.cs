@@ -28,29 +28,30 @@ using log4net.Util;
 
 namespace log4net.Layout
 {
-	/// <summary>
-	/// A flexible layout configurable with pattern string that re-evaluates on each call.
-	/// </summary>
-	/// <remarks>
-	/// <para>This class is built on <see cref="PatternLayout"></see> and provides all the
-	/// features and capabilities of PatternLayout.  PatternLayout is a 'static' class
-	/// in that its layout is done once at configuration time.  This class will recreate
-	/// the layout on each reference.</para>
-	/// <para>One important difference between PatternLayout and DynamicPatternLayout is the
-	/// treatment of the Header and Footer parameters in the configuration.  The Header and Footer
-	/// parameters for DynamicPatternLayout must be syntactically in the form of a PatternString,
-	/// but should not be marked as type log4net.Util.PatternString.  Doing so causes the
-	/// pattern to be statically converted at configuration time and causes DynamicPatternLayout
-	/// to perform the same as PatternLayout.</para>
-	/// <para>Please see <see cref="PatternLayout"/> for complete documentation.</para>
-	/// <example>
-	///	&lt;layout type="log4net.Layout.DynamicPatternLayout"&gt;
-	///   &lt;param name="Header" value="%newline**** Trace Opened     Local: %date{yyyy-MM-dd HH:mm:ss.fff}     UTC: %utcdate{yyyy-MM-dd HH:mm:ss.fff} ****%newline" /&gt;
-	///   &lt;param name="Footer" value="**** Trace Closed %date{yyyy-MM-dd HH:mm:ss.fff} ****%newline" /&gt;
-	/// &lt;/layout&gt;
-	/// </example>
-	/// </remarks>
-	public class DynamicPatternLayout: PatternLayout
+    /// <summary>
+    /// A flexible layout configurable with pattern string that re-evaluates on each call.
+    /// 一种灵活的布局，可配置模式字符串，每次调用时重新计算。
+    /// </summary>
+    /// <remarks>
+    /// <para>This class is built on <see cref="PatternLayout"></see> and provides all the
+    /// features and capabilities of PatternLayout.  PatternLayout is a 'static' class
+    /// in that its layout is done once at configuration time.  This class will recreate
+    /// the layout on each reference.</para>
+    /// <para>One important difference between PatternLayout and DynamicPatternLayout is the
+    /// treatment of the Header and Footer parameters in the configuration.  The Header and Footer
+    /// parameters for DynamicPatternLayout must be syntactically in the form of a PatternString,
+    /// but should not be marked as type log4net.Util.PatternString.  Doing so causes the
+    /// pattern to be statically converted at configuration time and causes DynamicPatternLayout
+    /// to perform the same as PatternLayout.</para>
+    /// <para>Please see <see cref="PatternLayout"/> for complete documentation.</para>
+    /// <example>
+    ///	&lt;layout type="log4net.Layout.DynamicPatternLayout"&gt;
+    ///   &lt;param name="Header" value="%newline**** Trace Opened     Local: %date{yyyy-MM-dd HH:mm:ss.fff}     UTC: %utcdate{yyyy-MM-dd HH:mm:ss.fff} ****%newline" /&gt;
+    ///   &lt;param name="Footer" value="**** Trace Closed %date{yyyy-MM-dd HH:mm:ss.fff} ****%newline" /&gt;
+    /// &lt;/layout&gt;
+    /// </example>
+    /// </remarks>
+    public class DynamicPatternLayout: PatternLayout
 	{
 		#region Member Variables
 		/// <summary>

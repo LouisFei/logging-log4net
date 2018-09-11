@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -25,39 +25,40 @@ using log4net.Util;
 
 namespace log4net.Core
 {
-	/// <summary>
-	/// The internal representation of caller location information.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// This class uses the <c>System.Diagnostics.StackTrace</c> class to generate
-	/// a call stack. The caller's information is then extracted from this stack.
-	/// </para>
-	/// <para>
-	/// The <c>System.Diagnostics.StackTrace</c> class is not supported on the 
-	/// .NET Compact Framework 1.0 therefore caller location information is not
-	/// available on that framework.
-	/// </para>
-	/// <para>
-	/// The <c>System.Diagnostics.StackTrace</c> class has this to say about Release builds:
-	/// </para>
-	/// <para>
-	/// "StackTrace information will be most informative with Debug build configurations. 
-	/// By default, Debug builds include debug symbols, while Release builds do not. The 
-	/// debug symbols contain most of the file, method name, line number, and column 
-	/// information used in constructing StackFrame and StackTrace objects. StackTrace 
-	/// might not report as many method calls as expected, due to code transformations 
-	/// that occur during optimization."
-	/// </para>
-	/// <para>
-	/// This means that in a Release build the caller information may be incomplete or may 
-	/// not exist at all! Therefore caller location information cannot be relied upon in a Release build.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
+    /// <summary>
+    /// The internal representation of caller location information.
+    /// 调用方位置信息的内部表示。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This class uses the <c>System.Diagnostics.StackTrace</c> class to generate
+    /// a call stack. The caller's information is then extracted from this stack.
+    /// </para>
+    /// <para>
+    /// The <c>System.Diagnostics.StackTrace</c> class is not supported on the 
+    /// .NET Compact Framework 1.0 therefore caller location information is not
+    /// available on that framework.
+    /// </para>
+    /// <para>
+    /// The <c>System.Diagnostics.StackTrace</c> class has this to say about Release builds:
+    /// </para>
+    /// <para>
+    /// "StackTrace information will be most informative with Debug build configurations. 
+    /// By default, Debug builds include debug symbols, while Release builds do not. The 
+    /// debug symbols contain most of the file, method name, line number, and column 
+    /// information used in constructing StackFrame and StackTrace objects. StackTrace 
+    /// might not report as many method calls as expected, due to code transformations 
+    /// that occur during optimization."
+    /// </para>
+    /// <para>
+    /// This means that in a Release build the caller information may be incomplete or may 
+    /// not exist at all! Therefore caller location information cannot be relied upon in a Release build.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
 #if !NETCF
-	[Serializable]
+    [Serializable]
 #endif
 	public class LocationInfo
 	{
@@ -182,25 +183,25 @@ namespace log4net.Core
 				':' + m_lineNumber + ')';
 		}
 
-		#endregion Public Instance Constructors
+        #endregion Public Instance Constructors
 
-		#region Public Instance Properties
+        #region Public Instance Properties
 
-		/// <summary>
-		/// Gets the fully qualified class name of the caller making the logging 
-		/// request.
-		/// </summary>
-		/// <value>
-		/// The fully qualified class name of the caller making the logging 
-		/// request.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// Gets the fully qualified class name of the caller making the logging 
-		/// request.
-		/// </para>
-		/// </remarks>
-		public string ClassName
+        /// <summary>
+        /// Gets the fully qualified class name of the caller making the logging request.
+        /// 获取发出日志请求的调用方的完全限定类名。
+        /// </summary>
+        /// <value>
+        /// The fully qualified class name of the caller making the logging 
+        /// request.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// Gets the fully qualified class name of the caller making the logging 
+        /// request.
+        /// </para>
+        /// </remarks>
+        public string ClassName
 		{
 			get { return m_className; }
 		}

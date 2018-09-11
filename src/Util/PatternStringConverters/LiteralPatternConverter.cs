@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -25,66 +25,71 @@ using log4net.Util;
 
 namespace log4net.Util.PatternStringConverters
 {
-	/// <summary>
-	/// Pattern converter for literal string instances in the pattern
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Writes the literal string value specified in the 
-	/// <see cref="log4net.Util.PatternConverter.Option"/> property to 
-	/// the output.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	internal class LiteralPatternConverter : PatternConverter 
+    /// <summary>
+    /// Pattern converter for literal string instances in the pattern.
+    /// [纯文字]模式中文字字符串实例的模式转换器。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Writes the literal string value specified in the 
+    /// <see cref="log4net.Util.PatternConverter.Option"/> property to 
+    /// the output.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    internal class LiteralPatternConverter : PatternConverter 
 	{
-		/// <summary>
-		/// Set the next converter in the chain
-		/// </summary>
-		/// <param name="pc">The next pattern converter in the chain</param>
-		/// <returns>The next pattern converter</returns>
-		/// <remarks>
-		/// <para>
-		/// Special case the building of the pattern converter chain
-		/// for <see cref="LiteralPatternConverter"/> instances. Two adjacent
-		/// literals in the pattern can be represented by a single combined
-		/// pattern converter. This implementation detects when a 
-		/// <see cref="LiteralPatternConverter"/> is added to the chain
-		/// after this converter and combines its value with this converter's
-		/// literal value.
-		/// </para>
-		/// </remarks>
-		public override PatternConverter SetNext(PatternConverter pc)
+        /// <summary>
+        /// Set the next converter in the chain.
+        /// 设置链中的下一个转换器。
+        /// </summary>
+        /// <param name="pc">The next pattern converter in the chain</param>
+        /// <returns>The next pattern converter</returns>
+        /// <remarks>
+        /// <para>
+        /// Special case the building of the pattern converter chain
+        /// for <see cref="LiteralPatternConverter"/> instances. Two adjacent
+        /// literals in the pattern can be represented by a single combined
+        /// pattern converter. This implementation detects when a 
+        /// <see cref="LiteralPatternConverter"/> is added to the chain
+        /// after this converter and combines its value with this converter's
+        /// literal value.
+        /// </para>
+        /// </remarks>
+        public override PatternConverter SetNext(PatternConverter pc)
 		{
 			LiteralPatternConverter literalPc = pc as LiteralPatternConverter;
 			if (literalPc != null)
 			{
-				// Combine the two adjacent literals together
-				Option = Option + literalPc.Option;
+                // Combine the two adjacent literals together
+                // 将两个相邻的字面值组合在一起
+                Option = Option + literalPc.Option;
 
-				// We are the next converter now
-				return this;
+                // We are the next converter now
+                // 我们现在是下一个变换器
+                return this;
 			}
 
 			return base.SetNext(pc);
 		}
 
-		/// <summary>
-		/// Write the literal to the output
-		/// </summary>
-		/// <param name="writer">the writer to write to</param>
-		/// <param name="state">null, not set</param>
-		/// <remarks>
-		/// <para>
-		/// Override the formatting behavior to ignore the FormattingInfo
-		/// because we have a literal instead.
-		/// </para>
-		/// <para>
-		/// Writes the value of <see cref="log4net.Util.PatternConverter.Option"/>
-		/// to the output <paramref name="writer"/>.
-		/// </para>
-		/// </remarks>
-		override public void Format(TextWriter writer, object state) 
+        /// <summary>
+        /// Write the literal to the output.
+        /// 将文字写入输出。
+        /// </summary>
+        /// <param name="writer">the writer to write to</param>
+        /// <param name="state">null, not set</param>
+        /// <remarks>
+        /// <para>
+        /// Override the formatting behavior to ignore the FormattingInfo because we have a literal instead.
+        /// 重写格式化行为以忽略FormattingInfo，因为我们使用的是文字。
+        /// </para>
+        /// <para>
+        /// Writes the value of <see cref="log4net.Util.PatternConverter.Option"/>
+        /// to the output <paramref name="writer"/>.
+        /// </para>
+        /// </remarks>
+        override public void Format(TextWriter writer, object state) 
 		{
 			writer.Write(Option);
 		}
