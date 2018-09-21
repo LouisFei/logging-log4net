@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,35 +27,42 @@ using log4net.Core;
 
 namespace log4net.Util.PatternStringConverters
 {
-	/// <summary>
-	/// A Pattern converter that generates a string of random characters
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// The converter generates a string of random characters. By default
-	/// the string is length 4. This can be changed by setting the <see cref="PatternConverter.Option"/>
-	/// to the string value of the length required.
-	/// </para>
-	/// <para>
-	/// The random characters in the string are limited to uppercase letters
-	/// and numbers only.
-	/// </para>
-	/// <para>
-	/// The random number generator used by this class is not cryptographically secure.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	internal sealed class RandomStringPatternConverter : PatternConverter, IOptionHandler
+    /// <summary>
+    /// A Pattern converter that generates a string of random characters.
+    /// 生成一串随机字符的模式转换器。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The converter generates a string of random characters. 
+    /// 这个转换器生成一串随机字符。
+    /// By default the string is length 4. 
+    /// 默认情况下，字符串长度为4。
+    /// This can be changed by setting the <see cref="PatternConverter.Option"/> to the string value of the length required.
+    /// 这可以通过将选项设置为所需长度的字符串值来更改。
+    /// </para>
+    /// <para>
+    /// The random characters in the string are limited to uppercase letters and numbers only.
+    /// 字符串中的随机字符仅限于大写字母和数字。
+    /// </para>
+    /// <para>
+    /// The random number generator used by this class is not cryptographically secure.
+    /// 这个类使用的随机数生成器在加密上不安全。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    internal sealed class RandomStringPatternConverter : PatternConverter, IOptionHandler
 	{
-		/// <summary>
-		/// Shared random number generator
-		/// </summary>
-		private static readonly Random s_random = new Random();
+        /// <summary>
+        /// Shared random number generator
+        /// 共用随机数发生器
+        /// </summary>
+        private static readonly Random s_random = new Random();
 
-		/// <summary>
-		/// Length of random string to generate. Default length 4.
-		/// </summary>
-		private int m_length = 4;
+        /// <summary>
+        /// Length of random string to generate. Default length 4.
+        /// 要生成的随机字符串的长度。默认长度4。
+        /// </summary>
+        private int m_length = 4;
 
 		#region Implementation of IOptionHandler
 
@@ -92,19 +99,20 @@ namespace log4net.Util.PatternStringConverters
 			}
 		}
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Write a randoim string to the output
-		/// </summary>
-		/// <param name="writer">the writer to write to</param>
-		/// <param name="state">null, state is not set</param>
-		/// <remarks>
-		/// <para>
-		/// Write a randoim string to the output <paramref name="writer"/>.
-		/// </para>
-		/// </remarks>
-		override protected void Convert(TextWriter writer, object state) 
+        /// <summary>
+        /// Write a random string to the output.
+        /// 向输出写入一个随机字符串。
+        /// </summary>
+        /// <param name="writer">the writer to write to</param>
+        /// <param name="state">null, state is not set</param>
+        /// <remarks>
+        /// <para>
+        /// Write a randoim string to the output <paramref name="writer"/>.
+        /// </para>
+        /// </remarks>
+        override protected void Convert(TextWriter writer, object state) 
 		{
 			try 
 			{

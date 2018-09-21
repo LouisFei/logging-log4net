@@ -1,4 +1,4 @@
-#region Apache License
+ï»¿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -35,19 +35,19 @@ namespace log4net.Util
 
     /// <summary>
     /// Outputs log statements from within the log4net assembly.
-    /// ´Ólog4net³ÌĞò¼¯ÖĞÊä³öÈÕÖ¾Óï¾ä¡£
+    /// ä»log4netç¨‹åºé›†ä¸­è¾“å‡ºæ—¥å¿—è¯­å¥ã€‚
     /// </summary>
     /// <remarks>
     /// <para>
     /// Log4net components cannot make log4net logging calls. 
     /// However, it is sometimes useful for the user to learn about what log4net is doing.
-    /// Log4net×é¼ş²»ÄÜÖ´ĞĞLog4netÈÕÖ¾µ÷ÓÃ¡£
-    /// È»¶ø£¬¶ÔÓÚÓÃ»§À´Ëµ£¬ÁË½âlog4netÔÚ×öÊ²Ã´ÓĞÊ±ÊÇÓĞÓÃµÄ¡£
+    /// Log4netç»„ä»¶ä¸èƒ½æ‰§è¡ŒLog4netæ—¥å¿—è°ƒç”¨ã€‚
+    /// ç„¶è€Œï¼Œå¯¹äºç”¨æˆ·æ¥è¯´ï¼Œäº†è§£log4netåœ¨åšä»€ä¹ˆæœ‰æ—¶æ˜¯æœ‰ç”¨çš„ã€‚
     /// </para>
     /// <para>
     /// All log4net internal debug calls go to the standard output stream
     /// whereas internal error messages are sent to the standard error output stream.
-    /// ËùÓĞlog4netÄÚ²¿µ÷ÊÔµ÷ÓÃ¶¼±»·¢ËÍµ½±ê×¼Êä³öÁ÷£¬¶øÄÚ²¿´íÎóÏûÏ¢±»·¢ËÍµ½±ê×¼´íÎóÊä³öÁ÷¡£
+    /// æ‰€æœ‰log4netå†…éƒ¨è°ƒè¯•è°ƒç”¨éƒ½è¢«å‘é€åˆ°æ ‡å‡†è¾“å‡ºæµï¼Œè€Œå†…éƒ¨é”™è¯¯æ¶ˆæ¯è¢«å‘é€åˆ°æ ‡å‡†é”™è¯¯è¾“å‡ºæµã€‚
     /// </para>
     /// </remarks>
     /// <author>Nicko Cadell</author>
@@ -56,7 +56,7 @@ namespace log4net.Util
 	{
         /// <summary>
         /// The event raised when an internal message has been received.
-        /// ÄÚ²¿ÏûÏ¢½ÓÊÕÊÂ¼ş
+        /// å†…éƒ¨æ¶ˆæ¯æ¥æ”¶äº‹ä»¶
         /// </summary>
         public static event LogReceivedEventHandler LogReceived;
 
@@ -324,7 +324,7 @@ namespace log4net.Util
 
         /// <summary>
         /// Writes log4net internal debug messages to the standard output stream.
-        /// ½«log4netÄÚ²¿µ÷ÊÔÏûÏ¢Ğ´Èë±ê×¼Êä³öÁ÷¡£
+        /// å°†log4netå†…éƒ¨è°ƒè¯•æ¶ˆæ¯å†™å…¥æ ‡å‡†è¾“å‡ºæµã€‚
         /// </summary>
         /// <param name="source"></param>
         /// <param name="message">The message to log.</param>
@@ -463,19 +463,19 @@ namespace log4net.Util
 			get { return !s_quietMode; }
 		}
 
-		/// <summary>
-		/// Writes log4net internal error messages to the 
-		/// standard error stream.
-		/// </summary>
+        /// <summary>
+        /// Writes log4net internal error messages to the standard error stream.
+        /// å°†log4netå†…éƒ¨é”™è¯¯æ¶ˆæ¯å†™å…¥æ ‡å‡†é”™è¯¯æµã€‚
+        /// </summary>
         /// <param name="source">The Type that generated this message.</param>
-		/// <param name="message">The message to log.</param>
-		/// <remarks>
-		/// <para>
-		///	All internal error messages are prepended with 
-		///	the string "log4net:ERROR ".
-		/// </para>
-		/// </remarks>
-		public static void Error(Type source, string message) 
+        /// <param name="message">The message to log.</param>
+        /// <remarks>
+        /// <para>
+        ///	All internal error messages are prepended with 
+        ///	the string "log4net:ERROR ".
+        /// </para>
+        /// </remarks>
+        public static void Error(Type source, string message) 
 		{
 			if (IsErrorEnabled)
 			{
@@ -522,7 +522,7 @@ namespace log4net.Util
 
         /// <summary>
         /// Writes output to the standard output stream.  
-        /// ½«Êä³öĞ´Èë±ê×¼Êä³öÁ÷¡£
+        /// å°†è¾“å‡ºå†™å…¥æ ‡å‡†è¾“å‡ºæµã€‚
         /// </summary>
         /// <param name="message">The message to log.</param>
         /// <remarks>
@@ -555,23 +555,24 @@ namespace log4net.Util
 			}
 		}
 
-		/// <summary>
-		/// Writes output to the standard error stream.  
-		/// </summary>
-		/// <param name="message">The message to log.</param>
-		/// <remarks>
-		/// <para>
-		/// Writes to both Console.Error and System.Diagnostics.Trace.
-		/// Note that the System.Diagnostics.Trace is not supported
-		/// on the Compact Framework.
-		/// </para>
-		/// <para>
-		/// If the AppDomain is not configured with a config file then
-		/// the call to System.Diagnostics.Trace may fail. This is only
-		/// an issue if you are programmatically creating your own AppDomains.
-		/// </para>
-		/// </remarks>
-		private static void EmitErrorLine(string message)
+        /// <summary>
+        /// Writes output to the standard error stream.  
+        /// å°†è¾“å‡ºå†™å…¥æ ‡å‡†é”™è¯¯æµã€‚
+        /// </summary>
+        /// <param name="message">The message to log.</param>
+        /// <remarks>
+        /// <para>
+        /// Writes to both Console.Error and System.Diagnostics.Trace.
+        /// Note that the System.Diagnostics.Trace is not supported
+        /// on the Compact Framework.
+        /// </para>
+        /// <para>
+        /// If the AppDomain is not configured with a config file then
+        /// the call to System.Diagnostics.Trace may fail. This is only
+        /// an issue if you are programmatically creating your own AppDomains.
+        /// </para>
+        /// </remarks>
+        private static void EmitErrorLine(string message)
 		{
 			try
 			{
@@ -604,23 +605,23 @@ namespace log4net.Util
         private static bool s_emitInternalMessages = true;
 
         /// <summary>
-        /// Ç°×º
+        /// å‰ç¼€
         /// </summary>
 		private const string PREFIX			= "log4net: ";
         /// <summary>
-        /// ±¨´íÇ°×º
+        /// æŠ¥é”™å‰ç¼€
         /// </summary>
 		private const string ERR_PREFIX		= "log4net:ERROR ";
         /// <summary>
-        /// ¾¯¸æÇ°×º
+        /// è­¦å‘Šå‰ç¼€
         /// </summary>
 		private const string WARN_PREFIX	= "log4net:WARN ";
 
-		#endregion Private Static Fields
+        #endregion Private Static Fields
 
         /// <summary>
-        /// Subscribes to the LogLog.LogReceived event and stores messages
-        /// to the supplied IList instance.
+        /// Subscribes to the LogLog.LogReceived event and stores messages to the supplied IList instance.
+        /// è®¢é˜…LogLog.logreceiveäº‹ä»¶å¹¶å°†æ¶ˆæ¯å­˜å‚¨åˆ°æä¾›çš„IListå®ä¾‹ã€‚
         /// </summary>
         public class LogReceivedAdapter : IDisposable
         {

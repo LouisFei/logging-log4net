@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -24,34 +24,32 @@ using log4net.Core;
 
 namespace log4net.Appender
 {
-	/// <summary>
-	/// Appends log events to the <see cref="System.Diagnostics.Trace"/> system.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// The application configuration file can be used to control what listeners 
-	/// are actually used. See the MSDN documentation for the 
-	/// <see cref="System.Diagnostics.Trace"/> class for details on configuring the
-	/// trace system.
-	/// </para>
-	/// <para>
-	/// Events are written using the <c>System.Diagnostics.Trace.Write(string,string)</c>
-	/// method. The event's logger name is the default value for the category parameter 
-    /// of the Write method. 
-	/// </para>
-	/// <para>
-	/// <b>Compact Framework</b><br />
-	/// The Compact Framework does not support the <see cref="System.Diagnostics.Trace"/>
-	/// class for any operation except <c>Assert</c>. When using the Compact Framework this
-	/// appender will write to the <see cref="System.Diagnostics.Debug"/> system rather than
-	/// the Trace system. This appender will therefore behave like the <see cref="DebugAppender"/>.
-	/// </para>
-	/// </remarks>
-	/// <author>Douglas de la Torre</author>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
+    /// <summary>
+    /// Appends log events to the <see cref="System.Diagnostics.Trace"/> system.
+    /// 将日志事件附加到跟踪系统。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The application configuration file can be used to control what listeners are actually used. 
+    /// See the MSDN documentation for the <see cref="System.Diagnostics.Trace"/> class for details on configuring the trace system.
+    /// </para>
+    /// <para>
+    /// Events are written using the <c>System.Diagnostics.Trace.Write(string,string)</c> method. 
+    /// The event's logger name is the default value for the category parameter of the Write method. 
+    /// </para>
+    /// <para>
+    /// <b>Compact Framework</b><br />
+    /// The Compact Framework does not support the <see cref="System.Diagnostics.Trace"/>
+    /// class for any operation except <c>Assert</c>. When using the Compact Framework this
+    /// appender will write to the <see cref="System.Diagnostics.Debug"/> system rather than
+    /// the Trace system. This appender will therefore behave like the <see cref="DebugAppender"/>.
+    /// </para>
+    /// </remarks>
+    /// <author>Douglas de la Torre</author>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
     /// <author>Ron Grabowski</author>
-	public class TraceAppender : AppenderSkeleton
+    public class TraceAppender : AppenderSkeleton
 	{
 		#region Public Instance Constructors
 

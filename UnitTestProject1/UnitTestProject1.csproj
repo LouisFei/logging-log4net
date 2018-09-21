@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
@@ -55,6 +56,8 @@
   <ItemGroup>
     <Compile Include="Appender\CountingAppender.cs" />
     <Compile Include="Appender\StringAppender.cs" />
+    <Compile Include="Appender\TraceAppenderTest.cs" />
+    <Compile Include="Core\StringFormatTest.cs" />
     <Compile Include="Hierarchy\Hierarchy.cs" />
     <Compile Include="Hierarchy\Logger.cs" />
     <Compile Include="Layout\PatternLayoutTest.cs" />
@@ -62,10 +65,12 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
+    <Compile Include="Util\LogLogTest.cs" />
+    <Compile Include="Util\PatternConverterTest.cs" />
+    <Compile Include="Util\PatternStringTest.cs" />
+    <Compile Include="Util\RandomStringPatternConverterTest.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\src\log4net.csproj">
       <Project>{181fe707-e161-4722-9f38-6aaab6faa106}</Project>

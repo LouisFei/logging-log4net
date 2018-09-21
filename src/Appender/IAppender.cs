@@ -1,4 +1,4 @@
-#region Apache License
+ï»¿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -25,20 +25,24 @@ namespace log4net.Appender
 {
     /// <summary>
     /// Implement this interface for your own strategies for printing log statements.
-    /// Îª´òÓ¡ÈÕÖ¾Óï¾äµÄ²ßÂÔÊµÏÖ´Ë½Ó¿Ú¡£
-    /// ¸½×ÅÆ÷¡£
+    /// ä¸ºæ‰“å°æ—¥å¿—è¯­å¥çš„ç­–ç•¥å®ç°æ­¤æ¥å£ã€‚
+    /// é™„ç€å™¨ã€‚
+    /// å¯ä»¥æ§åˆ¶æ—¥å¿—å†…å®¹çš„è¾“å‡ºç›®çš„åœ°ã€‚
+    /// appenderçš„ç±»åˆ«æœ‰ï¼šConsoleï¼ˆæ§åˆ¶å°ï¼‰Fileï¼ˆæ–‡ä»¶ï¼‰JDBCã€JMSç­‰ç­‰ï¼Œ
+    /// loggerå¯ä»¥é€šè¿‡æ–¹æ³•logger.addAppender(appender);é…ç½®å¤šä¸ªappenderï¼Œ
+    /// å¯¹loggeræ¥è¯´ï¼Œæ¯ä¸ªæœ‰æ•ˆçš„æ—¥å¿—è¯·æ±‚ç»“æœéƒ½å°†è¾“å‡ºåˆ°loggeræœ¬èº«ä»¥åŠçˆ¶loggerçš„appenderä¸Šã€‚
     /// </summary>
     /// <remarks>
     /// <para>
     /// Implementors should consider extending the <see cref="AppenderSkeleton"/>
     /// class which provides a default implementation of this interface.
-    /// ÊµÏÖÕßÓ¦¸Ã¿¼ÂÇÀ©Õ¹AppenderSkeletonÀà£¬ËüÌá¹©Õâ¸ö½Ó¿ÚµÄÄ¬ÈÏÊµÏÖ¡£
+    /// å®ç°è€…åº”è¯¥è€ƒè™‘æ‰©å±•AppenderSkeletonç±»ï¼Œå®ƒæä¾›è¿™ä¸ªæ¥å£çš„é»˜è®¤å®ç°ã€‚
     /// </para>
     /// <para>
     /// Appenders can also implement the <see cref="IOptionHandler"/> interface. Therefore
     /// they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
     /// be called after the appenders properties have been configured.
-    /// AppendersÒ²¿ÉÒÔÊµÏÖIOptionHandler½Ó¿Ú¡£Òò´ËËûÃÇĞèÒªÔÚÅäÖÃappendersÊôĞÔºóµ÷ÓÃIOptionHandler.ActivateOptions()·½·¨¡£
+    /// Appendersä¹Ÿå¯ä»¥å®ç°IOptionHandleræ¥å£ã€‚å› æ­¤ä»–ä»¬éœ€è¦åœ¨é…ç½®appenderså±æ€§åè°ƒç”¨IOptionHandler.ActivateOptions()æ–¹æ³•ã€‚
     /// </para>
     /// </remarks>
     /// <author>Nicko Cadell</author>
@@ -47,29 +51,29 @@ namespace log4net.Appender
 	{
         /// <summary>
         /// Closes the appender and releases resources.
-        /// ¹Ø±Õappender²¢ÊÍ·Å×ÊÔ´¡£
+        /// å…³é—­appenderå¹¶é‡Šæ”¾èµ„æºã€‚
         /// </summary>
         /// <remarks>
         /// <para>
         /// Releases any resources allocated within the appender such as file handles, network connections, etc.
-        /// ÊÍ·ÅappenderÖĞ·ÖÅäµÄÈÎºÎ×ÊÔ´£¬ÈçÎÄ¼ş¾ä±ú¡¢ÍøÂçÁ¬½ÓµÈ¡£
+        /// é‡Šæ”¾appenderä¸­åˆ†é…çš„ä»»ä½•èµ„æºï¼Œå¦‚æ–‡ä»¶å¥æŸ„ã€ç½‘ç»œè¿æ¥ç­‰ã€‚
         /// </para>
         /// <para>
         /// It is a programming error to append to a closed appender.
-        /// ¸½¼Óµ½Ò»¸ö¹Ø±ÕµÄ¸½¼ÓÆ÷ÊÇÒ»¸ö±à³Ì´íÎó¡£
+        /// é™„åŠ åˆ°ä¸€ä¸ªå…³é—­çš„é™„åŠ å™¨æ˜¯ä¸€ä¸ªç¼–ç¨‹é”™è¯¯ã€‚
         /// </para>
         /// </remarks>
         void Close();
 
         /// <summary>
         /// Log the logging event in Appender specific way.
-        /// ÒÔAppenderÌØ¶¨µÄ·½Ê½¼ÇÂ¼ÈÕÖ¾ÊÂ¼ş¡£
+        /// ä»¥Appenderç‰¹å®šçš„æ–¹å¼è®°å½•æ—¥å¿—äº‹ä»¶ã€‚
         /// </summary>
         /// <param name="loggingEvent">The event to log</param>
         /// <remarks>
         /// <para>
         /// This method is called to log a message into this appender.
-        /// µ÷ÓÃ´Ë·½·¨½«ÏûÏ¢¼ÇÂ¼µ½´Ëappender¡£
+        /// è°ƒç”¨æ­¤æ–¹æ³•å°†æ¶ˆæ¯è®°å½•åˆ°æ­¤appenderã€‚
         /// </para>
         /// </remarks>
         void DoAppend(LoggingEvent loggingEvent);
