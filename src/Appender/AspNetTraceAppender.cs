@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -31,6 +31,7 @@ namespace log4net.Appender
 	/// <summary>
 	/// <para>
 	/// Appends log events to the ASP.NET <see cref="TraceContext"/> system.
+    /// 能用asp.net中的Trace的方式查看记录的日志。
 	/// </para>
 	/// </summary>
 	/// <remarks>

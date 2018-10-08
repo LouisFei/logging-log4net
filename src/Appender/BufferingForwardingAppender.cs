@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,6 +27,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// Buffers events and then forwards them to attached appenders.
+    /// 在输出到子Appenders之前先缓存日志事件。
 	/// </summary>
 	/// <remarks>
 	/// <para>

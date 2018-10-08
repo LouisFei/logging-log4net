@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -36,6 +36,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// Writes events to the system event log.
+    /// 将日志写到Windows Event Log。
 	/// </summary>
 	/// <remarks>
     /// <para>

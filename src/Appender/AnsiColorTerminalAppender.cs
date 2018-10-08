@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -29,6 +29,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// Appends logging events to the terminal using ANSI color escape sequences.
+    /// 将日志高亮输出到ANSI终端。
 	/// </summary>
 	/// <remarks>
 	/// <para>

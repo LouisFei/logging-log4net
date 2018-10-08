@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -34,6 +34,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// Appender that logs to a database.
+    /// 将日志记录到数据库中。可以采用SQL和存储过程两种方式。
 	/// </summary>
 	/// <remarks>
 	/// <para>
