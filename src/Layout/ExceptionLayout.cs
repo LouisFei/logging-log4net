@@ -27,6 +27,7 @@ using log4net.Core;
 namespace log4net.Layout
 {
     /// <summary>
+    /// 需要给Logger的方法传入Exception对象作为参数才起作用，否则就什么也不输出。输出的时候会包含Message和Trace。
     /// A Layout that renders only the Exception text from the logging event.
     /// 只呈现日志事件异常文本的布局。
     /// </summary>

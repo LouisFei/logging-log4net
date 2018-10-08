@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -33,6 +33,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// Logs events to a local syslog service.
+    /// 将日志写到local syslog service（仅用于UNIX环境下）。
 	/// </summary>
 	/// <remarks>
 	/// <note>

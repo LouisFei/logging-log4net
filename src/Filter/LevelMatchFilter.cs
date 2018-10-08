@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,6 +27,7 @@ namespace log4net.Filter
 {
 	/// <summary>
 	/// This is a very simple filter based on <see cref="Level"/> matching.
+    /// 只有指定等级的日志事件才被记录。
 	/// </summary>
 	/// <remarks>
 	/// <para>

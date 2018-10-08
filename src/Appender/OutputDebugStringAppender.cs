@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -33,6 +33,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// Appends log events to the OutputDebugString system.
+    /// 将日志输出到Debuger，如果程序没有Debuger，就输出到系统Debuger。如果系统Debuger也不可用，将忽略消息。
 	/// </summary>
 	/// <remarks>
 	/// <para>

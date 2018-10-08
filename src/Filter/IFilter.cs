@@ -24,6 +24,7 @@ using log4net.Core;
 namespace log4net.Filter
 {
     /// <summary>
+    /// 使用过滤器可以过滤掉Appender输出的内容。
     /// Implement this interface to provide customized logging event filtering.
     /// 实现此接口以提供定制的日志事件过滤。
     /// 使用了职责链模式。

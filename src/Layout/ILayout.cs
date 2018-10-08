@@ -26,6 +26,7 @@ using log4net.Core;
 namespace log4net.Layout
 {
     /// <summary>
+    /// 用于控制Appender的输出格式，可以是线性的也可以是XML。一个Appender只能有一个Layout。
     /// Interface implemented by layout objects.
     /// 由布局对象实现的接口。
     /// </summary>

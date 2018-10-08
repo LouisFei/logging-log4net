@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -26,6 +26,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// Stores logging events in an array.
+    /// 将日志存到内存缓冲区。
 	/// </summary>
 	/// <remarks>
 	/// <para>

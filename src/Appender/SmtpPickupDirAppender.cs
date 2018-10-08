@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -32,6 +32,7 @@ namespace log4net.Appender
 	/// or fatal errors. Rather than sending via smtp it writes a file into the
 	/// directory specified by <see cref="PickupDir"/>. This allows services such
 	/// as the IIS SMTP agent to manage sending the messages.
+    /// 将消息以文件的方式放入一个目录中，像IIS SMTP agent这样的SMTP代理就可以阅读或发送它们。
 	/// </summary>
 	/// <remarks>
 	/// <para>

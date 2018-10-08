@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -38,8 +38,8 @@ using log4net.Util;
 namespace log4net.Appender
 {
 	/// <summary>
-	/// Send an e-mail when a specific logging event occurs, typically on errors 
-	/// or fatal errors.
+	/// Send an e-mail when a specific logging event occurs, typically on errors or fatal errors.
+    /// 将日志写到邮件中。
 	/// </summary>
 	/// <remarks>
 	/// <para>

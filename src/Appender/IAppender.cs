@@ -24,6 +24,7 @@ using log4net.Core;
 namespace log4net.Appender
 {
     /// <summary>
+    /// Appenders用来定义日志的输出方式，即日志要写到哪种介质上去。
     /// Implement this interface for your own strategies for printing log statements.
     /// 为打印日志语句的策略实现此接口。
     /// 附着器。

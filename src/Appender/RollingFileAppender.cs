@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -43,6 +43,7 @@ namespace log4net.Appender
 
 	/// <summary>
 	/// Appender that rolls log files based on size or date or both.
+    /// 将日志以滚动文件的形式（基于文件大小和日期或者两者兼具）写到文件中。
 	/// </summary>
 	/// <remarks>
 	/// <para>

@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -36,6 +36,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// Appender that allows clients to connect via Telnet to receive log messages
+    /// 客户端通过Telnet来接受日志事件。
 	/// </summary>
 	/// <remarks>	
 	/// <para>

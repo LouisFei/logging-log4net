@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,7 +27,8 @@ using log4net.Util;
 namespace log4net.Filter
 {
 	/// <summary>
-	/// Simple filter to match a string in the rendered message
+	/// Simple filter to match a string in the rendered message。
+    /// 消息匹配指定的字符串才被记录。
 	/// </summary>
 	/// <remarks>
 	/// <para>

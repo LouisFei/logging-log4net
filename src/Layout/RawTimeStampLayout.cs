@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,6 +27,7 @@ namespace log4net.Layout
 {
 	/// <summary>
 	/// Extract the date from the <see cref="LoggingEvent"/>
+    /// 用来格式化时间，在向数据库输出时会用到。样式如：“yyyy-MM-dd HH:mm:ss”
 	/// </summary>
 	/// <remarks>
 	/// <para>

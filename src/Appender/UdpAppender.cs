@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -30,8 +30,8 @@ using log4net.Util;
 namespace log4net.Appender 
 {
 	/// <summary>
-	/// Sends logging events as connectionless UDP datagrams to a remote host or a 
-	/// multicast group using an <see cref="UdpClient" />.
+	/// Sends logging events as connectionless UDP datagrams to a remote host or a multicast group using an <see cref="UdpClient" />.
+    /// 将日志以无连接UDP数据报的形式送到远程宿主或用UdpClient的形式广播。
 	/// </summary>
 	/// <remarks>
 	/// <para>

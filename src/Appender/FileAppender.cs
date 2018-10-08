@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -33,6 +33,7 @@ namespace log4net.Appender
 #if !NETCF
 	/// <summary>
 	/// Appends logging events to a file.
+    /// 将日志输出到文件。
 	/// </summary>
 	/// <remarks>
 	/// <para>

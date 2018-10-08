@@ -27,6 +27,7 @@ using log4net.Core;
 namespace log4net.Layout
 {
 	/// <summary>
+    /// 简单输出格式，只输出日志级别与消息内容。
 	/// A very simple layout.
     /// 一个非常简单的布局。
 	/// </summary>

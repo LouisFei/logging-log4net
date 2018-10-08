@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -34,6 +34,7 @@ namespace log4net.Appender
 {
 	/// <summary>
 	/// Delivers logging events to a remote logging sink. 
+    /// 通过.NET Remoting将日志写到远程接收端。
 	/// </summary>
 	/// <remarks>
 	/// <para>

@@ -26,7 +26,7 @@ namespace log4net.Appender
 {
     /// <summary>
     /// Appends log events to the <see cref="System.Diagnostics.Trace"/> system.
-    /// 将日志事件附加到跟踪系统。
+    /// 将日志事写到.NET trace系统。
     /// </summary>
     /// <remarks>
     /// <para>

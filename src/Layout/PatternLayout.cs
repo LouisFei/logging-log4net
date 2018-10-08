@@ -38,6 +38,7 @@ using UtcDatePatternConverter=log4net.Layout.Pattern.UtcDatePatternConverter;
 namespace log4net.Layout
 {
     /// <summary>
+    /// 使用最多的一个Layout，能输出的信息很多。
     /// A flexible layout configurable with pattern string.
     /// 一个灵活的布局配置模式字符串。
     /// </summary>

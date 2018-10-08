@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -39,108 +39,109 @@ using log4net.Core;
 
 namespace log4net.Appender 
 {
-	/// <summary>
-	/// Logs entries by sending network messages using the 
-	/// <see cref="NetMessageBufferSend" /> native function.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// You can send messages only to names that are active 
-	/// on the network. If you send the message to a user name, 
-	/// that user must be logged on and running the Messenger 
-	/// service to receive the message.
-	/// </para>
-	/// <para>
-	/// The receiver will get a top most window displaying the 
-	/// messages one at a time, therefore this appender should 
-	/// not be used to deliver a high volume of messages.
-	/// </para>
-	/// <para>
-	/// The following table lists some possible uses for this appender :
-	/// </para>
-	/// <para>
-	/// <list type="table">
-	///     <listheader>
-	///         <term>Action</term>
-	///         <description>Property Value(s)</description>
-	///     </listheader>
-	///     <item>
-	///         <term>Send a message to a user account on the local machine</term>
-	///         <description>
-	///             <para>
-	///             <see cref="NetSendAppender.Server"/> = &lt;name of the local machine&gt;
-	///             </para>
-	///             <para>
-	///             <see cref="NetSendAppender.Recipient"/> = &lt;user name&gt;
-	///             </para>
-	///         </description>
-	///     </item>
-	///     <item>
-	///         <term>Send a message to a user account on a remote machine</term>
-	///         <description>
-	///             <para>
-	///             <see cref="NetSendAppender.Server"/> = &lt;name of the remote machine&gt;
-	///             </para>
-	///             <para>
-	///             <see cref="NetSendAppender.Recipient"/> = &lt;user name&gt;
-	///             </para>
-	///         </description>
-	///     </item>
-	///     <item>
-	///         <term>Send a message to a domain user account</term>
-	///         <description>
-	///             <para>
-	///             <see cref="NetSendAppender.Server"/> = &lt;name of a domain controller | uninitialized&gt;
-	///             </para>
-	///             <para>
-	///             <see cref="NetSendAppender.Recipient"/> = &lt;user name&gt;
-	///             </para>
-	///         </description>
-	///     </item>
-	///     <item>
-	///         <term>Send a message to all the names in a workgroup or domain</term>
-	///         <description>
-	///             <para>
-	///             <see cref="NetSendAppender.Recipient"/> = &lt;workgroup name | domain name&gt;*
-	///             </para>
-	///         </description>
-	///     </item>
-	///     <item>
-	///         <term>Send a message from the local machine to a remote machine</term>
-	///         <description>
-	///             <para>
-	///             <see cref="NetSendAppender.Server"/> = &lt;name of the local machine | uninitialized&gt;
-	///             </para>
-	///             <para>
-	///             <see cref="NetSendAppender.Recipient"/> = &lt;name of the remote machine&gt;
-	///             </para>
-	///         </description>
-	///     </item>
-	/// </list>
-	/// </para>
-	/// <para>
-	/// <b>Note :</b> security restrictions apply for sending 
-	/// network messages, see <see cref="NetMessageBufferSend" /> 
-	/// for more information.
-	/// </para>
-	/// </remarks>
-	/// <example>
-	/// <para>
-	/// An example configuration section to log information 
-	/// using this appender from the local machine, named 
-	/// LOCAL_PC, to machine OPERATOR_PC :
-	/// </para>
-	/// <code lang="XML" escaped="true">
-	/// <appender name="NetSendAppender_Operator" type="log4net.Appender.NetSendAppender">
-	///     <server value="LOCAL_PC" />
-	///     <recipient value="OPERATOR_PC" />
-	///     <layout type="log4net.Layout.PatternLayout" value="%-5p %c [%x] - %m%n" />
-	/// </appender>
-	/// </code>
-	/// </example>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class NetSendAppender : AppenderSkeleton 
+    /// <summary>
+    /// Logs entries by sending network messages using the 
+    /// <see cref="NetMessageBufferSend" /> native function.
+    /// 将日志输出到Windows Messenger Service. 这些日志信息将在用户终端的对话框中显示。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// You can send messages only to names that are active 
+    /// on the network. If you send the message to a user name, 
+    /// that user must be logged on and running the Messenger 
+    /// service to receive the message.
+    /// </para>
+    /// <para>
+    /// The receiver will get a top most window displaying the 
+    /// messages one at a time, therefore this appender should 
+    /// not be used to deliver a high volume of messages.
+    /// </para>
+    /// <para>
+    /// The following table lists some possible uses for this appender :
+    /// </para>
+    /// <para>
+    /// <list type="table">
+    ///     <listheader>
+    ///         <term>Action</term>
+    ///         <description>Property Value(s)</description>
+    ///     </listheader>
+    ///     <item>
+    ///         <term>Send a message to a user account on the local machine</term>
+    ///         <description>
+    ///             <para>
+    ///             <see cref="NetSendAppender.Server"/> = &lt;name of the local machine&gt;
+    ///             </para>
+    ///             <para>
+    ///             <see cref="NetSendAppender.Recipient"/> = &lt;user name&gt;
+    ///             </para>
+    ///         </description>
+    ///     </item>
+    ///     <item>
+    ///         <term>Send a message to a user account on a remote machine</term>
+    ///         <description>
+    ///             <para>
+    ///             <see cref="NetSendAppender.Server"/> = &lt;name of the remote machine&gt;
+    ///             </para>
+    ///             <para>
+    ///             <see cref="NetSendAppender.Recipient"/> = &lt;user name&gt;
+    ///             </para>
+    ///         </description>
+    ///     </item>
+    ///     <item>
+    ///         <term>Send a message to a domain user account</term>
+    ///         <description>
+    ///             <para>
+    ///             <see cref="NetSendAppender.Server"/> = &lt;name of a domain controller | uninitialized&gt;
+    ///             </para>
+    ///             <para>
+    ///             <see cref="NetSendAppender.Recipient"/> = &lt;user name&gt;
+    ///             </para>
+    ///         </description>
+    ///     </item>
+    ///     <item>
+    ///         <term>Send a message to all the names in a workgroup or domain</term>
+    ///         <description>
+    ///             <para>
+    ///             <see cref="NetSendAppender.Recipient"/> = &lt;workgroup name | domain name&gt;*
+    ///             </para>
+    ///         </description>
+    ///     </item>
+    ///     <item>
+    ///         <term>Send a message from the local machine to a remote machine</term>
+    ///         <description>
+    ///             <para>
+    ///             <see cref="NetSendAppender.Server"/> = &lt;name of the local machine | uninitialized&gt;
+    ///             </para>
+    ///             <para>
+    ///             <see cref="NetSendAppender.Recipient"/> = &lt;name of the remote machine&gt;
+    ///             </para>
+    ///         </description>
+    ///     </item>
+    /// </list>
+    /// </para>
+    /// <para>
+    /// <b>Note :</b> security restrictions apply for sending 
+    /// network messages, see <see cref="NetMessageBufferSend" /> 
+    /// for more information.
+    /// </para>
+    /// </remarks>
+    /// <example>
+    /// <para>
+    /// An example configuration section to log information 
+    /// using this appender from the local machine, named 
+    /// LOCAL_PC, to machine OPERATOR_PC :
+    /// </para>
+    /// <code lang="XML" escaped="true">
+    /// <appender name="NetSendAppender_Operator" type="log4net.Appender.NetSendAppender">
+    ///     <server value="LOCAL_PC" />
+    ///     <recipient value="OPERATOR_PC" />
+    ///     <layout type="log4net.Layout.PatternLayout" value="%-5p %c [%x] - %m%n" />
+    /// </appender>
+    /// </code>
+    /// </example>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class NetSendAppender : AppenderSkeleton 
 	{
 		#region Member Variables
 
