@@ -26,8 +26,7 @@ using log4net.Core;
 namespace log4net.Appender
 {
 	/// <summary>
-	/// Abstract base class implementation of <see cref="IAppender"/> that 
-	/// buffers events in a fixed size buffer.
+	/// Abstract base class implementation of <see cref="IAppender"/> that buffers events in a fixed size buffer.
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -454,14 +453,16 @@ namespace log4net.Appender
 		/// </remarks>
 		override protected void Append(LoggingEvent loggingEvent) 
 		{
-			// If the buffer size is set to 1 or less then the buffer will be
-			// sent immediately because there is not enough space in the buffer
-			// to buffer up more than 1 event. Therefore as a special case
-			// we don't use the buffer at all.
-			if (m_cb == null || m_bufferSize <= 1)
+            // If the buffer size is set to 1 or less then the buffer will be sent immediately 
+            // because there is not enough space in the buffer to buffer up more than 1 event. 
+            // 如果缓冲区大小设置为1或更小，则会立即发送缓冲区，因为缓冲区中没有足够的空间来缓冲超过1个事件。
+            // Therefore as a special case we don't use the buffer at all.
+            // 因此，作为一种特殊情况，我们根本不使用缓冲区。
+            if (m_cb == null || m_bufferSize <= 1)
 			{
-				// Only send the event if we are in non lossy mode or the event is a triggering event
-				if ((!m_lossy) || 
+                // Only send the event if we are in non lossy mode or the event is a triggering event
+                // 只有在我们处于非有损模式或事件是触发事件时才发送事件
+                if ((!m_lossy) || 
 					(m_evaluator != null && m_evaluator.IsTriggeringEvent(loggingEvent)) || 
 					(m_lossyEvaluator != null && m_lossyEvaluator.IsTriggeringEvent(loggingEvent)))
 				{
@@ -471,27 +472,30 @@ namespace log4net.Appender
 						loggingEvent.Fix = this.Fix;
 					}
 
-					// Not buffering events, send immediately
-					SendBuffer(new LoggingEvent[] { loggingEvent } );
+                    // Not buffering events, send immediately
+                    //不缓冲事件，立即发送
+                    SendBuffer(new LoggingEvent[] { loggingEvent } );
 				}
 			}
 			else
 			{
-				// Because we are caching the LoggingEvent beyond the
-				// lifetime of the Append() method we must fix any
-				// volatile data in the event.
-				loggingEvent.Fix = this.Fix;
+                // Because we are caching the LoggingEvent beyond the lifetime of the Append() method we must fix any volatile data in the event.
+                // 因为我们在Append()方法的生命周期之外缓存LoggingEvent，所以我们必须修复事件中的任何易失数据。
+                loggingEvent.Fix = this.Fix;
 
-				// Add to the buffer, returns the event discarded from the buffer if there is no space remaining after the append
-				LoggingEvent discardedLoggingEvent = m_cb.Append(loggingEvent);
+                // Add to the buffer, returns the event discarded from the buffer if there is no space remaining after the append
+                // 添加到缓冲区中，如果追加后没有剩余空间，则返回从缓冲区中丢弃的事件
+                LoggingEvent discardedLoggingEvent = m_cb.Append(loggingEvent);
 
 				if (discardedLoggingEvent != null)
 				{
-					// Buffer is full and has had to discard an event
-					if (!m_lossy)
+                    // Buffer is full and has had to discard an event
+                    // 缓冲区已满，必须丢弃一个事件
+                    if (!m_lossy)
 					{
-						// Not lossy, must send all events
-						SendFromBuffer(discardedLoggingEvent, m_cb);
+                        // Not lossy, must send all events
+                        // 没有损耗，必须发送所有事件
+                        SendFromBuffer(discardedLoggingEvent, m_cb);
 					}
 					else
 					{
@@ -618,27 +622,28 @@ namespace log4net.Appender
 		/// </remarks>
 		private ITriggeringEventEvaluator m_evaluator;
 
-		/// <summary>
-		/// Indicates if the appender should overwrite events in the cyclic buffer 
-		/// when it becomes full, or if the buffer should be flushed when the 
-		/// buffer is full.
-		/// </summary>
-		/// <remarks>
-		/// If this field is set to <c>true</c> then an <see cref="Evaluator"/> must 
-		/// be set.
-		/// </remarks>
-		private bool m_lossy = false;
+        /// <summary>
+        /// Indicates if the appender should overwrite events in the cyclic buffer when it becomes full, 
+        /// or if the buffer should be flushed when the buffer is full.
+        /// 指示当循环缓冲区满时，appender是否应该重写事件，或者当缓冲区满时是否应该刷新缓冲区。
+        /// </summary>
+        /// <remarks>
+        /// If this field is set to <c>true</c> then an <see cref="Evaluator"/> must be set.
+        /// 如果该字段设置为true，则必须设置一个求值器。
+        /// </remarks>
+        private bool m_lossy = false;
 
-		/// <summary>
-		/// The triggering event evaluator filters discarded events.
-		/// </summary>
-		/// <remarks>
-		/// The object that is used to determine if an event that is discarded should
-		/// really be discarded or if it should be sent to the appenders. 
-		/// This field can be <c>null</c>, which indicates that all discarded events will
-		/// be discarded. 
-		/// </remarks>
-		private ITriggeringEventEvaluator m_lossyEvaluator;
+        /// <summary>
+        /// The triggering event evaluator filters discarded events.
+        /// 触发事件评估器过滤掉被丢弃的事件。
+        /// </summary>
+        /// <remarks>
+        /// The object that is used to determine if an event that is discarded should
+        /// really be discarded or if it should be sent to the appenders. 
+        /// This field can be <c>null</c>, which indicates that all discarded events will
+        /// be discarded. 
+        /// </remarks>
+        private ITriggeringEventEvaluator m_lossyEvaluator;
 
 		/// <summary>
 		/// Value indicating which fields in the event should be fixed

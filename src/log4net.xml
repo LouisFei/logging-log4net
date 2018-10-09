@@ -7,6 +7,7 @@
         <member name="T:log4net.Appender.AdoNetAppender">
             <summary>
             Appender that logs to a database.
+            将日志记录到数据库中。可以采用SQL和存储过程两种方式。
             </summary>
             <remarks>
             <para>
@@ -143,8 +144,7 @@
         </member>
         <member name="P:log4net.Appender.AdoNetAppender.ConnectionType">
             <summary>
-            Gets or sets the type name of the <see cref="T:System.Data.IDbConnection"/> connection
-            that should be created.
+            Gets or sets the type name of the <see cref="T:System.Data.IDbConnection"/> connection that should be created.
             </summary>
             <value>
             The type name of the <see cref="T:System.Data.IDbConnection"/> connection.
@@ -698,6 +698,7 @@
         <member name="T:log4net.Appender.AnsiColorTerminalAppender">
             <summary>
             Appends logging events to the terminal using ANSI color escape sequences.
+            将日志高亮输出到ANSI终端。
             </summary>
             <remarks>
             <para>
@@ -1927,6 +1928,7 @@
             <summary>
             <para>
             Appends log events to the ASP.NET <see cref="T:System.Web.TraceContext"/> system.
+            能用asp.net中的Trace的方式查看记录的日志。
             </para>
             </summary>
             <remarks>
@@ -2004,8 +2006,7 @@
         </member>
         <member name="T:log4net.Appender.BufferingAppenderSkeleton">
             <summary>
-            Abstract base class implementation of <see cref="T:log4net.Appender.IAppender"/> that 
-            buffers events in a fixed size buffer.
+            Abstract base class implementation of <see cref="T:log4net.Appender.IAppender"/> that buffers events in a fixed size buffer.
             </summary>
             <remarks>
             <para>
@@ -2354,18 +2355,19 @@
         </member>
         <member name="F:log4net.Appender.BufferingAppenderSkeleton.m_lossy">
             <summary>
-            Indicates if the appender should overwrite events in the cyclic buffer 
-            when it becomes full, or if the buffer should be flushed when the 
-            buffer is full.
+            Indicates if the appender should overwrite events in the cyclic buffer when it becomes full, 
+            or if the buffer should be flushed when the buffer is full.
+            指示当循环缓冲区满时，appender是否应该重写事件，或者当缓冲区满时是否应该刷新缓冲区。
             </summary>
             <remarks>
-            If this field is set to <c>true</c> then an <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Evaluator"/> must 
-            be set.
+            If this field is set to <c>true</c> then an <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Evaluator"/> must be set.
+            如果该字段设置为true，则必须设置一个求值器。
             </remarks>
         </member>
         <member name="F:log4net.Appender.BufferingAppenderSkeleton.m_lossyEvaluator">
             <summary>
             The triggering event evaluator filters discarded events.
+            触发事件评估器过滤掉被丢弃的事件。
             </summary>
             <remarks>
             The object that is used to determine if an event that is discarded should
@@ -2390,6 +2392,7 @@
         <member name="T:log4net.Appender.BufferingForwardingAppender">
             <summary>
             Buffers events and then forwards them to attached appenders.
+            在输出到子Appenders之前先缓存日志事件。
             </summary>
             <remarks>
             <para>
@@ -3077,6 +3080,7 @@
         <member name="T:log4net.Appender.EventLogAppender">
             <summary>
             Writes events to the system event log.
+            将日志写到Windows Event Log。
             </summary>
             <remarks>
             <para>
@@ -3455,6 +3459,7 @@
         <member name="T:log4net.Appender.FileAppender">
             <summary>
             Appends logging events to a file.
+            将日志输出到文件。
             </summary>
             <remarks>
             <para>
@@ -4184,6 +4189,7 @@
         <member name="T:log4net.Appender.ForwardingAppender">
             <summary>
             This appender forwards logging events to attached appenders.
+            发送日志事件到子Appenders.
             </summary>
             <remarks>
             <para>
@@ -4321,6 +4327,7 @@
         </member>
         <member name="T:log4net.Appender.IAppender">
             <summary>
+            Appenders用来定义日志的输出方式，即日志要写到哪种介质上去。
             Implement this interface for your own strategies for printing log statements.
             为打印日志语句的策略实现此接口。
             附着器。
@@ -4445,6 +4452,7 @@
         <member name="T:log4net.Appender.LocalSyslogAppender">
             <summary>
             Logs events to a local syslog service.
+            将日志写到local syslog service（仅用于UNIX环境下）。
             </summary>
             <remarks>
             <note>
@@ -5040,6 +5048,7 @@
         <member name="T:log4net.Appender.MemoryAppender">
             <summary>
             Stores logging events in an array.
+            将日志存到内存缓冲区。
             </summary>
             <remarks>
             <para>
@@ -5166,6 +5175,7 @@
             <summary>
             Logs entries by sending network messages using the 
             <see cref="M:log4net.Appender.NetSendAppender.NetMessageBufferSend(System.String,System.String,System.String,System.String,System.Int32)" /> native function.
+            将日志输出到Windows Messenger Service. 这些日志信息将在用户终端的对话框中显示。
             </summary>
             <remarks>
             <para>
@@ -5450,6 +5460,7 @@
         <member name="T:log4net.Appender.OutputDebugStringAppender">
             <summary>
             Appends log events to the OutputDebugString system.
+            将日志输出到Debuger，如果程序没有Debuger，就输出到系统Debuger。如果系统Debuger也不可用，将忽略消息。
             </summary>
             <remarks>
             <para>
@@ -5510,6 +5521,7 @@
         <member name="T:log4net.Appender.RemoteSyslogAppender">
             <summary>
             Logs events to a remote syslog daemon.
+            通过UDP网络协议将日志写到Remote syslog service。
             </summary>
             <remarks>
             <para>
@@ -5877,6 +5889,7 @@
         <member name="T:log4net.Appender.RemotingAppender">
             <summary>
             Delivers logging events to a remote logging sink. 
+            通过.NET Remoting将日志写到远程接收端。
             </summary>
             <remarks>
             <para>
@@ -6083,6 +6096,7 @@
         <member name="T:log4net.Appender.RollingFileAppender">
             <summary>
             Appender that rolls log files based on size or date or both.
+            将日志以滚动文件的形式（基于文件大小和日期或者两者兼具）写到文件中。
             </summary>
             <remarks>
             <para>
@@ -6940,8 +6954,8 @@
         </member>
         <member name="T:log4net.Appender.SmtpAppender">
             <summary>
-            Send an e-mail when a specific logging event occurs, typically on errors 
-            or fatal errors.
+            Send an e-mail when a specific logging event occurs, typically on errors or fatal errors.
+            将日志写到邮件中。
             </summary>
             <remarks>
             <para>
@@ -7265,6 +7279,7 @@
             or fatal errors. Rather than sending via smtp it writes a file into the
             directory specified by <see cref="P:log4net.Appender.SmtpPickupDirAppender.PickupDir"/>. This allows services such
             as the IIS SMTP agent to manage sending the messages.
+            将消息以文件的方式放入一个目录中，像IIS SMTP agent这样的SMTP代理就可以阅读或发送它们。
             </summary>
             <remarks>
             <para>
@@ -7436,6 +7451,7 @@
         <member name="T:log4net.Appender.TelnetAppender">
             <summary>
             Appender that allows clients to connect via Telnet to receive log messages
+            客户端通过Telnet来接受日志事件。
             </summary>
             <remarks>	
             <para>
@@ -7955,7 +7971,7 @@
         <member name="T:log4net.Appender.TraceAppender">
             <summary>
             Appends log events to the <see cref="T:System.Diagnostics.Trace"/> system.
-            将日志事件附加到跟踪系统。
+            将日志事写到.NET trace系统。
             </summary>
             <remarks>
             <para>
@@ -8087,8 +8103,8 @@
         </member>
         <member name="T:log4net.Appender.UdpAppender">
              <summary>
-             Sends logging events as connectionless UDP datagrams to a remote host or a 
-             multicast group using an <see cref="T:System.Net.Sockets.UdpClient" />.
+             Sends logging events as connectionless UDP datagrams to a remote host or a multicast group using an <see cref="T:System.Net.Sockets.UdpClient" />.
+             将日志以无连接UDP数据报的形式送到远程宿主或用UdpClient的形式广播。
              </summary>
              <remarks>
              <para>
@@ -11063,6 +11079,10 @@
         </member>
         <member name="T:log4net.Core.Level">
             <summary>
+            日志的等级，由高到低分别是：OFF > FATAL > ERROR > WARN > INFO > DEBUG  > ALL 
+            高于等级设定值的都能写入日志，Off表示所有的日志都写入不了，ALL则相反。
+            
+            
             Defines the default set of levels recognized by the system.
             定义系统识别的默认级别集。
             </summary>
@@ -11431,7 +11451,7 @@
         </member>
         <member name="F:log4net.Core.Level.Fatal">
             <summary>
-            致命
+            致命错误：记录系统中出现的能使系统完全失去功能，服务停止，系统崩溃等使系统无法继续运行下去的错误。例如，数据库无法连接，系统出现死出循环。
             The <see cref="F:log4net.Core.Level.Fatal" /> level designates very severe error events 
             that will presumably lead the application to abort.
             </summary>
@@ -11458,14 +11478,14 @@
         </member>
         <member name="F:log4net.Core.Level.Error">
             <summary>
-            错误
+            一般错误：记录系统中出现的导致系统不稳定，部分功能出现混乱或部分功能失效一类的错误。例如，数据字段为空，数据操作不可完成，操作出现异常等。
             The <see cref="F:log4net.Core.Level.Error" /> level designates error events that might 
             still allow the application to continue running.
             </summary>
         </member>
         <member name="F:log4net.Core.Level.Warn">
             <summary>
-            警告
+            警告：记录系统中不影响系统继续运行，但不符合系统运行正常条件，有可能引起系统错误的信息。例如，记录内容为空，数据内容不正确等。
             The <see cref="F:log4net.Core.Level.Warn" /> level designates potentially harmful 
             situations.
             </summary>
@@ -11479,14 +11499,14 @@
         </member>
         <member name="F:log4net.Core.Level.Info">
             <summary>
-            信息
+            一般信息：记录系统运行中应该让用户知道的基本信息。例如，服务开始运行，功能已经开放等。
             The <see cref="F:log4net.Core.Level.Info" /> level designates informational messages that 
             highlight the progress of the application at coarse-grained level.
             </summary>
         </member>
         <member name="F:log4net.Core.Level.Debug">
             <summary>
-            调试
+            调试信息：记录系统用于调试的一切信息、内容或者是一些关键数据内容的输出。
             The <see cref="F:log4net.Core.Level.Debug" /> level designates fine-grained informational 
             events that are most useful to debug an application.
             </summary>
@@ -15624,6 +15644,7 @@
         <member name="T:log4net.Filter.DenyAllFilter">
             <summary>
             This filter drops all <see cref="T:log4net.Core.LoggingEvent"/>. 
+            阻止所有的日志事件被记录。
             </summary>
             <remarks>
             <para>
@@ -15799,6 +15820,7 @@
         </member>
         <member name="T:log4net.Filter.IFilter">
             <summary>
+            使用过滤器可以过滤掉Appender输出的内容。
             Implement this interface to provide customized logging event filtering.
             实现此接口以提供定制的日志事件过滤。
             使用了职责链模式。
@@ -15878,6 +15900,7 @@
         <member name="T:log4net.Filter.LevelMatchFilter">
             <summary>
             This is a very simple filter based on <see cref="T:log4net.Core.Level"/> matching.
+            只有指定等级的日志事件才被记录。
             </summary>
             <remarks>
             <para>
@@ -15957,6 +15980,7 @@
         <member name="T:log4net.Filter.LevelRangeFilter">
             <summary>
             This is a simple filter based on <see cref="T:log4net.Core.Level"/> matching.
+            日志等级在指定范围内的事件才被记录。
             </summary>
             <remarks>
             <para>
@@ -16052,6 +16076,7 @@
         <member name="T:log4net.Filter.LoggerMatchFilter">
             <summary>
             Simple filter to match a string in the event's logger name.
+            与Logger名称匹配，才记录。
             </summary>
             <remarks>
             <para>
@@ -16177,6 +16202,7 @@
         <member name="T:log4net.Filter.PropertyFilter">
             <summary>
             Simple filter to match a string an event property
+            消息匹配指定的属性值时才被记录。
             </summary>
             <remarks>
             <para>
@@ -16230,7 +16256,8 @@
         </member>
         <member name="T:log4net.Filter.StringMatchFilter">
             <summary>
-            Simple filter to match a string in the rendered message
+            Simple filter to match a string in the rendered message。
+            消息匹配指定的字符串才被记录。
             </summary>
             <remarks>
             <para>
@@ -17419,6 +17446,7 @@
         </member>
         <member name="T:log4net.Layout.ExceptionLayout">
             <summary>
+            需要给Logger的方法传入Exception对象作为参数才起作用，否则就什么也不输出。输出的时候会包含Message和Trace。
             A Layout that renders only the Exception text from the logging event.
             只呈现日志事件异常文本的布局。
             </summary>
@@ -17473,6 +17501,7 @@
         </member>
         <member name="T:log4net.Layout.ILayout">
             <summary>
+            用于控制Appender的输出格式，可以是线性的也可以是XML。一个Appender只能有一个Layout。
             Interface implemented by layout objects.
             由布局对象实现的接口。
             </summary>
@@ -17819,6 +17848,7 @@
         </member>
         <member name="T:log4net.Layout.PatternLayout">
             <summary>
+            使用最多的一个Layout，能输出的信息很多。
             A flexible layout configurable with pattern string.
             一个灵活的布局配置模式字符串。
             </summary>
@@ -19799,6 +19829,7 @@
         <member name="T:log4net.Layout.RawTimeStampLayout">
             <summary>
             Extract the date from the <see cref="T:log4net.Core.LoggingEvent"/>
+            用来格式化时间，在向数据库输出时会用到。样式如：“yyyy-MM-dd HH:mm:ss”
             </summary>
             <remarks>
             <para>
@@ -19864,6 +19895,7 @@
         </member>
         <member name="T:log4net.Layout.SimpleLayout">
             <summary>
+            简单输出格式，只输出日志级别与消息内容。
             A very simple layout.
             一个非常简单的布局。
             </summary>
@@ -21552,6 +21584,7 @@
             <summary>
             Implement this interface in order to render objects as strings.
             实现此接口以将对象呈现为字符串。
+            将告诉logger如何把一个对象转化为一个字符串记录到日志里。
             </summary>
             <remarks>
             <para>
@@ -23178,6 +23211,13 @@
         </member>
         <member name="T:log4net.Repository.Hierarchy.Logger">
             <summary>
+            Logger是直接和应用程序交互的组件。
+            Logger只是产生日志，然后由它引用的Appender记录到指定的媒介，并由Layout控制输出格式。
+            Logger提供了多种方式来记录一个日志信息，也可以有多个Logger同时存在。
+            每个实例化的Logger对象对被log4net作为命名实体（Named Entity）来维护。
+            log4net使用继承体系，也就是说假如存在两个Logger，名字分别为a.b.c和a.b。那么a.b就是a.b.c的祖先。
+            每个Logger都继承了它祖先的属性。所有的Logger都从Root继承, Root本身也是一个Logger。
+            
             Implementation of <see cref="T:log4net.Core.ILogger"/> used by <see cref="P:log4net.Repository.Hierarchy.Logger.Hierarchy"/>
             记录器抽象类
             </summary>
@@ -24078,6 +24118,7 @@
         </member>
         <member name="T:log4net.Repository.ILoggerRepository">
             <summary>
+            用于日志对象组织结构的维护。
             Interface implemented by logger repositories.
             由logger存储库实现的接口。存放logger实例的容器。
             </summary>
@@ -25222,6 +25263,7 @@
         <member name="T:log4net.Util.CyclicBuffer">
             <summary>
             A fixed size rolling buffer of logging events.
+            日志事件的固定大小的滚动缓冲区。
             </summary>
             <remarks>
             <para>
@@ -25247,14 +25289,18 @@
         <member name="M:log4net.Util.CyclicBuffer.Append(log4net.Core.LoggingEvent)">
             <summary>
             Appends a <paramref name="loggingEvent"/> to the buffer.
+            添加一个日志事件到缓冲区。
             </summary>
             <param name="loggingEvent">The event to append to the buffer.</param>
             <returns>The event discarded from the buffer, if the buffer is full, otherwise <c>null</c>.</returns>
             <remarks>
             <para>
-            Append an event to the buffer. If the buffer still contains free space then
-            <c>null</c> is returned. If the buffer is full then an event will be dropped
-            to make space for the new event, the event dropped is returned.
+            Append an event to the buffer. 
+            添加一个事件到缓冲区。
+            If the buffer still contains free space then <c>null</c> is returned. 
+            如果缓冲区仍然包含空闲空间，则返回null。
+            If the buffer is full then an event will be dropped to make space for the new event, the event dropped is returned.
+            如果缓冲区满了，那么将删除一个事件，为新事件腾出空间，将返回已删除的事件。
             </para>
             </remarks>
         </member>
@@ -25273,6 +25319,7 @@
         <member name="M:log4net.Util.CyclicBuffer.PopAll">
             <summary>
             Pops all the logging events from the buffer into an array.
+            取出缓冲区中的所有日志事件到一个数组中。
             </summary>
             <returns>An array of all the logging events in the buffer.</returns>
             <remarks>

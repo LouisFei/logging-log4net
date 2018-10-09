@@ -25,6 +25,7 @@ namespace log4net.ObjectRenderer
     /// <summary>
     /// Implement this interface in order to render objects as strings.
     /// 实现此接口以将对象呈现为字符串。
+    /// 将告诉logger如何把一个对象转化为一个字符串记录到日志里。
     /// </summary>
     /// <remarks>
     /// <para>

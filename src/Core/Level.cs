@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -23,19 +23,23 @@ using System.Collections;
 namespace log4net.Core
 {
     /// <summary>
+    /// 日志的等级，由高到低分别是：OFF > FATAL > ERROR > WARN > INFO > DEBUG  > ALL 
+    /// 高于等级设定值的都能写入日志，Off表示所有的日志都写入不了，ALL则相反。
+    /// 
+    /// 
     /// Defines the default set of levels recognized by the system.
-    /// ����ϵͳʶ���Ĭ�ϼ��𼯡�
+    /// 定义系统识别的默认级别集。
     /// </summary>
     /// <remarks>
     /// <para>
     /// Each <see cref="LoggingEvent"/> has an associated <see cref="Level"/>.
-    /// ÿ����־�¼�����һ��������ļ���
+    /// 每个日志事件都有一个相关联的级别
     /// </para>
     /// <para>
     /// Levels have a numeric <see cref="Level.Value"/> that defines the relative 
     /// ordering between levels. Two Levels with the same <see cref="Level.Value"/> 
     /// are deemed to be equivalent.
-    /// ������һ�����ּ���ֵ�������弶��֮������˳�򡣾�����ͬ����ֵ������������Ϊ����ȵġ�
+    /// 级别有一个数字级别值，它定义级别之间的相对顺序。具有相同级别值的两个级别被认为是相等的。
     /// </para>
     /// <para>
     /// The levels that are recognized by log4net are set for each <see cref="log4net.Repository.ILoggerRepository"/>
@@ -501,7 +505,7 @@ namespace log4net.Core
         #region Public Static Fields
 
         /// <summary>
-        /// �뿪
+        /// 离开
         /// The <see cref="Off" /> level designates a higher level than all the rest.
         /// </summary>
         public readonly static Level Off = new Level(int.MaxValue, "OFF");
@@ -514,69 +518,69 @@ namespace log4net.Core
         public readonly static Level Log4Net_Debug = new Level(120000, "log4net:DEBUG");
 
         /// <summary>
-        /// ����
+        /// 紧急
         /// The <see cref="Emergency" /> level designates very severe error events. 
         /// System unusable, emergencies.
         /// </summary>
         public readonly static Level Emergency = new Level(120000, "EMERGENCY");
 
         /// <summary>
-        /// ����
+        /// 致命错误：记录系统中出现的能使系统完全失去功能，服务停止，系统崩溃等使系统无法继续运行下去的错误。例如，数据库无法连接，系统出现死出循环。
         /// The <see cref="Fatal" /> level designates very severe error events 
         /// that will presumably lead the application to abort.
         /// </summary>
         public readonly static Level Fatal = new Level(110000, "FATAL");
 
         /// <summary>
-        /// ����
+        /// 提醒
         /// The <see cref="Alert" /> level designates very severe error events. 
         /// Take immediate action, alerts.
         /// </summary>
         public readonly static Level Alert = new Level(100000, "ALERT");
 
         /// <summary>
-        /// Σ��
+        /// 危险
         /// The <see cref="Critical" /> level designates very severe error events. 
         /// Critical condition, critical.
         /// </summary>
         public readonly static Level Critical = new Level(90000, "CRITICAL");
 
         /// <summary>
-        /// ����
+        /// 苛刻
         /// The <see cref="Severe" /> level designates very severe error events.
         /// </summary>
         public readonly static Level Severe = new Level(80000, "SEVERE");
 
         /// <summary>
-        /// ����
+        /// 一般错误：记录系统中出现的导致系统不稳定，部分功能出现混乱或部分功能失效一类的错误。例如，数据字段为空，数据操作不可完成，操作出现异常等。
         /// The <see cref="Error" /> level designates error events that might 
         /// still allow the application to continue running.
         /// </summary>
         public readonly static Level Error = new Level(70000, "ERROR");
 
         /// <summary>
-        /// ����
+        /// 警告：记录系统中不影响系统继续运行，但不符合系统运行正常条件，有可能引起系统错误的信息。例如，记录内容为空，数据内容不正确等。
         /// The <see cref="Warn" /> level designates potentially harmful 
         /// situations.
         /// </summary>
         public readonly static Level Warn  = new Level(60000, "WARN");
 
         /// <summary>
-        /// ֪ͨ
+        /// 通知
         /// The <see cref="Notice" /> level designates informational messages 
         /// that highlight the progress of the application at the highest level.
         /// </summary>
         public readonly static Level Notice  = new Level(50000, "NOTICE");
 
         /// <summary>
-        /// ��Ϣ
+        /// 一般信息：记录系统运行中应该让用户知道的基本信息。例如，服务开始运行，功能已经开放等。
         /// The <see cref="Info" /> level designates informational messages that 
         /// highlight the progress of the application at coarse-grained level.
         /// </summary>
         public readonly static Level Info  = new Level(40000, "INFO");
 
         /// <summary>
-        /// ����
+        /// 调试信息：记录系统用于调试的一切信息、内容或者是一些关键数据内容的输出。
         /// The <see cref="Debug" /> level designates fine-grained informational 
         /// events that are most useful to debug an application.
         /// </summary>
@@ -589,7 +593,7 @@ namespace log4net.Core
 		public readonly static Level Fine = new Level(30000, "FINE");
 
         /// <summary>
-        /// ׷��
+        /// 追踪
         /// The <see cref="Trace" /> level designates fine-grained informational 
         /// events that are most useful to debug an application.
         /// </summary>

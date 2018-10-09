@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -23,17 +23,18 @@ using log4net.Core;
 
 namespace log4net.Util
 {
-	/// <summary>
-	/// A fixed size rolling buffer of logging events.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// An array backed fixed size leaky bucket.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class CyclicBuffer
+    /// <summary>
+    /// A fixed size rolling buffer of logging events.
+    /// 日志事件的固定大小的滚动缓冲区。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// An array backed fixed size leaky bucket.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class CyclicBuffer
 	{
 		#region Public Instance Constructors
 
@@ -62,23 +63,27 @@ namespace log4net.Util
 			m_numElems = 0;
 		}
 
-		#endregion Public Instance Constructors
+        #endregion Public Instance Constructors
 
-		#region Public Instance Methods
-	
-		/// <summary>
-		/// Appends a <paramref name="loggingEvent"/> to the buffer.
-		/// </summary>
-		/// <param name="loggingEvent">The event to append to the buffer.</param>
-		/// <returns>The event discarded from the buffer, if the buffer is full, otherwise <c>null</c>.</returns>
-		/// <remarks>
-		/// <para>
-		/// Append an event to the buffer. If the buffer still contains free space then
-		/// <c>null</c> is returned. If the buffer is full then an event will be dropped
-		/// to make space for the new event, the event dropped is returned.
-		/// </para>
-		/// </remarks>
-		public LoggingEvent Append(LoggingEvent loggingEvent)
+        #region Public Instance Methods
+
+        /// <summary>
+        /// Appends a <paramref name="loggingEvent"/> to the buffer.
+        /// 添加一个日志事件到缓冲区。
+        /// </summary>
+        /// <param name="loggingEvent">The event to append to the buffer.</param>
+        /// <returns>The event discarded from the buffer, if the buffer is full, otherwise <c>null</c>.</returns>
+        /// <remarks>
+        /// <para>
+        /// Append an event to the buffer. 
+        /// 添加一个事件到缓冲区。
+        /// If the buffer still contains free space then <c>null</c> is returned. 
+        /// 如果缓冲区仍然包含空闲空间，则返回null。
+        /// If the buffer is full then an event will be dropped to make space for the new event, the event dropped is returned.
+        /// 如果缓冲区满了，那么将删除一个事件，为新事件腾出空间，将返回已删除的事件。
+        /// </para>
+        /// </remarks>
+        public LoggingEvent Append(LoggingEvent loggingEvent)
 		{	
 			if (loggingEvent == null)
 			{
@@ -148,16 +153,17 @@ namespace log4net.Util
 			}
 		}
 
-		/// <summary>
-		/// Pops all the logging events from the buffer into an array.
-		/// </summary>
-		/// <returns>An array of all the logging events in the buffer.</returns>
-		/// <remarks>
-		/// <para>
-		/// Get all the events in the buffer and clear the buffer.
-		/// </para>
-		/// </remarks>
-		public LoggingEvent[] PopAll()
+        /// <summary>
+        /// Pops all the logging events from the buffer into an array.
+        /// 取出缓冲区中的所有日志事件到一个数组中。
+        /// </summary>
+        /// <returns>An array of all the logging events in the buffer.</returns>
+        /// <remarks>
+        /// <para>
+        /// Get all the events in the buffer and clear the buffer.
+        /// </para>
+        /// </remarks>
+        public LoggingEvent[] PopAll()
 		{
 			lock(this)
 			{

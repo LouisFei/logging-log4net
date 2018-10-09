@@ -26,33 +26,40 @@ using log4net.Core;
 
 namespace log4net.Repository.Hierarchy
 {
-	/// <summary>
-	/// Implementation of <see cref="ILogger"/> used by <see cref="Hierarchy"/>
+    /// <summary>
+    /// Logger是直接和应用程序交互的组件。
+    /// Logger只是产生日志，然后由它引用的Appender记录到指定的媒介，并由Layout控制输出格式。
+    /// Logger提供了多种方式来记录一个日志信息，也可以有多个Logger同时存在。
+    /// 每个实例化的Logger对象对被log4net作为命名实体（Named Entity）来维护。
+    /// log4net使用继承体系，也就是说假如存在两个Logger，名字分别为a.b.c和a.b。那么a.b就是a.b.c的祖先。
+    /// 每个Logger都继承了它祖先的属性。所有的Logger都从Root继承, Root本身也是一个Logger。
+    /// 
+    /// Implementation of <see cref="ILogger"/> used by <see cref="Hierarchy"/>
     /// 记录器抽象类
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Internal class used to provide implementation of <see cref="ILogger"/>
-	/// interface. Applications should use <see cref="LogManager"/> to get
-	/// logger instances.
-	/// </para>
-	/// <para>
-	/// This is one of the central classes in the log4net implementation. One of the
-	/// distinctive features of log4net are hierarchical loggers and their
-	/// evaluation. The <see cref="Hierarchy"/> organizes the <see cref="Logger"/>
-	/// instances into a rooted tree hierarchy.
-	/// </para>
-	/// <para>
-	/// The <see cref="Logger"/> class is abstract. Only concrete subclasses of
-	/// <see cref="Logger"/> can be created. The <see cref="ILoggerFactory"/>
-	/// is used to create instances of this type for the <see cref="Hierarchy"/>.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	/// <author>Aspi Havewala</author>
-	/// <author>Douglas de la Torre</author>
-	public abstract class Logger : IAppenderAttachable, ILogger
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Internal class used to provide implementation of <see cref="ILogger"/>
+    /// interface. Applications should use <see cref="LogManager"/> to get
+    /// logger instances.
+    /// </para>
+    /// <para>
+    /// This is one of the central classes in the log4net implementation. One of the
+    /// distinctive features of log4net are hierarchical loggers and their
+    /// evaluation. The <see cref="Hierarchy"/> organizes the <see cref="Logger"/>
+    /// instances into a rooted tree hierarchy.
+    /// </para>
+    /// <para>
+    /// The <see cref="Logger"/> class is abstract. Only concrete subclasses of
+    /// <see cref="Logger"/> can be created. The <see cref="ILoggerFactory"/>
+    /// is used to create instances of this type for the <see cref="Hierarchy"/>.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    /// <author>Aspi Havewala</author>
+    /// <author>Douglas de la Torre</author>
+    public abstract class Logger : IAppenderAttachable, ILogger
 	{
 		#region Protected Instance Constructors
 

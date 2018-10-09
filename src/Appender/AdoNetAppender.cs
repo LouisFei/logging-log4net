@@ -198,8 +198,7 @@ namespace log4net.Appender
 #endif
 
 		/// <summary>
-		/// Gets or sets the type name of the <see cref="IDbConnection"/> connection
-		/// that should be created.
+		/// Gets or sets the type name of the <see cref="IDbConnection"/> connection that should be created.
 		/// </summary>
 		/// <value>
 		/// The type name of the <see cref="IDbConnection"/> connection.

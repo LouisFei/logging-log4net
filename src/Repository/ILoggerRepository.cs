@@ -77,6 +77,7 @@ namespace log4net.Repository
     #endregion
 
     /// <summary>
+    /// 用于日志对象组织结构的维护。
     /// Interface implemented by logger repositories.
     /// 由logger存储库实现的接口。存放logger实例的容器。
     /// </summary>
