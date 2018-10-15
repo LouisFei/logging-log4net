@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,50 +27,54 @@ using log4net.Repository;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Property pattern converter
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Writes out the value of a named property. The property name
-	/// should be set in the <see cref="log4net.Util.PatternConverter.Option"/>
-	/// property.
-	/// </para>
-	/// <para>
-	/// If the <see cref="log4net.Util.PatternConverter.Option"/> is set to <c>null</c>
-	/// then all the properties are written as key value pairs.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	internal sealed class PropertyPatternConverter : PatternLayoutConverter 
+    /// <summary>
+    /// Property pattern converter.
+    /// 属性模式转换器
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Writes out the value of a named property. 
+    /// 写出指定属性的值。
+    /// The property name should be set in the <see cref="log4net.Util.PatternConverter.Option"/> property.
+    /// 属性名应该设置在<see cref="log4net.Util.PatternConverter.Option"/>属性。
+    /// </para>
+    /// <para>
+    /// If the <see cref="log4net.Util.PatternConverter.Option"/> is set to <c>null</c> then all the properties are written as key value pairs.
+    /// 如果<see cref="log4net.Util.PatternConverter.Option"/>被设置为<c>null</c>，所有属性都被写成键值对。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    internal sealed class PropertyPatternConverter : PatternLayoutConverter 
 	{
-		/// <summary>
-		/// Write the property value to the output
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
-		/// <param name="loggingEvent">the event being logged</param>
-		/// <remarks>
-		/// <para>
-		/// Writes out the value of a named property. The property name
-		/// should be set in the <see cref="log4net.Util.PatternConverter.Option"/>
-		/// property.
-		/// </para>
-		/// <para>
-		/// If the <see cref="log4net.Util.PatternConverter.Option"/> is set to <c>null</c>
-		/// then all the properties are written as key value pairs.
-		/// </para>
-		/// </remarks>
-		override protected void Convert(TextWriter writer, LoggingEvent loggingEvent)
+        /// <summary>
+        /// Write the property value to the output
+        /// 将属性值写入输出
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
+        /// <param name="loggingEvent">the event being logged</param>
+        /// <remarks>
+        /// <para>
+        /// Writes out the value of a named property. 
+        /// The property name should be set in the <see cref="log4net.Util.PatternConverter.Option"/> property.
+        /// </para>
+        /// <para>
+        /// If the <see cref="log4net.Util.PatternConverter.Option"/> is set to <c>null</c>
+        /// then all the properties are written as key value pairs.
+        /// </para>
+        /// </remarks>
+        override protected void Convert(TextWriter writer, LoggingEvent loggingEvent)
 		{
 			if (Option != null)
 			{
-				// Write the value for the specified key
-				WriteObject(writer, loggingEvent.Repository, loggingEvent.LookupProperty(Option));
+                // Write the value for the specified key
+                // 写入指定的键值
+                WriteObject(writer, loggingEvent.Repository, loggingEvent.LookupProperty(Option));
 			}
 			else
 			{
-				// Write all the key value pairs
-				WriteDictionary(writer, loggingEvent.Repository, loggingEvent.GetProperties());
+                // Write all the key value pairs
+                // 写入所有键值对
+                WriteDictionary(writer, loggingEvent.Repository, loggingEvent.GetProperties());
 			}
 		}
 	}

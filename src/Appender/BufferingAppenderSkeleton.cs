@@ -1,4 +1,4 @@
-#region Apache License
+ï»¿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -131,53 +131,53 @@ namespace log4net.Appender
 			set { m_lossy = value; }
 		}
 
-		/// <summary>
-		/// Gets or sets the size of the cyclic buffer used to hold the 
-		/// logging events.
-		/// </summary>
-		/// <value>
-		/// The size of the cyclic buffer used to hold the logging events.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The <see cref="BufferSize"/> option takes a positive integer
-		/// representing the maximum number of logging events to collect in 
-		/// a cyclic buffer. When the <see cref="BufferSize"/> is reached,
-		/// oldest events are deleted as new events are added to the
-		/// buffer. By default the size of the cyclic buffer is 512 events.
-		/// </para>
-		/// <para>
-		/// If the <see cref="BufferSize"/> is set to a value less than
-		/// or equal to 1 then no buffering will occur. The logging event
-		/// will be delivered synchronously (depending on the <see cref="Lossy"/>
-		/// and <see cref="Evaluator"/> properties). Otherwise the event will
-		/// be buffered.
-		/// </para>
-		/// </remarks>
-		public int BufferSize
+        /// <summary>
+        /// Gets or sets the size of the cyclic buffer used to hold the logging events.
+        /// è·å–æˆ–è®¾ç½®ç”¨äºä¿å­˜æ—¥å¿—äº‹ä»¶çš„å¾ªç¯ç¼“å†²åŒºçš„å¤§å°ã€‚
+        /// </summary>
+        /// <value>
+        /// The size of the cyclic buffer used to hold the logging events.
+        /// ç”¨äºä¿å­˜æ—¥å¿—äº‹ä»¶çš„å¾ªç¯ç¼“å†²åŒºçš„å¤§å°ã€‚
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The <see cref="BufferSize"/> option takes a positive integer representing the maximum number of logging events to collect in a cyclic buffer. 
+        /// <see cref="BufferSize"/>é€‰é¡¹å–ä¸€ä¸ªæ­£æ•´æ•°ï¼Œè¡¨ç¤ºå¾ªç¯ç¼“å†²åŒºä¸­è¦æ”¶é›†çš„æ—¥å¿—äº‹ä»¶çš„æœ€å¤§æ•°é‡ã€‚
+        /// When the <see cref="BufferSize"/> is reached, oldest events are deleted as new events are added to the buffer. 
+        /// å½“åˆ°è¾¾<see cref="BufferSize"/>æ—¶ï¼Œå½“æ–°çš„äº‹ä»¶æ·»åŠ åˆ°ç¼“å†²åŒºæ—¶ï¼Œæœ€è€çš„äº‹ä»¶å°†è¢«åˆ é™¤ã€‚
+        /// By default the size of the cyclic buffer is 512 events.
+        /// é»˜è®¤æƒ…å†µä¸‹ï¼Œå¾ªç¯ç¼“å†²åŒºçš„å¤§å°æ˜¯512ä¸ªäº‹ä»¶ã€‚
+        /// </para>
+        /// <para>
+        /// If the <see cref="BufferSize"/> is set to a value less than or equal to 1 then no buffering will occur. 
+        /// å¦‚æœ<see cref="BufferSize"/>è¢«è®¾ç½®ä¸ºå°äºæˆ–ç­‰äº1çš„å€¼ï¼Œåˆ™ä¸ä¼šå‘ç”Ÿç¼“å†²ã€‚
+        /// The logging event will be delivered synchronously (depending on the <see cref="Lossy"/> and <see cref="Evaluator"/> properties).
+        /// æ—¥å¿—äº‹ä»¶å°†åŒæ­¥ä¼ é€’(å–å†³äº<see cref="Lossy"/>å’Œ<see cref="Evaluator"/>å±æ€§)ã€‚
+        /// Otherwise the event will be buffered.
+        /// å¦åˆ™äº‹ä»¶å°†è¢«ç¼“å†²ã€‚
+        /// </para>
+        /// </remarks>
+        public int BufferSize
 		{
 			get { return m_bufferSize; }
 			set { m_bufferSize = value; }
 		}
 
-		/// <summary>
-		/// Gets or sets the <see cref="ITriggeringEventEvaluator"/> that causes the 
-		/// buffer to be sent immediately.
-		/// </summary>
-		/// <value>
-		/// The <see cref="ITriggeringEventEvaluator"/> that causes the buffer to be
-		/// sent immediately.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The evaluator will be called for each event that is appended to this 
-		/// appender. If the evaluator triggers then the current buffer will 
-		/// immediately be sent (see <see cref="M:SendBuffer(LoggingEvent[])"/>).
-		/// </para>
-		/// <para>If <see cref="Lossy"/> is set to <c>true</c> then an
-		/// <see cref="Evaluator"/> must be specified.</para>
-		/// </remarks>
-		public ITriggeringEventEvaluator Evaluator
+        /// <summary>
+        /// Gets or sets the <see cref="ITriggeringEventEvaluator"/> that causes the buffer to be sent immediately.
+        /// </summary>
+        /// <value>
+        /// The <see cref="ITriggeringEventEvaluator"/> that causes the buffer to be sent immediately.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The evaluator will be called for each event that is appended to this appender. 
+        /// å°†ä¸ºé™„åŠ åˆ°æ­¤é™„åŠ å™¨çš„æ¯ä¸ªäº‹ä»¶è°ƒç”¨è¯„ä¼°å™¨ã€‚
+        /// If the evaluator triggers then the current buffer will immediately be sent (see <see cref="M:SendBuffer(LoggingEvent[])"/>).
+        /// </para>
+        /// <para>If <see cref="Lossy"/> is set to <c>true</c> then an <see cref="Evaluator"/> must be specified.</para>
+        /// </remarks>
+        public ITriggeringEventEvaluator Evaluator
 		{
 			get { return m_evaluator; }
 			set	{ m_evaluator = value; }
@@ -455,13 +455,13 @@ namespace log4net.Appender
 		{
             // If the buffer size is set to 1 or less then the buffer will be sent immediately 
             // because there is not enough space in the buffer to buffer up more than 1 event. 
-            // Èç¹û»º³åÇø´óĞ¡ÉèÖÃÎª1»ò¸üĞ¡£¬Ôò»áÁ¢¼´·¢ËÍ»º³åÇø£¬ÒòÎª»º³åÇøÖĞÃ»ÓĞ×ã¹»µÄ¿Õ¼äÀ´»º³å³¬¹ı1¸öÊÂ¼ş¡£
+            // å¦‚æœç¼“å†²åŒºå¤§å°è®¾ç½®ä¸º1æˆ–æ›´å°ï¼Œåˆ™ä¼šç«‹å³å‘é€ç¼“å†²åŒºï¼Œå› ä¸ºç¼“å†²åŒºä¸­æ²¡æœ‰è¶³å¤Ÿçš„ç©ºé—´æ¥ç¼“å†²è¶…è¿‡1ä¸ªäº‹ä»¶ã€‚
             // Therefore as a special case we don't use the buffer at all.
-            // Òò´Ë£¬×÷ÎªÒ»ÖÖÌØÊâÇé¿ö£¬ÎÒÃÇ¸ù±¾²»Ê¹ÓÃ»º³åÇø¡£
+            // å› æ­¤ï¼Œä½œä¸ºä¸€ç§ç‰¹æ®Šæƒ…å†µï¼Œæˆ‘ä»¬æ ¹æœ¬ä¸ä½¿ç”¨ç¼“å†²åŒºã€‚
             if (m_cb == null || m_bufferSize <= 1)
 			{
                 // Only send the event if we are in non lossy mode or the event is a triggering event
-                // Ö»ÓĞÔÚÎÒÃÇ´¦ÓÚ·ÇÓĞËğÄ£Ê½»òÊÂ¼şÊÇ´¥·¢ÊÂ¼şÊ±²Å·¢ËÍÊÂ¼ş
+                // åªæœ‰åœ¨æˆ‘ä»¬å¤„äºéæœ‰æŸæ¨¡å¼æˆ–äº‹ä»¶æ˜¯è§¦å‘äº‹ä»¶æ—¶æ‰å‘é€äº‹ä»¶
                 if ((!m_lossy) || 
 					(m_evaluator != null && m_evaluator.IsTriggeringEvent(loggingEvent)) || 
 					(m_lossyEvaluator != null && m_lossyEvaluator.IsTriggeringEvent(loggingEvent)))
@@ -473,28 +473,28 @@ namespace log4net.Appender
 					}
 
                     // Not buffering events, send immediately
-                    //²»»º³åÊÂ¼ş£¬Á¢¼´·¢ËÍ
+                    //ä¸ç¼“å†²äº‹ä»¶ï¼Œç«‹å³å‘é€
                     SendBuffer(new LoggingEvent[] { loggingEvent } );
 				}
 			}
 			else
 			{
                 // Because we are caching the LoggingEvent beyond the lifetime of the Append() method we must fix any volatile data in the event.
-                // ÒòÎªÎÒÃÇÔÚAppend()·½·¨µÄÉúÃüÖÜÆÚÖ®Íâ»º´æLoggingEvent£¬ËùÒÔÎÒÃÇ±ØĞëĞŞ¸´ÊÂ¼şÖĞµÄÈÎºÎÒ×Ê§Êı¾İ¡£
+                // å› ä¸ºæˆ‘ä»¬åœ¨Append()æ–¹æ³•çš„ç”Ÿå‘½å‘¨æœŸä¹‹å¤–ç¼“å­˜LoggingEventï¼Œæ‰€ä»¥æˆ‘ä»¬å¿…é¡»ä¿®å¤äº‹ä»¶ä¸­çš„ä»»ä½•æ˜“å¤±æ•°æ®ã€‚
                 loggingEvent.Fix = this.Fix;
 
                 // Add to the buffer, returns the event discarded from the buffer if there is no space remaining after the append
-                // Ìí¼Óµ½»º³åÇøÖĞ£¬Èç¹û×·¼ÓºóÃ»ÓĞÊ£Óà¿Õ¼ä£¬Ôò·µ»Ø´Ó»º³åÇøÖĞ¶ªÆúµÄÊÂ¼ş
+                // æ·»åŠ åˆ°ç¼“å†²åŒºä¸­ï¼Œå¦‚æœè¿½åŠ åæ²¡æœ‰å‰©ä½™ç©ºé—´ï¼Œåˆ™è¿”å›ä»ç¼“å†²åŒºä¸­ä¸¢å¼ƒçš„äº‹ä»¶
                 LoggingEvent discardedLoggingEvent = m_cb.Append(loggingEvent);
 
 				if (discardedLoggingEvent != null)
 				{
                     // Buffer is full and has had to discard an event
-                    // »º³åÇøÒÑÂú£¬±ØĞë¶ªÆúÒ»¸öÊÂ¼ş
+                    // ç¼“å†²åŒºå·²æ»¡ï¼Œå¿…é¡»ä¸¢å¼ƒä¸€ä¸ªäº‹ä»¶
                     if (!m_lossy)
 					{
                         // Not lossy, must send all events
-                        // Ã»ÓĞËğºÄ£¬±ØĞë·¢ËÍËùÓĞÊÂ¼ş
+                        // æ²¡æœ‰æŸè€—ï¼Œå¿…é¡»å‘é€æ‰€æœ‰äº‹ä»¶
                         SendFromBuffer(discardedLoggingEvent, m_cb);
 					}
 					else
@@ -625,17 +625,17 @@ namespace log4net.Appender
         /// <summary>
         /// Indicates if the appender should overwrite events in the cyclic buffer when it becomes full, 
         /// or if the buffer should be flushed when the buffer is full.
-        /// Ö¸Ê¾µ±Ñ­»·»º³åÇøÂúÊ±£¬appenderÊÇ·ñÓ¦¸ÃÖØĞ´ÊÂ¼ş£¬»òÕßµ±»º³åÇøÂúÊ±ÊÇ·ñÓ¦¸ÃË¢ĞÂ»º³åÇø¡£
+        /// æŒ‡ç¤ºå½“å¾ªç¯ç¼“å†²åŒºæ»¡æ—¶ï¼Œappenderæ˜¯å¦åº”è¯¥é‡å†™äº‹ä»¶ï¼Œæˆ–è€…å½“ç¼“å†²åŒºæ»¡æ—¶æ˜¯å¦åº”è¯¥åˆ·æ–°ç¼“å†²åŒºã€‚
         /// </summary>
         /// <remarks>
         /// If this field is set to <c>true</c> then an <see cref="Evaluator"/> must be set.
-        /// Èç¹û¸Ã×Ö¶ÎÉèÖÃÎªtrue£¬Ôò±ØĞëÉèÖÃÒ»¸öÇóÖµÆ÷¡£
+        /// å¦‚æœè¯¥å­—æ®µè®¾ç½®ä¸ºtrueï¼Œåˆ™å¿…é¡»è®¾ç½®ä¸€ä¸ªæ±‚å€¼å™¨ã€‚
         /// </remarks>
         private bool m_lossy = false;
 
         /// <summary>
         /// The triggering event evaluator filters discarded events.
-        /// ´¥·¢ÊÂ¼şÆÀ¹ÀÆ÷¹ıÂËµô±»¶ªÆúµÄÊÂ¼ş¡£
+        /// è§¦å‘äº‹ä»¶è¯„ä¼°å™¨è¿‡æ»¤æ‰è¢«ä¸¢å¼ƒçš„äº‹ä»¶ã€‚
         /// </summary>
         /// <remarks>
         /// The object that is used to determine if an event that is discarded should

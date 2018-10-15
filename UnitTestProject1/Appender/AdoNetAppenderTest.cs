@@ -272,8 +272,10 @@ namespace UnitTestProject1.Appender
             ILog log = LogManager.GetLogger(rep.Name, "NullPropertyXmlConfig");
 
             log.Debug("Message");
+
             IDbCommand command = Log4NetCommand.MostRecentInstance;
             IDbDataParameter param = (IDbDataParameter)command.Parameters["@productId"];
+
             Assert.AreNotEqual(SystemInfo.NullText, param.Value);
             Assert.AreEqual(DBNull.Value, param.Value);
         }
@@ -281,19 +283,18 @@ namespace UnitTestProject1.Appender
         [TestMethod]
         public void NullPropertyProgmaticConfig()
         {
-            AdoNetAppenderParameter productIdParam = new AdoNetAppenderParameter();
-            productIdParam.ParameterName = "@productId";
-            productIdParam.DbType = DbType.String;
-            productIdParam.Size = 50;
-            RawPropertyLayout rawPropertyLayout = new RawPropertyLayout();
-            rawPropertyLayout.Key = "ProductId";
-            productIdParam.Layout = rawPropertyLayout;
-
             AdoNetAppender appender = new AdoNetAppender();
             appender.ConnectionType = typeof(Log4NetConnection).FullName;
             appender.BufferSize = -1;
             appender.CommandText = "INSERT INTO Log ([productId]) VALUES (@productId)";
-            appender.AddParameter(productIdParam);
+            appender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@productId",
+                DbType = DbType.String,
+                Size = 50,
+                Layout = new RawPropertyLayout() { Key = "ProductId" }
+            });
+
             appender.ActivateOptions();
 
             ILoggerRepository rep = LogManager.CreateRepository(Guid.NewGuid().ToString());
@@ -301,10 +302,79 @@ namespace UnitTestProject1.Appender
             ILog log = LogManager.GetLogger(rep.Name, "NullPropertyProgmaticConfig");
 
             log.Debug("Message");
+
             IDbCommand command = Log4NetCommand.MostRecentInstance;
             IDbDataParameter param = (IDbDataParameter)command.Parameters["@productId"];
+
             Assert.AreNotEqual(SystemInfo.NullText, param.Value);
             Assert.AreEqual(DBNull.Value, param.Value);
+        }
+
+        [TestMethod]
+        public void ReallyAdoNetAppenderByCode()
+        {
+            ILoggerRepository rep = LogManager.CreateRepository(Guid.NewGuid().ToString());
+
+            #region AdoNetAppender & AdoNetAppenderParameter
+            AdoNetAppender adoAppender = new AdoNetAppender();
+            adoAppender.Name = "AdoNetAppender";
+            adoAppender.CommandType = CommandType.Text;
+            adoAppender.BufferSize = 1; //被设置为小于或等于1的值，则不会发生缓冲。
+            adoAppender.ConnectionType = "System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
+            adoAppender.ConnectionString = "Data Source=192.168.0.214;Initial Catalog=SipscMemberLog;Integrated Security=False;Persist Security Info=False;User ID=sml;Password=sml123;";
+            adoAppender.CommandText = @"INSERT INTO Log ([Date],[Thread],[Level],[Logger],[Message],[Exception]) VALUES (@log_date, @thread, @log_level, @logger, @message, @exception)";
+            //日志记录时间：RawTimeStampLayout为默认的时间输出格式。
+            adoAppender.AddParameter(new AdoNetAppenderParameter() {
+                ParameterName = "@log_date",
+                DbType = DbType.DateTime,
+                Layout = new RawTimeStampLayout()
+            });
+            //线程号
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@thread",
+                Size = 255, //长度不可以省略，否则不会输出。
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%thread"))
+            });
+            //日志等级
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@log_level",
+                Size = 50,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%level"))
+            });
+            //日志记录类名称
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@logger",
+                DbType = DbType.String,
+                Size = 255,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%logger"))
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@message",
+                DbType = DbType.String,
+                Size = 4000,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%message"))
+            });            
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@exception",
+                DbType = DbType.String,
+                Size = 2000,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%exception"))
+            });
+            #endregion
+
+            adoAppender.ActivateOptions();
+            BasicConfigurator.Configure(rep, adoAppender);
+            ILog log = LogManager.GetLogger(rep.Name, "ReallyAdoNetAppenderByCode");
+
+            log.Info($"Message {Guid.NewGuid().ToString()}");
+            log.Error($"出错啦 {Guid.NewGuid().ToString()}", new Exception("模拟异常"));
+
+            Assert.IsTrue(true);
         }
 
     }

@@ -2096,46 +2096,46 @@
         </member>
         <member name="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize">
             <summary>
-            Gets or sets the size of the cyclic buffer used to hold the 
-            logging events.
+            Gets or sets the size of the cyclic buffer used to hold the logging events.
+            获取或设置用于保存日志事件的循环缓冲区的大小。
             </summary>
             <value>
             The size of the cyclic buffer used to hold the logging events.
+            用于保存日志事件的循环缓冲区的大小。
             </value>
             <remarks>
             <para>
-            The <see cref="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize"/> option takes a positive integer
-            representing the maximum number of logging events to collect in 
-            a cyclic buffer. When the <see cref="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize"/> is reached,
-            oldest events are deleted as new events are added to the
-            buffer. By default the size of the cyclic buffer is 512 events.
+            The <see cref="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize"/> option takes a positive integer representing the maximum number of logging events to collect in a cyclic buffer. 
+            <see cref="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize"/>选项取一个正整数，表示循环缓冲区中要收集的日志事件的最大数量。
+            When the <see cref="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize"/> is reached, oldest events are deleted as new events are added to the buffer. 
+            当到达<see cref="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize"/>时，当新的事件添加到缓冲区时，最老的事件将被删除。
+            By default the size of the cyclic buffer is 512 events.
+            默认情况下，循环缓冲区的大小是512个事件。
             </para>
             <para>
-            If the <see cref="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize"/> is set to a value less than
-            or equal to 1 then no buffering will occur. The logging event
-            will be delivered synchronously (depending on the <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Lossy"/>
-            and <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Evaluator"/> properties). Otherwise the event will
-            be buffered.
+            If the <see cref="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize"/> is set to a value less than or equal to 1 then no buffering will occur. 
+            如果<see cref="P:log4net.Appender.BufferingAppenderSkeleton.BufferSize"/>被设置为小于或等于1的值，则不会发生缓冲。
+            The logging event will be delivered synchronously (depending on the <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Lossy"/> and <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Evaluator"/> properties).
+            日志事件将同步传递(取决于<see cref="P:log4net.Appender.BufferingAppenderSkeleton.Lossy"/>和<see cref="P:log4net.Appender.BufferingAppenderSkeleton.Evaluator"/>属性)。
+            Otherwise the event will be buffered.
+            否则事件将被缓冲。
             </para>
             </remarks>
         </member>
         <member name="P:log4net.Appender.BufferingAppenderSkeleton.Evaluator">
             <summary>
-            Gets or sets the <see cref="T:log4net.Core.ITriggeringEventEvaluator"/> that causes the 
-            buffer to be sent immediately.
+            Gets or sets the <see cref="T:log4net.Core.ITriggeringEventEvaluator"/> that causes the buffer to be sent immediately.
             </summary>
             <value>
-            The <see cref="T:log4net.Core.ITriggeringEventEvaluator"/> that causes the buffer to be
-            sent immediately.
+            The <see cref="T:log4net.Core.ITriggeringEventEvaluator"/> that causes the buffer to be sent immediately.
             </value>
             <remarks>
             <para>
-            The evaluator will be called for each event that is appended to this 
-            appender. If the evaluator triggers then the current buffer will 
-            immediately be sent (see <see cref="M:SendBuffer(LoggingEvent[])"/>).
+            The evaluator will be called for each event that is appended to this appender. 
+            将为附加到此附加器的每个事件调用评估器。
+            If the evaluator triggers then the current buffer will immediately be sent (see <see cref="M:SendBuffer(LoggingEvent[])"/>).
             </para>
-            <para>If <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Lossy"/> is set to <c>true</c> then an
-            <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Evaluator"/> must be specified.</para>
+            <para>If <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Lossy"/> is set to <c>true</c> then an <see cref="P:log4net.Appender.BufferingAppenderSkeleton.Evaluator"/> must be specified.</para>
             </remarks>
         </member>
         <member name="P:log4net.Appender.BufferingAppenderSkeleton.LossyEvaluator">
@@ -19326,12 +19326,12 @@
         </member>
         <member name="T:log4net.Layout.Pattern.MethodLocationPatternConverter">
             <summary>
-            Write the method name to the output
+            Write the method name to the output.
+            将方法名写入输出
             </summary>
             <remarks>
             <para>
-            Writes the caller location <see cref="P:log4net.Core.LocationInfo.MethodName"/> to
-            the output.
+            Writes the caller location <see cref="P:log4net.Core.LocationInfo.MethodName"/> to the output.
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -19523,17 +19523,19 @@
         </member>
         <member name="T:log4net.Layout.Pattern.PropertyPatternConverter">
             <summary>
-            Property pattern converter
+            Property pattern converter.
+            属性模式转换器
             </summary>
             <remarks>
             <para>
-            Writes out the value of a named property. The property name
-            should be set in the <see cref="P:log4net.Util.PatternConverter.Option"/>
-            property.
+            Writes out the value of a named property. 
+            写出指定属性的值。
+            The property name should be set in the <see cref="P:log4net.Util.PatternConverter.Option"/> property.
+            属性名应该设置在<see cref="P:log4net.Util.PatternConverter.Option"/>属性。
             </para>
             <para>
-            If the <see cref="P:log4net.Util.PatternConverter.Option"/> is set to <c>null</c>
-            then all the properties are written as key value pairs.
+            If the <see cref="P:log4net.Util.PatternConverter.Option"/> is set to <c>null</c> then all the properties are written as key value pairs.
+            如果<see cref="P:log4net.Util.PatternConverter.Option"/>被设置为<c>null</c>，所有属性都被写成键值对。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -19541,14 +19543,14 @@
         <member name="M:log4net.Layout.Pattern.PropertyPatternConverter.Convert(System.IO.TextWriter,log4net.Core.LoggingEvent)">
             <summary>
             Write the property value to the output
+            将属性值写入输出
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="loggingEvent">the event being logged</param>
             <remarks>
             <para>
-            Writes out the value of a named property. The property name
-            should be set in the <see cref="P:log4net.Util.PatternConverter.Option"/>
-            property.
+            Writes out the value of a named property. 
+            The property name should be set in the <see cref="P:log4net.Util.PatternConverter.Option"/> property.
             </para>
             <para>
             If the <see cref="P:log4net.Util.PatternConverter.Option"/> is set to <c>null</c>
@@ -28608,9 +28610,8 @@
             <param name="value">the value to write to the writer</param>
             <remarks>
             <para>
-            Writes the Object to a writer. If the <see cref="T:log4net.Repository.ILoggerRepository"/> specified
-            is not null then it is used to render the object to text, otherwise
-            the object's ToString method is called.
+            Writes the Object to a writer. 
+            If the <see cref="T:log4net.Repository.ILoggerRepository"/> specified is not null then it is used to render the object to text, otherwise the object's ToString method is called.
             </para>
             </remarks>
         </member>

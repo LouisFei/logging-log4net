@@ -367,9 +367,8 @@ namespace log4net.Util
 		/// <param name="value">the value to write to the writer</param>
 		/// <remarks>
 		/// <para>
-		/// Writes the Object to a writer. If the <see cref="ILoggerRepository"/> specified
-		/// is not null then it is used to render the object to text, otherwise
-		/// the object's ToString method is called.
+		/// Writes the Object to a writer. 
+        /// If the <see cref="ILoggerRepository"/> specified is not null then it is used to render the object to text, otherwise the object's ToString method is called.
 		/// </para>
 		/// </remarks>
 		protected static void WriteObject(TextWriter writer, ILoggerRepository repository, object value)
