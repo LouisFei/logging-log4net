@@ -1,4 +1,4 @@
-#region Apache License
+ï»¿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,15 +27,15 @@ using log4net.Core;
 namespace log4net.Repository.Hierarchy
 {
     /// <summary>
-    /// LoggerÊÇÖ±½ÓºÍÓ¦ÓÃ³ÌĞò½»»¥µÄ×é¼ş¡£
-    /// LoggerÖ»ÊÇ²úÉúÈÕÖ¾£¬È»ºóÓÉËüÒıÓÃµÄAppender¼ÇÂ¼µ½Ö¸¶¨µÄÃ½½é£¬²¢ÓÉLayout¿ØÖÆÊä³ö¸ñÊ½¡£
-    /// LoggerÌá¹©ÁË¶àÖÖ·½Ê½À´¼ÇÂ¼Ò»¸öÈÕÖ¾ĞÅÏ¢£¬Ò²¿ÉÒÔÓĞ¶à¸öLoggerÍ¬Ê±´æÔÚ¡£
-    /// Ã¿¸öÊµÀı»¯µÄLogger¶ÔÏó¶Ô±»log4net×÷ÎªÃüÃûÊµÌå£¨Named Entity£©À´Î¬»¤¡£
-    /// log4netÊ¹ÓÃ¼Ì³ĞÌåÏµ£¬Ò²¾ÍÊÇËµ¼ÙÈç´æÔÚÁ½¸öLogger£¬Ãû×Ö·Ö±ğÎªa.b.cºÍa.b¡£ÄÇÃ´a.b¾ÍÊÇa.b.cµÄ×æÏÈ¡£
-    /// Ã¿¸öLogger¶¼¼Ì³ĞÁËËü×æÏÈµÄÊôĞÔ¡£ËùÓĞµÄLogger¶¼´ÓRoot¼Ì³Ğ, Root±¾ÉíÒ²ÊÇÒ»¸öLogger¡£
+    /// Loggeræ˜¯ç›´æ¥å’Œåº”ç”¨ç¨‹åºäº¤äº’çš„ç»„ä»¶ã€‚
+    /// Loggeråªæ˜¯äº§ç”Ÿæ—¥å¿—ï¼Œç„¶åç”±å®ƒå¼•ç”¨çš„Appenderè®°å½•åˆ°æŒ‡å®šçš„åª’ä»‹ï¼Œå¹¶ç”±Layoutæ§åˆ¶è¾“å‡ºæ ¼å¼ã€‚
+    /// Loggeræä¾›äº†å¤šç§æ–¹å¼æ¥è®°å½•ä¸€ä¸ªæ—¥å¿—ä¿¡æ¯ï¼Œä¹Ÿå¯ä»¥æœ‰å¤šä¸ªLoggeråŒæ—¶å­˜åœ¨ã€‚
+    /// æ¯ä¸ªå®ä¾‹åŒ–çš„Loggerå¯¹è±¡å¯¹è¢«log4netä½œä¸ºå‘½åå®ä½“ï¼ˆNamed Entityï¼‰æ¥ç»´æŠ¤ã€‚
+    /// log4netä½¿ç”¨ç»§æ‰¿ä½“ç³»ï¼Œä¹Ÿå°±æ˜¯è¯´å‡å¦‚å­˜åœ¨ä¸¤ä¸ªLoggerï¼Œåå­—åˆ†åˆ«ä¸ºa.b.cå’Œa.bã€‚é‚£ä¹ˆa.bå°±æ˜¯a.b.cçš„ç¥–å…ˆã€‚
+    /// æ¯ä¸ªLoggeréƒ½ç»§æ‰¿äº†å®ƒç¥–å…ˆçš„å±æ€§ã€‚æ‰€æœ‰çš„Loggeréƒ½ä»Rootç»§æ‰¿, Rootæœ¬èº«ä¹Ÿæ˜¯ä¸€ä¸ªLoggerã€‚
     /// 
     /// Implementation of <see cref="ILogger"/> used by <see cref="Hierarchy"/>
-    /// ¼ÇÂ¼Æ÷³éÏóÀà
+    /// è®°å½•å™¨æŠ½è±¡ç±»
     /// </summary>
     /// <remarks>
     /// <para>
@@ -165,17 +165,18 @@ namespace log4net.Repository.Hierarchy
 			}
 		}
 
-		/// <summary>
-		/// Gets or sets the <see cref="Hierarchy"/> where this 
-		/// <c>Logger</c> instance is attached to.
-		/// </summary>
-		/// <value>The hierarchy that this logger belongs to.</value>
-		/// <remarks>
-		/// <para>
-		/// This logger must be attached to a single <see cref="Hierarchy"/>.
-		/// </para>
-		/// </remarks>
-		virtual public Hierarchy Hierarchy
+        /// <summary>
+        /// Gets or sets the <see cref="Hierarchy"/> where this <c>Logger</c> instance is attached to.
+        /// è·å–æˆ–è®¾ç½®è¿æ¥æ­¤è®°å½•å™¨å®ä¾‹çš„å±‚æ¬¡ç»“æ„ã€‚
+        /// </summary>
+        /// <value>The hierarchy that this logger belongs to.è¿™ä¸ªæ—¥å¿—è®°å½•å™¨æ‰€å±çš„å±‚æ¬¡ç»“æ„ã€‚</value>
+        /// <remarks>
+        /// <para>
+        /// This logger must be attached to a single <see cref="Hierarchy"/>.
+        /// è¿™ä¸ªæ—¥å¿—è®°å½•å™¨å¿…é¡»é™„åŠ åˆ°ä¸€ä¸ªå±‚æ¬¡ç»“æ„ã€‚
+        /// </para>
+        /// </remarks>
+        virtual public Hierarchy Hierarchy
 		{
 			get { return m_hierarchy; }
 			set { m_hierarchy = value; }
@@ -204,7 +205,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Add <paramref name="newAppender"/> to the list of appenders of this Logger instance.
-        /// Ìí¼ÓÒ»¸öĞÂ¸½¼ÓÆ÷µ½µ±Ç°Õâ¸ö¼ÇÂ¼Æ÷ÊµÀıµÄ¸½¼ÓÆ÷ÁĞ±íÖĞ¡£
+        /// æ·»åŠ ä¸€ä¸ªæ–°é™„åŠ å™¨åˆ°å½“å‰è¿™ä¸ªè®°å½•å™¨å®ä¾‹çš„é™„åŠ å™¨åˆ—è¡¨ä¸­ã€‚
 		/// </summary>
 		/// <param name="newAppender">An appender to add to this logger</param>
 		/// <remarks>
@@ -213,7 +214,7 @@ namespace log4net.Repository.Hierarchy
 		/// </para>
 		/// <para>
 		/// If <paramref name="newAppender"/> is already in the list of appenders, then it won't be added again.
-        /// Èç¹ûĞÂµÄ¸½¼ÓÆ÷ÒÑ¾­ÔÚÁĞ±íÖĞ´æÔÚ£¬Ôò²»»áÖØ¸´Ìí¼Ó¡£
+        /// å¦‚æœæ–°çš„é™„åŠ å™¨å·²ç»åœ¨åˆ—è¡¨ä¸­å­˜åœ¨ï¼Œåˆ™ä¸ä¼šé‡å¤æ·»åŠ ã€‚
 		/// </para>
 		/// </remarks>
 		virtual public void AddAppender(IAppender newAppender) 
@@ -240,7 +241,7 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// Get the appenders contained in this logger as an <see cref="System.Collections.ICollection"/>.
-        /// ½«ÈÕÖ¾¼ÇÂ¼Æ÷ÖĞ°üº¬µÄ¸½¼ÓÆ÷×÷Îª¼¯ºÏ»ñÈ¡¡£
+        /// å°†æ—¥å¿—è®°å½•å™¨ä¸­åŒ…å«çš„é™„åŠ å™¨ä½œä¸ºé›†åˆè·å–ã€‚
         /// </summary>
         /// <returns>A collection of the appenders in this logger</returns>
         /// <remarks>
@@ -486,7 +487,7 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// Checks if this logger is enabled for a given <see cref="Level"/> passed as parameter.
-        /// ¼ì²éÊÇ·ñÎª×÷Îª²ÎÊı´«µİµÄ¸ø¶¨¼¶±ğÆôÓÃÁË´Ë¼ÇÂ¼Æ÷¡£
+        /// æ£€æŸ¥æ˜¯å¦ä¸ºä½œä¸ºå‚æ•°ä¼ é€’çš„ç»™å®šçº§åˆ«å¯ç”¨äº†æ­¤è®°å½•å™¨ã€‚
         /// </summary>
         /// <param name="level">The level to check.</param>
         /// <returns>
@@ -659,7 +660,7 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// This is the most generic printing method. This generic form is intended to be used by wrappers.
-        /// ÕâÊÇ×îÍ¨ÓÃµÄ´òÓ¡·½·¨¡£Õâ¸öÍ¨ÓÃµÄ±íµ¥½«±»°ü×°Æ÷Ê¹ÓÃ¡£
+        /// è¿™æ˜¯æœ€é€šç”¨çš„æ‰“å°æ–¹æ³•ã€‚è¿™ä¸ªé€šç”¨çš„è¡¨å•å°†è¢«åŒ…è£…å™¨ä½¿ç”¨ã€‚
         /// </summary>
         /// <param name="level">The level of the message to be logged.</param>
         /// <param name="message">The message object to log.</param>
@@ -678,21 +679,21 @@ namespace log4net.Repository.Hierarchy
 			}
 		}
 
-		/// <summary>
-		/// Creates a new logging event and logs the event without further checks.
-		/// </summary>
-		/// <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is
-		/// the stack boundary into the logging system for this call.</param>
-		/// <param name="level">The level of the message to be logged.</param>
-		/// <param name="message">The message object to log.</param>
-		/// <param name="exception">The exception to log, including its stack trace.</param>
-		/// <remarks>
-		/// <para>
-		/// Generates a logging event and delivers it to the attached
-		/// appenders.
-		/// </para>
-		/// </remarks>
-		virtual protected void ForcedLog(Type callerStackBoundaryDeclaringType, Level level, object message, Exception exception) 
+        /// <summary>
+        /// Creates a new logging event and logs the event without further checks.
+        /// åˆ›å»ºä¸€ä¸ªæ–°çš„æ—¥å¿—äº‹ä»¶ï¼Œå¹¶åœ¨ä¸è¿›è¡Œè¿›ä¸€æ­¥æ£€æŸ¥çš„æƒ…å†µä¸‹è®°å½•è¯¥äº‹ä»¶ã€‚
+        /// </summary>
+        /// <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is the stack boundary into the logging system for this call.</param>
+        /// <param name="level">The level of the message to be logged.</param>
+        /// <param name="message">The message object to log.</param>
+        /// <param name="exception">The exception to log, including its stack trace.</param>
+        /// <remarks>
+        /// <para>
+        /// Generates a logging event and delivers it to the attached appenders.
+        /// ç”Ÿæˆä¸€ä¸ªæ—¥å¿—äº‹ä»¶å¹¶å°†å…¶äº¤ä»˜ç»™é™„åŠ é™„ä»¶ã€‚
+        /// </para>
+        /// </remarks>
+        virtual protected void ForcedLog(Type callerStackBoundaryDeclaringType, Level level, object message, Exception exception) 
 		{
 			CallAppenders(new LoggingEvent(callerStackBoundaryDeclaringType, this.Hierarchy, this.Name, level, message, exception));
 		}
@@ -755,17 +756,19 @@ namespace log4net.Repository.Hierarchy
 		/// </remarks>
 		private Logger m_parent;
 
-		/// <summary>
-		/// Loggers need to know what Hierarchy they are in.
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// Loggers need to know what Hierarchy they are in.
-		/// The hierarchy that this logger is a member of is stored
-		/// here.
-		/// </para>
-		/// </remarks>
-		private Hierarchy m_hierarchy;
+        /// <summary>
+        /// Loggers need to know what Hierarchy they are in.
+        /// æ—¥å¿—è®°å½•å™¨éœ€è¦çŸ¥é“å®ƒä»¬æ‰€åœ¨çš„å±‚æ¬¡ç»“æ„ã€‚
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Loggers need to know what Hierarchy they are in.
+        /// æ—¥å¿—è®°å½•å™¨éœ€è¦çŸ¥é“å®ƒä»¬æ‰€åœ¨çš„å±‚æ¬¡ç»“æ„ã€‚
+        /// The hierarchy that this logger is a member of is stored here.
+        /// è¿™ä¸ªæ—¥å¿—è®°å½•å™¨æ‰€å±çš„å±‚æ¬¡ç»“æ„å­˜å‚¨åœ¨è¿™é‡Œã€‚
+        /// </para>
+        /// </remarks>
+        private Hierarchy m_hierarchy;
 
 		/// <summary>
 		/// Helper implementation of the <see cref="IAppenderAttachable"/> interface
@@ -790,7 +793,7 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// Lock to protect AppenderAttachedImpl variable m_appenderAttachedImpl.
-        /// ±£»¤AppenderAttachedImpl±äÁ¿m_appenderAttachedImplµÄËø¡£
+        /// ä¿æŠ¤AppenderAttachedImplå˜é‡m_appenderAttachedImplçš„é”ã€‚
         /// </summary>
         private readonly ReaderWriterLock m_appenderLock = new ReaderWriterLock();
   

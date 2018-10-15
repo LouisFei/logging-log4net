@@ -65,6 +65,10 @@
     <Compile Include="Appender\TraceAppenderTest.cs" />
     <Compile Include="Appender\AdoNetAppenderTest.cs" />
     <Compile Include="Core\StringFormatTest.cs" />
+    <Compile Include="Demo\BusinessIDLog.cs" />
+    <Compile Include="Demo\BusinessIDPatternConvert.cs" />
+    <Compile Include="Demo\BusinessIDPatternLayout.cs" />
+    <Compile Include="Demo\UnitTest1.cs" />
     <Compile Include="Hierarchy\Hierarchy.cs" />
     <Compile Include="Hierarchy\Logger.cs" />
     <Compile Include="Layout\PatternLayoutTest.cs" />

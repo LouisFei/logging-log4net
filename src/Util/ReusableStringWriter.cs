@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -23,17 +23,19 @@ using System.IO;
 
 namespace log4net.Util
 {
-	/// <summary>
-	/// A <see cref="StringWriter"/> that can be <see cref="Reset"/> and reused
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// A <see cref="StringWriter"/> that can be <see cref="Reset"/> and reused.
-	/// This uses a single buffer for string operations.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	public class ReusableStringWriter : StringWriter
+    /// <summary>
+    /// 可重复使用的字符串写入器
+    /// A <see cref="StringWriter"/> that can be <see cref="Reset"/> and reused
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// A <see cref="StringWriter"/> that can be <see cref="Reset"/> and reused.
+    /// This uses a single buffer for string operations.
+    /// 这将使用一个缓冲区进行字符串操作。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    public class ReusableStringWriter : StringWriter
 	{
 		#region Constructor
 
@@ -64,22 +66,27 @@ namespace log4net.Util
 		protected override void Dispose(bool disposing)
 		{
 			// Do not close the writer
+            // 不要关闭写入器
 		}
 
-		/// <summary>
-		/// Reset this string writer so that it can be reused.
-		/// </summary>
-		/// <param name="maxCapacity">the maximum buffer capacity before it is trimmed</param>
-		/// <param name="defaultSize">the default size to make the buffer</param>
-		/// <remarks>
-		/// <para>
-		/// Reset this string writer so that it can be reused.
-		/// The internal buffers are cleared and reset.
-		/// </para>
-		/// </remarks>
-		public void Reset(int maxCapacity, int defaultSize)
+        /// <summary>
+        /// Reset this string writer so that it can be reused.
+        /// 重置这个字符串写入器，以便它可以被重用。
+        /// </summary>
+        /// <param name="maxCapacity">the maximum buffer capacity before it is trimmed.在对缓冲区进行裁剪之前的最大缓冲区容量。</param>
+        /// <param name="defaultSize">the default size to make the buffer.创建缓冲区的默认大小。</param>
+        /// <remarks>
+        /// <para>
+        /// Reset this string writer so that it can be reused.
+        /// 重置这个字符串写入器，以便它可以被重用。
+        /// The internal buffers are cleared and reset.
+        /// 内部缓冲区被清除并重置。
+        /// </para>
+        /// </remarks>
+        public void Reset(int maxCapacity, int defaultSize)
 		{
 			// Reset working string buffer
+            // 重置工作字符串缓冲区
 			StringBuilder sb = this.GetStringBuilder();
 
 			sb.Length = 0;

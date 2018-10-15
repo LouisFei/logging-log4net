@@ -33,9 +33,10 @@ namespace log4net.Layout.Pattern
     /// 提供派生类所需的格式化功能的抽象类。
     /// </summary>
     /// <remarks>
-    /// Conversion specifiers in a conversion patterns are parsed to
-    /// individual PatternConverters. Each of which is responsible for
-    /// converting a logging event in a converter specific manner.
+    /// Conversion specifiers in a conversion patterns are parsed to individual PatternConverters. 
+    /// 转换模式中的转换说明符被解析为单个模式转换器。
+    /// Each of which is responsible for converting a logging event in a converter specific manner.
+    /// 每个日志事件负责以特定于转换器的方式转换日志事件。
     /// </remarks>
     /// <author>Nicko Cadell</author>
     public abstract class PatternLayoutConverter : PatternConverter
@@ -75,29 +76,29 @@ namespace log4net.Layout.Pattern
 			set { m_ignoresException = value; }
 		}
 
-		#endregion Public Properties
+        #endregion Public Properties
 
-		#region Protected Abstract Methods
+        #region Protected Abstract Methods
 
-		/// <summary>
-		/// Derived pattern converters must override this method in order to
-		/// convert conversion specifiers in the correct way.
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
-		/// <param name="loggingEvent">The <see cref="LoggingEvent" /> on which the pattern converter should be executed.</param>
-		abstract protected void Convert(TextWriter writer, LoggingEvent loggingEvent);
+        /// <summary>
+        /// Derived pattern converters must override this method in order to convert conversion specifiers in the correct way.
+        /// 派生模式转换器必须重写此方法，以便以正确的方式转换转换说明符。
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
+        /// <param name="loggingEvent">The <see cref="LoggingEvent" /> on which the pattern converter should be executed.</param>
+        abstract protected void Convert(TextWriter writer, LoggingEvent loggingEvent);
 
-		#endregion Protected Abstract Methods
+        #endregion Protected Abstract Methods
 
-		#region Protected Methods
+        #region Protected Methods
 
-		/// <summary>
-		/// Derived pattern converters must override this method in order to
-		/// convert conversion specifiers in the correct way.
-		/// </summary>
-		/// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
-		/// <param name="state">The state object on which the pattern converter should be executed.</param>
-		override protected void Convert(TextWriter writer, object state)
+        /// <summary>
+        /// Derived pattern converters must override this method in order to convert conversion specifiers in the correct way.
+        /// 派生模式转换器必须重写此方法，以便以正确的方式转换转换说明符。
+        /// </summary>
+        /// <param name="writer"><see cref="TextWriter" /> that will receive the formatted result.</param>
+        /// <param name="state">The state object on which the pattern converter should be executed.</param>
+        override protected void Convert(TextWriter writer, object state)
 		{
 			LoggingEvent loggingEvent = state as LoggingEvent;
 			if (loggingEvent != null)

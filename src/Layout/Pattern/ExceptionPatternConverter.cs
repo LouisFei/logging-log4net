@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -23,24 +23,25 @@ using log4net.Core;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Write the exception text to the output
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// If an exception object is stored in the logging event
-	/// it will be rendered into the pattern output with a
-	/// trailing newline.
-	/// </para>
-	/// <para>
-	/// If there is no exception then nothing will be output
-	/// and no trailing newline will be appended.
-	/// It is typical to put a newline before the exception
-	/// and to have the exception as the last data in the pattern.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	internal sealed class ExceptionPatternConverter : PatternLayoutConverter 
+    /// <summary>
+    /// Write the exception text to the output
+    /// 将异常文本写入输出
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// If an exception object is stored in the logging event
+    /// it will be rendered into the pattern output with a
+    /// trailing newline.
+    /// </para>
+    /// <para>
+    /// If there is no exception then nothing will be output
+    /// and no trailing newline will be appended.
+    /// It is typical to put a newline before the exception
+    /// and to have the exception as the last data in the pattern.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    internal sealed class ExceptionPatternConverter : PatternLayoutConverter 
 	{
 		/// <summary>
 		/// Default constructor

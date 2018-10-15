@@ -34,20 +34,24 @@ namespace UnitTestProject1.Util
         public void TestAppSettingPathConverter()
         {
             string configurationFileContent = @"
-<configuration>
-  <appSettings>
-    <add key=""TestKey"" value = ""TestValue"" />
-  </appSettings>
-</configuration>
-";
+                                                <configuration>
+                                                  <appSettings>
+                                                    <add key=""TestKey"" value = ""TestValue"" />
+                                                  </appSettings>
+                                                </configuration>
+                                                ";
             string configurationFileName = null;
             AppDomain appDomain = null;
             try
             {
+                //创建临时配置文件。
                 configurationFileName = CreateTempConfigFile(configurationFileContent);
+                //创建配置应用程序域
                 appDomain = CreateConfiguredDomain("AppSettingsTestDomain", configurationFileName);
 
+                //通过反射机制创建当前类的对象实例。
                 PatternStringTest pst = (PatternStringTest)appDomain.CreateInstanceAndUnwrap(Assembly.GetExecutingAssembly().FullName, this.GetType().FullName);
+                //调用对象方法
                 pst.TestAppSettingPathConverterInConfiguredDomain();
             }
             finally
@@ -57,6 +61,9 @@ namespace UnitTestProject1.Util
             }
         }
 
+        /// <summary>
+        /// 测试AppSetting路径转换器（在配置的应用程序域中）
+        /// </summary>
         public void TestAppSettingPathConverterInConfiguredDomain()
         {
             string pattern = "%appSetting{TestKey}";
@@ -72,6 +79,11 @@ namespace UnitTestProject1.Util
             Assert.AreEqual("(null)", evaluatedPattern, "Evaluated pattern expected to be \"(null)\" for non-existent appSettings key");
         }
 
+        /// <summary>
+        /// 创建临时配置文件
+        /// </summary>
+        /// <param name="configurationFileContent"></param>
+        /// <returns></returns>
         private static string CreateTempConfigFile(string configurationFileContent)
         {
             string fileName = Path.GetTempFileName();
@@ -79,6 +91,12 @@ namespace UnitTestProject1.Util
             return fileName;
         }
 
+        /// <summary>
+        /// 创建配置应用程序域
+        /// </summary>
+        /// <param name="domainName"></param>
+        /// <param name="configurationFileName"></param>
+        /// <returns></returns>
         private static AppDomain CreateConfiguredDomain(string domainName, string configurationFileName)
         {
             AppDomainSetup ads = new AppDomainSetup();

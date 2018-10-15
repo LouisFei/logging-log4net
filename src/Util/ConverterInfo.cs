@@ -1,4 +1,4 @@
-/*
+﻿/*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -24,12 +24,13 @@ using System;
 namespace log4net.Util
 {
     /// <summary>
-    /// Wrapper class used to map converter names to converter types
+    /// Wrapper class used to map converter names to converter types.
+    /// 用于将转换器名称映射到转换器类型的包装器类。
     /// </summary>
     /// <remarks>
     /// <para>
-    /// Pattern converter info class used during configuration by custom
-    /// PatternString and PatternLayer converters.
+    /// Pattern converter info class used during configuration by custom PatternString and PatternLayer converters.
+    /// 在自定义PatternString和PatternLayer转换器的配置过程中使用的模式转换器信息类。
     /// </para>
     /// </remarks>
     public sealed class ConverterInfo
@@ -46,7 +47,8 @@ namespace log4net.Util
         }
 
         /// <summary>
-        /// Gets or sets the name of the conversion pattern
+        /// Gets or sets the name of the conversion pattern.
+        /// 获取或设置转换模式的名称。
         /// </summary>
         /// <remarks>
         /// <para>
@@ -60,12 +62,13 @@ namespace log4net.Util
         }
 
         /// <summary>
-        /// Gets or sets the type of the converter
+        /// Gets or sets the type of the converter.
+        /// 获取或设置转换器的类型。
         /// </summary>
         /// <remarks>
         /// <para>
-        /// The value specified must extend the 
-        /// <see cref="PatternConverter"/> type.
+        /// The value specified must extend the <see cref="PatternConverter"/> type.
+        /// 指定的值必须扩展PatternConverter类型。
         /// </para>
         /// </remarks>
         public Type Type
@@ -75,7 +78,7 @@ namespace log4net.Util
         }
 
         /// <summary>
-        /// 
+        /// 添加一条属性
         /// </summary>
         /// <param name="entry"></param>
         public void AddProperty(PropertyEntry entry)
@@ -84,7 +87,7 @@ namespace log4net.Util
         }
 
         /// <summary>
-        /// 
+        /// 属性集合
         /// </summary>
         public PropertiesDictionary Properties
         {

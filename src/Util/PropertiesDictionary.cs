@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -26,23 +26,22 @@ using System.Xml;
 
 namespace log4net.Util
 {
-	/// <summary>
-	/// String keyed object map.
-    /// 
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// While this collection is serializable only member 
-	/// objects that are serializable will
-	/// be serialized along with this collection.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
+    /// <summary>
+    /// String keyed object map.
+    /// 字符串键值对象映射。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// While this collection is serializable only member objects that are serializable will be serialized along with this collection.
+    /// 虽然这个集合是可序列化的，但是只有可序列化的成员对象将与这个集合一起序列化。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
 #if NETCF
 	public sealed class PropertiesDictionary : ReadOnlyPropertiesDictionary, IDictionary
 #else
-	[Serializable] public sealed class PropertiesDictionary : ReadOnlyPropertiesDictionary, ISerializable, IDictionary
+    [Serializable] public sealed class PropertiesDictionary : ReadOnlyPropertiesDictionary, ISerializable, IDictionary
 #endif
 	{
 		#region Public Instance Constructors

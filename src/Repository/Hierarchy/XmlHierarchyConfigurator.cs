@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -31,8 +31,9 @@ using log4net.ObjectRenderer;
 namespace log4net.Repository.Hierarchy
 {
     /// <summary>
+    /// Xml层次结构配置器
     /// Initializes the log4net environment using an XML DOM.
-    /// ʹ��XML DOM��ʼ��log4net������
+    /// 使用XML DOM初始化log4net环境。
     /// </summary>
     /// <remarks>
     /// <para>
@@ -43,25 +44,35 @@ namespace log4net.Repository.Hierarchy
     /// <author>Gert Driesen</author>
     public class XmlHierarchyConfigurator
 	{
+        /// <summary>
+        /// 配置更新模式
+        /// </summary>
 		private enum ConfigUpdateMode
 		{
+            /// <summary>
+            /// 合并
+            /// </summary>
 			Merge, 
+            /// <summary>
+            /// 覆盖
+            /// </summary>
 			Overwrite
 		}
 
-		#region Public Instance Constructors
+        #region Public Instance Constructors
 
-		/// <summary>
-		/// Construct the configurator for a hierarchy
-		/// </summary>
-		/// <param name="hierarchy">The hierarchy to build.</param>
-		/// <remarks>
-		/// <para>
-		/// Initializes a new instance of the <see cref="XmlHierarchyConfigurator" /> class
-		/// with the specified <see cref="Hierarchy" />.
-		/// </para>
-		/// </remarks>
-		public XmlHierarchyConfigurator(Hierarchy hierarchy) 
+        /// <summary>
+        /// 构造层次结构的配置器
+        /// Construct the configurator for a hierarchy
+        /// </summary>
+        /// <param name="hierarchy">The hierarchy to build.要构建的层次结构。</param>
+        /// <remarks>
+        /// <para>
+        /// Initializes a new instance of the <see cref="XmlHierarchyConfigurator" /> class with the specified <see cref="Hierarchy" />.
+        /// 使用指定的层次结构初始化XmlHierarchyConfigurator类的新实例。
+        /// </para>
+        /// </remarks>
+        public XmlHierarchyConfigurator(Hierarchy hierarchy) 
 		{
 			m_hierarchy = hierarchy;
 			m_appenderBag = new Hashtable();
@@ -73,12 +84,13 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// Configure the hierarchy by parsing a DOM tree of XML elements.
-        /// ͨ������XMLԪ�ص�DOM�������ò�νṹ��
+        /// 通过解析XML元素的DOM树来配置层次结构。
         /// </summary>
         /// <param name="element">The root element to parse.</param>
         /// <remarks>
         /// <para>
         /// Configure the hierarchy by parsing a DOM tree of XML elements.
+        /// 通过解析XML元素的DOM树来配置层次结构。
         /// </para>
         /// </remarks>
         public void Configure(XmlElement element) 
@@ -99,6 +111,7 @@ namespace log4net.Repository.Hierarchy
             if (!LogLog.EmitInternalMessages)
             {
                 // Look for a emitDebug attribute to enable internal debug
+                // 查找emitDebug属性以启用内部调试
                 string emitDebugAttribute = element.GetAttribute(EMIT_INTERNAL_DEBUG_ATTR);
                 LogLog.Debug(declaringType, EMIT_INTERNAL_DEBUG_ATTR + " attribute [" + emitDebugAttribute + "].");
 
@@ -137,13 +150,16 @@ namespace log4net.Repository.Hierarchy
 			}
 
 			// Default mode is merge
+            // 默认模式是合并
 			ConfigUpdateMode configUpdateMode = ConfigUpdateMode.Merge;
 
-			// Look for the config update attribute
-			string configUpdateModeAttribute = element.GetAttribute(CONFIG_UPDATE_MODE_ATTR);
+            // Look for the config update attribute
+            // 查找配置更新属性
+            string configUpdateModeAttribute = element.GetAttribute(CONFIG_UPDATE_MODE_ATTR);
 			if (configUpdateModeAttribute != null && configUpdateModeAttribute.Length > 0)
 			{
 				// Parse the attribute
+                // 解析属性
 				try
 				{
 					configUpdateMode = (ConfigUpdateMode)OptionConverter.ConvertStringTo(typeof(ConfigUpdateMode), configUpdateModeAttribute);
@@ -165,8 +181,7 @@ namespace log4net.Repository.Hierarchy
 				LogLog.Debug(declaringType, "Configuration reset before reading config.");
 			}
 
-			/* Building Appender objects, placing them in a local namespace
-			   for future reference */
+			/* Building Appender objects, placing them in a local namespace for future reference */
 
 			/* Process all the top level elements */
 
@@ -195,10 +210,12 @@ namespace log4net.Repository.Hierarchy
 					}
 					else if (currentElement.LocalName == APPENDER_TAG)
 					{
-						// We ignore appenders in this pass. They will
-						// be found and loaded if they are referenced.
-					}
-					else
+                        // We ignore appenders in this pass. 
+                        // 在此传递中我们忽略附加器。
+                        // They will be found and loaded if they are referenced.
+                        // 如果引用它们，就会发现并加载它们。
+                    }
+                    else
 					{
 						// Read the param tags and set properties on the hierarchy
 						SetParameter(currentElement, m_hierarchy);
@@ -225,22 +242,23 @@ namespace log4net.Repository.Hierarchy
 			// Done reading config
 		}
 
-	    #endregion Public Instance Methods
+        #endregion Public Instance Methods
 
-		#region Protected Instance Methods
+        #region Protected Instance Methods
 
-		/// <summary>
-		/// Parse appenders by IDREF.
-		/// </summary>
-		/// <param name="appenderRef">The appender ref element.</param>
-		/// <returns>The instance of the appender that the ref refers to.</returns>
-		/// <remarks>
-		/// <para>
-		/// Parse an XML element that represents an appender and return 
-		/// the appender.
-		/// </para>
-		/// </remarks>
-		protected IAppender FindAppenderByReference(XmlElement appenderRef) 
+        /// <summary>
+        /// Parse appenders by IDREF.
+        /// 根据IDREF解析appenders。
+        /// </summary>
+        /// <param name="appenderRef">The appender ref element.appender ref元素。</param>
+        /// <returns>The instance of the appender that the ref refers to.appender实例。</returns>
+        /// <remarks>
+        /// <para>
+        /// Parse an XML element that represents an appender and return the appender.
+        /// 解析表示appender的XML元素并返回appender。
+        /// </para>
+        /// </remarks>
+        protected IAppender FindAppenderByReference(XmlElement appenderRef) 
 		{	
 			string appenderName = appenderRef.GetAttribute(REF_ATTR);
 
@@ -283,18 +301,19 @@ namespace log4net.Repository.Hierarchy
 			} 
 		}
 
-		/// <summary>
-		/// Parses an appender element.
-		/// </summary>
-		/// <param name="appenderElement">The appender element.</param>
-		/// <returns>The appender instance or <c>null</c> when parsing failed.</returns>
-		/// <remarks>
-		/// <para>
-		/// Parse an XML element that represents an appender and return
-		/// the appender instance.
-		/// </para>
-		/// </remarks>
-		protected IAppender ParseAppender(XmlElement appenderElement) 
+        /// <summary>
+        /// Parses an appender element.
+        /// 解析appender元素。
+        /// </summary>
+        /// <param name="appenderElement">The appender element.appender元素。</param>
+        /// <returns>The appender instance or <c>null</c> when parsing failed.</returns>
+        /// <remarks>
+        /// <para>
+        /// Parse an XML element that represents an appender and return the appender instance.
+        /// 解析表示appender并返回appender实例的XML元素。
+        /// </para>
+        /// </remarks>
+        protected IAppender ParseAppender(XmlElement appenderElement) 
 		{
 			string appenderName = appenderElement.GetAttribute(NAME_ATTR);
 			string typeName = appenderElement.GetAttribute(TYPE_ATTR);
@@ -311,13 +330,15 @@ namespace log4net.Repository.Hierarchy
 
 				foreach (XmlNode currentNode in appenderElement.ChildNodes)
 				{
-					/* We're only interested in Elements */
-					if (currentNode.NodeType == XmlNodeType.Element) 
+                    /* We're only interested in Elements */
+                    // 我们只对元素感兴趣
+                    if (currentNode.NodeType == XmlNodeType.Element) 
 					{
 						XmlElement currentElement = (XmlElement)currentNode;
 
-						// Look for the appender ref tag
-						if (currentElement.LocalName == APPENDER_REF_TAG)
+                        // Look for the appender ref tag
+                        // 查找appender ref标签
+                        if (currentElement.LocalName == APPENDER_REF_TAG)
 						{
 							string refName = currentElement.GetAttribute(REF_ATTR);
 
@@ -339,8 +360,9 @@ namespace log4net.Repository.Hierarchy
 						}
 						else
 						{
-							// For all other tags we use standard set param method
-							SetParameter(currentElement, appender);
+                            // For all other tags we use standard set param method
+                            // 对于所有其他标签，我们使用标准设置参数方法
+                            SetParameter(currentElement, appender);
 						}
 					}
 				}
@@ -393,49 +415,54 @@ namespace log4net.Repository.Hierarchy
 			}
 		}
 
-		/// <summary>
-		/// Parses the root logger element.
-		/// </summary>
-		/// <param name="rootElement">The root element.</param>
-		/// <remarks>
-		/// <para>
-		/// Parse an XML element that represents the root logger.
-		/// </para>
-		/// </remarks>
-		protected void ParseRoot(XmlElement rootElement) 
+        /// <summary>
+        /// Parses the root logger element.
+        /// 解析根日志记录器元素。
+        /// </summary>
+        /// <param name="rootElement">The root element.根元素。</param>
+        /// <remarks>
+        /// <para>
+        /// Parse an XML element that represents the root logger.
+        /// 解析表示根日志记录器的XML元素。
+        /// </para>
+        /// </remarks>
+        protected void ParseRoot(XmlElement rootElement) 
 		{
 			Logger root = m_hierarchy.Root;
-			// logger configuration needs to be atomic
-			lock(root) 
+            // logger configuration needs to be atomic
+            // 日志记录器的配置必须是原子的
+            lock (root) 
 			{	
 				ParseChildrenOfLoggerElement(rootElement, root, true);
 			}
 		}
 
-		/// <summary>
-		/// Parses the children of a logger element.
-		/// </summary>
-		/// <param name="catElement">The category element.</param>
-		/// <param name="log">The logger instance.</param>
-		/// <param name="isRoot">Flag to indicate if the logger is the root logger.</param>
-		/// <remarks>
-		/// <para>
-		/// Parse the child elements of a &lt;logger&gt; element.
-		/// </para>
-		/// </remarks>
-		protected void ParseChildrenOfLoggerElement(XmlElement catElement, Logger log, bool isRoot) 
+        /// <summary>
+        /// Parses the children of a logger element.
+        /// 解析logger元素的子元素。
+        /// </summary>
+        /// <param name="catElement">The category element.</param>
+        /// <param name="log">The logger instance.</param>
+        /// <param name="isRoot">Flag to indicate if the logger is the root logger. 标记，以指示日志记录器是否为根日志记录器。</param>
+        /// <remarks>
+        /// <para>
+        /// Parse the child elements of a &lt;logger&gt; element.
+        /// </para>
+        /// </remarks>
+        protected void ParseChildrenOfLoggerElement(XmlElement catElement, Logger log, bool isRoot) 
 		{
-			// Remove all existing appenders from log. They will be
-			// reconstructed if need be.
-			log.RemoveAllAppenders();
+            // Remove all existing appenders from log. They will be reconstructed if need be.
+            // 从日志中删除所有现有的附加器。如果需要，他们将被重建。
+            log.RemoveAllAppenders();
 
 			foreach (XmlNode currentNode in catElement.ChildNodes)
 			{
 				if (currentNode.NodeType == XmlNodeType.Element) 
 				{
 					XmlElement currentElement = (XmlElement) currentNode;
-	
-					if (currentElement.LocalName == APPENDER_REF_TAG)
+
+                    //appender-ref 要引用的appender的名字。
+                    if (currentElement.LocalName == APPENDER_REF_TAG)
 					{
 						IAppender appender = FindAppenderByReference(currentElement);
 						string refName =  currentElement.GetAttribute(REF_ATTR);
@@ -505,18 +532,20 @@ namespace log4net.Repository.Hierarchy
 			}
 		}
 
-		/// <summary>
-		/// Parses a level element.
-		/// </summary>
-		/// <param name="element">The level element.</param>
-		/// <param name="log">The logger object to set the level on.</param>
-		/// <param name="isRoot">Flag to indicate if the logger is the root logger.</param>
-		/// <remarks>
-		/// <para>
-		/// Parse an XML element that represents a level.
-		/// </para>
-		/// </remarks>
-		protected void ParseLevel(XmlElement element, Logger log, bool isRoot) 
+        /// <summary>
+        /// Parses a level element.
+        /// 解析一个level元素。
+        /// </summary>
+        /// <param name="element">The level element.</param>
+        /// <param name="log">The logger object to set the level on.用来设置level的记录器对象。</param>
+        /// <param name="isRoot">Flag to indicate if the logger is the root logger.标记，以指示日志记录器是否为根日志记录器。</param>
+        /// <remarks>
+        /// <para>
+        /// Parse an XML element that represents a level.
+        /// 解析表示级别的XML元素。
+        /// </para>
+        /// </remarks>
+        protected void ParseLevel(XmlElement element, Logger log, bool isRoot) 
 		{
 			string loggerName = log.Name;
 			if (isRoot) 
@@ -553,45 +582,52 @@ namespace log4net.Repository.Hierarchy
 			}
 		}
 
-		/// <summary>
-		/// Sets a parameter on an object.
-		/// </summary>
-		/// <param name="element">The parameter element.</param>
-		/// <param name="target">The object to set the parameter on.</param>
-		/// <remarks>
-		/// The parameter name must correspond to a writable property
-		/// on the object. The value of the parameter is a string,
-		/// therefore this function will attempt to set a string
-		/// property first. If unable to set a string property it
-		/// will inspect the property and its argument type. It will
-		/// attempt to call a static method called <c>Parse</c> on the
-		/// type of the property. This method will take a single
-		/// string argument and return a value that can be used to
-		/// set the property.
-		/// </remarks>
-		protected void SetParameter(XmlElement element, object target) 
+        /// <summary>
+        /// Sets a parameter on an object.
+        /// 设置对象的参数。
+        /// </summary>
+        /// <param name="element">The parameter element.</param>
+        /// <param name="target">The object to set the parameter on.</param>
+        /// <remarks>
+        /// The parameter name must correspond to a writable property on the object. 
+        /// 参数名必须与对象上的可写属性相对应。
+        /// The value of the parameter is a string, therefore this function will attempt to set a string property first. 
+        /// 参数的值是字符串，因此该函数将首先尝试设置字符串属性。
+        /// If unable to set a string property it will inspect the property and its argument type. 
+        /// 如果无法设置字符串属性，它将检查属性及其参数类型。
+        /// It will attempt to call a static method called <c>Parse</c> on the type of the property. 
+        /// 它将尝试调用一个名为Parse的静态方法。
+        /// This method will take a single string argument and return a value that can be used to set the property.
+        /// 此方法将接受一个字符串参数并返回一个值，该值可用于设置属性。
+        /// </remarks>
+        protected void SetParameter(XmlElement element, object target) 
 		{
-			// Get the property name
-			string name = element.GetAttribute(NAME_ATTR);
+            // Get the property name
+            // 获取属性名
+            string name = element.GetAttribute(NAME_ATTR);
 
-			// If the name attribute does not exist then use the name of the element
-			if (element.LocalName != PARAM_TAG || name == null || name.Length == 0)
+            // If the name attribute does not exist then use the name of the element
+            // 如果name属性不存在，则使用元素的名称
+            if (element.LocalName != PARAM_TAG || name == null || name.Length == 0)
 			{
 				name = element.LocalName;
 			}
 
-			// Look for the property on the target object
-			Type targetType = target.GetType();
+            // Look for the property on the target object
+            // 查找目标对象上的属性
+            Type targetType = target.GetType();
 			Type propertyType = null;
 
 			PropertyInfo propInfo = null;
 			MethodInfo methInfo = null;
 
-			// Try to find a writable property
-			propInfo = targetType.GetProperty(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase);
+            // Try to find a writable property
+            // 尝试找到一个可写的属性
+            propInfo = targetType.GetProperty(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase);
 			if (propInfo != null && propInfo.CanWrite)
 			{
 				// found a property
+                // 找到一个属性
 				propertyType = propInfo.PropertyType;
 			}
 			else
@@ -879,7 +915,7 @@ namespace log4net.Repository.Hierarchy
 
 		/// <summary>
 		/// Look for a method on the <paramref name="targetType"/> that matches the <paramref name="name"/> supplied
-        /// ��ָ���������ϲ���ָ�����Ƶķ�����
+        /// 在指定的类型上查找指定名称的方法。
 		/// </summary>
 		/// <param name="targetType">the type that has the method</param>
 		/// <param name="name">the name of the method</param>
@@ -950,26 +986,29 @@ namespace log4net.Repository.Hierarchy
 			return OptionConverter.ConvertStringTo(type, value);
 		}
 
-		/// <summary>
-		/// Creates an object as specified in XML.
-		/// </summary>
-		/// <param name="element">The XML element that contains the definition of the object.</param>
-		/// <param name="defaultTargetType">The object type to use if not explicitly specified.</param>
-		/// <param name="typeConstraint">The type that the returned object must be or must inherit from.</param>
-		/// <returns>The object or <c>null</c></returns>
-		/// <remarks>
-		/// <para>
-		/// Parse an XML element and create an object instance based on the configuration
-		/// data.
-		/// </para>
-		/// <para>
-		/// The type of the instance may be specified in the XML. If not
-		/// specified then the <paramref name="defaultTargetType"/> is used
-		/// as the type. However the type is specified it must support the
-		/// <paramref name="typeConstraint"/> type.
-		/// </para>
-		/// </remarks>
-		protected object CreateObjectFromXml(XmlElement element, Type defaultTargetType, Type typeConstraint) 
+        /// <summary>
+        /// Creates an object as specified in XML.
+        /// 创建XML中指定的对象。
+        /// </summary>
+        /// <param name="element">The XML element that contains the definition of the object.包含对象定义的XML元素。</param>
+        /// <param name="defaultTargetType">The object type to use if not explicitly specified.如果没有显式指定，则使用的对象类型。</param>
+        /// <param name="typeConstraint">The type that the returned object must be or must inherit from.返回的对象必须是或必须继承的类型。</param>
+        /// <returns>The object or <c>null</c></returns>
+        /// <remarks>
+        /// <para>
+        /// Parse an XML element and create an object instance based on the configuration data.
+        /// 解析XML元素并基于配置数据创建对象实例。
+        /// </para>
+        /// <para>
+        /// The type of the instance may be specified in the XML. 
+        /// 实例的类型可以在XML中指定。
+        /// If not specified then the <paramref name="defaultTargetType"/> is used as the type. 
+        /// 如果没有指定，则使用defaultTargetType作为类型。
+        /// However the type is specified it must support the <paramref name="typeConstraint"/> type.
+        /// 但是指定的类型必须支持类型约束类型。
+        /// </para>
+        /// </remarks>
+        protected object CreateObjectFromXml(XmlElement element, Type defaultTargetType, Type typeConstraint) 
 		{
 			Type objectType = null;
 
@@ -1131,8 +1170,9 @@ namespace log4net.Repository.Hierarchy
 		private const string RENDERING_TYPE_ATTR		= "renderingClass";
 		private const string RENDERED_TYPE_ATTR			= "renderedClass";
 
-		// flag used on the level element
-		private const string INHERITED = "inherited";
+        // flag used on the level element
+        // level元素上使用的标志
+        private const string INHERITED = "inherited";
 
 		#endregion Private Constants
 
@@ -1145,8 +1185,8 @@ namespace log4net.Repository.Hierarchy
 
         /// <summary>
         /// The Hierarchy being configured.
-        /// �����õĲ�νṹ��
-        /// Ĭ�ϵļ�¼��������
+        /// 被配置的层次结构。
+        /// 默认的记录器容器。
         /// </summary>
         private readonly Hierarchy m_hierarchy;
 
@@ -1158,8 +1198,7 @@ namespace log4net.Repository.Hierarchy
 	    /// The fully qualified type of the XmlHierarchyConfigurator class.
 	    /// </summary>
 	    /// <remarks>
-	    /// Used by the internal logger to record the Type of the
-	    /// log message.
+	    /// Used by the internal logger to record the Type of the log message.
 	    /// </remarks>
 	    private readonly static Type declaringType = typeof(XmlHierarchyConfigurator);
 

@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -25,17 +25,17 @@ using log4net.Core;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Writes the event message to the output
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Uses the <see cref="LoggingEvent.WriteRenderedMessage"/> method
-	/// to write out the event message.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	internal sealed class MessagePatternConverter : PatternLayoutConverter 
+    /// <summary>
+    /// Writes the event message to the output.
+    /// 将事件消息写入输出。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Uses the <see cref="LoggingEvent.WriteRenderedMessage"/> method to write out the event message.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    internal sealed class MessagePatternConverter : PatternLayoutConverter 
 	{
 		/// <summary>
 		/// Writes the event message to the output

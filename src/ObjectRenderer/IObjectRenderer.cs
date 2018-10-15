@@ -39,25 +39,26 @@ namespace log4net.ObjectRenderer
     /// <author>Gert Driesen</author>
     public interface IObjectRenderer
 	{
-		/// <summary>
-		/// Render the object <paramref name="obj"/> to a string
-		/// </summary>
-		/// <param name="rendererMap">The map used to lookup renderers</param>
-		/// <param name="obj">The object to render</param>
-		/// <param name="writer">The writer to render to</param>
-		/// <remarks>
-		/// <para>
-		/// Render the object <paramref name="obj"/> to a 
-		/// string.
-		/// </para>
-		/// <para>
-		/// The <paramref name="rendererMap"/> parameter is
-		/// provided to lookup and render other objects. This is
-		/// very useful where <paramref name="obj"/> contains
-		/// nested objects of unknown type. The <see cref="M:RendererMap.FindAndRender(object, TextWriter)"/>
-		/// method can be used to render these objects.
-		/// </para>
-		/// </remarks>
-		void RenderObject(RendererMap rendererMap, object obj, TextWriter writer);
+        /// <summary>
+        /// Render the object <paramref name="obj"/> to a string
+        /// 将对象<paramref name="obj"/>渲染到一个字符串
+        /// </summary>
+        /// <param name="rendererMap">The map used to lookup renderers.用于查找呈现程序的映射</param>
+        /// <param name="obj">The object to render</param>
+        /// <param name="writer">The writer to render to.对象渲染到的目的写入器</param>
+        /// <remarks>
+        /// <para>
+        /// Render the object <paramref name="obj"/> to a string.
+        /// </para>
+        /// <para>
+        /// The <paramref name="rendererMap"/> parameter is provided to lookup and render other objects. 
+        /// <paramref name="rendererMap"/>参数用于查找和呈现其他对象。
+        /// This is very useful where <paramref name="obj"/> contains nested objects of unknown type. 
+        /// 当<paramref name="obj"/>包含未知类型的嵌套对象时，这非常有用。
+        /// The <see cref="M:RendererMap.FindAndRender(object, TextWriter)"/> method can be used to render these objects.
+        /// RendererMap.FindAndRender(object, TextWriter)方法可用于呈现这些对象。
+        /// </para>
+        /// </remarks>
+        void RenderObject(RendererMap rendererMap, object obj, TextWriter writer);
 	}
 }

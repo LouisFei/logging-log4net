@@ -30,6 +30,7 @@ namespace log4net.Layout.Pattern
 {
     /// <summary>
     /// Converter for items in the ASP.Net Session.
+    /// ASP.NET会话中的项目转换器。
     /// </summary>
     /// <remarks>
     /// <para>

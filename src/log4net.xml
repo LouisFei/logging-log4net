@@ -1749,51 +1749,49 @@
         <member name="M:log4net.Appender.AppenderSkeleton.RenderLoggingEvent(log4net.Core.LoggingEvent)">
             <summary>
             Renders the <see cref="T:log4net.Core.LoggingEvent"/> to a string.
+            将LoggingEvent呈现为一个字符串。
             </summary>
-            <param name="loggingEvent">The event to render.</param>
-            <returns>The event rendered as a string.</returns>
+            <param name="loggingEvent">The event to render.要呈现的事件。</param>
+            <returns>The event rendered as a string.以字符串形式呈现的事件。</returns>
             <remarks>
             <para>
-            Helper method to render a <see cref="T:log4net.Core.LoggingEvent"/> to 
-            a string. This appender must have a <see cref="P:log4net.Appender.AppenderSkeleton.Layout"/>
-            set to render the <paramref name="loggingEvent"/> to 
-            a string.
-            </para>
-            <para>If there is exception data in the logging event and 
-            the layout does not process the exception, this method 
-            will append the exception text to the rendered string.
+            Helper method to render a <see cref="T:log4net.Core.LoggingEvent"/> to a string. 
+            辅助方法，用于将LoggingEvent呈现给字符串。
+            This appender must have a <see cref="P:log4net.Appender.AppenderSkeleton.Layout"/> set to render the <paramref name="loggingEvent"/> to a string.
+            这个appender必须有一个布局集，以便将loggingEvent呈现给字符串。
             </para>
             <para>
-            Where possible use the alternative version of this method
-            <see cref="M:RenderLoggingEvent(TextWriter,LoggingEvent)"/>.
-            That method streams the rendering onto an existing Writer
-            which can give better performance if the caller already has
-            a <see cref="T:System.IO.TextWriter"/> open and ready for writing.
+            If there is exception data in the logging event and the layout does not process the exception, this method will append the exception text to the rendered string.</para>
+            如果日志事件中有异常数据，并且布局不处理异常，此方法将把异常文本追加到呈现的字符串。
+            <para>
+            Where possible use the alternative version of this method <see cref="M:RenderLoggingEvent(TextWriter,LoggingEvent)"/>.
+            尽可能使用这个方法的替代版本RenderLoggingEvent(TextWriter,LoggingEvent)。
+            That method streams the rendering onto an existing Writer which can give better performance if the caller already has a <see cref="T:System.IO.TextWriter"/> open and ready for writing.
+            该方法将呈现流传输到现有的写入器上，如果调用者已经打开并准备好了要写入的TextWriter，该方法可以提供更好的性能。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Appender.AppenderSkeleton.RenderLoggingEvent(System.IO.TextWriter,log4net.Core.LoggingEvent)">
             <summary>
             Renders the <see cref="T:log4net.Core.LoggingEvent"/> to a string.
+            将LoggingEvent呈现为一个字符串。
             </summary>
             <param name="loggingEvent">The event to render.</param>
-            <param name="writer">The TextWriter to write the formatted event to</param>
+            <param name="writer">The TextWriter to write the formatted event to.写入格式化事件的文本存储程序</param>
             <remarks>
             <para>
-            Helper method to render a <see cref="T:log4net.Core.LoggingEvent"/> to 
-            a string. This appender must have a <see cref="P:log4net.Appender.AppenderSkeleton.Layout"/>
-            set to render the <paramref name="loggingEvent"/> to 
-            a string.
+            Helper method to render a <see cref="T:log4net.Core.LoggingEvent"/> to a string. 
+            辅助方法，用于将LoggingEvent呈现给字符串。
+            This appender must have a <see cref="P:log4net.Appender.AppenderSkeleton.Layout"/> set to render the <paramref name="loggingEvent"/> to a string.
+            这个appender必须有一个Layout设置，以便将loggingEvent呈现给字符串。
             </para>
-            <para>If there is exception data in the logging event and 
-            the layout does not process the exception, this method 
-            will append the exception text to the rendered string.
-            </para>
+            <para>If there is exception data in the logging event and the layout does not process the exception, this method will append the exception text to the rendered string. </para>
+            如果日志事件中有异常数据，并且布局不处理异常，此方法将把异常文本追加到呈现的字符串。
             <para>
-            Use this method in preference to <see cref="M:RenderLoggingEvent(LoggingEvent)"/>
-            where possible. If, however, the caller needs to render the event
-            to a string then <see cref="M:RenderLoggingEvent(LoggingEvent)"/> does
-            provide an efficient mechanism for doing so.
+            Use this method in preference to <see cref="M:RenderLoggingEvent(LoggingEvent)"/> where possible. 
+            在可能的情况下，优先使用此方法来处理RenderLoggingEvent(LoggingEvent)。
+            If, however, the caller needs to render the event to a string then <see cref="M:RenderLoggingEvent(LoggingEvent)"/> does provide an efficient mechanism for doing so.
+            然而，如果调用者需要将事件呈现给一个字符串，那么M:RenderLoggingEvent(LoggingEvent)“确实提供了一种有效的机制。
             </para>
             </remarks>
         </member>
@@ -1903,6 +1901,7 @@
         <member name="F:log4net.Appender.AppenderSkeleton.m_renderWriter">
             <summary>
             StringWriter used to render events
+            用于呈现事件的StringWriter
             </summary>
         </member>
         <member name="F:log4net.Appender.AppenderSkeleton.c_renderBufferSize">
@@ -11935,7 +11934,8 @@
         </member>
         <member name="T:log4net.Core.LevelMap">
             <summary>
-            Mapping between string name and Level object
+            Mapping between string name and Level object.
+            字符串名称和级别对象之间的映射
             </summary>
             <remarks>
             <para>
@@ -12948,6 +12948,7 @@
         <member name="F:log4net.Core.LoggingEventData.LocationInfo">
             <summary>
             Location information for the caller.
+            调用者的位置信息。
             </summary>
             <remarks>
             <para>
@@ -12958,6 +12959,7 @@
         <member name="F:log4net.Core.LoggingEventData.UserName">
             <summary>
             String representation of the user
+            用户的字符串表示形式
             </summary>
             <remarks>
             <para>
@@ -12969,6 +12971,7 @@
         <member name="F:log4net.Core.LoggingEventData.Identity">
             <summary>
             String representation of the identity.
+            标识的字符串表示形式。
             </summary>
             <remarks>
             <para>
@@ -12979,6 +12982,7 @@
         <member name="F:log4net.Core.LoggingEventData.ExceptionString">
             <summary>
             The string representation of the exception
+            异常的字符串表示形式
             </summary>
             <remarks>
             <para>
@@ -12989,6 +12993,7 @@
         <member name="F:log4net.Core.LoggingEventData.Domain">
             <summary>
             String representation of the AppDomain.
+            AppDomain的字符串表示。
             </summary>
             <remarks>
             <para>
@@ -12999,18 +13004,21 @@
         <member name="F:log4net.Core.LoggingEventData.Properties">
             <summary>
             Additional event specific properties
+            其他特定于事件的属性
             </summary>
             <remarks>
             <para>
-            A logger or an appender may attach additional
-            properties to specific events. These properties
-            have a string key and an object value.
+            A logger or an appender may attach additional properties to specific events. 
+            日志记录器或附加器可以附加附加属性到特定事件。
+            These properties have a string key and an object value.
+            这些属性有一个字符串键和一个对象值。
             </para>
             </remarks>
         </member>
         <member name="T:log4net.Core.FixFlags">
             <summary>
             Flags passed to the <see cref="P:log4net.Core.LoggingEvent.Fix"/> property
+            传递给LoggingEvent.Fix属性的标志。
             </summary>
             <remarks>
             <para>
@@ -13112,22 +13120,26 @@
             </summary>
             <remarks>
             <para>
-            When an affirmative decision is made to log then a 
-            <see cref="T:log4net.Core.LoggingEvent"/> instance is created. This instance 
-            is passed around to the different log4net components.
+            When an affirmative decision is made to log then a <see cref="T:log4net.Core.LoggingEvent"/> instance is created. 
+            当确定要进行日志记录时，将创建一个LoggingEvent实例。
+            This instance is passed around to the different log4net components.
+            他的实例被传递给不同的log4net组件。
             </para>
             <para>
             This class is of concern to those wishing to extend log4net.
+            这个类与那些希望扩展log4net的人有关。
             </para>
             <para>
-            Some of the values in instances of <see cref="T:log4net.Core.LoggingEvent"/>
-            are considered volatile, that is the values are correct at the
-            time the event is delivered to appenders, but will not be consistent
-            at any time afterwards. If an event is to be stored and then processed
-            at a later time these volatile values must be fixed by calling
-            <see cref="M:FixVolatileData()"/>. There is a performance penalty
-            for incurred by calling <see cref="M:FixVolatileData()"/> but it
-            is essential to maintaining data consistency.
+            Some of the values in instances of <see cref="T:log4net.Core.LoggingEvent"/> are considered volatile, 
+            在LoggingEvent实例中，有些值被认为是不稳定的，
+            that is the values are correct at the time the event is delivered to appenders, 
+            也就是说，在事件被传递给appenders时，这些值是正确的，
+            but will not be consistent at any time afterwards. 
+            但是在以后的任何时候都不会是一致的。
+            If an event is to be stored and then processed at a later time these volatile values must be fixed by calling <see cref="M:FixVolatileData()"/>. 
+            如果要存储一个事件，然后在稍后的时间进行处理，那么必须通过调用FixVolatileData来固定这些volatile值
+            There is a performance penalty for incurred by calling <see cref="M:FixVolatileData()"/> but it is essential to maintaining data consistency.
+            调用FixVolatileData会导致性能损失，但这对于保持数据一致性至关重要。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -13137,11 +13149,10 @@
         </member>
         <member name="M:log4net.Core.LoggingEvent.#ctor(System.Type,log4net.Repository.ILoggerRepository,System.String,log4net.Core.Level,System.Object,System.Exception)">
             <summary>
-            Initializes a new instance of the <see cref="T:log4net.Core.LoggingEvent" /> class
-            from the supplied parameters.
+            Initializes a new instance of the <see cref="T:log4net.Core.LoggingEvent" /> class from the supplied parameters.
+            从提供的参数初始化LoggingEvent类的新实例。
             </summary>
-            <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is
-            the stack boundary into the logging system for this call.</param>
+            <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is the stack boundary into the logging system for this call.方法的声明类型，该方法是此调用的日志记录系统中的堆栈边界。</param>
             <param name="repository">The repository this event is logged in.</param>
             <param name="loggerName">The name of the logger of this event.</param>
             <param name="level">The level of this event.</param>
@@ -13149,40 +13160,38 @@
             <param name="exception">The exception for this event.</param>
             <remarks>
             <para>
-            Except <see cref="P:log4net.Core.LoggingEvent.TimeStamp"/>, <see cref="P:log4net.Core.LoggingEvent.Level"/> and <see cref="P:log4net.Core.LoggingEvent.LoggerName"/>, 
-            all fields of <c>LoggingEvent</c> are filled when actually needed. Call
-            <see cref="M:FixVolatileData()"/> to cache all data locally
-            to prevent inconsistencies.
+            Except <see cref="P:log4net.Core.LoggingEvent.TimeStamp"/>, <see cref="P:log4net.Core.LoggingEvent.Level"/> and <see cref="P:log4net.Core.LoggingEvent.LoggerName"/>, all fields of <c>LoggingEvent</c> are filled when actually needed. 
+            除了时间戳、级别和日志名之外，日志事件的所有字段都在实际需要时被填充。
+            Call <see cref="M:FixVolatileData()"/> to cache all data locally to prevent inconsistencies.
+            调用FixVolatileData()在本地缓存所有数据，以防止不一致。
             </para>
-            <para>This method is called by the log4net framework
-            to create a logging event.
-            </para>
+            <para>This method is called by the log4net framework to create a logging event.</para>
+            <para>log4net框架调用此方法来创建日志事件。</para>
             </remarks>
         </member>
         <member name="M:log4net.Core.LoggingEvent.#ctor(System.Type,log4net.Repository.ILoggerRepository,log4net.Core.LoggingEventData,log4net.Core.FixFlags)">
             <summary>
-            Initializes a new instance of the <see cref="T:log4net.Core.LoggingEvent" /> class 
-            using specific data.
+            Initializes a new instance of the <see cref="T:log4net.Core.LoggingEvent" /> class using specific data.
+            使用特定的数据初始化LoggingEvent类的新实例。
             </summary>
-            <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is
-            the stack boundary into the logging system for this call.</param>
+            <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is the stack boundary into the logging system for this call.</param>
             <param name="repository">The repository this event is logged in.</param>
             <param name="data">Data used to initialize the logging event.</param>
             <param name="fixedData">The fields in the <paranref name="data"/> struct that have already been fixed.</param>
             <remarks>
             <para>
-            This constructor is provided to allow a <see cref="T:log4net.Core.LoggingEvent" />
-            to be created independently of the log4net framework. This can
-            be useful if you require a custom serialization scheme.
+            This constructor is provided to allow a <see cref="T:log4net.Core.LoggingEvent" /> to be created independently of the log4net framework. 
+            提供这个构造函数是为了允许日志事件独立于log4net框架创建。
+            This can be useful if you require a custom serialization scheme.
+            如果需要自定义序列化方案，这可能很有用。
             </para>
+            <para>Use the <see cref="M:GetLoggingEventData(FixFlags)"/> method to obtain an instance of the <see cref="T:log4net.Core.LoggingEventData"/> class.</para>
+            <para>使用M:GetLoggingEventData(FixFlags)方法获得LoggingEventData类的一个实例。</para>
             <para>
-            Use the <see cref="M:GetLoggingEventData(FixFlags)"/> method to obtain an 
-            instance of the <see cref="T:log4net.Core.LoggingEventData"/> class.
-            </para>
-            <para>
-            The <paramref name="fixedData"/> parameter should be used to specify which fields in the
-            <paramref name="data"/> struct have been preset. Fields not specified in the <paramref name="fixedData"/>
-            will be captured from the environment if requested or fixed.
+            The <paramref name="fixedData"/> parameter should be used to specify which fields in the <paramref name="data"/> struct have been preset. 
+            fixedData参数应该用于指定数据结构中的哪些字段已被预先设置。
+            Fields not specified in the <paramref name="fixedData"/> will be captured from the environment if requested or fixed.
+            在fixeddata中没有指定的字段将在请求或修复时从环境中捕获。
             </para>
             </remarks>
         </member>
@@ -13361,44 +13370,51 @@
         <member name="P:log4net.Core.LoggingEvent.MessageObject">
             <summary>
             Gets the message object used to initialize this event.
-            </summary>
+            获取用于初始化此事件的消息对象。
+            </summary>.
             <value>
             The message object used to initialize this event.
+            用于初始化此事件的消息对象。
             </value>
             <remarks>
             <para>
             Gets the message object used to initialize this event.
+            获取用于初始化此事件的消息对象。
             Note that this event may not have a valid message object.
-            If the event is serialized the message object will not 
-            be transferred. To get the text of the message the
-            <see cref="P:log4net.Core.LoggingEvent.RenderedMessage"/> property must be used 
-            not this property.
+            注意，此事件可能没有有效的message对象。
+            If the event is serialized the message object will not be transferred. 
+            如果事件被序列化，消息对象将不会被转移。
+            To get the text of the message the <see cref="P:log4net.Core.LoggingEvent.RenderedMessage"/> property must be used not this property.
+            要获得消息的文本，RenderedMessage属性必须使用，而不是此属性。
             </para>
             <para>
-            If there is no defined message object for this event then
-            null will be returned.
+            If there is no defined message object for this event then null will be returned.
+            如果此事件没有定义消息对象，则返回null。
             </para>
             </remarks>
         </member>
         <member name="P:log4net.Core.LoggingEvent.ExceptionObject">
             <summary>
             Gets the exception object used to initialize this event.
+            获取用于初始化此事件的异常对象。
             </summary>
             <value>
             The exception object used to initialize this event.
+            用于初始化此事件的异常对象。
             </value>
             <remarks>
             <para>
             Gets the exception object used to initialize this event.
             Note that this event may not have a valid exception object.
-            If the event is serialized the exception object will not 
-            be transferred. To get the text of the exception the
-            <see cref="M:log4net.Core.LoggingEvent.GetExceptionString"/> method must be used 
-            not this property.
+            注意，此事件可能没有有效的异常对象。
+            If the event is serialized the exception object will not be transferred.
+            如果事件被序列化，异常对象将不会被转移。
+            To get the text of the exception the <see cref="M:log4net.Core.LoggingEvent.GetExceptionString"/> method must be used not this property.
+            要获得异常的文本，必须使用GetExceptionString方法，而不是此属性。
             </para>
             <para>
-            If there is no defined exception object for this event then
-            null will be returned.
+            If there is no defined exception object for this event then null will be returned.
+            如果此事件没有定义异常对象，则返回null。
             </para>
             </remarks>
         </member>
@@ -13421,6 +13437,7 @@
         <member name="P:log4net.Core.LoggingEvent.RenderedMessage">
             <summary>
             Gets the message, rendered through the <see cref="P:log4net.Repository.ILoggerRepository.RendererMap" />.
+            获取通过theiloggerrepositor.renderermap呈现的消息。
             </summary>
             <value>
             The message rendered through the <see cref="P:log4net.Repository.ILoggerRepository.RendererMap" />.
@@ -13433,7 +13450,8 @@
         </member>
         <member name="M:log4net.Core.LoggingEvent.WriteRenderedMessage(System.IO.TextWriter)">
             <summary>
-            Write the rendered message to a TextWriter
+            Write the rendered message to a TextWriter.
+            将已呈现的消息写入一个TextWriter。
             </summary>
             <param name="writer">the writer to write the message to</param>
             <remarks>
@@ -13777,6 +13795,7 @@
         <member name="F:log4net.Core.LoggingEvent.m_data">
             <summary>
             The internal logging event data.
+            内部日志事件数据。
             </summary>
         </member>
         <member name="F:log4net.Core.LoggingEvent.m_compositeProperties">
@@ -13791,27 +13810,29 @@
         </member>
         <member name="F:log4net.Core.LoggingEvent.m_callerStackBoundaryDeclaringType">
             <summary>
-            The fully qualified Type of the calling 
-            logger class in the stack frame (i.e. the declaring type of the method).
+            The fully qualified Type of the calling logger class in the stack frame (i.e. the declaring type of the method).
             </summary>
         </member>
         <member name="F:log4net.Core.LoggingEvent.m_message">
             <summary>
             The application supplied message of logging event.
+            应用程序提供的日志事件消息。
             </summary>
         </member>
         <member name="F:log4net.Core.LoggingEvent.m_thrownException">
             <summary>
             The exception that was thrown.
+            抛出的异常。
             </summary>
             <remarks>
-            This is not serialized. The string representation
-            is serialized instead.
+            This is not serialized. The string representation is serialized instead.
+            这不是序列化的。字符串表示被序列化。
             </remarks>
         </member>
         <member name="F:log4net.Core.LoggingEvent.m_repository">
             <summary>
             The repository that generated the logging event
+            生成日志事件的存储库
             </summary>
             <remarks>
             This is not serialized.
@@ -13820,6 +13841,7 @@
         <member name="F:log4net.Core.LoggingEvent.m_fixFlags">
             <summary>
             The fix state for this event
+            此事件的修复状态
             </summary>
             <remarks>
             These flags indicate which fields have been fixed.
@@ -18632,6 +18654,7 @@
         <member name="F:log4net.Layout.PatternLayout.m_pattern">
             <summary>
             the pattern
+            模式字符串
             </summary>
         </member>
         <member name="F:log4net.Layout.PatternLayout.m_head">
@@ -18643,6 +18666,7 @@
         <member name="F:log4net.Layout.PatternLayout.m_instanceRulesRegistry">
             <summary>
             patterns defined on this PatternLayout only
+            仅在此PatternLayout定义的模式
             </summary>
         </member>
         <member name="M:log4net.Layout.PatternLayout.#cctor">
@@ -18742,43 +18766,50 @@
         <member name="M:log4net.Layout.PatternLayout.Format(System.IO.TextWriter,log4net.Core.LoggingEvent)">
             <summary>
             Produces a formatted string as specified by the conversion pattern.
+            按照转换模式指定的格式生成字符串。
             </summary>
-            <param name="loggingEvent">the event being logged</param>
-            <param name="writer">The TextWriter to write the formatted event to</param>
+            <param name="writer">The TextWriter to write the formatted event to.写入格式化事件的文本存储程序</param>
+            <param name="loggingEvent">the event being logged.正在记录的事件</param>
             <remarks>
             <para>
-            Parse the <see cref="T:log4net.Core.LoggingEvent"/> using the patter format
-            specified in the <see cref="P:log4net.Layout.PatternLayout.ConversionPattern"/> property.
+            Parse the <see cref="T:log4net.Core.LoggingEvent"/> using the patter format specified in the <see cref="P:log4net.Layout.PatternLayout.ConversionPattern"/> property.
+            使用ConversionPattern属性中指定的模式格式解析LoggingEvent。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Layout.PatternLayout.AddConverter(log4net.Util.ConverterInfo)">
             <summary>
             Add a converter to this PatternLayout
+            向这个PatternLayout添加一个转换器
             </summary>
             <param name="converterInfo">the converter info</param>
             <remarks>
             <para>
             This version of the method is used by the configurator.
+            配置程序使用该方法的这个版本。
             Programmatic users should use the alternative <see cref="M:AddConverter(string,Type)"/> method.
+            编程用户应该使用可选的AddConverter(string,Type)方法。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Layout.PatternLayout.AddConverter(System.String,System.Type)">
             <summary>
             Add a converter to this PatternLayout
+            向这个PatternLayout添加一个转换器
             </summary>
-            <param name="name">the name of the conversion pattern for this converter</param>
-            <param name="type">the type of the converter</param>
+            <param name="name">the name of the conversion pattern for this converter.此转换器的转换模式的名称</param>
+            <param name="type">the type of the converter.转换器的类型</param>
             <remarks>
             <para>
-            Add a named pattern converter to this instance. This
-            converter will be used in the formatting of the event.
+            Add a named pattern converter to this instance. 
+            向此实例添加一个命名模式转换器。
+            This converter will be used in the formatting of the event.
+            此转换器将用于事件的格式化。
             This method must be called before <see cref="M:log4net.Layout.PatternLayout.ActivateOptions"/>.
+            在ActivateOptions之前必须调用此方法。
             </para>
             <para>
-            The <paramref name="type"/> specified must extend the 
-            <see cref="T:log4net.Util.PatternConverter"/> type.
+            The <paramref name="type"/> specified must extend the <see cref="T:log4net.Util.PatternConverter"/> type.
             </para>
             </remarks>
         </member>
@@ -18913,6 +18944,7 @@
         <member name="T:log4net.Layout.Pattern.AspNetSessionPatternConverter">
             <summary>
             Converter for items in the ASP.Net Session.
+            ASP.NET会话中的项目转换器。
             </summary>
             <remarks>
             <para>
@@ -19051,6 +19083,7 @@
         <member name="T:log4net.Layout.Pattern.ExceptionPatternConverter">
             <summary>
             Write the exception text to the output
+            将异常文本写入输出
             </summary>
             <remarks>
             <para>
@@ -19115,7 +19148,8 @@
         </member>
         <member name="T:log4net.Layout.Pattern.FileLocationPatternConverter">
             <summary>
-            Writes the caller location file name to the output
+            Writes the caller location file name to the output.
+            将调用方位置文件名写入输出。
             </summary>
             <remarks>
             <para>
@@ -19140,7 +19174,8 @@
         </member>
         <member name="T:log4net.Layout.Pattern.FullLocationPatternConverter">
             <summary>
-            Write the caller location info to the output
+            Write the caller location info to the output.
+            将调用者位置信息写入输出。
             </summary>
             <remarks>
             <para>
@@ -19215,7 +19250,8 @@
         </member>
         <member name="T:log4net.Layout.Pattern.LineLocationPatternConverter">
             <summary>
-            Write the caller location line number to the output
+            Write the caller location line number to the output.
+            将调用方位置行号写入输出。
             </summary>
             <remarks>
             <para>
@@ -19265,12 +19301,12 @@
         </member>
         <member name="T:log4net.Layout.Pattern.MessagePatternConverter">
             <summary>
-            Writes the event message to the output
+            Writes the event message to the output.
+            将事件消息写入输出。
             </summary>
             <remarks>
             <para>
-            Uses the <see cref="M:log4net.Core.LoggingEvent.WriteRenderedMessage(System.IO.TextWriter)"/> method
-            to write out the event message.
+            Uses the <see cref="M:log4net.Core.LoggingEvent.WriteRenderedMessage(System.IO.TextWriter)"/> method to write out the event message.
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -19431,9 +19467,10 @@
             提供派生类所需的格式化功能的抽象类。
             </summary>
             <remarks>
-            Conversion specifiers in a conversion patterns are parsed to
-            individual PatternConverters. Each of which is responsible for
-            converting a logging event in a converter specific manner.
+            Conversion specifiers in a conversion patterns are parsed to individual PatternConverters. 
+            转换模式中的转换说明符被解析为单个模式转换器。
+            Each of which is responsible for converting a logging event in a converter specific manner.
+            每个日志事件负责以特定于转换器的方式转换日志事件。
             </remarks>
             <author>Nicko Cadell</author>
         </member>
@@ -19462,16 +19499,16 @@
         </member>
         <member name="M:log4net.Layout.Pattern.PatternLayoutConverter.Convert(System.IO.TextWriter,log4net.Core.LoggingEvent)">
             <summary>
-            Derived pattern converters must override this method in order to
-            convert conversion specifiers in the correct way.
+            Derived pattern converters must override this method in order to convert conversion specifiers in the correct way.
+            派生模式转换器必须重写此方法，以便以正确的方式转换转换说明符。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="loggingEvent">The <see cref="T:log4net.Core.LoggingEvent" /> on which the pattern converter should be executed.</param>
         </member>
         <member name="M:log4net.Layout.Pattern.PatternLayoutConverter.Convert(System.IO.TextWriter,System.Object)">
             <summary>
-            Derived pattern converters must override this method in order to
-            convert conversion specifiers in the correct way.
+            Derived pattern converters must override this method in order to convert conversion specifiers in the correct way.
+            派生模式转换器必须重写此方法，以便以正确的方式转换转换说明符。
             </summary>
             <param name="writer"><see cref="T:System.IO.TextWriter" /> that will receive the formatted result.</param>
             <param name="state">The state object on which the pattern converter should be executed.</param>
@@ -21419,10 +21456,12 @@
         <member name="T:log4net.ObjectRenderer.DefaultRenderer">
             <summary>
             The default object Renderer.
+            默认对象呈现程序。
             </summary>
             <remarks>
             <para>
             The default renderer supports rendering objects and collections to strings.
+            默认呈现程序支持将对象和集合呈现到字符串。
             </para>
             <para>
             See the <see cref="M:log4net.ObjectRenderer.DefaultRenderer.RenderObject(log4net.ObjectRenderer.RendererMap,System.Object,System.IO.TextWriter)"/> method for details of the output.
@@ -21532,16 +21571,18 @@
         <member name="M:log4net.ObjectRenderer.DefaultRenderer.RenderArray(log4net.ObjectRenderer.RendererMap,System.Array,System.IO.TextWriter)">
             <summary>
             Render the array argument into a string
+            将数组参数呈现为字符串
             </summary>
             <param name="rendererMap">The map used to lookup renderers</param>
             <param name="array">the array to render</param>
             <param name="writer">The writer to render to</param>
             <remarks>
             <para>
-            For a one dimensional array this is the
-            array type name, an open brace, followed by a comma
-            separated list of the elements (using the appropriate
-            renderer), followed by a close brace. For example:
+            For a one dimensional array this is the array type name, an open brace, 
+            对于一维数组这是数组类型名，一个开大括号，
+            followed by a comma separated list of the elements (using the appropriate renderer), followed by a close brace. 
+            后面是一个逗号分隔的元素列表(使用适当的呈现器)，后面是一个闭括号。
+            For example:
             <c>int[] {1, 2, 3}</c>.
             </para>
             <para>
@@ -21553,6 +21594,7 @@
         <member name="M:log4net.ObjectRenderer.DefaultRenderer.RenderEnumerator(log4net.ObjectRenderer.RendererMap,System.Collections.IEnumerator,System.IO.TextWriter)">
             <summary>
             Render the enumerator argument into a string
+            将枚举数参数呈现为字符串
             </summary>
             <param name="rendererMap">The map used to lookup renderers</param>
             <param name="enumerator">the enumerator to render</param>
@@ -21569,6 +21611,7 @@
         <member name="M:log4net.ObjectRenderer.DefaultRenderer.RenderDictionaryEntry(log4net.ObjectRenderer.RendererMap,System.Collections.DictionaryEntry,System.IO.TextWriter)">
             <summary>
             Render the DictionaryEntry argument into a string
+            将DictionaryEntry参数呈现为字符串
             </summary>
             <param name="rendererMap">The map used to lookup renderers</param>
             <param name="entry">the DictionaryEntry to render</param>
@@ -21600,35 +21643,38 @@
         <member name="M:log4net.ObjectRenderer.IObjectRenderer.RenderObject(log4net.ObjectRenderer.RendererMap,System.Object,System.IO.TextWriter)">
             <summary>
             Render the object <paramref name="obj"/> to a string
+            将对象<paramref name="obj"/>渲染到一个字符串
             </summary>
-            <param name="rendererMap">The map used to lookup renderers</param>
+            <param name="rendererMap">The map used to lookup renderers.用于查找呈现程序的映射</param>
             <param name="obj">The object to render</param>
-            <param name="writer">The writer to render to</param>
+            <param name="writer">The writer to render to.对象渲染到的目的写入器</param>
             <remarks>
             <para>
-            Render the object <paramref name="obj"/> to a 
-            string.
+            Render the object <paramref name="obj"/> to a string.
             </para>
             <para>
-            The <paramref name="rendererMap"/> parameter is
-            provided to lookup and render other objects. This is
-            very useful where <paramref name="obj"/> contains
-            nested objects of unknown type. The <see cref="M:RendererMap.FindAndRender(object, TextWriter)"/>
-            method can be used to render these objects.
+            The <paramref name="rendererMap"/> parameter is provided to lookup and render other objects. 
+            <paramref name="rendererMap"/>参数用于查找和呈现其他对象。
+            This is very useful where <paramref name="obj"/> contains nested objects of unknown type. 
+            当<paramref name="obj"/>包含未知类型的嵌套对象时，这非常有用。
+            The <see cref="M:RendererMap.FindAndRender(object, TextWriter)"/> method can be used to render these objects.
+            RendererMap.FindAndRender(object, TextWriter)方法可用于呈现这些对象。
             </para>
             </remarks>
         </member>
         <member name="T:log4net.ObjectRenderer.RendererMap">
             <summary>
             Map class objects to an <see cref="T:log4net.ObjectRenderer.IObjectRenderer"/>.
+            将类对象映射到一个IObjectRenderer。
             </summary>
             <remarks>
             <para>
             Maintains a mapping between types that require special rendering and the <see cref="T:log4net.ObjectRenderer.IObjectRenderer"/> that is used to render them.
+            维护需要特殊呈现的类型与用于呈现它们的IObjectRenderer之间的映射。
             </para>
             <para>
-            The <see cref="M:FindAndRender(object)"/> method is used to render an
-            <c>object</c> using the appropriate renderers defined in this map.
+            The <see cref="M:FindAndRender(object)"/> method is used to render an <c>object</c> using the appropriate renderers defined in this map.
+            M:FindAndRender(object)方法用于使用此映射中定义的适当呈现器呈现对象。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -21647,33 +21693,20 @@
         <member name="M:log4net.ObjectRenderer.RendererMap.FindAndRender(System.Object)">
             <summary>
             Render <paramref name="obj"/> using the appropriate renderer.
+            使用适当的渲染器渲染obj。
             </summary>
-            <param name="obj">the object to render to a string</param>
-            <returns>the object rendered as a string</returns>
+            <param name="obj">the object to render to a string.要呈现给字符串的对象</param>
+            <returns>the object rendered as a string.作为字符串呈现的对象</returns>
             <remarks>
             <para>
             This is a convenience method used to render an object to a string.
-            The alternative method <see cref="M:FindAndRender(object,TextWriter)"/>
-            should be used when streaming output to a <see cref="T:System.IO.TextWriter"/>.
+            这是一种方便的方法，用于将对象呈现给字符串。
+            The alternative method <see cref="M:FindAndRender(object,TextWriter)"/> should be used when streaming output to a <see cref="T:System.IO.TextWriter"/>.
+            当流输出到TextWriter时，应该使用替代方法FindAndRender(object,TextWriter)。
             </para>
             </remarks>
         </member>
-        <member name="M:log4net.ObjectRenderer.RendererMap.FindAndRender(System.Object,System.IO.TextWriter)">
-            <summary>
-            Render <paramref name="obj"/> using the appropriate renderer.
-            </summary>
-            <param name="obj">the object to render to a string</param>
-            <param name="writer">The writer to render to</param>
-            <remarks>
-            <para>
-            Find the appropriate renderer for the type of the
-            <paramref name="obj"/> parameter. This is accomplished by calling the
-            <see cref="M:Get(Type)"/> method. Once a renderer is found, it is
-            applied on the object <paramref name="obj"/> and the result is returned
-            as a <see cref="T:System.String"/>.
-            </para>
-            </remarks>
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:log4net.ObjectRenderer.RendererMap.FindAndRender(System.Object,System.IO.TextWriter)" -->
         <member name="M:log4net.ObjectRenderer.RendererMap.Get(System.Object)">
             <summary>
             Gets the renderer for the specified object type
@@ -21693,14 +21726,14 @@
         <member name="M:log4net.ObjectRenderer.RendererMap.Get(System.Type)">
             <summary>
             Gets the renderer for the specified type
+            获取指定类型的呈现程序
             </summary>
-            <param name="type">the type to lookup the renderer for</param>
-            <returns>the renderer for the specified type</returns>
+            <param name="type">the type to lookup the renderer for.查找呈现程序的类型</param>
+            <returns>the renderer for the specified type.指定类型的呈现程序</returns>
             <remarks>
             <para>
             Returns the renderer for the specified type.
-            If no specific renderer has been defined the
-            <see cref="P:log4net.ObjectRenderer.RendererMap.DefaultRenderer"/> will be returned.
+            If no specific renderer has been defined the <see cref="P:log4net.ObjectRenderer.RendererMap.DefaultRenderer"/> will be returned.
             </para>
             </remarks>
         </member>
@@ -23312,13 +23345,14 @@
         </member>
         <member name="P:log4net.Repository.Hierarchy.Logger.Hierarchy">
             <summary>
-            Gets or sets the <see cref="P:log4net.Repository.Hierarchy.Logger.Hierarchy"/> where this 
-            <c>Logger</c> instance is attached to.
+            Gets or sets the <see cref="P:log4net.Repository.Hierarchy.Logger.Hierarchy"/> where this <c>Logger</c> instance is attached to.
+            获取或设置连接此记录器实例的层次结构。
             </summary>
-            <value>The hierarchy that this logger belongs to.</value>
+            <value>The hierarchy that this logger belongs to.这个日志记录器所属的层次结构。</value>
             <remarks>
             <para>
             This logger must be attached to a single <see cref="P:log4net.Repository.Hierarchy.Logger.Hierarchy"/>.
+            这个日志记录器必须附加到一个层次结构。
             </para>
             </remarks>
         </member>
@@ -23546,16 +23580,16 @@
         <member name="M:log4net.Repository.Hierarchy.Logger.ForcedLog(System.Type,log4net.Core.Level,System.Object,System.Exception)">
             <summary>
             Creates a new logging event and logs the event without further checks.
+            创建一个新的日志事件，并在不进行进一步检查的情况下记录该事件。
             </summary>
-            <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is
-            the stack boundary into the logging system for this call.</param>
+            <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is the stack boundary into the logging system for this call.</param>
             <param name="level">The level of the message to be logged.</param>
             <param name="message">The message object to log.</param>
             <param name="exception">The exception to log, including its stack trace.</param>
             <remarks>
             <para>
-            Generates a logging event and delivers it to the attached
-            appenders.
+            Generates a logging event and delivers it to the attached appenders.
+            生成一个日志事件并将其交付给附加附件。
             </para>
             </remarks>
         </member>
@@ -23606,12 +23640,14 @@
         <member name="F:log4net.Repository.Hierarchy.Logger.m_hierarchy">
             <summary>
             Loggers need to know what Hierarchy they are in.
+            日志记录器需要知道它们所在的层次结构。
             </summary>
             <remarks>
             <para>
             Loggers need to know what Hierarchy they are in.
-            The hierarchy that this logger is a member of is stored
-            here.
+            日志记录器需要知道它们所在的层次结构。
+            The hierarchy that this logger is a member of is stored here.
+            这个日志记录器所属的层次结构存储在这里。
             </para>
             </remarks>
         </member>
@@ -23816,6 +23852,7 @@
         </member>
         <member name="T:log4net.Repository.Hierarchy.XmlHierarchyConfigurator">
             <summary>
+            Xml层次结构配置器
             Initializes the log4net environment using an XML DOM.
             使用XML DOM初始化log4net环境。
             </summary>
@@ -23827,15 +23864,31 @@
             <author>Nicko Cadell</author>
             <author>Gert Driesen</author>
         </member>
+        <member name="T:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.ConfigUpdateMode">
+            <summary>
+            配置更新模式
+            </summary>
+        </member>
+        <member name="F:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.ConfigUpdateMode.Merge">
+            <summary>
+            合并
+            </summary>
+        </member>
+        <member name="F:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.ConfigUpdateMode.Overwrite">
+            <summary>
+            覆盖
+            </summary>
+        </member>
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.#ctor(log4net.Repository.Hierarchy.Hierarchy)">
             <summary>
+            构造层次结构的配置器
             Construct the configurator for a hierarchy
             </summary>
-            <param name="hierarchy">The hierarchy to build.</param>
+            <param name="hierarchy">The hierarchy to build.要构建的层次结构。</param>
             <remarks>
             <para>
-            Initializes a new instance of the <see cref="T:log4net.Repository.Hierarchy.XmlHierarchyConfigurator" /> class
-            with the specified <see cref="T:log4net.Repository.Hierarchy.Hierarchy" />.
+            Initializes a new instance of the <see cref="T:log4net.Repository.Hierarchy.XmlHierarchyConfigurator" /> class with the specified <see cref="T:log4net.Repository.Hierarchy.Hierarchy" />.
+            使用指定的层次结构初始化XmlHierarchyConfigurator类的新实例。
             </para>
             </remarks>
         </member>
@@ -23848,32 +23901,35 @@
             <remarks>
             <para>
             Configure the hierarchy by parsing a DOM tree of XML elements.
+            通过解析XML元素的DOM树来配置层次结构。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.FindAppenderByReference(System.Xml.XmlElement)">
             <summary>
             Parse appenders by IDREF.
+            根据IDREF解析appenders。
             </summary>
-            <param name="appenderRef">The appender ref element.</param>
-            <returns>The instance of the appender that the ref refers to.</returns>
+            <param name="appenderRef">The appender ref element.appender ref元素。</param>
+            <returns>The instance of the appender that the ref refers to.appender实例。</returns>
             <remarks>
             <para>
-            Parse an XML element that represents an appender and return 
-            the appender.
+            Parse an XML element that represents an appender and return the appender.
+            解析表示appender的XML元素并返回appender。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.ParseAppender(System.Xml.XmlElement)">
             <summary>
             Parses an appender element.
+            解析appender元素。
             </summary>
-            <param name="appenderElement">The appender element.</param>
+            <param name="appenderElement">The appender element.appender元素。</param>
             <returns>The appender instance or <c>null</c> when parsing failed.</returns>
             <remarks>
             <para>
-            Parse an XML element that represents an appender and return
-            the appender instance.
+            Parse an XML element that represents an appender and return the appender instance.
+            解析表示appender并返回appender实例的XML元素。
             </para>
             </remarks>
         </member>
@@ -23891,21 +23947,24 @@
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.ParseRoot(System.Xml.XmlElement)">
             <summary>
             Parses the root logger element.
+            解析根日志记录器元素。
             </summary>
-            <param name="rootElement">The root element.</param>
+            <param name="rootElement">The root element.根元素。</param>
             <remarks>
             <para>
             Parse an XML element that represents the root logger.
+            解析表示根日志记录器的XML元素。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.ParseChildrenOfLoggerElement(System.Xml.XmlElement,log4net.Repository.Hierarchy.Logger,System.Boolean)">
             <summary>
             Parses the children of a logger element.
+            解析logger元素的子元素。
             </summary>
             <param name="catElement">The category element.</param>
             <param name="log">The logger instance.</param>
-            <param name="isRoot">Flag to indicate if the logger is the root logger.</param>
+            <param name="isRoot">Flag to indicate if the logger is the root logger. 标记，以指示日志记录器是否为根日志记录器。</param>
             <remarks>
             <para>
             Parse the child elements of a &lt;logger&gt; element.
@@ -23926,32 +23985,36 @@
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.ParseLevel(System.Xml.XmlElement,log4net.Repository.Hierarchy.Logger,System.Boolean)">
             <summary>
             Parses a level element.
+            解析一个level元素。
             </summary>
             <param name="element">The level element.</param>
-            <param name="log">The logger object to set the level on.</param>
-            <param name="isRoot">Flag to indicate if the logger is the root logger.</param>
+            <param name="log">The logger object to set the level on.用来设置level的记录器对象。</param>
+            <param name="isRoot">Flag to indicate if the logger is the root logger.标记，以指示日志记录器是否为根日志记录器。</param>
             <remarks>
             <para>
             Parse an XML element that represents a level.
+            解析表示级别的XML元素。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.SetParameter(System.Xml.XmlElement,System.Object)">
             <summary>
             Sets a parameter on an object.
+            设置对象的参数。
             </summary>
             <param name="element">The parameter element.</param>
             <param name="target">The object to set the parameter on.</param>
             <remarks>
-            The parameter name must correspond to a writable property
-            on the object. The value of the parameter is a string,
-            therefore this function will attempt to set a string
-            property first. If unable to set a string property it
-            will inspect the property and its argument type. It will
-            attempt to call a static method called <c>Parse</c> on the
-            type of the property. This method will take a single
-            string argument and return a value that can be used to
-            set the property.
+            The parameter name must correspond to a writable property on the object. 
+            参数名必须与对象上的可写属性相对应。
+            The value of the parameter is a string, therefore this function will attempt to set a string property first. 
+            参数的值是字符串，因此该函数将首先尝试设置字符串属性。
+            If unable to set a string property it will inspect the property and its argument type. 
+            如果无法设置字符串属性，它将检查属性及其参数类型。
+            It will attempt to call a static method called <c>Parse</c> on the type of the property. 
+            它将尝试调用一个名为Parse的静态方法。
+            This method will take a single string argument and return a value that can be used to set the property.
+            此方法将接受一个字符串参数并返回一个值，该值可用于设置属性。
             </remarks>
         </member>
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.HasAttributesOrElements(System.Xml.XmlElement)">
@@ -24000,21 +24063,24 @@
         <member name="M:log4net.Repository.Hierarchy.XmlHierarchyConfigurator.CreateObjectFromXml(System.Xml.XmlElement,System.Type,System.Type)">
             <summary>
             Creates an object as specified in XML.
+            创建XML中指定的对象。
             </summary>
-            <param name="element">The XML element that contains the definition of the object.</param>
-            <param name="defaultTargetType">The object type to use if not explicitly specified.</param>
-            <param name="typeConstraint">The type that the returned object must be or must inherit from.</param>
+            <param name="element">The XML element that contains the definition of the object.包含对象定义的XML元素。</param>
+            <param name="defaultTargetType">The object type to use if not explicitly specified.如果没有显式指定，则使用的对象类型。</param>
+            <param name="typeConstraint">The type that the returned object must be or must inherit from.返回的对象必须是或必须继承的类型。</param>
             <returns>The object or <c>null</c></returns>
             <remarks>
             <para>
-            Parse an XML element and create an object instance based on the configuration
-            data.
+            Parse an XML element and create an object instance based on the configuration data.
+            解析XML元素并基于配置数据创建对象实例。
             </para>
             <para>
-            The type of the instance may be specified in the XML. If not
-            specified then the <paramref name="defaultTargetType"/> is used
-            as the type. However the type is specified it must support the
-            <paramref name="typeConstraint"/> type.
+            The type of the instance may be specified in the XML. 
+            实例的类型可以在XML中指定。
+            If not specified then the <paramref name="defaultTargetType"/> is used as the type. 
+            如果没有指定，则使用defaultTargetType作为类型。
+            However the type is specified it must support the <paramref name="typeConstraint"/> type.
+            但是指定的类型必须支持类型约束类型。
             </para>
             </remarks>
         </member>
@@ -24035,8 +24101,7 @@
             The fully qualified type of the XmlHierarchyConfigurator class.
             </summary>
             <remarks>
-            Used by the internal logger to record the Type of the
-            log message.
+            Used by the internal logger to record the Type of the log message.
             </remarks>
         </member>
         <member name="T:log4net.Repository.IBasicRepositoryConfigurator">
@@ -24151,6 +24216,7 @@
         <member name="P:log4net.Repository.ILoggerRepository.RendererMap">
             <summary>
             RendererMap accesses the object renderer map for this repository.
+            RendererMap访问这个存储库的对象呈现器映射。
             </summary>
             <value>
             RendererMap accesses the object renderer map for this repository.
@@ -24160,8 +24226,8 @@
             RendererMap accesses the object renderer map for this repository.
             </para>
             <para>
-            The RendererMap holds a mapping between types and
-            <see cref="T:log4net.ObjectRenderer.IObjectRenderer"/> objects.
+            The RendererMap holds a mapping between types and <see cref="T:log4net.ObjectRenderer.IObjectRenderer"/> objects.
+            RendererMap保存类型和IObjectRenderer对象之间的映射。
             </para>
             </remarks>
         </member>
@@ -24174,8 +24240,7 @@
             </value>
             <remarks>
             <para>
-            The plugin map holds the <see cref="T:log4net.Plugin.IPlugin"/> instances
-            that have been attached to this repository.
+            The plugin map holds the <see cref="T:log4net.Plugin.IPlugin"/> instances that have been attached to this repository.
             </para>
             </remarks>
         </member>
@@ -24486,6 +24551,7 @@
         <member name="P:log4net.Repository.LoggerRepositorySkeleton.RendererMap">
             <summary>
             RendererMap accesses the object renderer map for this repository.
+            RendererMap访问这个存储库的对象呈现器映射。
             </summary>
             <value>
             RendererMap accesses the object renderer map for this repository.
@@ -24517,15 +24583,15 @@
         <member name="P:log4net.Repository.LoggerRepositorySkeleton.LevelMap">
             <summary>
             Get the level map for the Repository.
+            获取存储库的级别映射。
             </summary>
             <remarks>
             <para>
             Get the level map for the Repository.
             </para>
             <para>
-            The level map defines the mappings between
-            level names and <see cref="T:log4net.Core.Level"/> objects in
-            this repository.
+            The level map defines the mappings between level names and <see cref="T:log4net.Core.Level"/> objects in this repository.
+            级别映射定义了此存储库中级别名称和级别对象之间的映射。
             </para>
             </remarks>
         </member>
@@ -24710,9 +24776,15 @@
             log message.
             </remarks>
         </member>
+        <member name="M:log4net.Repository.LoggerRepositorySkeleton.AddBuiltinLevels">
+            <summary>
+            将预定义的级别添加到映射中
+            </summary>
+        </member>
         <member name="M:log4net.Repository.LoggerRepositorySkeleton.AddRenderer(System.Type,log4net.ObjectRenderer.IObjectRenderer)">
             <summary>
             Adds an object renderer for a specific class. 
+            为特定的类添加对象呈现程序。
             </summary>
             <param name="typeToRender">The type that will be rendered by the renderer supplied.</param>
             <param name="rendererInstance">The object renderer used to render the object.</param>
@@ -25132,12 +25204,13 @@
         </member>
         <member name="T:log4net.Util.ConverterInfo">
             <summary>
-            Wrapper class used to map converter names to converter types
+            Wrapper class used to map converter names to converter types.
+            用于将转换器名称映射到转换器类型的包装器类。
             </summary>
             <remarks>
             <para>
-            Pattern converter info class used during configuration by custom
-            PatternString and PatternLayer converters.
+            Pattern converter info class used during configuration by custom PatternString and PatternLayer converters.
+            在自定义PatternString和PatternLayer转换器的配置过程中使用的模式转换器信息类。
             </para>
             </remarks>
         </member>
@@ -25148,7 +25221,8 @@
         </member>
         <member name="P:log4net.Util.ConverterInfo.Name">
             <summary>
-            Gets or sets the name of the conversion pattern
+            Gets or sets the name of the conversion pattern.
+            获取或设置转换模式的名称。
             </summary>
             <remarks>
             <para>
@@ -25158,24 +25232,25 @@
         </member>
         <member name="P:log4net.Util.ConverterInfo.Type">
             <summary>
-            Gets or sets the type of the converter
+            Gets or sets the type of the converter.
+            获取或设置转换器的类型。
             </summary>
             <remarks>
             <para>
-            The value specified must extend the 
-            <see cref="T:log4net.Util.PatternConverter"/> type.
+            The value specified must extend the <see cref="T:log4net.Util.PatternConverter"/> type.
+            指定的值必须扩展PatternConverter类型。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Util.ConverterInfo.AddProperty(log4net.Util.PropertyEntry)">
             <summary>
-            
+            添加一条属性
             </summary>
             <param name="entry"></param>
         </member>
         <member name="P:log4net.Util.ConverterInfo.Properties">
             <summary>
-            
+            属性集合
             </summary>
         </member>
         <member name="T:log4net.Util.CountingQuietTextWriter">
@@ -25729,6 +25804,7 @@
             Holds the formatting information extracted from the format string by the <see cref="T:log4net.Util.PatternParser"/>. 
             保存模式解析器从格式字符串中提取的格式信息。
             This is used by the <see cref="T:log4net.Util.PatternConverter"/> objects when rendering the output.
+            在呈现输出时，PatternConverter对象使用了这个方法。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -25783,13 +25859,16 @@
         <member name="P:log4net.Util.FormattingInfo.LeftAlign">
             <summary>
             Gets or sets a flag indicating whether left align is enabled or not.
+            获取或设置一个标志，该标志指示是否启用左对齐。
             </summary>
             <value>
             A flag indicating whether left align is enabled or not.
+            指示是否启用左对齐的标志。
             </value>
             <remarks>
             <para>
             Gets or sets a flag indicating whether left align is enabled or not.
+            获取或设置一个标志，该标志指示是否启用左对齐。
             </para>
             </remarks>
         </member>
@@ -27261,32 +27340,30 @@
         </member>
         <member name="P:log4net.Util.LogLog.InternalDebugging">
             <summary>
-            Gets or sets a value indicating whether log4net internal logging
-            is enabled or disabled.
+            Gets or sets a value indicating whether log4net internal logging is enabled or disabled.
+            获取或设置一个值，该值指示是否启用或禁用log4net内部日志记录。
             </summary>
             <value>
-            <c>true</c> if log4net internal logging is enabled, otherwise 
-            <c>false</c>.
+            <c>true</c> if log4net internal logging is enabled, otherwise <c>false</c>.
+            如果log4net内部日志记录被启用，则为true，否则为false
             </value>
             <remarks>
             <para>
-            When set to <c>true</c>, internal debug level logging will be 
-            displayed.
+            When set to <c>true</c>, internal debug level logging will be displayed.
+            当设置为true时，将显示内部调试级别的日志记录。
             </para>
             <para>
-            This value can be set by setting the application setting 
-            <c>log4net.Internal.Debug</c> in the application configuration
-            file.
+            This value can be set by setting the application setting <c>log4net.Internal.Debug</c> in the application configuration file.
+            这个值可以通过在应用程序配置文件设置应用程序设置<c>log4net.Internal.Debug</c>来设置。
             </para>
             <para>
-            The default value is <c>false</c>, i.e. debugging is
-            disabled.
+            The default value is <c>false</c>, i.e. debugging is disabled.
+            默认值<c>false</c>，即禁用调试。
             </para>
             </remarks>
             <example>
             <para>
-            The following example enables internal debugging using the 
-            application configuration file :
+            The following example enables internal debugging using the application configuration file :
             </para>
             <code lang="XML" escaped="true">
             <configuration>
@@ -27299,31 +27376,30 @@
         </member>
         <member name="P:log4net.Util.LogLog.QuietMode">
             <summary>
-            Gets or sets a value indicating whether log4net should generate no output
-            from internal logging, not even for errors. 
+            Gets or sets a value indicating whether log4net should generate no output from internal logging, not even for errors. 
+            获取或设置一个值，该值指示log4net是否不应该从内部日志记录生成任何输出，甚至对于错误也不应该。
             </summary>
             <value>
-            <c>true</c> if log4net should generate no output at all from internal 
-            logging, otherwise <c>false</c>.
+            <c>true</c> if log4net should generate no output at all from internal logging, otherwise <c>false</c>.
+            如果log4net不应该从内部日志中生成任何输出，则为true，否则为false。
             </value>
             <remarks>
             <para>
-            When set to <c>true</c> will cause internal logging at all levels to be 
-            suppressed. This means that no warning or error reports will be logged. 
-            This option overrides the <see cref="P:log4net.Util.LogLog.InternalDebugging"/> setting and 
-            disables all debug also.
+            When set to <c>true</c> will cause internal logging at all levels to be suppressed. 
+            当设置为true时，将导致所有级别的内部日志记录被抑制。
+            This means that no warning or error reports will be logged. 
+            这意味着不会记录任何警告或错误报告。
+            This option overrides the <see cref="P:log4net.Util.LogLog.InternalDebugging"/> setting and disables all debug also.
             </para>
-            <para>This value can be set by setting the application setting
-            <c>log4net.Internal.Quiet</c> in the application configuration file.
+            <para>This value can be set by setting the application setting <c>log4net.Internal.Quiet</c> in the application configuration file.
             </para>
             <para>
-            The default value is <c>false</c>, i.e. internal logging is not
-            disabled.
+            The default value is <c>false</c>, i.e. internal logging is not disabled.
+            默认值为false，即不禁用内部日志记录。
             </para>
             </remarks>
             <example>
-            The following example disables internal logging using the 
-            application configuration file :
+            The following example disables internal logging using the application configuration file :
             <code lang="XML" escaped="true">
             <configuration>
             	<appSettings>
@@ -27335,7 +27411,7 @@
         </member>
         <member name="P:log4net.Util.LogLog.EmitInternalMessages">
             <summary>
-            
+            发出内部消息
             </summary>
         </member>
         <member name="M:log4net.Util.LogLog.OnLogReceived(System.Type,System.String,System.String,System.Exception)">
@@ -27518,6 +27594,11 @@
         <member name="F:log4net.Util.LogLog.s_quietMode">
             <summary>
             In quietMode not even errors generate any output.
+            </summary>
+        </member>
+        <member name="F:log4net.Util.LogLog.s_emitInternalMessages">
+            <summary>
+            发出内部消息
             </summary>
         </member>
         <member name="F:log4net.Util.LogLog.PREFIX">
@@ -28438,10 +28519,10 @@
             <param name="state">The state object on which the pattern converter should be executed.</param>
             <remarks>
             <para>
-            This method calls <see cref="M:log4net.Util.PatternConverter.Convert(System.IO.TextWriter,System.Object)"/> to allow the subclass to perform
-            appropriate conversion of the pattern converter. If formatting options have
-            been specified via the <see cref="P:log4net.Util.PatternConverter.FormattingInfo"/> then this method will
-            apply those formattings before writing the output.
+            This method calls <see cref="M:log4net.Util.PatternConverter.Convert(System.IO.TextWriter,System.Object)"/> to allow the subclass to perform appropriate conversion of the pattern converter. 
+            此方法调用Convert，以允许子类执行模式转换器的适当转换。
+            If formatting options have been specified via the <see cref="P:log4net.Util.PatternConverter.FormattingInfo"/> then this method will apply those formattings before writing the output.
+            如果格式化选项是通过FormattingInfo指定的，那么该方法将在写入输出之前应用这些格式化选项。
             </para>
             </remarks>
         </member>
@@ -28466,12 +28547,14 @@
         </member>
         <member name="F:log4net.Util.PatternConverter.c_renderBufferSize">
             <summary>
+            最初的缓冲区大小
             Initial buffer size
             </summary>
         </member>
         <member name="F:log4net.Util.PatternConverter.c_renderBufferMaxCapacity">
             <summary>
-            Maximum buffer size before it is recycled
+            在回收之前的最大缓冲区大小。
+            Maximum buffer size before it is recycled.
             </summary>
         </member>
         <member name="M:log4net.Util.PatternConverter.WriteDictionary(System.IO.TextWriter,log4net.Repository.ILoggerRepository,System.Collections.IDictionary)">
@@ -28538,6 +28621,7 @@
         </member>
         <member name="T:log4net.Util.PatternParser">
             <summary>
+            模式解析器
             Most of the work of the <see cref="T:log4net.Layout.PatternLayout"/> class is delegated to the PatternParser class.
             PatternLayout类的大部分工作都委托给PatternParser类。
             </summary>
@@ -28554,11 +28638,11 @@
             <summary>
             Constructor
             </summary>
-            <param name="pattern">The pattern to parse.</param>
+            <param name="pattern">The pattern to parse.要解析的模式</param>
             <remarks>
             <para>
-            Initializes a new instance of the <see cref="T:log4net.Util.PatternParser" /> class 
-            with the specified pattern string.
+            Initializes a new instance of the <see cref="T:log4net.Util.PatternParser" /> class with the specified pattern string.
+            使用指定的模式字符串初始化PatternParser类的新实例。
             </para>
             </remarks>
         </member>
@@ -28576,7 +28660,8 @@
         </member>
         <member name="P:log4net.Util.PatternParser.PatternConverters">
             <summary>
-            Get the converter registry used by this parser
+            Get the converter registry used by this parser.
+            获取此解析器使用的转换器注册表。
             </summary>
             <value>
             The converter registry used by this parser
@@ -28601,35 +28686,41 @@
         <member name="T:log4net.Util.PatternParser.StringLengthComparer">
             <summary>
             Sort strings by length
+            按长度对字符串排序
             </summary>
             <remarks>
             <para>
             <see cref="T:System.Collections.IComparer" /> that orders strings by string length.
             The longest strings are placed first
+            最长的字符串放在第一位
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Util.PatternParser.ParseInternal(System.String,System.String[])">
             <summary>
             Internal method to parse the specified pattern to find specified matches
+            内部方法来解析指定的模式以查找指定的匹配
             </summary>
-            <param name="pattern">the pattern to parse</param>
-            <param name="matches">the converter names to match in the pattern</param>
+            <param name="pattern">the pattern to parse 要解析的模式</param>
+            <param name="matches">the converter names to match in the pattern 在模式中匹配的转换器名称</param>
             <remarks>
             <para>
             The matches param must be sorted such that longer strings come before shorter ones.
+            匹配参数必须排序，以便长字符串排在短字符串之前。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Util.PatternParser.ProcessLiteral(System.String)">
             <summary>
             Process a parsed literal
+            处理经过解析的文字
             </summary>
             <param name="text">the literal text</param>
         </member>
         <member name="M:log4net.Util.PatternParser.ProcessConverter(System.String,System.String,log4net.Util.FormattingInfo)">
             <summary>
             Process a parsed converter pattern
+            处理已解析的转换器模式
             </summary>
             <param name="converterName">the name of the converter</param>
             <param name="option">the optional option for the converter</param>
@@ -28637,43 +28728,49 @@
         </member>
         <member name="M:log4net.Util.PatternParser.AddConverter(log4net.Util.PatternConverter)">
             <summary>
-            Resets the internal state of the parser and adds the specified pattern converter 
-            to the chain.
+            Resets the internal state of the parser and adds the specified pattern converter to the chain.
+            重置解析器的内部状态，并将指定的模式转换器添加到链中。
             </summary>
             <param name="pc">The pattern converter to add.</param>
         </member>
         <member name="F:log4net.Util.PatternParser.m_head">
             <summary>
             The first pattern converter in the chain
+            链中的第一个模式转换器
             </summary>
         </member>
         <member name="F:log4net.Util.PatternParser.m_tail">
             <summary>
-             the last pattern converter in the chain
+            the last pattern converter in the chain
+            链中的最后一个模式转换器
             </summary>
         </member>
         <member name="F:log4net.Util.PatternParser.m_pattern">
             <summary>
             The pattern
+            模式字符串
             </summary>
         </member>
         <member name="F:log4net.Util.PatternParser.m_patternConverters">
             <summary>
             Internal map of converter identifiers to converter types
+            转换器标识符到转换器类型的内部映射
             </summary>
             <remarks>
             <para>
             This map overrides the static s_globalRulesRegistry map.
+            此映射覆盖静态s_globalRulesRegistry映射。
             </para>
             </remarks>
         </member>
         <member name="F:log4net.Util.PatternParser.declaringType">
             <summary>
             The fully qualified type of the PatternParser class.
+            PatternParser类的完全限定类型。
             </summary>
             <remarks>
-            Used by the internal logger to record the Type of the
-            log message.
+            Used by the internal logger to record the Type of the log message.
+            内部日志记录器用于记录日志消息的类型。
             </remarks>
         </member>
         <member name="T:log4net.Util.PatternString">
@@ -28683,15 +28780,14 @@
             </summary>
             <remarks>
             <para>
-            This string has embedded patterns that are resolved and expanded
-            when the string is formatted.
+            This string has embedded patterns that are resolved and expanded when the string is formatted.
+            这个字符串包含在格式化字符串时解析和展开的模式。
             </para>
             <para>
-            This class functions similarly to the <see cref="T:log4net.Layout.PatternLayout"/>
-            in that it accepts a pattern and renders it to a string. Unlike the 
-            <see cref="T:log4net.Layout.PatternLayout"/> however the <c>PatternString</c>
-            does not render the properties of a specific <see cref="T:log4net.Core.LoggingEvent"/> but
-            of the process in general.
+            This class functions similarly to the <see cref="T:log4net.Layout.PatternLayout"/> in that it accepts a pattern and renders it to a string. 
+            这个类的功能类似于PatternLayout，因为它接受一个模式并将其呈现给一个字符串。
+            Unlike the <see cref="T:log4net.Layout.PatternLayout"/> however the <c>PatternString</c> does not render the properties of a specific <see cref="T:log4net.Core.LoggingEvent"/> but of the process in general.
+            然而，与PatternLayout不同的是，PatternString并不呈现特定LoggingEvent的属性，而是呈现整个过程的属性。
             </para>
             <para>
             The recognized conversion pattern names are:
@@ -28895,13 +28991,12 @@
             	</item>
             </list>
             <para>
-            Additional pattern converters may be registered with a specific <see cref="T:log4net.Util.PatternString"/>
-            instance using <see cref="M:AddConverter(ConverterInfo)"/> or
-            <see cref="M:AddConverter(string, Type)" />.
+            Additional pattern converters may be registered with a specific <see cref="T:log4net.Util.PatternString"/> instance using <see cref="M:AddConverter(ConverterInfo)"/> or <see cref="M:AddConverter(string, Type)" />.
+            其他模式转换器可以使用AddConverter(ConverterInfo)或AddConverter(string, Type)注册到特定的PatternString实例。
             </para>
             <para>
-            See the <see cref="T:log4net.Layout.PatternLayout"/> for details on the 
-            <i>format modifiers</i> supported by the patterns.
+            See the <see cref="T:log4net.Layout.PatternLayout"/> for details on the <i>format modifiers</i> supported by the patterns.
+            有关模式支持的格式修饰符的详细信息，请参阅PatternLayout。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -28909,21 +29004,25 @@
         <member name="F:log4net.Util.PatternString.s_globalRulesRegistry">
             <summary>
             Internal map of converter identifiers to converter types.
+            转换器标识符到转换器类型的内部映射。
             </summary>
         </member>
         <member name="F:log4net.Util.PatternString.m_pattern">
             <summary>
             the pattern
+            模式
             </summary>
         </member>
         <member name="F:log4net.Util.PatternString.m_head">
             <summary>
             the head of the pattern converter chain
+            模式转换器链的头部
             </summary>
         </member>
         <member name="F:log4net.Util.PatternString.m_instanceRulesRegistry">
             <summary>
             patterns defined on this PatternString only
+            仅在此PatternString上定义的模式
             </summary>
         </member>
         <member name="M:log4net.Util.PatternString.#cctor">
@@ -28955,33 +29054,37 @@
         <member name="P:log4net.Util.PatternString.ConversionPattern">
             <summary>
             Gets or sets the pattern formatting string
+            获取或设置模式格式字符串
             </summary>
             <value>
             The pattern formatting string
+            模式格式字符串
             </value>
             <remarks>
             <para>
-            The <b>ConversionPattern</b> option. This is the string which
-            controls formatting and consists of a mix of literal content and
-            conversion specifiers.
+            The <b>ConversionPattern</b> option. 
+            This is the string which controls formatting and consists of a mix of literal content and conversion specifiers.
+            这是控制格式的字符串，由文字内容和转换说明符混合组成。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Util.PatternString.ActivateOptions">
             <summary>
             Initialize object options
+            初始化对象的设置
             </summary>
             <remarks>
             <para>
-            This is part of the <see cref="T:log4net.Core.IOptionHandler"/> delayed object
-            activation scheme. The <see cref="M:log4net.Util.PatternString.ActivateOptions"/> method must 
-            be called on this object after the configuration properties have
-            been set. Until <see cref="M:log4net.Util.PatternString.ActivateOptions"/> is called this
-            object is in an undefined state and must not be used. 
+            This is part of the <see cref="T:log4net.Core.IOptionHandler"/> delayed object activation scheme. 
+            这是IOptionHandler延迟对象激活方案的一部分。
+            The <see cref="M:log4net.Util.PatternString.ActivateOptions"/> method must be called on this object after the configuration properties have been set. 
+            在设置了配置属性之后，必须对该对象调用ActivateOptions方法。
+            Until <see cref="M:log4net.Util.PatternString.ActivateOptions"/> is called this object is in an undefined state and must not be used. 
+            在ActivateOptions被调用之前，该对象处于未定义状态，不能使用。
             </para>
             <para>
-            If any of the configuration properties are modified then 
-            <see cref="M:log4net.Util.PatternString.ActivateOptions"/> must be called again.
+            If any of the configuration properties are modified then <see cref="M:log4net.Util.PatternString.ActivateOptions"/> must be called again.
+            如果修改了任何配置属性，则必须再次调用ActivateOptions。
             </para>
             </remarks>
         </member>
@@ -29663,13 +29766,12 @@
         <member name="T:log4net.Util.PropertiesDictionary">
             <summary>
             String keyed object map.
-            
+            字符串键值对象映射。
             </summary>
             <remarks>
             <para>
-            While this collection is serializable only member 
-            objects that are serializable will
-            be serialized along with this collection.
+            While this collection is serializable only member objects that are serializable will be serialized along with this collection.
+            虽然这个集合是可序列化的，但是只有可序列化的成员对象将与这个集合一起序列化。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -30156,15 +30258,16 @@
         <member name="T:log4net.Util.ReadOnlyPropertiesDictionary">
             <summary>
             String keyed object map that is read only.
+            字符串键值的只读对象映射表。
             </summary>
             <remarks>
             <para>
             This collection is readonly and cannot be modified.
+            这个集合是只读的，不能被修改。
             </para>
             <para>
-            While this collection is serializable only member 
-            objects that are serializable will
-            be serialized along with this collection.
+            While this collection is serializable only member objects that are serializable will be serialized along with this collection.
+            虽然这个集合是可序列化的，但是只有可序列化的成员对象将与这个集合一起序列化。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -30172,7 +30275,8 @@
         </member>
         <member name="F:log4net.Util.ReadOnlyPropertiesDictionary.m_hashtable">
             <summary>
-            The Hashtable used to store the properties data
+            The Hashtable used to store the properties data.
+            用来存储属性数据的哈希表。
             </summary>
         </member>
         <member name="M:log4net.Util.ReadOnlyPropertiesDictionary.#ctor">
@@ -30212,8 +30316,9 @@
         <member name="M:log4net.Util.ReadOnlyPropertiesDictionary.GetKeys">
             <summary>
             Gets the key names.
+            获取键值名称。
             </summary>
-            <returns>An array of all the keys.</returns>
+            <returns>An array of all the keys.所有键值的数组。</returns>
             <remarks>
             <para>
             Gets the key names.
@@ -30251,9 +30356,11 @@
         <member name="P:log4net.Util.ReadOnlyPropertiesDictionary.InnerHashtable">
             <summary>
             The hashtable used to store the properties
+            用来存储属性的哈希表
             </summary>
             <value>
             The internal collection used to store the properties
+            用于存储属性的内部集合
             </value>
             <remarks>
             <para>
@@ -30357,12 +30464,14 @@
         </member>
         <member name="T:log4net.Util.ReusableStringWriter">
             <summary>
+            可重复使用的字符串写入器
             A <see cref="T:System.IO.StringWriter"/> that can be <see cref="M:log4net.Util.ReusableStringWriter.Reset(System.Int32,System.Int32)"/> and reused
             </summary>
             <remarks>
             <para>
             A <see cref="T:System.IO.StringWriter"/> that can be <see cref="M:log4net.Util.ReusableStringWriter.Reset(System.Int32,System.Int32)"/> and reused.
             This uses a single buffer for string operations.
+            这将使用一个缓冲区进行字符串操作。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -30392,13 +30501,16 @@
         <member name="M:log4net.Util.ReusableStringWriter.Reset(System.Int32,System.Int32)">
             <summary>
             Reset this string writer so that it can be reused.
+            重置这个字符串写入器，以便它可以被重用。
             </summary>
-            <param name="maxCapacity">the maximum buffer capacity before it is trimmed</param>
-            <param name="defaultSize">the default size to make the buffer</param>
+            <param name="maxCapacity">the maximum buffer capacity before it is trimmed.在对缓冲区进行裁剪之前的最大缓冲区容量。</param>
+            <param name="defaultSize">the default size to make the buffer.创建缓冲区的默认大小。</param>
             <remarks>
             <para>
             Reset this string writer so that it can be reused.
+            重置这个字符串写入器，以便它可以被重用。
             The internal buffers are cleared and reset.
+            内部缓冲区被清除并重置。
             </para>
             </remarks>
         </member>

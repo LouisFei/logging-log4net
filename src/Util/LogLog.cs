@@ -192,94 +192,91 @@ namespace log4net.Util
 #endif
 		}
 
-		#endregion Static Constructor
+        #endregion Static Constructor
 
-		#region Public Static Properties
+        #region Public Static Properties
 
-		/// <summary>
-		/// Gets or sets a value indicating whether log4net internal logging
-		/// is enabled or disabled.
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if log4net internal logging is enabled, otherwise 
-		/// <c>false</c>.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// When set to <c>true</c>, internal debug level logging will be 
-		/// displayed.
-		/// </para>
-		/// <para>
-		/// This value can be set by setting the application setting 
-		/// <c>log4net.Internal.Debug</c> in the application configuration
-		/// file.
-		/// </para>
-		/// <para>
-		/// The default value is <c>false</c>, i.e. debugging is
-		/// disabled.
-		/// </para>
-		/// </remarks>
-		/// <example>
-		/// <para>
-		/// The following example enables internal debugging using the 
-		/// application configuration file :
-		/// </para>
-		/// <code lang="XML" escaped="true">
-		/// <configuration>
-		///		<appSettings>
-		///			<add key="log4net.Internal.Debug" value="true" />
-		///		</appSettings>
-		/// </configuration>
-		/// </code>
-		/// </example>
-		public static bool InternalDebugging
+        /// <summary>
+        /// Gets or sets a value indicating whether log4net internal logging is enabled or disabled.
+        /// 获取或设置一个值，该值指示是否启用或禁用log4net内部日志记录。
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if log4net internal logging is enabled, otherwise <c>false</c>.
+        /// 如果log4net内部日志记录被启用，则为true，否则为false
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// When set to <c>true</c>, internal debug level logging will be displayed.
+        /// 当设置为true时，将显示内部调试级别的日志记录。
+        /// </para>
+        /// <para>
+        /// This value can be set by setting the application setting <c>log4net.Internal.Debug</c> in the application configuration file.
+        /// 这个值可以通过在应用程序配置文件设置应用程序设置<c>log4net.Internal.Debug</c>来设置。
+        /// </para>
+        /// <para>
+        /// The default value is <c>false</c>, i.e. debugging is disabled.
+        /// 默认值<c>false</c>，即禁用调试。
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// <para>
+        /// The following example enables internal debugging using the application configuration file :
+        /// </para>
+        /// <code lang="XML" escaped="true">
+        /// <configuration>
+        ///		<appSettings>
+        ///			<add key="log4net.Internal.Debug" value="true" />
+        ///		</appSettings>
+        /// </configuration>
+        /// </code>
+        /// </example>
+        public static bool InternalDebugging
 		{
 			get { return s_debugEnabled; }
 			set { s_debugEnabled = value; }
 		}
 
-		/// <summary>
-		/// Gets or sets a value indicating whether log4net should generate no output
-		/// from internal logging, not even for errors. 
-		/// </summary>
-		/// <value>
-		/// <c>true</c> if log4net should generate no output at all from internal 
-		/// logging, otherwise <c>false</c>.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// When set to <c>true</c> will cause internal logging at all levels to be 
-		/// suppressed. This means that no warning or error reports will be logged. 
-		/// This option overrides the <see cref="InternalDebugging"/> setting and 
-		/// disables all debug also.
-		/// </para>
-		/// <para>This value can be set by setting the application setting
-		/// <c>log4net.Internal.Quiet</c> in the application configuration file.
-		/// </para>
-		/// <para>
-		/// The default value is <c>false</c>, i.e. internal logging is not
-		/// disabled.
-		/// </para>
-		/// </remarks>
-		/// <example>
-		/// The following example disables internal logging using the 
-		/// application configuration file :
-		/// <code lang="XML" escaped="true">
-		/// <configuration>
-		///		<appSettings>
-		///			<add key="log4net.Internal.Quiet" value="true" />
-		///		</appSettings>
-		/// </configuration>
-		/// </code>
-		/// </example>
-		public static bool QuietMode
+        /// <summary>
+        /// Gets or sets a value indicating whether log4net should generate no output from internal logging, not even for errors. 
+        /// 获取或设置一个值，该值指示log4net是否不应该从内部日志记录生成任何输出，甚至对于错误也不应该。
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if log4net should generate no output at all from internal logging, otherwise <c>false</c>.
+        /// 如果log4net不应该从内部日志中生成任何输出，则为true，否则为false。
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// When set to <c>true</c> will cause internal logging at all levels to be suppressed. 
+        /// 当设置为true时，将导致所有级别的内部日志记录被抑制。
+        /// This means that no warning or error reports will be logged. 
+        /// 这意味着不会记录任何警告或错误报告。
+        /// This option overrides the <see cref="InternalDebugging"/> setting and disables all debug also.
+        /// </para>
+        /// <para>This value can be set by setting the application setting <c>log4net.Internal.Quiet</c> in the application configuration file.
+        /// </para>
+        /// <para>
+        /// The default value is <c>false</c>, i.e. internal logging is not disabled.
+        /// 默认值为false，即不禁用内部日志记录。
+        /// </para>
+        /// </remarks>
+        /// <example>
+        /// The following example disables internal logging using the application configuration file :
+        /// <code lang="XML" escaped="true">
+        /// <configuration>
+        ///		<appSettings>
+        ///			<add key="log4net.Internal.Quiet" value="true" />
+        ///		</appSettings>
+        /// </configuration>
+        /// </code>
+        /// </example>
+        public static bool QuietMode
 		{
 			get { return s_quietMode; }
 			set { s_quietMode = value; }
 		}
 
         /// <summary>
-        /// 
+        /// 发出内部消息
         /// </summary>
         public static bool EmitInternalMessages
         {
@@ -602,6 +599,9 @@ namespace log4net.Util
 		/// </summary>
 		private static bool s_quietMode = false;
 
+        /// <summary>
+        /// 发出内部消息
+        /// </summary>
         private static bool s_emitInternalMessages = true;
 
         /// <summary>

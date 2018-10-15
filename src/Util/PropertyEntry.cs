@@ -1,4 +1,4 @@
-/*
+ï»¿/*
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -23,7 +23,7 @@ namespace log4net.Util
 {
     /// <summary>
     /// A class to hold the key and data for a property set in the config file.
-    /// Ò»¸öÀà£¬ÓÃÓÚ±£´æÅäÖÃÎÄ¼şÖĞÊôĞÔ¼¯µÄ¼üºÍÊı¾İ¡£
+    /// ä¸€ä¸ªç±»ï¼Œç”¨äºä¿å­˜é…ç½®æ–‡ä»¶ä¸­å±æ€§é›†çš„é”®å’Œæ•°æ®ã€‚
     /// </summary>
     /// <remarks>
     /// <para>
@@ -37,7 +37,7 @@ namespace log4net.Util
 
         /// <summary>
         /// Property Key
-        /// ÊôĞÔ¼ü
+        /// å±æ€§é”®
         /// </summary>
         /// <value>
         /// Property Key
@@ -55,7 +55,7 @@ namespace log4net.Util
 
         /// <summary>
         /// Property Value
-        /// ÊôĞÔÖµ
+        /// å±æ€§å€¼
         /// </summary>
         /// <value>
         /// Property Value

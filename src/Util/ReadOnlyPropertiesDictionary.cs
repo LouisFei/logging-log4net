@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -27,33 +27,35 @@ using System.Xml;
 
 namespace log4net.Util
 {
-	/// <summary>
-	/// String keyed object map that is read only.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// This collection is readonly and cannot be modified.
-	/// </para>
-	/// <para>
-	/// While this collection is serializable only member 
-	/// objects that are serializable will
-	/// be serialized along with this collection.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
+    /// <summary>
+    /// String keyed object map that is read only.
+    /// 字符串键值的只读对象映射表。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This collection is readonly and cannot be modified.
+    /// 这个集合是只读的，不能被修改。
+    /// </para>
+    /// <para>
+    /// While this collection is serializable only member objects that are serializable will be serialized along with this collection.
+    /// 虽然这个集合是可序列化的，但是只有可序列化的成员对象将与这个集合一起序列化。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
 #if NETCF
 	public class ReadOnlyPropertiesDictionary : IDictionary
 #else
-	[Serializable] public class ReadOnlyPropertiesDictionary : ISerializable, IDictionary
+    [Serializable] public class ReadOnlyPropertiesDictionary : ISerializable, IDictionary
 #endif
 	{
-		#region Private Instance Fields
+        #region Private Instance Fields
 
-		/// <summary>
-		/// The Hashtable used to store the properties data
-		/// </summary>
-		private readonly Hashtable m_hashtable = new Hashtable();
+        /// <summary>
+        /// The Hashtable used to store the properties data.
+        /// 用来存储属性数据的哈希表。
+        /// </summary>
+        private readonly Hashtable m_hashtable = new Hashtable();
 
 		#endregion Private Instance Fields
 
@@ -114,20 +116,21 @@ namespace log4net.Util
 		}
 #endif
 
-		#endregion Protected Instance Constructors
+        #endregion Protected Instance Constructors
 
-		#region Public Instance Properties
+        #region Public Instance Properties
 
-		/// <summary>
-		/// Gets the key names.
-		/// </summary>
-		/// <returns>An array of all the keys.</returns>
-		/// <remarks>
-		/// <para>
-		/// Gets the key names.
-		/// </para>
-		/// </remarks>
-		public string[] GetKeys()
+        /// <summary>
+        /// Gets the key names.
+        /// 获取键值名称。
+        /// </summary>
+        /// <returns>An array of all the keys.所有键值的数组。</returns>
+        /// <remarks>
+        /// <para>
+        /// Gets the key names.
+        /// </para>
+        /// </remarks>
+        public string[] GetKeys()
 		{
 			string[] keys = new String[InnerHashtable.Count];
 			InnerHashtable.Keys.CopyTo(keys, 0);
@@ -173,20 +176,22 @@ namespace log4net.Util
 			return InnerHashtable.Contains(key);
 		}
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// The hashtable used to store the properties
-		/// </summary>
-		/// <value>
-		/// The internal collection used to store the properties
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The hashtable used to store the properties
-		/// </para>
-		/// </remarks>
-		protected Hashtable InnerHashtable
+        /// <summary>
+        /// The hashtable used to store the properties
+        /// 用来存储属性的哈希表
+        /// </summary>
+        /// <value>
+        /// The internal collection used to store the properties
+        /// 用于存储属性的内部集合
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The hashtable used to store the properties
+        /// </para>
+        /// </remarks>
+        protected Hashtable InnerHashtable
 		{
 			get { return m_hashtable; }
 		}

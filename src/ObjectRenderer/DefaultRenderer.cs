@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -26,20 +26,22 @@ using log4net.Util;
 
 namespace log4net.ObjectRenderer
 {
-	/// <summary>
-	/// The default object Renderer.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// The default renderer supports rendering objects and collections to strings.
-	/// </para>
-	/// <para>
-	/// See the <see cref="RenderObject"/> method for details of the output.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public sealed class DefaultRenderer : IObjectRenderer
+    /// <summary>
+    /// The default object Renderer.
+    /// 默认对象呈现程序。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The default renderer supports rendering objects and collections to strings.
+    /// 默认呈现程序支持将对象和集合呈现到字符串。
+    /// </para>
+    /// <para>
+    /// See the <see cref="RenderObject"/> method for details of the output.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public sealed class DefaultRenderer : IObjectRenderer
 	{
 		#region Constructors
 
@@ -211,28 +213,30 @@ namespace log4net.ObjectRenderer
 			writer.Write( (str==null) ? SystemInfo.NullText : str );
 		}
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Render the array argument into a string
-		/// </summary>
-		/// <param name="rendererMap">The map used to lookup renderers</param>
-		/// <param name="array">the array to render</param>
-		/// <param name="writer">The writer to render to</param>
-		/// <remarks>
-		/// <para>
-		/// For a one dimensional array this is the
-		///	array type name, an open brace, followed by a comma
-		///	separated list of the elements (using the appropriate
-		///	renderer), followed by a close brace. For example:
-		///	<c>int[] {1, 2, 3}</c>.
-		///	</para>
-		///	<para>
-		///	If the array is not one dimensional the 
-		///	<c>Array.ToString()</c> is returned.
-		///	</para>
-		/// </remarks>
-		private void RenderArray(RendererMap rendererMap, Array array, TextWriter writer)
+        /// <summary>
+        /// Render the array argument into a string
+        /// 将数组参数呈现为字符串
+        /// </summary>
+        /// <param name="rendererMap">The map used to lookup renderers</param>
+        /// <param name="array">the array to render</param>
+        /// <param name="writer">The writer to render to</param>
+        /// <remarks>
+        /// <para>
+        /// For a one dimensional array this is the array type name, an open brace, 
+        /// 对于一维数组这是数组类型名，一个开大括号，
+        /// followed by a comma separated list of the elements (using the appropriate renderer), followed by a close brace. 
+        /// 后面是一个逗号分隔的元素列表(使用适当的呈现器)，后面是一个闭括号。
+        ///	For example:
+        ///	<c>int[] {1, 2, 3}</c>.
+        ///	</para>
+        ///	<para>
+        ///	If the array is not one dimensional the 
+        ///	<c>Array.ToString()</c> is returned.
+        ///	</para>
+        /// </remarks>
+        private void RenderArray(RendererMap rendererMap, Array array, TextWriter writer)
 		{
 			if (array.Rank != 1)
 			{
@@ -256,21 +260,22 @@ namespace log4net.ObjectRenderer
 			}
 		}
 
-		/// <summary>
-		/// Render the enumerator argument into a string
-		/// </summary>
-		/// <param name="rendererMap">The map used to lookup renderers</param>
-		/// <param name="enumerator">the enumerator to render</param>
-		/// <param name="writer">The writer to render to</param>
-		/// <remarks>
-		/// <para>
-		/// Rendered as an open brace, followed by a comma
-		///	separated list of the elements (using the appropriate
-		///	renderer), followed by a close brace. For example:
-		///	<c>{a, b, c}</c>.
-		///	</para>
-		/// </remarks>
-		private void RenderEnumerator(RendererMap rendererMap, IEnumerator enumerator, TextWriter writer)
+        /// <summary>
+        /// Render the enumerator argument into a string
+        /// 将枚举数参数呈现为字符串
+        /// </summary>
+        /// <param name="rendererMap">The map used to lookup renderers</param>
+        /// <param name="enumerator">the enumerator to render</param>
+        /// <param name="writer">The writer to render to</param>
+        /// <remarks>
+        /// <para>
+        /// Rendered as an open brace, followed by a comma
+        ///	separated list of the elements (using the appropriate
+        ///	renderer), followed by a close brace. For example:
+        ///	<c>{a, b, c}</c>.
+        ///	</para>
+        /// </remarks>
+        private void RenderEnumerator(RendererMap rendererMap, IEnumerator enumerator, TextWriter writer)
 		{
 			writer.Write("{");
 
@@ -288,19 +293,20 @@ namespace log4net.ObjectRenderer
 			writer.Write("}");
 		}
 
-		/// <summary>
-		/// Render the DictionaryEntry argument into a string
-		/// </summary>
-		/// <param name="rendererMap">The map used to lookup renderers</param>
-		/// <param name="entry">the DictionaryEntry to render</param>
-		/// <param name="writer">The writer to render to</param>
-		/// <remarks>
-		/// <para>
-		/// Render the key, an equals sign ('='), and the value (using the appropriate
-		///	renderer). For example: <c>key=value</c>.
-		///	</para>
-		/// </remarks>
-		private void RenderDictionaryEntry(RendererMap rendererMap, DictionaryEntry entry, TextWriter writer)
+        /// <summary>
+        /// Render the DictionaryEntry argument into a string
+        /// 将DictionaryEntry参数呈现为字符串
+        /// </summary>
+        /// <param name="rendererMap">The map used to lookup renderers</param>
+        /// <param name="entry">the DictionaryEntry to render</param>
+        /// <param name="writer">The writer to render to</param>
+        /// <remarks>
+        /// <para>
+        /// Render the key, an equals sign ('='), and the value (using the appropriate
+        ///	renderer). For example: <c>key=value</c>.
+        ///	</para>
+        /// </remarks>
+        private void RenderDictionaryEntry(RendererMap rendererMap, DictionaryEntry entry, TextWriter writer)
 		{
 			rendererMap.FindAndRender(entry.Key, writer);
 			writer.Write("=");

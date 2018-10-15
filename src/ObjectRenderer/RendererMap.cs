@@ -27,21 +27,23 @@ using log4net.Util;
 
 namespace log4net.ObjectRenderer
 {
-	/// <summary>
-	/// Map class objects to an <see cref="IObjectRenderer"/>.
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Maintains a mapping between types that require special rendering and the <see cref="IObjectRenderer"/> that is used to render them.
-	/// </para>
-	/// <para>
-	/// The <see cref="M:FindAndRender(object)"/> method is used to render an
-	/// <c>object</c> using the appropriate renderers defined in this map.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	/// <author>Gert Driesen</author>
-	public class RendererMap
+    /// <summary>
+    /// Map class objects to an <see cref="IObjectRenderer"/>.
+    /// 将类对象映射到一个IObjectRenderer。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Maintains a mapping between types that require special rendering and the <see cref="IObjectRenderer"/> that is used to render them.
+    /// 维护需要特殊呈现的类型与用于呈现它们的IObjectRenderer之间的映射。
+    /// </para>
+    /// <para>
+    /// The <see cref="M:FindAndRender(object)"/> method is used to render an <c>object</c> using the appropriate renderers defined in this map.
+    /// M:FindAndRender(object)方法用于使用此映射中定义的适当呈现器呈现对象。
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    /// <author>Gert Driesen</author>
+    public class RendererMap
 	{
         private readonly static Type declaringType = typeof(RendererMap);
 
@@ -69,24 +71,27 @@ namespace log4net.ObjectRenderer
 			m_map = System.Collections.Hashtable.Synchronized(new System.Collections.Hashtable());
 		}
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Render <paramref name="obj"/> using the appropriate renderer.
-		/// </summary>
-		/// <param name="obj">the object to render to a string</param>
-		/// <returns>the object rendered as a string</returns>
-		/// <remarks>
-		/// <para>
-		/// This is a convenience method used to render an object to a string.
-		/// The alternative method <see cref="M:FindAndRender(object,TextWriter)"/>
-		/// should be used when streaming output to a <see cref="TextWriter"/>.
-		/// </para>
-		/// </remarks>
-		public string FindAndRender(object obj)
+        /// <summary>
+        /// Render <paramref name="obj"/> using the appropriate renderer.
+        /// 使用适当的渲染器渲染obj。
+        /// </summary>
+        /// <param name="obj">the object to render to a string.要呈现给字符串的对象</param>
+        /// <returns>the object rendered as a string.作为字符串呈现的对象</returns>
+        /// <remarks>
+        /// <para>
+        /// This is a convenience method used to render an object to a string.
+        /// 这是一种方便的方法，用于将对象呈现给字符串。
+        /// The alternative method <see cref="M:FindAndRender(object,TextWriter)"/> should be used when streaming output to a <see cref="TextWriter"/>.
+        /// 当流输出到TextWriter时，应该使用替代方法FindAndRender(object,TextWriter)。
+        /// </para>
+        /// </remarks>
+        public string FindAndRender(object obj)
 		{
-			// Optimisation for strings
-			string strData = obj as String;
+            // Optimisation for strings
+            // 优化为字符串
+            string strData = obj as String;
 			if (strData != null)
 			{
 				return strData;
@@ -97,21 +102,23 @@ namespace log4net.ObjectRenderer
 			return stringWriter.ToString();
 		}
 
-		/// <summary>
-		/// Render <paramref name="obj"/> using the appropriate renderer.
-		/// </summary>
-		/// <param name="obj">the object to render to a string</param>
-		/// <param name="writer">The writer to render to</param>
-		/// <remarks>
-		/// <para>
-		/// Find the appropriate renderer for the type of the
-		/// <paramref name="obj"/> parameter. This is accomplished by calling the
-		/// <see cref="M:Get(Type)"/> method. Once a renderer is found, it is
-		/// applied on the object <paramref name="obj"/> and the result is returned
-		/// as a <see cref="string"/>.
-		/// </para>
-		/// </remarks>
-		public void FindAndRender(object obj, TextWriter writer) 
+        /// <summary>
+        /// Render <paramref name="obj"/> using the appropriate renderer.
+        /// 使用适当的渲染器渲染obj。
+        /// </summary>
+        /// <param name="obj">the object to render to a string</param>
+        /// <param name="writer">The writer to render to</param>
+        /// <remarks>
+        /// <para>
+        /// Find the appropriate renderer for the type of the <paramref name="obj"/> parameter. 
+        /// 为obj参数的类型找到适当的呈现器。
+        /// This is accomplished by calling the <see cref="M:Get(Type)"/> method. 
+        /// 这是通过调用<see cref="M:Get(Type)" / >的方法。
+        /// Once a renderer is found, it is applied on the object <paramref name="obj"/> and the result is returned as a <see cref="string"/>.
+        /// 一旦找到渲染器，它就会被应用到对象<paramref name="obj"/>上，结果返回为<see cref="string"/>。
+        /// </para>
+        /// </remarks>
+        public void FindAndRender(object obj, TextWriter writer) 
 		{
 			if (obj == null)
 			{
@@ -119,17 +126,19 @@ namespace log4net.ObjectRenderer
 			}
 			else 
 			{
-				// Optimisation for strings
-				string str = obj as string;
+                // Optimisation for strings
+                // 优化为字符串
+                string str = obj as string;
 				if (str != null)
 				{
 					writer.Write(str);
 				}
 				else
 				{
-					// Lookup the renderer for the specific type
-					try
-					{
+                    // Lookup the renderer for the specific type
+                    // 查找特定类型的呈现程序
+                    try
+                    {
 						Get(obj.GetType()).RenderObject(this, obj, writer);
 					}
 					catch(Exception ex)
@@ -191,20 +200,20 @@ namespace log4net.ObjectRenderer
 				return Get(obj.GetType());
 			}
 		}
-  
-		/// <summary>
-		/// Gets the renderer for the specified type
-		/// </summary>
-		/// <param name="type">the type to lookup the renderer for</param>
-		/// <returns>the renderer for the specified type</returns>
-		/// <remarks>
-		/// <para>
-		/// Returns the renderer for the specified type.
-		/// If no specific renderer has been defined the
-		/// <see cref="DefaultRenderer"/> will be returned.
-		/// </para>
-		/// </remarks>
-		public IObjectRenderer Get(Type type) 
+
+        /// <summary>
+        /// Gets the renderer for the specified type
+        /// 获取指定类型的呈现程序
+        /// </summary>
+        /// <param name="type">the type to lookup the renderer for.查找呈现程序的类型</param>
+        /// <returns>the renderer for the specified type.指定类型的呈现程序</returns>
+        /// <remarks>
+        /// <para>
+        /// Returns the renderer for the specified type.
+        /// If no specific renderer has been defined the <see cref="DefaultRenderer"/> will be returned.
+        /// </para>
+        /// </remarks>
+        public IObjectRenderer Get(Type type) 
 		{
 			if (type == null)
 			{

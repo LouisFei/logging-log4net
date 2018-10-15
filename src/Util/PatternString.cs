@@ -36,15 +36,14 @@ namespace log4net.Util
     /// </summary>
     /// <remarks>
     /// <para>
-    /// This string has embedded patterns that are resolved and expanded
-    /// when the string is formatted.
+    /// This string has embedded patterns that are resolved and expanded when the string is formatted.
+    /// 这个字符串包含在格式化字符串时解析和展开的模式。
     /// </para>
     /// <para>
-    /// This class functions similarly to the <see cref="log4net.Layout.PatternLayout"/>
-    /// in that it accepts a pattern and renders it to a string. Unlike the 
-    /// <see cref="log4net.Layout.PatternLayout"/> however the <c>PatternString</c>
-    /// does not render the properties of a specific <see cref="LoggingEvent"/> but
-    /// of the process in general.
+    /// This class functions similarly to the <see cref="log4net.Layout.PatternLayout"/> in that it accepts a pattern and renders it to a string. 
+    /// 这个类的功能类似于PatternLayout，因为它接受一个模式并将其呈现给一个字符串。
+    /// Unlike the <see cref="log4net.Layout.PatternLayout"/> however the <c>PatternString</c> does not render the properties of a specific <see cref="LoggingEvent"/> but of the process in general.
+    /// 然而，与PatternLayout不同的是，PatternString并不呈现特定LoggingEvent的属性，而是呈现整个过程的属性。
     /// </para>
     /// <para>
     /// The recognized conversion pattern names are:
@@ -248,24 +247,24 @@ namespace log4net.Util
     ///		</item>
     /// </list>
     /// <para>
-    /// Additional pattern converters may be registered with a specific <see cref="PatternString"/>
-    /// instance using <see cref="M:AddConverter(ConverterInfo)"/> or
-    /// <see cref="M:AddConverter(string, Type)" />.
+    /// Additional pattern converters may be registered with a specific <see cref="PatternString"/> instance using <see cref="M:AddConverter(ConverterInfo)"/> or <see cref="M:AddConverter(string, Type)" />.
+    /// 其他模式转换器可以使用AddConverter(ConverterInfo)或AddConverter(string, Type)注册到特定的PatternString实例。
     /// </para>
     /// <para>
-    /// See the <see cref="log4net.Layout.PatternLayout"/> for details on the 
-    /// <i>format modifiers</i> supported by the patterns.
+    /// See the <see cref="log4net.Layout.PatternLayout"/> for details on the <i>format modifiers</i> supported by the patterns.
+    /// 有关模式支持的格式修饰符的详细信息，请参阅PatternLayout。
     /// </para>
     /// </remarks>
     /// <author>Nicko Cadell</author>
     public class PatternString : IOptionHandler
 	{
-		#region Static Fields
+        #region Static Fields
 
-		/// <summary>
-		/// Internal map of converter identifiers to converter types.
-		/// </summary>
-		private static Hashtable s_globalRulesRegistry;
+        /// <summary>
+        /// Internal map of converter identifiers to converter types.
+        /// 转换器标识符到转换器类型的内部映射。
+        /// </summary>
+        private static Hashtable s_globalRulesRegistry;
 
 		#endregion Static Fields
 
@@ -273,18 +272,21 @@ namespace log4net.Util
     
 		/// <summary>
 		/// the pattern
+        /// 模式
 		/// </summary>
 		private string m_pattern;
-  
-		/// <summary>
-		/// the head of the pattern converter chain
-		/// </summary>
-		private PatternConverter m_head;
 
-		/// <summary>
-		/// patterns defined on this PatternString only
-		/// </summary>
-		private Hashtable m_instanceRulesRegistry = new Hashtable();
+        /// <summary>
+        /// the head of the pattern converter chain
+        /// 模式转换器链的头部
+        /// </summary>
+        private PatternConverter m_head;
+
+        /// <summary>
+        /// patterns defined on this PatternString only
+        /// 仅在此PatternString上定义的模式
+        /// </summary>
+        private Hashtable m_instanceRulesRegistry = new Hashtable();
 
 		#endregion
 
@@ -356,46 +358,50 @@ namespace log4net.Util
 			ActivateOptions();
 		}
 
-		#endregion
-  
-		/// <summary>
-		/// Gets or sets the pattern formatting string
-		/// </summary>
-		/// <value>
-		/// The pattern formatting string
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The <b>ConversionPattern</b> option. This is the string which
-		/// controls formatting and consists of a mix of literal content and
-		/// conversion specifiers.
-		/// </para>
-		/// </remarks>
-		public string ConversionPattern
+        #endregion
+
+        /// <summary>
+        /// Gets or sets the pattern formatting string
+        /// 获取或设置模式格式字符串
+        /// </summary>
+        /// <value>
+        /// The pattern formatting string
+        /// 模式格式字符串
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The <b>ConversionPattern</b> option. 
+        /// This is the string which controls formatting and consists of a mix of literal content and conversion specifiers.
+        /// 这是控制格式的字符串，由文字内容和转换说明符混合组成。
+        /// </para>
+        /// </remarks>
+        public string ConversionPattern
 		{
 			get { return m_pattern;	}
 			set { m_pattern = value; }
 		}
 
-		#region Implementation of IOptionHandler
+        #region Implementation of IOptionHandler
 
-		/// <summary>
-		/// Initialize object options
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// This is part of the <see cref="IOptionHandler"/> delayed object
-		/// activation scheme. The <see cref="ActivateOptions"/> method must 
-		/// be called on this object after the configuration properties have
-		/// been set. Until <see cref="ActivateOptions"/> is called this
-		/// object is in an undefined state and must not be used. 
-		/// </para>
-		/// <para>
-		/// If any of the configuration properties are modified then 
-		/// <see cref="ActivateOptions"/> must be called again.
-		/// </para>
-		/// </remarks>
-		virtual public void ActivateOptions() 
+        /// <summary>
+        /// Initialize object options
+        /// 初始化对象的设置
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This is part of the <see cref="IOptionHandler"/> delayed object activation scheme. 
+        /// 这是IOptionHandler延迟对象激活方案的一部分。
+        /// The <see cref="ActivateOptions"/> method must be called on this object after the configuration properties have been set. 
+        /// 在设置了配置属性之后，必须对该对象调用ActivateOptions方法。
+        /// Until <see cref="ActivateOptions"/> is called this object is in an undefined state and must not be used. 
+        /// 在ActivateOptions被调用之前，该对象处于未定义状态，不能使用。
+        /// </para>
+        /// <para>
+        /// If any of the configuration properties are modified then <see cref="ActivateOptions"/> must be called again.
+        /// 如果修改了任何配置属性，则必须再次调用ActivateOptions。
+        /// </para>
+        /// </remarks>
+        virtual public void ActivateOptions() 
 		{
 			m_head = CreatePatternParser(m_pattern).Parse();
 		}

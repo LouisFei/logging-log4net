@@ -27,6 +27,7 @@ using log4net.Layout;
 namespace log4net.Util
 {
     /// <summary>
+    /// 模式解析器
     /// Most of the work of the <see cref="PatternLayout"/> class is delegated to the PatternParser class.
     /// PatternLayout类的大部分工作都委托给PatternParser类。
     /// </summary>
@@ -40,19 +41,19 @@ namespace log4net.Util
     /// <author>Gert Driesen</author>
     public sealed class PatternParser
 	{
-		#region Public Instance Constructors
+        #region Public Instance Constructors
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
-		/// <param name="pattern">The pattern to parse.</param>
-		/// <remarks>
-		/// <para>
-		/// Initializes a new instance of the <see cref="PatternParser" /> class 
-		/// with the specified pattern string.
-		/// </para>
-		/// </remarks>
-		public PatternParser(string pattern) 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="pattern">The pattern to parse.要解析的模式</param>
+        /// <remarks>
+        /// <para>
+        /// Initializes a new instance of the <see cref="PatternParser" /> class with the specified pattern string.
+        /// 使用指定的模式字符串初始化PatternParser类的新实例。
+        /// </para>
+        /// </remarks>
+        public PatternParser(string pattern) 
 		{
 			m_pattern = pattern;
 		}
@@ -80,22 +81,23 @@ namespace log4net.Util
 			return m_head;
 		}
 
-		#endregion Public Instance Methods
+        #endregion Public Instance Methods
 
-		#region Public Instance Properties
+        #region Public Instance Properties
 
-		/// <summary>
-		/// Get the converter registry used by this parser
-		/// </summary>
-		/// <value>
-		/// The converter registry used by this parser
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// Get the converter registry used by this parser
-		/// </para>
-		/// </remarks>
-		public Hashtable PatternConverters
+        /// <summary>
+        /// Get the converter registry used by this parser.
+        /// 获取此解析器使用的转换器注册表。
+        /// </summary>
+        /// <value>
+        /// The converter registry used by this parser
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// Get the converter registry used by this parser
+        /// </para>
+        /// </remarks>
+        public Hashtable PatternConverters
 		{
 			get { return m_patternConverters; }
 		}
@@ -124,18 +126,20 @@ namespace log4net.Util
 			return converterNamesCache;
 		}
 
-		#region StringLengthComparer
+        #region StringLengthComparer
 
-		/// <summary>
-		/// Sort strings by length
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// <see cref="IComparer" /> that orders strings by string length.
-		/// The longest strings are placed first
-		/// </para>
-		/// </remarks>
-		private sealed class StringLengthComparer : IComparer
+        /// <summary>
+        /// Sort strings by length
+        /// 按长度对字符串排序
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// <see cref="IComparer" /> that orders strings by string length.
+        /// The longest strings are placed first
+        /// 最长的字符串放在第一位
+        /// </para>
+        /// </remarks>
+        private sealed class StringLengthComparer : IComparer
 		{
 			public static readonly StringLengthComparer Instance = new StringLengthComparer();
 
@@ -169,19 +173,21 @@ namespace log4net.Util
 			#endregion
 		}
 
-		#endregion // StringLengthComparer
+        #endregion // StringLengthComparer
 
-		/// <summary>
-		/// Internal method to parse the specified pattern to find specified matches
-		/// </summary>
-		/// <param name="pattern">the pattern to parse</param>
-		/// <param name="matches">the converter names to match in the pattern</param>
-		/// <remarks>
-		/// <para>
-		/// The matches param must be sorted such that longer strings come before shorter ones.
-		/// </para>
-		/// </remarks>
-		private void ParseInternal(string pattern, string[] matches)
+        /// <summary>
+        /// Internal method to parse the specified pattern to find specified matches
+        /// 内部方法来解析指定的模式以查找指定的匹配
+        /// </summary>
+        /// <param name="pattern">the pattern to parse 要解析的模式</param>
+        /// <param name="matches">the converter names to match in the pattern 在模式中匹配的转换器名称</param>
+        /// <remarks>
+        /// <para>
+        /// The matches param must be sorted such that longer strings come before shorter ones.
+        /// 匹配参数必须排序，以便长字符串排在短字符串之前。
+        /// </para>
+        /// </remarks>
+        private void ParseInternal(string pattern, string[] matches)
 		{
 			int offset = 0;
 			while(offset < pattern.Length)
@@ -257,8 +263,8 @@ namespace log4net.Util
 
 						int remainingStringLength = pattern.Length - offset;
 
-						// Look for pattern
-						for(int m=0; m<matches.Length; m++)
+                        // Look for pattern, 寻找模式
+                        for (int m=0; m<matches.Length; m++)
 						{
 							string key = matches[m];
 
@@ -302,26 +308,29 @@ namespace log4net.Util
 			}
 		}
 
-		/// <summary>
-		/// Process a parsed literal
-		/// </summary>
-		/// <param name="text">the literal text</param>
-		private void ProcessLiteral(string text)
+        /// <summary>
+        /// Process a parsed literal
+        /// 处理经过解析的文字
+        /// </summary>
+        /// <param name="text">the literal text</param>
+        private void ProcessLiteral(string text)
 		{
 			if (text.Length > 0)
 			{
-				// Convert into a pattern
-				ProcessConverter("literal", text, new FormattingInfo());
+                // Convert into a pattern
+                // 转换为一个模式
+                ProcessConverter("literal", text, new FormattingInfo());
 			}
 		}
 
-		/// <summary>
-		/// Process a parsed converter pattern
-		/// </summary>
-		/// <param name="converterName">the name of the converter</param>
-		/// <param name="option">the optional option for the converter</param>
-		/// <param name="formattingInfo">the formatting info for the converter</param>
-		private void ProcessConverter(string converterName, string option, FormattingInfo formattingInfo)
+        /// <summary>
+        /// Process a parsed converter pattern
+        /// 处理已解析的转换器模式
+        /// </summary>
+        /// <param name="converterName">the name of the converter</param>
+        /// <param name="option">the optional option for the converter</param>
+        /// <param name="formattingInfo">the formatting info for the converter</param>
+        private void ProcessConverter(string converterName, string option, FormattingInfo formattingInfo)
 		{
 			LogLog.Debug(declaringType, "Converter ["+converterName+"] Option ["+option+"] Format [min="+formattingInfo.Min+",max="+formattingInfo.Max+",leftAlign="+formattingInfo.LeftAlign+"]");
 
@@ -329,11 +338,13 @@ namespace log4net.Util
             ConverterInfo converterInfo = (ConverterInfo)m_patternConverters[converterName];
 			if (converterInfo == null)
 			{
+                //未知的转换器
 				LogLog.Error(declaringType, "Unknown converter name ["+converterName+"] in conversion pattern.");
 			}
 			else
 			{
 				// Create the pattern converter
+                // 创建模式转换器
 				PatternConverter pc = null;
 				try
 				{
@@ -344,9 +355,10 @@ namespace log4net.Util
                     LogLog.Error(declaringType, "Failed to create instance of Type [" + converterInfo.Type.FullName + "] using default constructor. Exception: " + createInstanceEx.ToString());
 				}
 
-				// formattingInfo variable is an instance variable, occasionally reset 
-				// and used over and over again
-				pc.FormattingInfo = formattingInfo;
+                // formattingInfo variable is an instance variable, occasionally reset and used over and over again
+                // formattingInfo变量是一个实例变量，偶尔会重新设置并反复使用
+
+                pc.FormattingInfo = formattingInfo;
 				pc.Option = option;
                 pc.Properties = converterInfo.Properties;
 
@@ -360,26 +372,29 @@ namespace log4net.Util
 			}
 		}
 
-		/// <summary>
-		/// Resets the internal state of the parser and adds the specified pattern converter 
-		/// to the chain.
-		/// </summary>
-		/// <param name="pc">The pattern converter to add.</param>
-		private void AddConverter(PatternConverter pc) 
+        /// <summary>
+        /// Resets the internal state of the parser and adds the specified pattern converter to the chain.
+        /// 重置解析器的内部状态，并将指定的模式转换器添加到链中。
+        /// </summary>
+        /// <param name="pc">The pattern converter to add.</param>
+        private void AddConverter(PatternConverter pc) 
 		{
-			// Add the pattern converter to the list.
+            // Add the pattern converter to the list.
+            // 将模式转换器添加到列表中。
 
-			if (m_head == null) 
+            if (m_head == null) 
 			{
 				m_head = m_tail = pc;
 			}
 			else 
 			{
-				// Set the next converter on the tail
-				// Update the tail reference
-				// note that a converter may combine the 'next' into itself
-				// and therefore the tail would not change!
-				m_tail = m_tail.SetNext(pc);
+                // Set the next converter on the tail
+                // 设置下一个转换器的尾部
+                // Update the tail reference
+                // 更新尾引用
+                // note that a converter may combine the 'next' into itself and therefore the tail would not change!
+                // 注意，转换器可能会将“next”合并到自身中，因此尾巴不会改变!
+                m_tail = m_tail.SetNext(pc);
 			}
 		}
 
@@ -388,48 +403,54 @@ namespace log4net.Util
 		#region Private Constants
 
 		private const char ESCAPE_CHAR = '%';
-  
-		#endregion Private Constants
 
-		#region Private Instance Fields
+        #endregion Private Constants
 
-		/// <summary>
-		/// The first pattern converter in the chain
-		/// </summary>
-		private PatternConverter m_head;
+        #region Private Instance Fields
 
-		/// <summary>
-		///  the last pattern converter in the chain
-		/// </summary>
-		private PatternConverter m_tail;
+        /// <summary>
+        /// The first pattern converter in the chain
+        /// 链中的第一个模式转换器
+        /// </summary>
+        private PatternConverter m_head;
+
+        /// <summary>
+        /// the last pattern converter in the chain
+        /// 链中的最后一个模式转换器
+        /// </summary>
+        private PatternConverter m_tail;
 
 		/// <summary>
 		/// The pattern
+        /// 模式字符串
 		/// </summary>
 		private string m_pattern;
 
-		/// <summary>
-		/// Internal map of converter identifiers to converter types
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// This map overrides the static s_globalRulesRegistry map.
-		/// </para>
-		/// </remarks>
-		private Hashtable m_patternConverters = new Hashtable();
+        /// <summary>
+        /// Internal map of converter identifiers to converter types
+        /// 转换器标识符到转换器类型的内部映射
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// This map overrides the static s_globalRulesRegistry map.
+        /// 此映射覆盖静态s_globalRulesRegistry映射。
+        /// </para>
+        /// </remarks>
+        private Hashtable m_patternConverters = new Hashtable();
 
-		#endregion Private Instance Fields
+        #endregion Private Instance Fields
 
-	    #region Private Static Fields
+        #region Private Static Fields
 
-	    /// <summary>
-	    /// The fully qualified type of the PatternParser class.
-	    /// </summary>
-	    /// <remarks>
-	    /// Used by the internal logger to record the Type of the
-	    /// log message.
-	    /// </remarks>
-	    private readonly static Type declaringType = typeof(PatternParser);
+        /// <summary>
+        /// The fully qualified type of the PatternParser class.
+        /// PatternParser类的完全限定类型。
+        /// </summary>
+        /// <remarks>
+        /// Used by the internal logger to record the Type of the log message.
+        /// 内部日志记录器用于记录日志消息的类型。
+        /// </remarks>
+        private readonly static Type declaringType = typeof(PatternParser);
 
 	    #endregion Private Static Fields
 	}

@@ -44,7 +44,7 @@ namespace log4net.Core
 	/// <author>Nicko Cadell</author>
 	public struct LoggingEventData
 	{
-		#region Public Instance Fields
+		#region Public Instance Fields, 公共实例字段
 
 		/// <summary>
 		/// The logger name.
@@ -139,6 +139,7 @@ namespace log4net.Core
 
         /// <summary>
 		/// Location information for the caller.
+        /// 调用者的位置信息。
 		/// </summary>
 		/// <remarks>
 		/// <para>
@@ -147,64 +148,71 @@ namespace log4net.Core
 		/// </remarks>
 		public LocationInfo LocationInfo;
 
-		/// <summary>
-		/// String representation of the user
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// String representation of the user's windows name,
-		/// like DOMAIN\username
-		/// </para>
-		/// </remarks>
-		public string UserName;
+        /// <summary>
+        /// String representation of the user
+        /// 用户的字符串表示形式
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// String representation of the user's windows name,
+        /// like DOMAIN\username
+        /// </para>
+        /// </remarks>
+        public string UserName;
 
-		/// <summary>
-		/// String representation of the identity.
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// String representation of the current thread's principal identity.
-		/// </para>
-		/// </remarks>
-		public string Identity;
+        /// <summary>
+        /// String representation of the identity.
+        /// 标识的字符串表示形式。
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// String representation of the current thread's principal identity.
+        /// </para>
+        /// </remarks>
+        public string Identity;
 
-		/// <summary>
-		/// The string representation of the exception
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// The string representation of the exception
-		/// </para>
-		/// </remarks>
-		public string ExceptionString;
+        /// <summary>
+        /// The string representation of the exception
+        /// 异常的字符串表示形式
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// The string representation of the exception
+        /// </para>
+        /// </remarks>
+        public string ExceptionString;
 
-		/// <summary>
-		/// String representation of the AppDomain.
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// String representation of the AppDomain.
-		/// </para>
-		/// </remarks>
-		public string Domain;
+        /// <summary>
+        /// String representation of the AppDomain.
+        /// AppDomain的字符串表示。
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// String representation of the AppDomain.
+        /// </para>
+        /// </remarks>
+        public string Domain;
 
-		/// <summary>
-		/// Additional event specific properties
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// A logger or an appender may attach additional
-		/// properties to specific events. These properties
-		/// have a string key and an object value.
-		/// </para>
-		/// </remarks>
-		public PropertiesDictionary Properties;
+        /// <summary>
+        /// Additional event specific properties
+        /// 其他特定于事件的属性
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// A logger or an appender may attach additional properties to specific events. 
+        /// 日志记录器或附加器可以附加附加属性到特定事件。
+        /// These properties have a string key and an object value.
+        /// 这些属性有一个字符串键和一个对象值。
+        /// </para>
+        /// </remarks>
+        public PropertiesDictionary Properties;
 
 		#endregion Public Instance Fields
 	}
 
 	/// <summary>
 	/// Flags passed to the <see cref="LoggingEvent.Fix"/> property
+    /// 传递给LoggingEvent.Fix属性的标志。
 	/// </summary>
 	/// <remarks>
 	/// <para>
@@ -308,22 +316,26 @@ namespace log4net.Core
     /// </summary>
     /// <remarks>
     /// <para>
-    /// When an affirmative decision is made to log then a 
-    /// <see cref="LoggingEvent"/> instance is created. This instance 
-    /// is passed around to the different log4net components.
+    /// When an affirmative decision is made to log then a <see cref="LoggingEvent"/> instance is created. 
+    /// 当确定要进行日志记录时，将创建一个LoggingEvent实例。
+    /// This instance is passed around to the different log4net components.
+    /// 他的实例被传递给不同的log4net组件。
     /// </para>
     /// <para>
     /// This class is of concern to those wishing to extend log4net.
+    /// 这个类与那些希望扩展log4net的人有关。
     /// </para>
     /// <para>
-    /// Some of the values in instances of <see cref="LoggingEvent"/>
-    /// are considered volatile, that is the values are correct at the
-    /// time the event is delivered to appenders, but will not be consistent
-    /// at any time afterwards. If an event is to be stored and then processed
-    /// at a later time these volatile values must be fixed by calling
-    /// <see cref="M:FixVolatileData()"/>. There is a performance penalty
-    /// for incurred by calling <see cref="M:FixVolatileData()"/> but it
-    /// is essential to maintaining data consistency.
+    /// Some of the values in instances of <see cref="LoggingEvent"/> are considered volatile, 
+    /// 在LoggingEvent实例中，有些值被认为是不稳定的，
+    /// that is the values are correct at the time the event is delivered to appenders, 
+    /// 也就是说，在事件被传递给appenders时，这些值是正确的，
+    /// but will not be consistent at any time afterwards. 
+    /// 但是在以后的任何时候都不会是一致的。
+    /// If an event is to be stored and then processed at a later time these volatile values must be fixed by calling <see cref="M:FixVolatileData()"/>. 
+    /// 如果要存储一个事件，然后在稍后的时间进行处理，那么必须通过调用FixVolatileData来固定这些volatile值
+    /// There is a performance penalty for incurred by calling <see cref="M:FixVolatileData()"/> but it is essential to maintaining data consistency.
+    /// 调用FixVolatileData会导致性能损失，但这对于保持数据一致性至关重要。
     /// </para>
     /// </remarks>
     /// <author>Nicko Cadell</author>
@@ -340,31 +352,29 @@ namespace log4net.Core
 	{
 	    private readonly static Type declaringType = typeof(LoggingEvent);
 
-		#region Public Instance Constructors
+        #region Public Instance Constructors
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="LoggingEvent" /> class
-		/// from the supplied parameters.
-		/// </summary>
-		/// <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is
-		/// the stack boundary into the logging system for this call.</param>
-		/// <param name="repository">The repository this event is logged in.</param>
-		/// <param name="loggerName">The name of the logger of this event.</param>
-		/// <param name="level">The level of this event.</param>
-		/// <param name="message">The message of this event.</param>
-		/// <param name="exception">The exception for this event.</param>
-		/// <remarks>
-		/// <para>
-		/// Except <see cref="TimeStamp"/>, <see cref="Level"/> and <see cref="LoggerName"/>, 
-		/// all fields of <c>LoggingEvent</c> are filled when actually needed. Call
-		/// <see cref="M:FixVolatileData()"/> to cache all data locally
-		/// to prevent inconsistencies.
-		/// </para>
-		/// <para>This method is called by the log4net framework
-		/// to create a logging event.
-		/// </para>
-		/// </remarks>
-		public LoggingEvent(Type callerStackBoundaryDeclaringType, log4net.Repository.ILoggerRepository repository, string loggerName, Level level, object message, Exception exception) 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoggingEvent" /> class from the supplied parameters.
+        /// 从提供的参数初始化LoggingEvent类的新实例。
+        /// </summary>
+        /// <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is the stack boundary into the logging system for this call.方法的声明类型，该方法是此调用的日志记录系统中的堆栈边界。</param>
+        /// <param name="repository">The repository this event is logged in.</param>
+        /// <param name="loggerName">The name of the logger of this event.</param>
+        /// <param name="level">The level of this event.</param>
+        /// <param name="message">The message of this event.</param>
+        /// <param name="exception">The exception for this event.</param>
+        /// <remarks>
+        /// <para>
+        /// Except <see cref="TimeStamp"/>, <see cref="Level"/> and <see cref="LoggerName"/>, all fields of <c>LoggingEvent</c> are filled when actually needed. 
+        /// 除了时间戳、级别和日志名之外，日志事件的所有字段都在实际需要时被填充。
+        /// Call <see cref="M:FixVolatileData()"/> to cache all data locally to prevent inconsistencies.
+        /// 调用FixVolatileData()在本地缓存所有数据，以防止不一致。
+        /// </para>
+        /// <para>This method is called by the log4net framework to create a logging event.</para>
+        /// <para>log4net框架调用此方法来创建日志事件。</para>
+        /// </remarks>
+        public LoggingEvent(Type callerStackBoundaryDeclaringType, log4net.Repository.ILoggerRepository repository, string loggerName, Level level, object message, Exception exception) 
 		{
 			m_callerStackBoundaryDeclaringType = callerStackBoundaryDeclaringType;
 			m_message = message;
@@ -374,36 +384,36 @@ namespace log4net.Core
 			m_data.LoggerName = loggerName;
 			m_data.Level = level;
 
-			// Store the event creation time
-			m_data.TimeStampUtc = DateTime.UtcNow;
+            // Store the event creation time
+            // 存储事件创建时间
+            m_data.TimeStampUtc = DateTime.UtcNow;
 		}
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="LoggingEvent" /> class 
-		/// using specific data.
-		/// </summary>
-		/// <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is
-		/// the stack boundary into the logging system for this call.</param>
-		/// <param name="repository">The repository this event is logged in.</param>
-		/// <param name="data">Data used to initialize the logging event.</param>
-		/// <param name="fixedData">The fields in the <paranref name="data"/> struct that have already been fixed.</param>
-		/// <remarks>
-		/// <para>
-		/// This constructor is provided to allow a <see cref="LoggingEvent" />
-		/// to be created independently of the log4net framework. This can
-		/// be useful if you require a custom serialization scheme.
-		/// </para>
-		/// <para>
-		/// Use the <see cref="M:GetLoggingEventData(FixFlags)"/> method to obtain an 
-		/// instance of the <see cref="LoggingEventData"/> class.
-		/// </para>
-		/// <para>
-		/// The <paramref name="fixedData"/> parameter should be used to specify which fields in the
-		/// <paramref name="data"/> struct have been preset. Fields not specified in the <paramref name="fixedData"/>
-		/// will be captured from the environment if requested or fixed.
-		/// </para>
-		/// </remarks>
-		public LoggingEvent(Type callerStackBoundaryDeclaringType, log4net.Repository.ILoggerRepository repository, LoggingEventData data, FixFlags fixedData) 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoggingEvent" /> class using specific data.
+        /// 使用特定的数据初始化LoggingEvent类的新实例。
+        /// </summary>
+        /// <param name="callerStackBoundaryDeclaringType">The declaring type of the method that is the stack boundary into the logging system for this call.</param>
+        /// <param name="repository">The repository this event is logged in.</param>
+        /// <param name="data">Data used to initialize the logging event.</param>
+        /// <param name="fixedData">The fields in the <paranref name="data"/> struct that have already been fixed.</param>
+        /// <remarks>
+        /// <para>
+        /// This constructor is provided to allow a <see cref="LoggingEvent" /> to be created independently of the log4net framework. 
+        /// 提供这个构造函数是为了允许日志事件独立于log4net框架创建。
+        /// This can be useful if you require a custom serialization scheme.
+        /// 如果需要自定义序列化方案，这可能很有用。
+        /// </para>
+        /// <para>Use the <see cref="M:GetLoggingEventData(FixFlags)"/> method to obtain an instance of the <see cref="LoggingEventData"/> class.</para>
+        /// <para>使用M:GetLoggingEventData(FixFlags)方法获得LoggingEventData类的一个实例。</para>
+        /// <para>
+        /// The <paramref name="fixedData"/> parameter should be used to specify which fields in the <paramref name="data"/> struct have been preset. 
+        /// fixedData参数应该用于指定数据结构中的哪些字段已被预先设置。
+        /// Fields not specified in the <paramref name="fixedData"/> will be captured from the environment if requested or fixed.
+        /// 在fixeddata中没有指定的字段将在请求或修复时从环境中捕获。
+        /// </para>
+        /// </remarks>
+        public LoggingEvent(Type callerStackBoundaryDeclaringType, log4net.Repository.ILoggerRepository repository, LoggingEventData data, FixFlags fixedData) 
 		{
 			m_callerStackBoundaryDeclaringType = callerStackBoundaryDeclaringType;
 			m_repository = repository;
@@ -652,52 +662,59 @@ namespace log4net.Core
 			}
 		}
 
-		/// <summary>
-		/// Gets the message object used to initialize this event.
-		/// </summary>
-		/// <value>
-		/// The message object used to initialize this event.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// Gets the message object used to initialize this event.
-		/// Note that this event may not have a valid message object.
-		/// If the event is serialized the message object will not 
-		/// be transferred. To get the text of the message the
-		/// <see cref="RenderedMessage"/> property must be used 
-		/// not this property.
-		/// </para>
-		/// <para>
-		/// If there is no defined message object for this event then
-		/// null will be returned.
-		/// </para>
-		/// </remarks>
-		public object MessageObject
+        /// <summary>
+        /// Gets the message object used to initialize this event.
+        /// 获取用于初始化此事件的消息对象。
+        /// </summary>.
+        /// <value>
+        /// The message object used to initialize this event.
+        /// 用于初始化此事件的消息对象。
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// Gets the message object used to initialize this event.
+        /// 获取用于初始化此事件的消息对象。
+        /// Note that this event may not have a valid message object.
+        /// 注意，此事件可能没有有效的message对象。
+        /// If the event is serialized the message object will not be transferred. 
+        /// 如果事件被序列化，消息对象将不会被转移。
+        /// To get the text of the message the <see cref="RenderedMessage"/> property must be used not this property.
+        /// 要获得消息的文本，RenderedMessage属性必须使用，而不是此属性。
+        /// </para>
+        /// <para>
+        /// If there is no defined message object for this event then null will be returned.
+        /// 如果此事件没有定义消息对象，则返回null。
+        /// </para>
+        /// </remarks>
+        public object MessageObject
 		{
 			get { return m_message; }
-		} 
+		}
 
-		/// <summary>
-		/// Gets the exception object used to initialize this event.
-		/// </summary>
-		/// <value>
-		/// The exception object used to initialize this event.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// Gets the exception object used to initialize this event.
-		/// Note that this event may not have a valid exception object.
-		/// If the event is serialized the exception object will not 
-		/// be transferred. To get the text of the exception the
-		/// <see cref="GetExceptionString"/> method must be used 
-		/// not this property.
-		/// </para>
-		/// <para>
-		/// If there is no defined exception object for this event then
-		/// null will be returned.
-		/// </para>
-		/// </remarks>
-		public Exception ExceptionObject
+        /// <summary>
+        /// Gets the exception object used to initialize this event.
+        /// 获取用于初始化此事件的异常对象。
+        /// </summary>
+        /// <value>
+        /// The exception object used to initialize this event.
+        /// 用于初始化此事件的异常对象。
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// Gets the exception object used to initialize this event.
+        /// Note that this event may not have a valid exception object.
+        /// 注意，此事件可能没有有效的异常对象。
+        /// If the event is serialized the exception object will not be transferred.
+        /// 如果事件被序列化，异常对象将不会被转移。
+        /// To get the text of the exception the <see cref="GetExceptionString"/> method must be used not this property.
+        /// 要获得异常的文本，必须使用GetExceptionString方法，而不是此属性。
+        /// </para>
+        /// <para>
+        /// If there is no defined exception object for this event then null will be returned.
+        /// 如果此事件没有定义异常对象，则返回null。
+        /// </para>
+        /// </remarks>
+        public Exception ExceptionObject
 		{
 			get { return m_thrownException; }
 		} 
@@ -727,18 +744,19 @@ namespace log4net.Core
 			}
 		}
 
-		/// <summary>
-		/// Gets the message, rendered through the <see cref="ILoggerRepository.RendererMap" />.
-		/// </summary>
-		/// <value>
-		/// The message rendered through the <see cref="ILoggerRepository.RendererMap" />.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The collected information is cached for future use.
-		/// </para>
-		/// </remarks>
-		public string RenderedMessage
+        /// <summary>
+        /// Gets the message, rendered through the <see cref="ILoggerRepository.RendererMap" />.
+        /// 获取通过theiloggerrepositor.renderermap呈现的消息。
+        /// </summary>
+        /// <value>
+        /// The message rendered through the <see cref="ILoggerRepository.RendererMap" />.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The collected information is cached for future use.
+        /// </para>
+        /// </remarks>
+        public string RenderedMessage
 		{
 			get 
 			{ 
@@ -766,20 +784,21 @@ namespace log4net.Core
 			}
 		}
 
-		/// <summary>
-		/// Write the rendered message to a TextWriter
-		/// </summary>
-		/// <param name="writer">the writer to write the message to</param>
-		/// <remarks>
-		/// <para>
-		/// Unlike the <see cref="RenderedMessage"/> property this method
-		/// does store the message data in the internal cache. Therefore 
-		/// if called only once this method should be faster than the
-		/// <see cref="RenderedMessage"/> property, however if the message is
-		/// to be accessed multiple times then the property will be more efficient.
-		/// </para>
-		/// </remarks>
-		public void WriteRenderedMessage(TextWriter writer)
+        /// <summary>
+        /// Write the rendered message to a TextWriter.
+        /// 将已呈现的消息写入一个TextWriter。
+        /// </summary>
+        /// <param name="writer">the writer to write the message to</param>
+        /// <remarks>
+        /// <para>
+        /// Unlike the <see cref="RenderedMessage"/> property this method
+        /// does store the message data in the internal cache. Therefore 
+        /// if called only once this method should be faster than the
+        /// <see cref="RenderedMessage"/> property, however if the message is
+        /// to be accessed multiple times then the property will be more efficient.
+        /// </para>
+        /// </remarks>
+        public void WriteRenderedMessage(TextWriter writer)
 		{
 			if (m_data.Message != null)
 			{
@@ -1210,8 +1229,9 @@ namespace log4net.Core
 				{
 					if (m_repository != null)
 					{
-						// Render exception using the repositories renderer map
-						m_data.ExceptionString = m_repository.RendererMap.FindAndRender(m_thrownException);
+                        // Render exception using the repositories renderer map
+                        // 使用存储库呈现器映射呈现异常
+                        m_data.ExceptionString = m_repository.RendererMap.FindAndRender(m_thrownException);
 					}
 					else
 					{
@@ -1544,14 +1564,15 @@ namespace log4net.Core
 			return m_compositeProperties.Flatten();
 		}
 
-		#endregion Public Instance Methods
+        #endregion Public Instance Methods
 
-		#region Private Instance Fields
+        #region Private Instance Fields
 
-		/// <summary>
-		/// The internal logging event data.
-		/// </summary>
-		private LoggingEventData m_data;
+        /// <summary>
+        /// The internal logging event data.
+        /// 内部日志事件数据。
+        /// </summary>
+        private LoggingEventData m_data;
 
 		/// <summary>
 		/// The internal logging event data.
@@ -1564,41 +1585,44 @@ namespace log4net.Core
 		private PropertiesDictionary m_eventProperties;
 
 		/// <summary>
-		/// The fully qualified Type of the calling 
-		/// logger class in the stack frame (i.e. the declaring type of the method).
+		/// The fully qualified Type of the calling logger class in the stack frame (i.e. the declaring type of the method).
 		/// </summary>
 		private readonly Type m_callerStackBoundaryDeclaringType;
 
-		/// <summary>
-		/// The application supplied message of logging event.
-		/// </summary>
-		private readonly object m_message;
+        /// <summary>
+        /// The application supplied message of logging event.
+        /// 应用程序提供的日志事件消息。
+        /// </summary>
+        private readonly object m_message;
 
-		/// <summary>
-		/// The exception that was thrown.
-		/// </summary>
-		/// <remarks>
-		/// This is not serialized. The string representation
-		/// is serialized instead.
-		/// </remarks>
-		private readonly Exception m_thrownException;
+        /// <summary>
+        /// The exception that was thrown.
+        /// 抛出的异常。
+        /// </summary>
+        /// <remarks>
+        /// This is not serialized. The string representation is serialized instead.
+        /// 这不是序列化的。字符串表示被序列化。
+        /// </remarks>
+        private readonly Exception m_thrownException;
 
-		/// <summary>
-		/// The repository that generated the logging event
-		/// </summary>
-		/// <remarks>
-		/// This is not serialized.
-		/// </remarks>
-		private ILoggerRepository m_repository = null;
+        /// <summary>
+        /// The repository that generated the logging event
+        /// 生成日志事件的存储库
+        /// </summary>
+        /// <remarks>
+        /// This is not serialized.
+        /// </remarks>
+        private ILoggerRepository m_repository = null;
 
-		/// <summary>
-		/// The fix state for this event
-		/// </summary>
-		/// <remarks>
-		/// These flags indicate which fields have been fixed.
-		/// Not serialized.
-		/// </remarks>
-		private FixFlags m_fixFlags = FixFlags.None;
+        /// <summary>
+        /// The fix state for this event
+        /// 此事件的修复状态
+        /// </summary>
+        /// <remarks>
+        /// These flags indicate which fields have been fixed.
+        /// Not serialized.
+        /// </remarks>
+        private FixFlags m_fixFlags = FixFlags.None;
 
 		/// <summary>
 		/// Indicated that the internal cache is updateable (ie not fixed)

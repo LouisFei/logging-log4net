@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -93,8 +93,9 @@ namespace log4net.Repository
 
 			AddBuiltinLevels();
 
-			// Don't disable any levels by default.
-			m_threshold = Level.All;
+            // Don't disable any levels by default.
+            // 默认情况下不要禁用任何级别。
+            m_threshold = Level.All;
 		}
 
 		#endregion
@@ -149,22 +150,23 @@ namespace log4net.Repository
 			}
 		}
 
-		/// <summary>
-		/// RendererMap accesses the object renderer map for this repository.
-		/// </summary>
-		/// <value>
-		/// RendererMap accesses the object renderer map for this repository.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// RendererMap accesses the object renderer map for this repository.
-		/// </para>
-		/// <para>
-		/// The RendererMap holds a mapping between types and
-		/// <see cref="IObjectRenderer"/> objects.
-		/// </para>
-		/// </remarks>
-		virtual public RendererMap RendererMap
+        /// <summary>
+        /// RendererMap accesses the object renderer map for this repository.
+        /// RendererMap访问这个存储库的对象呈现器映射。
+        /// </summary>
+        /// <value>
+        /// RendererMap accesses the object renderer map for this repository.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// RendererMap accesses the object renderer map for this repository.
+        /// </para>
+        /// <para>
+        /// The RendererMap holds a mapping between types and
+        /// <see cref="IObjectRenderer"/> objects.
+        /// </para>
+        /// </remarks>
+        virtual public RendererMap RendererMap
 		{
 			get { return m_rendererMap; }
 		}
@@ -186,20 +188,20 @@ namespace log4net.Repository
 			get { return m_pluginMap; }
 		}
 
-		/// <summary>
-		/// Get the level map for the Repository.
-		/// </summary>
-		/// <remarks>
-		/// <para>
-		/// Get the level map for the Repository.
-		/// </para>
-		/// <para>
-		/// The level map defines the mappings between
-		/// level names and <see cref="Level"/> objects in
-		/// this repository.
-		/// </para>
-		/// </remarks>
-		virtual public LevelMap LevelMap
+        /// <summary>
+        /// Get the level map for the Repository.
+        /// 获取存储库的级别映射。
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// Get the level map for the Repository.
+        /// </para>
+        /// <para>
+        /// The level map defines the mappings between level names and <see cref="Level"/> objects in this repository.
+        /// 级别映射定义了此存储库中级别名称和级别对象之间的映射。
+        /// </para>
+        /// </remarks>
+        virtual public LevelMap LevelMap
 		{
 			get { return m_levelMap; }
 		}
@@ -290,8 +292,9 @@ namespace log4net.Repository
 			m_levelMap.Clear();
             m_configurationMessages = EmptyCollection.Instance;
 
-			// Add the predefined levels to the map
-			AddBuiltinLevels();
+            // Add the predefined levels to the map
+            // 将预定义的级别添加到映射中
+            AddBuiltinLevels();
 
 			Configured = false;
 
@@ -319,7 +322,7 @@ namespace log4net.Repository
 
         /// <summary>
         /// Flag indicates if this repository has been configured.
-        /// ��־��ʾ�Ƿ������˴˴洢�⡣
+        /// 标志表示是否配置了此存储库。
         /// </summary>
         /// <value>
         /// Flag indicates if this repository has been configured.
@@ -337,7 +340,7 @@ namespace log4net.Repository
 
         /// <summary>
         /// Contains a list of internal messages captures during the last configuration.
-        /// �������һ�������ڼ䲶����ڲ���Ϣ�б���
+        /// 包含最后一次配置期间捕获的内部消息列表。
         /// </summary>
 	    virtual public ICollection ConfigurationMessages
 	    {
@@ -399,7 +402,7 @@ namespace log4net.Repository
 
 		/// <summary>
 		/// Repository specific properties
-        /// �������Լ���
+        /// 容器属性集合
 		/// </summary>
 		/// <value>
 		/// Repository specific properties
@@ -436,29 +439,37 @@ namespace log4net.Repository
 	    /// </remarks>
 	    private readonly static Type declaringType = typeof(LoggerRepositorySkeleton);
 
-	    #endregion Private Static Fields
+        #endregion Private Static Fields
 
-		private void AddBuiltinLevels()
+        /// <summary>
+        /// 将预定义的级别添加到映射中
+        /// </summary>
+        private void AddBuiltinLevels()
 		{
-			// Add the predefined levels to the map
-			m_levelMap.Add(Level.Off);
+            // Add the predefined levels to the map
+            // 将预定义的级别添加到映射中
+            m_levelMap.Add(Level.Off);
 
-			// Unrecoverable errors
-			m_levelMap.Add(Level.Emergency);
+            // Unrecoverable errors
+            // 不可恢复的错误
+            m_levelMap.Add(Level.Emergency);
 			m_levelMap.Add(Level.Fatal);
-			m_levelMap.Add(Level.Alert); 
+			m_levelMap.Add(Level.Alert);
 
-			// Recoverable errors
-			m_levelMap.Add(Level.Critical); 
+            // Recoverable errors
+            // 可恢复错误
+            m_levelMap.Add(Level.Critical); 
 			m_levelMap.Add(Level.Severe); 
 			m_levelMap.Add(Level.Error); 
 			m_levelMap.Add(Level.Warn);
 
 			// Information
+            // 信息
 			m_levelMap.Add(Level.Notice); 
 			m_levelMap.Add(Level.Info); 
 
 			// Debug
+            // 调试
 			m_levelMap.Add(Level.Debug);
 			m_levelMap.Add(Level.Fine);
 			m_levelMap.Add(Level.Trace);
@@ -469,17 +480,18 @@ namespace log4net.Repository
 			m_levelMap.Add(Level.All);
 		}
 
-		/// <summary>
-		/// Adds an object renderer for a specific class. 
-		/// </summary>
-		/// <param name="typeToRender">The type that will be rendered by the renderer supplied.</param>
-		/// <param name="rendererInstance">The object renderer used to render the object.</param>
-		/// <remarks>
-		/// <para>
-		/// Adds an object renderer for a specific class. 
-		/// </para>
-		/// </remarks>
-		virtual public void AddRenderer(Type typeToRender, IObjectRenderer rendererInstance) 
+        /// <summary>
+        /// Adds an object renderer for a specific class. 
+        /// 为特定的类添加对象呈现程序。
+        /// </summary>
+        /// <param name="typeToRender">The type that will be rendered by the renderer supplied.</param>
+        /// <param name="rendererInstance">The object renderer used to render the object.</param>
+        /// <remarks>
+        /// <para>
+        /// Adds an object renderer for a specific class. 
+        /// </para>
+        /// </remarks>
+        virtual public void AddRenderer(Type typeToRender, IObjectRenderer rendererInstance) 
 		{
 			if (typeToRender == null)
 			{
@@ -541,7 +553,7 @@ namespace log4net.Repository
 
 		/// <summary>
 		/// Notify the registered listeners that the repository has had its configuration changed
-        /// ֪ͨ�������ñ��ı䡣
+        /// 通知容器配置被改变。
 		/// </summary>
 		/// <param name="e">Empty EventArgs</param>
 		/// <remarks>

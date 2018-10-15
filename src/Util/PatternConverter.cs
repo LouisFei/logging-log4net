@@ -165,18 +165,19 @@ namespace log4net.Util
         /// <param name="state">The state object on which the pattern converter should be executed.</param>
         /// <remarks>
         /// <para>
-        /// This method calls <see cref="Convert"/> to allow the subclass to perform
-        /// appropriate conversion of the pattern converter. If formatting options have
-        /// been specified via the <see cref="FormattingInfo"/> then this method will
-        /// apply those formattings before writing the output.
+        /// This method calls <see cref="Convert"/> to allow the subclass to perform appropriate conversion of the pattern converter. 
+        /// 此方法调用Convert，以允许子类执行模式转换器的适当转换。
+        /// If formatting options have been specified via the <see cref="FormattingInfo"/> then this method will apply those formattings before writing the output.
+        /// 如果格式化选项是通过FormattingInfo指定的，那么该方法将在写入输出之前应用这些格式化选项。
         /// </para>
         /// </remarks>
         virtual public void Format(TextWriter writer, object state) 
 		{
 			if (m_min < 0 && m_max == int.MaxValue)
 			{
-				// Formatting options are not in use
-				Convert(writer, state);
+                // Formatting options are not in use
+                // 没有使用格式化选项
+                Convert(writer, state);
 			}
 			else
 			{
@@ -270,19 +271,21 @@ namespace log4net.Util
 
 		private ReusableStringWriter m_formatWriter = new ReusableStringWriter(System.Globalization.CultureInfo.InvariantCulture);
 
-		#endregion Private Instance Fields
+        #endregion Private Instance Fields
 
-		#region Constants
+        #region Constants
 
-		/// <summary>
-		/// Initial buffer size
-		/// </summary>
-		private const int c_renderBufferSize = 256;
+        /// <summary>
+        /// 最初的缓冲区大小
+        /// Initial buffer size
+        /// </summary>
+        private const int c_renderBufferSize = 256;
 
-		/// <summary>
-		/// Maximum buffer size before it is recycled
-		/// </summary>
-		private const int c_renderBufferMaxCapacity = 1024;
+        /// <summary>
+        /// 在回收之前的最大缓冲区大小。
+        /// Maximum buffer size before it is recycled.
+        /// </summary>
+        private const int c_renderBufferMaxCapacity = 1024;
 
 		#endregion
 

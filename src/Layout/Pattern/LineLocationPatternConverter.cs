@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -25,17 +25,18 @@ using log4net.Core;
 
 namespace log4net.Layout.Pattern
 {
-	/// <summary>
-	/// Write the caller location line number to the output
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Writes the value of the <see cref="LocationInfo.LineNumber"/> for
-	/// the event to the output writer.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	internal sealed class LineLocationPatternConverter : PatternLayoutConverter 
+    /// <summary>
+    /// Write the caller location line number to the output.
+    /// 将调用方位置行号写入输出。
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Writes the value of the <see cref="LocationInfo.LineNumber"/> for
+    /// the event to the output writer.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    internal sealed class LineLocationPatternConverter : PatternLayoutConverter 
 	{
 		/// <summary>
 		/// Write the caller location line number to the output

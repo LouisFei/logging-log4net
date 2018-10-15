@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -30,18 +30,18 @@ namespace log4net.Appender
 {
     /// <summary>
     /// Abstract base class implementation of <see cref="IAppender"/>. 
-    /// IAppender�ĳ������ʵ�֡�
+    /// IAppender的抽象基类实现。
     /// </summary>
     /// <remarks>
     /// <para>
     /// This class provides the code for common functionality, such as support for threshold filtering and support for general filters.
-    /// ������ṩ��ͨ�ù��ܵĴ��룬����֧����ֵ���˺�֧��һ���������
+    /// 这个类提供了通用功能的代码，例如支持阈值过滤和支持一般过滤器。
     /// </para>
     /// <para>
     /// Appenders can also implement the <see cref="IOptionHandler"/> interface. Therefore
     /// they would require that the <see cref="M:IOptionHandler.ActivateOptions()"/> method
     /// be called after the appenders properties have been configured.
-    /// AppendersҲ����ʵ��IOptionHandler�ӿڡ���ˣ�������Ҫ������appenders����֮�����IOptionHandler.ActivateOptions()������
+    /// Appenders也可以实现IOptionHandler接口。因此，它们需要在配置appenders属性之后调用IOptionHandler.ActivateOptions()方法。
     /// </para>
     /// </remarks>
     /// <author>Nicko Cadell</author>
@@ -598,7 +598,7 @@ namespace log4net.Appender
 
         /// <summary>
         /// Subclasses of <see cref="AppenderSkeleton"/> should implement this method to perform actual logging.
-        /// AppenderSkeleton������Ӧ��ʵ�����������ִ��ʵ�ʵ���־��¼��
+        /// AppenderSkeleton的子类应该实现这个方法来执行实际的日志记录。
         /// </summary>
         /// <param name="loggingEvent">The event to append.</param>
         /// <remarks>
@@ -618,7 +618,7 @@ namespace log4net.Appender
 
         /// <summary>
         /// Append a bulk array of logging events.
-        /// ���Ӵ�������־�¼����顣
+        /// 附加大量的日志事件数组。
         /// </summary>
         /// <param name="loggingEvents">the array of logging events</param>
         /// <remarks>
@@ -668,34 +668,34 @@ namespace log4net.Appender
 			return true;
 		}
 
-		/// <summary>
-		/// Renders the <see cref="LoggingEvent"/> to a string.
-		/// </summary>
-		/// <param name="loggingEvent">The event to render.</param>
-		/// <returns>The event rendered as a string.</returns>
-		/// <remarks>
-		/// <para>
-		/// Helper method to render a <see cref="LoggingEvent"/> to 
-		/// a string. This appender must have a <see cref="Layout"/>
-		/// set to render the <paramref name="loggingEvent"/> to 
-		/// a string.
-		/// </para>
-		/// <para>If there is exception data in the logging event and 
-		/// the layout does not process the exception, this method 
-		/// will append the exception text to the rendered string.
-		/// </para>
-		/// <para>
-		/// Where possible use the alternative version of this method
-		/// <see cref="M:RenderLoggingEvent(TextWriter,LoggingEvent)"/>.
-		/// That method streams the rendering onto an existing Writer
-		/// which can give better performance if the caller already has
-		/// a <see cref="TextWriter"/> open and ready for writing.
-		/// </para>
-		/// </remarks>
-		protected string RenderLoggingEvent(LoggingEvent loggingEvent)
+        /// <summary>
+        /// Renders the <see cref="LoggingEvent"/> to a string.
+        /// 将LoggingEvent呈现为一个字符串。
+        /// </summary>
+        /// <param name="loggingEvent">The event to render.要呈现的事件。</param>
+        /// <returns>The event rendered as a string.以字符串形式呈现的事件。</returns>
+        /// <remarks>
+        /// <para>
+        /// Helper method to render a <see cref="LoggingEvent"/> to a string. 
+        /// 辅助方法，用于将LoggingEvent呈现给字符串。
+        /// This appender must have a <see cref="Layout"/> set to render the <paramref name="loggingEvent"/> to a string.
+        /// 这个appender必须有一个布局集，以便将loggingEvent呈现给字符串。
+        /// </para>
+        /// <para>
+        /// If there is exception data in the logging event and the layout does not process the exception, this method will append the exception text to the rendered string.</para>
+        /// 如果日志事件中有异常数据，并且布局不处理异常，此方法将把异常文本追加到呈现的字符串。
+        /// <para>
+        /// Where possible use the alternative version of this method <see cref="M:RenderLoggingEvent(TextWriter,LoggingEvent)"/>.
+        /// 尽可能使用这个方法的替代版本RenderLoggingEvent(TextWriter,LoggingEvent)。
+        /// That method streams the rendering onto an existing Writer which can give better performance if the caller already has a <see cref="TextWriter"/> open and ready for writing.
+        /// 该方法将呈现流传输到现有的写入器上，如果调用者已经打开并准备好了要写入的TextWriter，该方法可以提供更好的性能。
+        /// </para>
+        /// </remarks>
+        protected string RenderLoggingEvent(LoggingEvent loggingEvent)
 		{
-			// Create the render writer on first use
-			if (m_renderWriter == null)
+            // Create the render writer on first use
+            // 在第一次使用时创建呈现程序
+            if (m_renderWriter == null)
 			{
 				m_renderWriter = new ReusableStringWriter(System.Globalization.CultureInfo.InvariantCulture);
 			}
@@ -703,6 +703,7 @@ namespace log4net.Appender
             lock (m_renderWriter)
             {
                 // Reset the writer so we can reuse it
+                // 重新设置写入器，以便我们可以重用它
                 m_renderWriter.Reset(c_renderBufferMaxCapacity, c_renderBufferSize);
 
                 RenderLoggingEvent(m_renderWriter, loggingEvent);
@@ -710,30 +711,29 @@ namespace log4net.Appender
             }
 		}
 
-		/// <summary>
-		/// Renders the <see cref="LoggingEvent"/> to a string.
-		/// </summary>
-		/// <param name="loggingEvent">The event to render.</param>
-		/// <param name="writer">The TextWriter to write the formatted event to</param>
-		/// <remarks>
-		/// <para>
-		/// Helper method to render a <see cref="LoggingEvent"/> to 
-		/// a string. This appender must have a <see cref="Layout"/>
-		/// set to render the <paramref name="loggingEvent"/> to 
-		/// a string.
-		/// </para>
-		/// <para>If there is exception data in the logging event and 
-		/// the layout does not process the exception, this method 
-		/// will append the exception text to the rendered string.
-		/// </para>
-		/// <para>
-		/// Use this method in preference to <see cref="M:RenderLoggingEvent(LoggingEvent)"/>
-		/// where possible. If, however, the caller needs to render the event
-		/// to a string then <see cref="M:RenderLoggingEvent(LoggingEvent)"/> does
-		/// provide an efficient mechanism for doing so.
-		/// </para>
-		/// </remarks>
-		protected void RenderLoggingEvent(TextWriter writer, LoggingEvent loggingEvent)
+        /// <summary>
+        /// Renders the <see cref="LoggingEvent"/> to a string.
+        /// 将LoggingEvent呈现为一个字符串。
+        /// </summary>
+        /// <param name="loggingEvent">The event to render.</param>
+        /// <param name="writer">The TextWriter to write the formatted event to.写入格式化事件的文本存储程序</param>
+        /// <remarks>
+        /// <para>
+        /// Helper method to render a <see cref="LoggingEvent"/> to a string. 
+        /// 辅助方法，用于将LoggingEvent呈现给字符串。
+        /// This appender must have a <see cref="Layout"/> set to render the <paramref name="loggingEvent"/> to a string.
+        /// 这个appender必须有一个Layout设置，以便将loggingEvent呈现给字符串。
+        /// </para>
+        /// <para>If there is exception data in the logging event and the layout does not process the exception, this method will append the exception text to the rendered string. </para>
+        /// 如果日志事件中有异常数据，并且布局不处理异常，此方法将把异常文本追加到呈现的字符串。
+        /// <para>
+        /// Use this method in preference to <see cref="M:RenderLoggingEvent(LoggingEvent)"/> where possible. 
+        /// 在可能的情况下，优先使用此方法来处理RenderLoggingEvent(LoggingEvent)。
+        /// If, however, the caller needs to render the event to a string then <see cref="M:RenderLoggingEvent(LoggingEvent)"/> does provide an efficient mechanism for doing so.
+        /// 然而，如果调用者需要将事件呈现给一个字符串，那么M:RenderLoggingEvent(LoggingEvent)“确实提供了一种有效的机制。
+        /// </para>
+        /// </remarks>
+        protected void RenderLoggingEvent(TextWriter writer, LoggingEvent loggingEvent)
 		{
 			if (m_layout == null) 
 			{
@@ -875,10 +875,11 @@ namespace log4net.Appender
 		/// </summary>
 		private bool m_recursiveGuard = false;
 
-		/// <summary>
-		/// StringWriter used to render events
-		/// </summary>
-		private ReusableStringWriter m_renderWriter = null;
+        /// <summary>
+        /// StringWriter used to render events
+        /// 用于呈现事件的StringWriter
+        /// </summary>
+        private ReusableStringWriter m_renderWriter = null;
 
 		#endregion Private Instance Fields
 

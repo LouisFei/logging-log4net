@@ -31,6 +31,7 @@ namespace log4net.Util
     /// Holds the formatting information extracted from the format string by the <see cref="PatternParser"/>. 
     /// 保存模式解析器从格式字符串中提取的格式信息。
     /// This is used by the <see cref="PatternConverter"/> objects when rendering the output.
+    /// 在呈现输出时，PatternConverter对象使用了这个方法。
     /// </para>
     /// </remarks>
     /// <author>Nicko Cadell</author>
@@ -104,18 +105,21 @@ namespace log4net.Util
 			set { m_max = value; }
 		}
 
-		/// <summary>
-		/// Gets or sets a flag indicating whether left align is enabled or not.
-		/// </summary>
-		/// <value>
-		/// A flag indicating whether left align is enabled or not.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// Gets or sets a flag indicating whether left align is enabled or not.
-		/// </para>
-		/// </remarks>
-		public bool LeftAlign
+        /// <summary>
+        /// Gets or sets a flag indicating whether left align is enabled or not.
+        /// 获取或设置一个标志，该标志指示是否启用左对齐。
+        /// </summary>
+        /// <value>
+        /// A flag indicating whether left align is enabled or not.
+        /// 指示是否启用左对齐的标志。
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// Gets or sets a flag indicating whether left align is enabled or not.
+        /// 获取或设置一个标志，该标志指示是否启用左对齐。
+        /// </para>
+        /// </remarks>
+        public bool LeftAlign
 		{
 			get { return m_leftAlign; }
 			set { m_leftAlign = value; }

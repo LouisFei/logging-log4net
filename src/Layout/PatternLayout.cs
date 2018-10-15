@@ -832,6 +832,7 @@ namespace log4net.Layout
     
 		/// <summary>
 		/// the pattern
+        /// 模式字符串
 		/// </summary>
 		private string m_pattern;
 
@@ -841,10 +842,11 @@ namespace log4net.Layout
         /// </summary>
         private PatternConverter m_head;
 
-		/// <summary>
-		/// patterns defined on this PatternLayout only
-		/// </summary>
-		private Hashtable m_instanceRulesRegistry = new Hashtable();
+        /// <summary>
+        /// patterns defined on this PatternLayout only
+        /// 仅在此PatternLayout定义的模式
+        /// </summary>
+        private Hashtable m_instanceRulesRegistry = new Hashtable();
 
         #endregion
 
@@ -1033,16 +1035,19 @@ namespace log4net.Layout
 		{
 			PatternParser patternParser = new PatternParser(pattern);
 
-			// Add all the builtin patterns
-			foreach(DictionaryEntry entry in s_globalRulesRegistry)
+            // Add all the builtin patterns
+            // 添加所有（全局）内置模式
+            foreach (DictionaryEntry entry in s_globalRulesRegistry)
 			{
                 ConverterInfo converterInfo = new ConverterInfo();
                 converterInfo.Name = (string)entry.Key;
                 converterInfo.Type = (Type)entry.Value;
                 patternParser.PatternConverters[entry.Key] = converterInfo;
 			}
-			// Add the instance patterns
-			foreach(DictionaryEntry entry in m_instanceRulesRegistry)
+
+            // Add the instance patterns
+            // 添加实例模式
+            foreach (DictionaryEntry entry in m_instanceRulesRegistry)
 			{
 				patternParser.PatternConverters[entry.Key] = entry.Value;
 			}
@@ -1091,22 +1096,23 @@ namespace log4net.Layout
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region Override implementation of LayoutSkeleton
+        #region Override implementation of LayoutSkeleton
 
-		/// <summary>
-		/// Produces a formatted string as specified by the conversion pattern.
-		/// </summary>
-		/// <param name="loggingEvent">the event being logged</param>
-		/// <param name="writer">The TextWriter to write the formatted event to</param>
-		/// <remarks>
-		/// <para>
-		/// Parse the <see cref="LoggingEvent"/> using the patter format
-		/// specified in the <see cref="ConversionPattern"/> property.
-		/// </para>
-		/// </remarks>
-		override public void Format(TextWriter writer, LoggingEvent loggingEvent) 
+        /// <summary>
+        /// Produces a formatted string as specified by the conversion pattern.
+        /// 按照转换模式指定的格式生成字符串。
+        /// </summary>
+        /// <param name="writer">The TextWriter to write the formatted event to.写入格式化事件的文本存储程序</param>
+        /// <param name="loggingEvent">the event being logged.正在记录的事件</param>
+        /// <remarks>
+        /// <para>
+        /// Parse the <see cref="LoggingEvent"/> using the patter format specified in the <see cref="ConversionPattern"/> property.
+        /// 使用ConversionPattern属性中指定的模式格式解析LoggingEvent。
+        /// </para>
+        /// </remarks>
+        override public void Format(TextWriter writer, LoggingEvent loggingEvent) 
 		{
 			if (writer == null)
 			{
@@ -1119,27 +1125,31 @@ namespace log4net.Layout
 
 			PatternConverter c = m_head;
 
-			// loop through the chain of pattern converters
-			while(c != null) 
+            // loop through the chain of pattern converters
+            // 通过模式转换器链的循环
+            while (c != null) 
 			{
 				c.Format(writer, loggingEvent);
 				c = c.Next;
 			}
 		}
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// Add a converter to this PatternLayout
-		/// </summary>
-		/// <param name="converterInfo">the converter info</param>
-		/// <remarks>
-		/// <para>
-		/// This version of the method is used by the configurator.
-		/// Programmatic users should use the alternative <see cref="M:AddConverter(string,Type)"/> method.
-		/// </para>
-		/// </remarks>
-		public void AddConverter(ConverterInfo converterInfo)
+        /// <summary>
+        /// Add a converter to this PatternLayout
+        /// 向这个PatternLayout添加一个转换器
+        /// </summary>
+        /// <param name="converterInfo">the converter info</param>
+        /// <remarks>
+        /// <para>
+        /// This version of the method is used by the configurator.
+        /// 配置程序使用该方法的这个版本。
+        /// Programmatic users should use the alternative <see cref="M:AddConverter(string,Type)"/> method.
+        /// 编程用户应该使用可选的AddConverter(string,Type)方法。
+        /// </para>
+        /// </remarks>
+        public void AddConverter(ConverterInfo converterInfo)
 		{
             if (converterInfo == null) throw new ArgumentNullException("converterInfo");
 
@@ -1150,23 +1160,26 @@ namespace log4net.Layout
             m_instanceRulesRegistry[converterInfo.Name] = converterInfo;
 		}
 
-		/// <summary>
-		/// Add a converter to this PatternLayout
-		/// </summary>
-		/// <param name="name">the name of the conversion pattern for this converter</param>
-		/// <param name="type">the type of the converter</param>
-		/// <remarks>
-		/// <para>
-		/// Add a named pattern converter to this instance. This
-		/// converter will be used in the formatting of the event.
-		/// This method must be called before <see cref="ActivateOptions"/>.
-		/// </para>
-		/// <para>
-		/// The <paramref name="type"/> specified must extend the 
-		/// <see cref="PatternConverter"/> type.
-		/// </para>
-		/// </remarks>
-		public void AddConverter(string name, Type type)
+        /// <summary>
+        /// Add a converter to this PatternLayout
+        /// 向这个PatternLayout添加一个转换器
+        /// </summary>
+        /// <param name="name">the name of the conversion pattern for this converter.此转换器的转换模式的名称</param>
+        /// <param name="type">the type of the converter.转换器的类型</param>
+        /// <remarks>
+        /// <para>
+        /// Add a named pattern converter to this instance. 
+        /// 向此实例添加一个命名模式转换器。
+        /// This converter will be used in the formatting of the event.
+        /// 此转换器将用于事件的格式化。
+        /// This method must be called before <see cref="ActivateOptions"/>.
+        /// 在ActivateOptions之前必须调用此方法。
+        /// </para>
+        /// <para>
+        /// The <paramref name="type"/> specified must extend the <see cref="PatternConverter"/> type.
+        /// </para>
+        /// </remarks>
+        public void AddConverter(string name, Type type)
 		{
             if (name == null) throw new ArgumentNullException("name");
             if (type == null) throw new ArgumentNullException("type");

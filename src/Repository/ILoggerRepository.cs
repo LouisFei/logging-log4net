@@ -1,4 +1,4 @@
-#region Apache License
+ï»¿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -77,9 +77,9 @@ namespace log4net.Repository
     #endregion
 
     /// <summary>
-    /// ÓÃÓÚÈÕÖ¾¶ÔÏó×éÖ¯½á¹¹µÄÎ¬»¤¡£
+    /// ç”¨äºæ—¥å¿—å¯¹è±¡ç»„ç»‡ç»“æ„çš„ç»´æŠ¤ã€‚
     /// Interface implemented by logger repositories.
-    /// ÓÉlogger´æ´¢¿âÊµÏÖµÄ½Ó¿Ú¡£´æ·ÅloggerÊµÀıµÄÈİÆ÷¡£
+    /// ç”±loggerå­˜å‚¨åº“å®ç°çš„æ¥å£ã€‚å­˜æ”¾loggerå®ä¾‹çš„å®¹å™¨ã€‚
     /// </summary>
     /// <remarks>
     /// <para>
@@ -108,22 +108,23 @@ namespace log4net.Repository
 		/// </remarks>
 		string Name { get; set; }
 
-		/// <summary>
-		/// RendererMap accesses the object renderer map for this repository.
-		/// </summary>
-		/// <value>
-		/// RendererMap accesses the object renderer map for this repository.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// RendererMap accesses the object renderer map for this repository.
-		/// </para>
-		/// <para>
-		/// The RendererMap holds a mapping between types and
-		/// <see cref="IObjectRenderer"/> objects.
-		/// </para>
-		/// </remarks>
-		RendererMap RendererMap { get; }
+        /// <summary>
+        /// RendererMap accesses the object renderer map for this repository.
+        /// RendererMapè®¿é—®è¿™ä¸ªå­˜å‚¨åº“çš„å¯¹è±¡å‘ˆç°å™¨æ˜ å°„ã€‚
+        /// </summary>
+        /// <value>
+        /// RendererMap accesses the object renderer map for this repository.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// RendererMap accesses the object renderer map for this repository.
+        /// </para>
+        /// <para>
+        /// The RendererMap holds a mapping between types and <see cref="IObjectRenderer"/> objects.
+        /// RendererMapä¿å­˜ç±»å‹å’ŒIObjectRendererå¯¹è±¡ä¹‹é—´çš„æ˜ å°„ã€‚
+        /// </para>
+        /// </remarks>
+        RendererMap RendererMap { get; }
 
 		/// <summary>
 		/// The plugin map for this repository.
@@ -133,8 +134,7 @@ namespace log4net.Repository
 		/// </value>
 		/// <remarks>
 		/// <para>
-		/// The plugin map holds the <see cref="IPlugin"/> instances
-		/// that have been attached to this repository.
+		/// The plugin map holds the <see cref="IPlugin"/> instances that have been attached to this repository.
 		/// </para>
 		/// </remarks>
 		PluginMap PluginMap { get; }

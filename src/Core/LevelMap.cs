@@ -1,4 +1,4 @@
-#region Apache License
+﻿#region Apache License
 //
 // Licensed to the Apache Software Foundation (ASF) under one or more 
 // contributor license agreements. See the NOTICE file distributed with
@@ -25,18 +25,19 @@ using log4net.Util;
 
 namespace log4net.Core
 {
-	/// <summary>
-	/// Mapping between string name and Level object
-	/// </summary>
-	/// <remarks>
-	/// <para>
-	/// Mapping between string name and <see cref="Level"/> object.
-	/// This mapping is held separately for each <see cref="log4net.Repository.ILoggerRepository"/>.
-	/// The level name is case insensitive.
-	/// </para>
-	/// </remarks>
-	/// <author>Nicko Cadell</author>
-	public sealed class LevelMap
+    /// <summary>
+    /// Mapping between string name and Level object.
+    /// 字符串名称和级别对象之间的映射
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// Mapping between string name and <see cref="Level"/> object.
+    /// This mapping is held separately for each <see cref="log4net.Repository.ILoggerRepository"/>.
+    /// The level name is case insensitive.
+    /// </para>
+    /// </remarks>
+    /// <author>Nicko Cadell</author>
+    public sealed class LevelMap
 	{
 		#region Member Variables
 
