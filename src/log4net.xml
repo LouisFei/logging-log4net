@@ -614,23 +614,20 @@
         </member>
         <member name="P:log4net.Appender.AdoNetAppenderParameter.Layout">
             <summary>
-            Gets or sets the <see cref="T:log4net.Layout.IRawLayout"/> to use to 
-            render the logging event into an object for this 
-            parameter.
+            Gets or sets the <see cref="T:log4net.Layout.IRawLayout"/> to use to render the logging event into an object for this parameter.
+            获取或设置<see cref="T:log4net.Layout.IRawLayout"/>，用于将日志事件呈现为该参数的对象。
             </summary>
             <value>
-            The <see cref="T:log4net.Layout.IRawLayout"/> used to render the
-            logging event into an object for this parameter.
+            The <see cref="T:log4net.Layout.IRawLayout"/> used to render the logging event into an object for this parameter.
+            <see cref="T:log4net.Layout.IRawLayout"/>用于将日志事件呈现为该参数的对象。
             </value>
             <remarks>
             <para>
-            The <see cref="T:log4net.Layout.IRawLayout"/> that renders the value for this
-            parameter.
+            The <see cref="T:log4net.Layout.IRawLayout"/> that renders the value for this parameter.
+            呈现此参数值的<see cref="T:log4net.Layout.IRawLayout"/>。
             </para>
             <para>
-            The <see cref="T:log4net.Layout.RawLayoutConverter"/> can be used to adapt
-            any <see cref="T:log4net.Layout.ILayout"/> into a <see cref="T:log4net.Layout.IRawLayout"/>
-            for use in the property.
+            The <see cref="T:log4net.Layout.RawLayoutConverter"/> can be used to adapt any <see cref="T:log4net.Layout.ILayout"/> into a <see cref="T:log4net.Layout.IRawLayout"/> for use in the property.
             </para>
             </remarks>
         </member>
@@ -649,13 +646,16 @@
         <member name="M:log4net.Appender.AdoNetAppenderParameter.FormatValue(System.Data.IDbCommand,log4net.Core.LoggingEvent)">
             <summary>
             Renders the logging event and set the parameter value in the command.
+            呈现日志事件并在命令中设置参数值。
             </summary>
             <param name="command">The command containing the parameter.</param>
-            <param name="loggingEvent">The event to be rendered.</param>
+            <param name="loggingEvent">The event to be rendered.要呈现的事件。</param>
             <remarks>
             <para>
-            Renders the logging event using this parameters layout
-            object. Sets the value of the parameter on the command object.
+            Renders the logging event using this parameters layout object. 
+            使用这个参数布局对象呈现日志事件。
+            Sets the value of the parameter on the command object.
+            设置命令对象上参数的值。
             </para>
             </remarks>
         </member>
@@ -13779,6 +13779,7 @@
         <member name="M:log4net.Core.LoggingEvent.GetProperties">
             <summary>
             Get all the composite properties in this event
+            在此事件中获取所有复合属性
             </summary>
             <returns>the <see cref="T:log4net.Util.PropertiesDictionary"/> containing all the properties</returns>
             <remarks>
@@ -17628,11 +17629,12 @@
             用于将日志事件格式化为对象的接口。
             </para>
             <para>
-            This interface should not be confused with the
-            <see cref="T:log4net.Layout.ILayout"/> interface. This interface is used in
-            only certain specialized situations where a raw object is
-            required rather than a formatted string. The <see cref="T:log4net.Layout.ILayout"/>
-            is not generally useful than this interface.
+            This interface should not be confused with the <see cref="T:log4net.Layout.ILayout"/> interface. 
+            这个接口不应该与<see cref="T:log4net.Layout.ILayout"/>接口混淆。
+            This interface is used in only certain specialized situations where a raw object is required rather than a formatted string. 
+            此接口仅在需要原始对象而不是格式化字符串的特定情况下使用。
+            The <see cref="T:log4net.Layout.ILayout"/> is not generally useful than this interface.
+            <see cref="T:log4net.Layout.ILayout"/>接口通常不太有用。
             </para>
             </remarks>
             <author>Nicko Cadell</author>
@@ -17641,12 +17643,14 @@
         <member name="M:log4net.Layout.IRawLayout.Format(log4net.Core.LoggingEvent)">
             <summary>
             Implement this method to create your own layout format.
+            实现此方法以创建自己的布局格式。
             </summary>
             <param name="loggingEvent">The event to format</param>
             <returns>returns the formatted event</returns>
             <remarks>
             <para>
             Implement this method to create your own layout format.
+            实现此方法以创建自己的布局格式。
             </para>
             </remarks>
         </member>
@@ -19825,6 +19829,7 @@
         <member name="T:log4net.Layout.RawPropertyLayout">
             <summary>
             Extract the value of a property from the <see cref="T:log4net.Core.LoggingEvent"/>
+            从<see cref="T:log4net.Core.LoggingEvent"/>中提取属性值
             </summary>
             <remarks>
             <para>
@@ -19841,27 +19846,32 @@
         <member name="P:log4net.Layout.RawPropertyLayout.Key">
             <summary>
             The name of the value to lookup in the LoggingEvent Properties collection.
+            要在LoggingEvent属性集合中查找的值的名称。
             </summary>
             <value>
             Value to lookup in the LoggingEvent Properties collection
+            在LoggingEvent属性集合中查找的值
             </value>
             <remarks>
             <para>
             String name of the property to lookup in the <see cref="T:log4net.Core.LoggingEvent"/>.
+            要在<see cref="T:log4net.Core.LoggingEvent"/>中查找的属性的字符串名称。
             </para>
             </remarks>
         </member>
         <member name="M:log4net.Layout.RawPropertyLayout.Format(log4net.Core.LoggingEvent)">
             <summary>
             Lookup the property for <see cref="P:log4net.Layout.RawPropertyLayout.Key"/>
+            查找属性<see cref="P:log4net.Layout.RawPropertyLayout.Key"/>
             </summary>
             <param name="loggingEvent">The event to format</param>
             <returns>returns property value</returns>
             <remarks>
             <para>
-            Looks up and returns the object value of the property
-            named <see cref="P:log4net.Layout.RawPropertyLayout.Key"/>. If there is no property defined
-            with than name then <c>null</c> will be returned.
+            Looks up and returns the object value of the property named <see cref="P:log4net.Layout.RawPropertyLayout.Key"/>. 
+            查找并返回名为<see cref="P:log4net.Layout.RawPropertyLayout.Key"/>的属性的对象值。
+            If there is no property defined with than name then <c>null</c> will be returned.
+            如果没有定义属性，则返回<c>null</c>。查找并返回名为<see cref="P:log4net.Layout.RawPropertyLayout.Key"/>的属性的对象值。
             </para>
             </remarks>
         </member>

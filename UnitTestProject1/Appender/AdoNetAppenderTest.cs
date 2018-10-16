@@ -377,5 +377,115 @@ namespace UnitTestProject1.Appender
             Assert.IsTrue(true);
         }
 
+        [TestMethod]
+        public void ReallyAdoNetAppenderWithPropertyByCode()
+        {
+            ILoggerRepository rep = LogManager.CreateRepository(Guid.NewGuid().ToString());
+
+            #region AdoNetAppender & AdoNetAppenderParameter
+            AdoNetAppender adoAppender = new AdoNetAppender();
+            adoAppender.Name = "AdoNetAppender";
+            adoAppender.CommandType = CommandType.Text;
+            adoAppender.BufferSize = 1; //被设置为小于或等于1的值，则不会发生缓冲。
+            adoAppender.ConnectionType = "System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
+            adoAppender.ConnectionString = "Data Source=192.168.0.214;Initial Catalog=SipscMemberLog;Integrated Security=False;Persist Security Info=False;User ID=sml;Password=sml123;";
+            adoAppender.CommandText = @"INSERT INTO Log ([Date],[Thread],[Level],[Logger],[Message],[Exception],[Prop1],[Prop2],[Prop3]) VALUES (@log_date, @thread, @log_level, @logger, @message, @exception, @prop1, @prop2, @prop3)";
+            //日志记录时间：RawTimeStampLayout为默认的时间输出格式。
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@log_date",
+                DbType = DbType.DateTime,
+                Layout = new RawTimeStampLayout()
+            });
+            //线程号
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@thread",
+                Size = 255, //长度不可以省略，否则不会输出。
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%thread"))
+            });
+            //日志等级
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@log_level",
+                Size = 50,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%level"))
+            });
+            //日志记录类名称
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@logger",
+                DbType = DbType.String,
+                Size = 255,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%logger"))
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@message",
+                DbType = DbType.String,
+                Size = 4000,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%message"))
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@exception",
+                DbType = DbType.String,
+                Size = 2000,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%exception"))
+            });
+
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@prop1",
+                DbType = DbType.String,
+                Size = 50,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%property{prop1}"))
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@prop2",
+                DbType = DbType.Int32,
+                //Size = 50,
+                Layout = new RawPropertyLayout() { Key = "prop2" }
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@prop3",
+                DbType = DbType.Guid,
+                Layout = new GuidPropertyLayout()
+            });
+            #endregion
+
+            adoAppender.ActivateOptions();
+            BasicConfigurator.Configure(rep, adoAppender);
+            ILog log = LogManager.GetLogger(rep.Name, "ReallyAdoNetAppenderByCode");
+
+            //log.Info($"Message {Guid.NewGuid().ToString()}");
+            //log.Error($"出错啦 {Guid.NewGuid().ToString()}", new Exception("模拟异常"));
+
+            var logEventData = new LoggingEventData()
+            {
+                TimeStampUtc = DateTime.UtcNow,
+                Level = Level.Info,
+                Message = $"test-{Guid.NewGuid()}",
+                Properties = new PropertiesDictionary()
+            };
+            logEventData.Properties["prop1"] = "prop111";
+            logEventData.Properties["prop2"] = 111;
+
+            log.Logger.Log(new LoggingEvent(logEventData));
+
+            Assert.IsTrue(true);
+        }
+
+
+    }
+
+    public class GuidPropertyLayout : IRawLayout
+    {
+        public object Format(LoggingEvent loggingEvent)
+        {
+            return Guid.NewGuid();
+        }
     }
 }

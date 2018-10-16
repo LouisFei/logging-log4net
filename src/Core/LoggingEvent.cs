@@ -1537,21 +1537,22 @@ namespace log4net.Core
 			return m_compositeProperties[key];
 		}
 
-		/// <summary>
-		/// Get all the composite properties in this event
-		/// </summary>
-		/// <returns>the <see cref="PropertiesDictionary"/> containing all the properties</returns>
-		/// <remarks>
-		/// <para>
-		/// See <see cref="LookupProperty"/> for details of the composite properties 
-		/// stored by the event.
-		/// </para>
-		/// <para>
-		/// This method returns a single <see cref="PropertiesDictionary"/> containing all the
-		/// properties defined for this event.
-		/// </para>
-		/// </remarks>
-		public PropertiesDictionary GetProperties()
+        /// <summary>
+        /// Get all the composite properties in this event
+        /// 在此事件中获取所有复合属性
+        /// </summary>
+        /// <returns>the <see cref="PropertiesDictionary"/> containing all the properties</returns>
+        /// <remarks>
+        /// <para>
+        /// See <see cref="LookupProperty"/> for details of the composite properties 
+        /// stored by the event.
+        /// </para>
+        /// <para>
+        /// This method returns a single <see cref="PropertiesDictionary"/> containing all the
+        /// properties defined for this event.
+        /// </para>
+        /// </remarks>
+        public PropertiesDictionary GetProperties()
 		{
 			if (m_data.Properties != null)
 			{

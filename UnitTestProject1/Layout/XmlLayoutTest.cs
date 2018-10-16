@@ -108,34 +108,65 @@ namespace UnitTestProject1.Layout
         [TestMethod]
         public void TestPropertyEventLogging()
         {
-            TextWriter writer = new StringWriter();
-            XmlLayout layout = new XmlLayout();
-            var ed = new LoggingEventData();
-            ed.Domain = "tests";
-            ed.ExceptionString = "";
-            ed.Identity = "testRunner";
-            ed.Level = Level.Info;
-            ed.LocationInfo = new LocationInfo(GetType());
-            ed.LoggerName = "testLogger";
-            ed.Message = "testMessage";
-            ed.ThreadName = "testThreadName";
-            ed.TimeStampUtc = DateTime.Now.ToUniversalTime();
-            ed.UserName = "testRunner";
-            ed.Properties = new log4net.Util.PropertiesDictionary();
-
-            ed.Properties["Property1"] = "prop1";
-
             StringAppender stringAppender = new StringAppender();
-            stringAppender.Layout = layout;
+            stringAppender.Layout = new XmlLayout();
 
             ILoggerRepository rep = LogManager.CreateRepository(Guid.NewGuid().ToString());
             BasicConfigurator.Configure(rep, stringAppender);
+
             ILog log1 = LogManager.GetLogger(rep.Name, "TestThreadProperiesPattern");
 
+            var ed = new LoggingEventData()
+            {
+                Domain = "tests",
+                ExceptionString = "",
+                Identity = "testRunner",
+                Level = Level.Info,
+                LocationInfo = new LocationInfo(GetType()),
+                LoggerName = "testLogger",
+                Message = "testMessage",
+                ThreadName = "testThreadName",
+                TimeStampUtc = DateTime.Now.ToUniversalTime(),
+                UserName = "testRunner",
+                Properties = new log4net.Util.PropertiesDictionary()
+            };
+            ed.Properties["Property1"] = "prop1";
             log1.Logger.Log(new LoggingEvent(ed));
-
 
             Assert.IsTrue(stringAppender.GetString().Contains("Property1") && stringAppender.GetString().Contains("prop1"));
         }
+
+        [TestMethod]
+        public void TestPropertyEventLogging2()
+        {
+            StringAppender stringAppender = new StringAppender();
+            stringAppender.Layout = new PatternLayout("%property{Property1}");
+
+            ILoggerRepository rep = LogManager.CreateRepository(Guid.NewGuid().ToString());
+            BasicConfigurator.Configure(rep, stringAppender);
+
+            ILog log1 = LogManager.GetLogger(rep.Name, "TestPropertyEventLogging2");
+
+            var ed = new LoggingEventData()
+            {
+                Domain = "tests",
+                ExceptionString = "",
+                Identity = "testRunner",
+                Level = Level.Info,
+                LocationInfo = new LocationInfo(GetType()),
+                LoggerName = "testLogger",
+                Message = "testMessage",
+                ThreadName = "testThreadName",
+                TimeStampUtc = DateTime.Now.ToUniversalTime(),
+                UserName = "testRunner",
+                Properties = new log4net.Util.PropertiesDictionary()
+            };
+            ed.Properties["Property1"] = "prop1";
+
+            log1.Logger.Log(new LoggingEvent(ed));
+
+            Assert.AreEqual("prop1", stringAppender.GetString());
+        }
+
     }
 }

@@ -35,11 +35,12 @@ namespace log4net.Layout
     /// 用于将日志事件格式化为对象的接口。
     /// </para>
     /// <para>
-    /// This interface should not be confused with the
-    /// <see cref="ILayout"/> interface. This interface is used in
-    /// only certain specialized situations where a raw object is
-    /// required rather than a formatted string. The <see cref="ILayout"/>
-    /// is not generally useful than this interface.
+    /// This interface should not be confused with the <see cref="ILayout"/> interface. 
+    /// 这个接口不应该与<see cref="ILayout"/>接口混淆。
+    /// This interface is used in only certain specialized situations where a raw object is required rather than a formatted string. 
+    /// 此接口仅在需要原始对象而不是格式化字符串的特定情况下使用。
+    /// The <see cref="ILayout"/> is not generally useful than this interface.
+    /// <see cref="ILayout"/>接口通常不太有用。
     /// </para>
     /// </remarks>
     /// <author>Nicko Cadell</author>
@@ -47,16 +48,18 @@ namespace log4net.Layout
     [TypeConverter(typeof(RawLayoutConverter))]
 	public interface IRawLayout
 	{
-		/// <summary>
-		/// Implement this method to create your own layout format.
-		/// </summary>
-		/// <param name="loggingEvent">The event to format</param>
-		/// <returns>returns the formatted event</returns>
-		/// <remarks>
-		/// <para>
-		/// Implement this method to create your own layout format.
-		/// </para>
-		/// </remarks>
-		object Format(LoggingEvent loggingEvent);
+        /// <summary>
+        /// Implement this method to create your own layout format.
+        /// 实现此方法以创建自己的布局格式。
+        /// </summary>
+        /// <param name="loggingEvent">The event to format</param>
+        /// <returns>returns the formatted event</returns>
+        /// <remarks>
+        /// <para>
+        /// Implement this method to create your own layout format.
+        /// 实现此方法以创建自己的布局格式。
+        /// </para>
+        /// </remarks>
+        object Format(LoggingEvent loggingEvent);
 	}
 }

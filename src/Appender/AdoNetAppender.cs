@@ -1007,27 +1007,24 @@ namespace log4net.Appender
 			set { m_size = value; }
 		}
 
-		/// <summary>
-		/// Gets or sets the <see cref="IRawLayout"/> to use to 
-		/// render the logging event into an object for this 
-		/// parameter.
-		/// </summary>
-		/// <value>
-		/// The <see cref="IRawLayout"/> used to render the
-		/// logging event into an object for this parameter.
-		/// </value>
-		/// <remarks>
-		/// <para>
-		/// The <see cref="IRawLayout"/> that renders the value for this
-		/// parameter.
-		/// </para>
-		/// <para>
-		/// The <see cref="RawLayoutConverter"/> can be used to adapt
-		/// any <see cref="ILayout"/> into a <see cref="IRawLayout"/>
-		/// for use in the property.
-		/// </para>
-		/// </remarks>
-		public IRawLayout Layout
+        /// <summary>
+        /// Gets or sets the <see cref="IRawLayout"/> to use to render the logging event into an object for this parameter.
+        /// 获取或设置<see cref="IRawLayout"/>，用于将日志事件呈现为该参数的对象。
+        /// </summary>
+        /// <value>
+        /// The <see cref="IRawLayout"/> used to render the logging event into an object for this parameter.
+        /// <see cref="IRawLayout"/>用于将日志事件呈现为该参数的对象。
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The <see cref="IRawLayout"/> that renders the value for this parameter.
+        /// 呈现此参数值的<see cref="IRawLayout"/>。
+        /// </para>
+        /// <para>
+        /// The <see cref="RawLayoutConverter"/> can be used to adapt any <see cref="ILayout"/> into a <see cref="IRawLayout"/> for use in the property.
+        /// </para>
+        /// </remarks>
+        public IRawLayout Layout
 		{
 			get { return m_layout; }
 			set { m_layout = value; }
@@ -1076,18 +1073,21 @@ namespace log4net.Appender
 			command.Parameters.Add(param);
 		}
 
-		/// <summary>
-		/// Renders the logging event and set the parameter value in the command.
-		/// </summary>
-		/// <param name="command">The command containing the parameter.</param>
-		/// <param name="loggingEvent">The event to be rendered.</param>
-		/// <remarks>
-		/// <para>
-		/// Renders the logging event using this parameters layout
-		/// object. Sets the value of the parameter on the command object.
-		/// </para>
-		/// </remarks>
-		virtual public void FormatValue(IDbCommand command, LoggingEvent loggingEvent)
+        /// <summary>
+        /// Renders the logging event and set the parameter value in the command.
+        /// 呈现日志事件并在命令中设置参数值。
+        /// </summary>
+        /// <param name="command">The command containing the parameter.</param>
+        /// <param name="loggingEvent">The event to be rendered.要呈现的事件。</param>
+        /// <remarks>
+        /// <para>
+        /// Renders the logging event using this parameters layout object. 
+        /// 使用这个参数布局对象呈现日志事件。
+        /// Sets the value of the parameter on the command object.
+        /// 设置命令对象上参数的值。
+        /// </para>
+        /// </remarks>
+        virtual public void FormatValue(IDbCommand command, LoggingEvent loggingEvent)
 		{
 			// Lookup the parameter
 			IDbDataParameter param = (IDbDataParameter)command.Parameters[ParameterName];
