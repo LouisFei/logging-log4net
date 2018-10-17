@@ -478,6 +478,95 @@ namespace UnitTestProject1.Appender
             Assert.IsTrue(true);
         }
 
+        /// <summary>
+        /// 基于属性自定义字段，借用log框架实现数据收集。
+        /// </summary>
+        [TestMethod]
+        public void ReallyAdoNetAppenderWithProperty2ByCode()
+        {
+            ILoggerRepository rep = LogManager.CreateRepository(Guid.NewGuid().ToString());
+
+            #region AdoNetAppender & AdoNetAppenderParameter
+            AdoNetAppender adoAppender = new AdoNetAppender();
+            adoAppender.Name = "AdoNetAppender";
+            adoAppender.CommandType = CommandType.Text;
+            adoAppender.BufferSize = 1; //被设置为小于或等于1的值，则不会发生缓冲。
+            adoAppender.ConnectionType = "System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089";
+            adoAppender.ConnectionString = "Data Source=192.168.0.214;Initial Catalog=SipscMemberLog;Integrated Security=False;Persist Security Info=False;User ID=sml;Password=sml123;";
+            adoAppender.CommandText = @"INSERT INTO [Student]([Id],[Name],[Age],[Phone],[Address],[AddDate])VALUES(@Id,@Name,@Age,@Phone,@Address,@AddDate)";
+
+            //@Id,@Name,@Age,@Phone,@Address,@AddDate
+            //adoAppender.AddParameter(new AdoNetAppenderParameter()
+            //{
+            //    ParameterName = "@Id",
+            //    DbType = DbType.Guid,
+            //    Layout = new GuidPropertyLayout()
+            //});
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@Id",
+                DbType = DbType.String,
+                Size = 50,
+                Layout = new RawPropertyLayout() { Key = "Id" }
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@Name",
+                DbType = DbType.String,
+                Size = 50,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%property{Name}"))
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@Age",
+                DbType = DbType.Int32,
+                Layout = new RawPropertyLayout() { Key = "Age" }
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@Phone",
+                DbType = DbType.String,
+                Size = 50,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%property{Phone}"))
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@Address",
+                DbType = DbType.String,
+                Size = 50,
+                Layout = new Layout2RawLayoutAdapter(new PatternLayout("%property{Address}"))
+            });
+            adoAppender.AddParameter(new AdoNetAppenderParameter()
+            {
+                ParameterName = "@AddDate",
+                DbType = DbType.DateTime,
+                //Layout = new RawTimeStampLayout()
+                Layout = new RawPropertyLayout() { Key = "AddDate" }
+            });
+            #endregion
+
+            adoAppender.ActivateOptions();
+            BasicConfigurator.Configure(rep, adoAppender);
+            ILog log = LogManager.GetLogger(rep.Name, "ReallyAdoNetAppenderByCode");
+
+            var logEventData = new LoggingEventData()
+            {
+                Level = Level.Info,
+                TimeStampUtc = DateTime.UtcNow,
+
+                Properties = new PropertiesDictionary()
+            };
+            logEventData.Properties["Id"] = Guid.NewGuid().ToString();
+            logEventData.Properties["Name"] = $"name{Guid.NewGuid().ToString().Substring(0, 10)}";
+            logEventData.Properties["Age"] = new Random().Next(5, 35);
+            logEventData.Properties["Phone"] = "13012345678";
+            logEventData.Properties["Address"] = "苏州东大街";
+            logEventData.Properties["AddDate"] = DateTime.UtcNow.ToLocalTime();
+
+            log.Logger.Log(new LoggingEvent(logEventData));
+
+            Assert.IsTrue(true);
+        }
 
     }
 
